@@ -9,7 +9,7 @@
 locale                   : "en-US"
 title                    : "Syed Rifat Raiyan"
 title_separator          : "-"
-name                     : &name "Syed Rifat Raiyan"
+name                     : &name "Syed Rifat Raiyan (রিফাত)"
 description              : &description "Undergraduate Student at Islamic University of Technology (IUT)"
 url                      : https://Starscream-11813.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Syed Rifat Raiyan"
   avatar           : "profile.png"
-  bio              : "bruh"
+  bio              : "B.Sc. (Engg.) CSE,\nIUT"
   location         : "Uttara, Dhaka, Bangladesh"
   employer         :
   pubmed           : 
