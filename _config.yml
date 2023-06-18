@@ -80,21 +80,21 @@ analytics:
 
 # Site Author
 author:
-  name             : "Syed Rifat Raiyan"
+  name             : "Syed Rifat Raiyan (রিফাত)"
   avatar           : "profile.png"
   bio              : "B.Sc. (Engg.) CSE,\nIUT"
   location         : "Uttara, Dhaka, Bangladesh"
   employer         :
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=4L_7vaoAAAAJ&hl=en&oi=ao"
-  email            :
+  email            : "rifatraiyan@iut-dhaka.edu"
   researchgate     :  # example: "https://www.researchgate.net/profile/yourprofile"
   uri              :
   bitbucket        :
   codepen          :
   dribbble         :
   flickr           :
-  facebook         :
+  facebook         : "https://www.facebook.com/rifat.ryan.7/"
   foursquare       :
   github           : "Starscream-11813"
   google_plus      :
@@ -109,7 +109,7 @@ author:
   stackoverflow    : # http://stackoverflow.com/users/123456/username
   steam            :
   tumblr           :
-  twitter          : "@realRifatRaiyan"
+  twitter          : "realRifatRaiyan"
   vine             :
   weibo            :
   xing             :
