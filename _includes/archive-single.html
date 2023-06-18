@@ -53,9 +53,9 @@
     {% endif %}
     
     {% if post.citation and post.paperurl %}
-      <p>Citation (IEEE format): {{ post.citation }}</p> <p><a href="{{ post.paperurl }}">[arXiv]</a></p>
+      <p><u>Citation (IEEE format):</u> {{ post.citation }}</p><br><a href="{{ post.paperurl }}">[arXiv]</a>
     {% elsif post.citation %}
-      <p>Citation (IEEE format): {{ post.citation }} </p>
+      <p><u>Citation (IEEE format):</u> {{ post.citation }} </p>
     {% elsif post.paperurl %}
       <p>Download <a href=" {{ post.paperurl }} "><u>here</u></a></p>
     {% endif %}
