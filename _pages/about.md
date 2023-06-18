@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Syed Rifat Raiyan"
+title: "Home"
 excerpt: "About me"
 author_profile: true
 redirect_from: 
