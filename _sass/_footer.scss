@@ -16,7 +16,8 @@
   /* sticky footer fix end */
   margin-top: 3em;
   // color: mix(#fff, $gray, 25%);
-  color: $light-lavender;
+  color: #fff;
+  // color: $light-lavender;
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
   -webkit-animation-delay: 0.45s;
@@ -40,7 +41,8 @@
 
   a {
     // color: inherit;
-    color: mix(#fff, $gray, 25%);
+    // color: mix(#fff, $gray, 25%);
+    
     text-decoration: none;
 
     &:hover {
@@ -53,11 +55,13 @@
   .far,
   .fal {
     // color: mix(#fff, $gray, 25%);
-    color: $light-lavender;
+    color: #fff;
+    // color: $light-lavender;
   }
 }
 
 .page__footer-copyright {
+  color: #fff;
   font-family: $global-font-family;
   font-size: $type-size-7;
 }
