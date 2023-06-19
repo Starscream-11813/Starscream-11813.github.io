@@ -182,10 +182,10 @@
     margin: 0 1rem;
     padding: 0.5rem 0;
     color: $masthead-link-color;
+    font-variant: small-caps;
     text-decoration: none;
 
     &:hover {
-      font-variant: small-caps;
       color: $masthead-link-color-hover;
     }
   }
