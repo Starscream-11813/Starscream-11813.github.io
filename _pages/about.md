@@ -9,11 +9,6 @@ redirect_from:
 ---
 <style>
 body {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
-    align-content: center;
     min-height: 100vh;
     background-color: #f9f9f9;
 }
@@ -21,8 +16,6 @@ body {
 .emoji {
     font-size: normal;
     min-width: 1.4em;
-    margin: 0.3em 0.4em;
-    text-align: center;
 }
 
 .emoji::after {
@@ -240,4 +233,4 @@ body {
     }
 }
 </style>
-<span class="emoji wave" role="img" aria-label="hand wave"></span>
+Hello! <div class="emoji wave" role="img" aria-label="hand wave"></div>
