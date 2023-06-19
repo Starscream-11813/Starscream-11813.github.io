@@ -10,7 +10,7 @@ redirect_from:
 <style>
 body {
     min-height: 100vh;
-    background-color: #f9f9f9;
+    background-color: #fff;
 }
 
 .emoji {
