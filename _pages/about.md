@@ -19,7 +19,7 @@ body {
 }
 
 .emoji {
-    font-size: calc(100px + 4vw);
+    font-size: normal;
     min-width: 1.4em;
     margin: 0.3em 0.4em;
     text-align: center;
