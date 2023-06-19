@@ -24,7 +24,7 @@
           animation-delay: 0.45s;
   // background-color: $lighter-gray;
   background-color: $light-lavender;
-  border-top: 1px solid $light-gray;
+  border-top: 3px solid $dark-lavender;
 
   footer {
     @include clearfix;
@@ -42,7 +42,7 @@
   a {
     // color: inherit;
     // color: mix(#fff, $gray, 25%);
-    
+    color: #fff;
     text-decoration: none;
 
     &:hover {
