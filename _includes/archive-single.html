@@ -53,7 +53,7 @@
     {% endif %}
     
     {% if post.citation and post.paperurl %}
-      <p><u>Citation (IEEE format):</u> {{ post.citation }}</p><br><a href="{{ post.paperurl }}">[arXiv]</a>
+      <p><u>Citation (IEEE format):</u> {{ post.citation }}</p><a href="{{ post.paperurl }}">[arXiv]</a>
     {% elsif post.citation %}
       <p><u>Citation (IEEE format):</u> {{ post.citation }} </p>
     {% elsif post.paperurl %}

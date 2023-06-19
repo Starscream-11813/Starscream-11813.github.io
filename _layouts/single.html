@@ -44,7 +44,7 @@ layout: default
         
              
         {% if page.citation and page.paperurl %}
-          <p><u>Citation (IEEE format):</u> {{ page.citation }}</p><br><a href="{{ page.paperurl }}">[arXiv]</a>
+          <p><u>Citation (IEEE format):</u> {{ page.citation }}</p><a href="{{ page.paperurl }}">[arXiv]</a>
         {% elsif page.citation %}
           <p><u>Citation (IEEE format):</u> {{ page.citation }} </p>
         {% endif %}
