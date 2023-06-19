@@ -233,4 +233,4 @@ body {
     }
 }
 </style>
-Hello! <div class="emoji wave" role="img" aria-label="hand wave"></div>
+Hello! <span class="emoji wave" role="img" aria-label="hand wave"></span>
