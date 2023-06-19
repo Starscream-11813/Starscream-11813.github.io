@@ -185,6 +185,7 @@
     text-decoration: none;
 
     &:hover {
+      font-variant: small-caps;
       color: $masthead-link-color-hover;
     }
   }
