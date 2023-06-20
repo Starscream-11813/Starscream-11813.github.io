@@ -21,8 +21,51 @@
                 text-shadow: 0 0 20px #fff, 0 0 30px mix(#8482E6, #fff, 50%), 0 0 40px mix(#8482E6, #fff, 50%), 0 0 50px mix(#8482E6, #fff, 50%), 0 0 50px mix(#8482E6, #fff, 50%);
               }
             }
+            @keyframes tipsy {
+                0 {
+                  transform: translateX(-50%) translateY(-50%) rotate(0deg);
+                }
+                100% {
+                  transform: translateX(-50%) translateY(-50%) rotate(360deg);
+                }
+              }
+
+              aa {
+                text-shadow: 0 20px 25px #2e2e31, 0 40px 60px #2e2e31;
+                text-decoration: none;
+                letter-spacing: -3px;
+                margin: 0;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translateX(-50%) translateY(-50%);
+              }
+
+              aa:before,
+              aa:after {
+                content: '';
+                padding: .9em .4em;
+                position: absolute;
+                left: 50%;
+                width: 100%;
+                top: 50%;
+                display: block;
+                border: 15px solid #6962D2;
+                transform: translateX(-50%) translateY(-50%) rotate(0deg);
+                animation: 10s infinite alternate ease-in-out tipsy;
+              }
+
+              aa:before {
+                border-color: #6962D2 #6962D2 rgba(0, 0, 0, 0) rgba(0, 0, 0, 0);
+                z-index: -1;
+              }
+
+              aa:after {
+                border-color: rgba(0, 0, 0, 0) rgba(0, 0, 0, 0) #6962D2 #6962D2;
+                box-shadow: 25px 25px 25px rgba(46, 46, 49, .8);
+              }
         </style>
-          <li class="masthead__menu-item masthead__menu-item--lg"><a class="glow2" style="font-family: 'CMU Serif Roman', serif; font-size: 25.008px;" href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a style="font-family: 'CMU Serif Roman', serif; font-size: 25.008px;" href="{{ base_path }}/"><aa>{{ site.title }}</aa></a></li>
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
