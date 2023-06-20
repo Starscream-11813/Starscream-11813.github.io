@@ -7,7 +7,7 @@
         <button><div class="navicon"></div></button>
         <ul class="visible-links">
           <style>
-            .glow {
+            .glow2 {
               text-align: center;
               animation: glow 1s ease-in-out infinite alternate;
             }
@@ -22,7 +22,7 @@
               }
             }
         </style>
-          <li class="masthead__menu-item masthead__menu-item--lg"><a class="glow" style="font-family: 'CMU Serif Roman', serif; font-size: 25.008px;" href="{{ base_path }}/">{{ site.title }}</a></li>
+          <li class="masthead__menu-item masthead__menu-item--lg"><a class="glow2" style="font-family: 'CMU Serif Roman', serif; font-size: 25.008px;" href="{{ base_path }}/">{{ site.title }}</a></li>
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
               {% assign domain = '' %}
