@@ -7,7 +7,7 @@
   font-family: $palatinolinotype;
   // background-color: cyan;
   // background: linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%);
-  border-top: 10px transparent linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%) 1;
+  border-top: 10px solid linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%) 1;
   border-bottom: 2px solid $lighter-lavender; // $border-color;
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
