@@ -1,17 +1,18 @@
 /* ==========================================================================
    MASTHEAD
    ========================================================================== */
-
+.masthead2 {
+  padding-top: 10px;
+  background-image: -webkit-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
+	background-image: -ms-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9ebda', endColorstr='#e9baf1',GradientType=1 );
+}
 .masthead {
   position: relative;
   font-family: $palatinolinotype;
   // background-color: cyan;
   // background: linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%);
   // border-top: 10px solid linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%) 1;
-  padding-top: 10px;
-  background-image: -webkit-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
-	background-image: -ms-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c9ebda', endColorstr='#e9baf1',GradientType=1 );
   border-bottom: 2px solid $lighter-lavender; // $border-color;
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;
