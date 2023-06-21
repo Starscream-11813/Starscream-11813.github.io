@@ -6,8 +6,8 @@
   position: relative;
   font-family: $palatinolinotype;
   // background-color: cyan;
-  background: linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%);
-  border-top: 20px solid $dark-lavender;
+  // background: linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%);
+  border-top: 10px linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%);
   border-bottom: 2px solid $lighter-lavender; // $border-color;
   -webkit-animation: intro 0.3s both;
           animation: intro 0.3s both;

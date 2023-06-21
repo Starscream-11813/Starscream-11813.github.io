@@ -175,7 +175,7 @@
 .greedy-nav {
   position: relative;
   min-width: 250px;
-  background: linear-gradient(90deg, #3F2B96 0%, $light-lavender 100%);//$background-color;
+  background: $background-color;
 
   a {
     display: block;
