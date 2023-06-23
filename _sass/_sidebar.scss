@@ -88,8 +88,9 @@
 
     @include breakpoint($large) {
       padding: 5px;
-      border: 1px solid -webkit-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);//$border-color;
-      border: 1px solid -ms-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);;
+      background-image: -webkit-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
+      background-image: -ms-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
+      border: 1px solid $border-color;
     }
   }
 }
