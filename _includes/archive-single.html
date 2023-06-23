@@ -179,24 +179,8 @@
       <div class="collapsible-content">
         <div class="content-inner">
           <p>
-            <aaa id="newLine"> 
               {{ post.bibtex }}
-            </aaa>
           </p>
-          <script>
-            var text = document.getElementById('newLine');
-            var substring = '\n';
-          
-            var innerHTML = text.innerHTML;
-            var startIndex = innerHTML.indexOf(substring);
-            var endIndex = startIndex + substring.length;
-          
-            var modifiedHTML = innerHTML.slice(0, startIndex) +
-              '<br>' +
-              innerHTML.slice(endIndex);
-          
-            text.innerHTML = modifiedHTML;
-          </script>
         </div>
       </div>
     </div>

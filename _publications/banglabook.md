@@ -8,12 +8,12 @@ venue: 'Findings of the Association for Computational Linguistics (ACL)'
 paperurl: 'https://arxiv.org/abs/2305.06595'
 citation: 'M. Kabir, O. B. Mahfuz, S. R. Raiyan, H. Mahmud, and M. K. Hasan, “BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews,” arXiv preprint arXiv:2305.06595, 2023.'
 authors: 'Mohsinul Kabir†, Obayed Bin Mahfuz†, Syed Rifat Raiyan†, Hasan Mahmud, and Md Kamrul Hasan.'
-bibtex: '@misc{kabir2023banglabook,\n
-            title={BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews},\n
-            author={Mohsinul Kabir and Obayed Bin Mahfuz and Syed Rifat Raiyan and Hasan Mahmud and Md Kamrul Hasan},\n
-            year={2023},\n
-            eprint={2305.06595},\n
-            archivePrefix={arXiv},\n
+bibtex: '@misc{kabir2023banglabook,
+            title={BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews},
+            author={Mohsinul Kabir and Obayed Bin Mahfuz and Syed Rifat Raiyan and Hasan Mahmud and Md Kamrul Hasan},
+            year={2023},
+            eprint={2305.06595},
+            archivePrefix={arXiv},
             primaryClass={cs.CL}}'
 ---
 <u>Authors:</u> Mohsinul Kabir†, Obayed Bin Mahfuz†, **Syed Rifat Raiyan**†, Hasan Mahmud, and Md Kamrul Hasan.
