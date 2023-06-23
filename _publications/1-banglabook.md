@@ -9,7 +9,7 @@ paperurl: 'https://arxiv.org/abs/2305.06595'
 pdfurl: 'https://arxiv.org/ftp/arxiv/papers/2305/2305.06595.pdf'
 codedata: 'https://github.com/mohsinulkabir14/BanglaBook'
 citation: 'M. Kabir, O. B. Mahfuz, S. R. Raiyan, H. Mahmud, and M. K. Hasan, “BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews,” arXiv preprint arXiv:2305.06595, 2023.'
-authors: 'Mohsinul Kabir†, Obayed Bin Mahfuz†, Syed Rifat Raiyan†, Hasan Mahmud, and Md Kamrul Hasan.'
+authors: 'Mohsinul Kabir†, Obayed Bin Mahfuz†, <b>Syed Rifat Raiyan</b>†, Hasan Mahmud, and Md Kamrul Hasan.'
 bibtex: '@misc{kabir2023banglabook,
             title={BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews},
             author={Mohsinul Kabir and Obayed Bin Mahfuz and Syed Rifat Raiyan and Hasan Mahmud and Md Kamrul Hasan},
