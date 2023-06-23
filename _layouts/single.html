@@ -42,16 +42,142 @@ layout: default
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
         
-             
+        <style>
+          .button {
+            width: 87px;
+            border: none;
+            color: #DDD;
+            font-family: 'CMU Serif', serif;
+            font-size: 13.5px;
+            font-weight: bold;
+            padding: 0.5em 0.5em;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            cursor: pointer;
+            border-radius: 7px;
+          }
+          
+          .button:hover {
+            background-color: #f1f1f1;
+            color: #FFF;
+          }
+          </style>     
         {% if page.citation and page.paperurl %}
-          <p><u>Citation (IEEE format):</u> {{ page.citation }}</p><a href="{{ page.paperurl }}">[arXiv]</a>
+          <p><u>Citation (IEEE format):</u> {{ page.citation }}</p>
+          <a href="{{ page.paperurl }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button">arXiv</a>
+          <a href="{{ page.pdfurl }}" style="background-color: #428bca; width:47px; text-decoration: none;" class="button">PDF</a>
+          <a href="{{ page.codedata }}" style="background-color: #5cb85c; width:80px; text-decoration: none;" class="button">Code/Data</a>
         {% elsif page.citation %}
           <p><u>Citation (IEEE format):</u> {{ page.citation }} </p>
         {% endif %}
     
         </header>
       {% endunless %}
-
+      <style>
+        input[type='checkbox'] {
+          display: none;
+        }
+      
+        .wrap-collabsible {
+          margin: 1.2rem 0;
+        }
+      
+        .lbl-toggle {
+          width: 87px;
+          display: block;
+          font-weight: bold;
+          font-family: 'CMU Serif', serif;
+          text-transform: uppercase;
+          text-align: center;
+          padding: 0.5em 0.5em 0.5em 0.5em;
+          color: #DDD;
+          background: #6962D2;
+          cursor: pointer;
+          border-radius: 7px;
+          transition: all 0.25s ease-out;
+        }
+      
+        .lbl-toggle:hover {
+          color: #FFF;
+        }
+      
+        .lbl-toggle::before {
+          content: ' ';
+          display: inline-block;
+          border-top: 5px solid transparent;
+          border-bottom: 5px solid transparent;
+          border-left: 5px solid currentColor;
+          vertical-align: middle;
+          margin-right: .7rem;
+          transform: translateY(-2px);
+          transition: transform .2s ease-out;
+        }
+      
+        .toggle:checked+.lbl-toggle::before {
+          transform: rotate(90deg) translateX(-3px);
+        }
+      
+        .collapsible-content {
+          max-height: 0px;
+          overflow: hidden;
+          transition: max-height .25s ease-in-out;
+        }
+      
+        .toggle:checked+.lbl-toggle+.collapsible-content {
+          max-height: 350px;
+        }
+      
+        .toggle:checked+.lbl-toggle {
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+      
+        .collapsible-content .content-inner {
+          background: rgba(0, 105, 255, .2);
+          border-bottom: 1px solid rgba(0, 105, 255, .45);
+          border-bottom-left-radius: 7px;
+          border-bottom-right-radius: 7px;
+          padding: .5rem 1rem;
+        }
+      
+        .collapsible-content p {
+          margin-bottom: 0;
+        }
+        .tex sub, .latex sub, .latex sup {
+        text-transform: uppercase;
+      }
+  
+      .tex sub, .latex sub {
+        vertical-align: -0.5ex;
+        margin-left: -0.1667em;
+        margin-right: -0.125em;
+      }
+  
+      .tex, .latex, .tex sub, .latex sub {
+        font-size: 1em;
+      }
+  
+      .latex sup {
+        font-size: 0.85em;
+        vertical-align: 0.15em;
+        margin-left: -0.36em;
+        margin-right: -0.15em;
+      }
+          .multiline {
+        white-space: pre-wrap;
+      }
+      </style>
+      <div class="wrap-collabsible"> <input id="collapsible" class="toggle" type="checkbox"> <label for="collapsible"
+          class="lbl-toggle"><span style="font-variant: small-caps; font-size: 13px;" class="latex">B<span style="font-size: 10px;">ib</span>T<sub>e</sub>X</span></label>
+        <div class="collapsible-content">
+          <div class="content-inner">
+            <p style="font-family: 'Courier New', Courier, monospace;">
+                {{ page.bibtex }}
+            </p>
+          </div>
+        </div>
+      </div>
       <section class="page__content" itemprop="text">
         {{ content }}
         {% if page.link %}<div><a href="{{ page.link }}" class="btn">{{ site.data.ui-text[site.locale].ext_link_label | default: "Direct Link" }}</a></div>{% endif %}
