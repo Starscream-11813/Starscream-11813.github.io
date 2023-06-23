@@ -47,10 +47,10 @@
         {% endif %}
 
         {% if post.authors and post.paperurl %}
-          <p><u>Authors:</u><b id="myText"> {{ post.authors }}</b></p>
+          <p><u>Authors:</u><aa id="myName"> {{ post.authors }}</aa></p>
           <!-- <b id="myText">This is a sample text.</b> -->
           <script>
-            var text = document.getElementById('myText');
+            var text = document.getElementById('myName');
             var substring = 'Syed Rifat Raiyan';
           
             var innerHTML = text.innerHTML;
