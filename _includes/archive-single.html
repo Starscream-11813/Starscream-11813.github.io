@@ -77,7 +77,7 @@
         border: none;
         color: #DDD;
         font-family: 'CMU Serif', serif;
-        font-size: 13px;
+        font-size: 13.5px;
         padding: 0.5em 0.5em;
         text-align: center;
         text-decoration: none;
@@ -91,7 +91,10 @@
       }
       </style>
     {% if post.citation and post.paperurl %}
-      <p><u>Citation (IEEE format):</u> {{ post.citation }}</p><a href="{{ post.paperurl }}" style="background-color: #b31b1b;" class="button">arXiv</a>
+      <p><u>Citation (IEEE format):</u> {{ post.citation }}</p>
+      <a href="{{ post.paperurl }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button">arXiv</a>
+      <a href="{{ post.pdfurl }}" style="background-color: #428bca; width:47px; text-decoration: none;" class="button">PDF</a>
+      <a href="{{ post.codedata }}" style="background-color: #5cb85c; width:80px; text-decoration: none;" class="button">Code/Data</a>
     {% elsif post.citation %}
       <p><u>Citation (IEEE format):</u> {{ post.citation }} </p>
     {% elsif post.paperurl %}
