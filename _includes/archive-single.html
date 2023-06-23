@@ -46,25 +46,6 @@
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
 
-        {% if post.authors and post.paperurl %}
-          <p><u>Authors:</u><aa id="myName"> {{ post.authors }}</aa></p>
-          <script>
-            var text = document.getElementById('myName');
-            var substring = 'Syed Rifat Raiyan';
-          
-            var innerHTML = text.innerHTML;
-            var startIndex = innerHTML.indexOf(substring);
-            var endIndex = startIndex + substring.length;
-          
-            var modifiedHTML = innerHTML.slice(0, startIndex) +
-              '<span style="font-weight:bold;">' +
-              innerHTML.slice(startIndex, endIndex) +
-              '</span>' +
-              innerHTML.slice(endIndex);
-          
-            text.innerHTML = modifiedHTML;
-          </script>
-        {% endif %}
       <style>
         .button {
           width: 87px;
@@ -88,6 +69,25 @@
       </style>
       
     {% if post.citation and post.paperurl %}
+      {% if post.authors and post.paperurl %}
+        <p><u>Authors:</u><aa id="myName"> {{ post.authors }}</aa></p>
+        <script>
+          var text = document.getElementById('myName');
+          var substring = 'Syed Rifat Raiyan';
+        
+          var innerHTML = text.innerHTML;
+          var startIndex = innerHTML.indexOf(substring);
+          var endIndex = startIndex + substring.length;
+        
+          var modifiedHTML = innerHTML.slice(0, startIndex) +
+            '<span style="font-weight:bold;">' +
+            innerHTML.slice(startIndex, endIndex) +
+            '</span>' +
+            innerHTML.slice(endIndex);
+        
+          text.innerHTML = modifiedHTML;
+      </script>
+      {% endif %}
       <p><u>Citation (IEEE format):</u> {{ post.citation }}</p>
       <a href="{{ post.paperurl }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button">arXiv</a>
       <a href="{{ post.pdfurl }}" style="background-color: #428bca; width:47px; text-decoration: none;" class="button">PDF</a>
