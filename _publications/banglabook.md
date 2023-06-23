@@ -9,7 +9,7 @@ paperurl: 'https://arxiv.org/abs/2305.06595'
 citation: 'M. Kabir, O. B. Mahfuz, S. R. Raiyan, H. Mahmud, and M. K. Hasan, “BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews,” arXiv preprint arXiv:2305.06595, 2023.'
 authors: 'Mohsinul Kabir†, Obayed Bin Mahfuz†, Syed Rifat Raiyan†, Hasan Mahmud, and Md Kamrul Hasan.'
 ---
-<u>Authors2:</u> Mohsinul Kabir†, Obayed Bin Mahfuz†, **Syed Rifat Raiyan**†, Hasan Mahmud, and Md Kamrul Hasan.
+<u>Authors:</u> Mohsinul Kabir†, Obayed Bin Mahfuz†, **Syed Rifat Raiyan**†, Hasan Mahmud, and Md Kamrul Hasan.
 <br>
 <u>Abstract:</u> The analysis of consumer sentiment, as expressed through reviews, can provide a wealth
 of insight regarding the quality of a product. While the study of sentiment analysis
