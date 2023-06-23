@@ -96,7 +96,7 @@
     {% elsif post.paperurl %}
       <p>Download <a href=" {{ post.paperurl }} "><u>here</u></a></p>
     {% endif %}
-    {% if post.bibtex and post.pdfurl and post.codedata %}
+    {% if post.collection == 'publications' and post.bibtex and post.pdfurl and post.codedata %}
       <style>
         input[type='checkbox'] {
           display: none;
