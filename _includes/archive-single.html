@@ -90,7 +90,7 @@
       }
     
       .lbl-toggle {
-        width: 86px;
+        width: 87px;
         display: block;
         font-weight: bold;
         font-family: 'CMU Serif', serif;
@@ -178,6 +178,11 @@
         class="lbl-toggle"><span style="font-variant: small-caps; font-size: 13px;" class="latex">B<span style="font-size: 10px;">ib</span>T<sub>e</sub>X</span></label>
       <div class="collapsible-content">
         <div class="content-inner">
+          <p>
+            <aaa id="newLine"> 
+              {{ post.bibtex }}
+            </aaa>
+          </p>
           <script>
             var text = document.getElementById('newLine');
             var substring = '\n';
@@ -192,9 +197,6 @@
           
             text.innerHTML = modifiedHTML;
           </script>
-          <aaa id="newLine"> 
-            {{ post.bibtex }}
-          </aaa>
         </div>
       </div>
     </div>
