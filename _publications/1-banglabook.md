@@ -1,9 +1,9 @@
 ---
 title: "BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews"
 collection: publications
-permalink: /publications/banglabook
+permalink: /publications/1-banglabook
 excerpt: 
-date: 2023-07-9
+date: 2023-07-09
 venue: 'Findings of the Association for Computational Linguistics (ACL)'
 paperurl: 'https://arxiv.org/abs/2305.06595'
 pdfurl: 'https://arxiv.org/ftp/arxiv/papers/2305/2305.06595.pdf'
