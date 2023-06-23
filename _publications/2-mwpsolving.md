@@ -9,7 +9,7 @@ paperurl: 'TODO'
 pdfurl: 'TODO'
 codedata: 'https://github.com/Starscream-11813/Variational-Mathematical-Reasoning'
 citation: 'TODO'
-authors: 'Syed Rifat Raiyan, Md. Nafis Faiyaz, Shah Md. Jawad Kabir, Mohsinul Kabir, Hasan Mahmud, Md Kamrul Hasan.'
+authors: '<b>Syed Rifat Raiyan</b>, Md. Nafis Faiyaz, Shah Md. Jawad Kabir, Mohsinul Kabir, Hasan Mahmud, Md Kamrul Hasan.'
 bibtex: 'TODO'
 ---
 <u>Authors:</u> **Syed Rifat Raiyan**, Md. Nafis Faiyaz, Shah Md. Jawad Kabir, Mohsinul Kabir, Hasan Mahmud, Md Kamrul Hasan.
