@@ -91,6 +91,12 @@
       <a href="{{ post.paperurl }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button">arXiv</a>
       <a href="{{ post.pdfurl }}" style="background-color: #428bca; width:47px; text-decoration: none;" class="button">PDF</a>
       <a href="{{ post.codedata }}" style="background-color: #5cb85c; width:90px; text-decoration: none;" class="button">Code/Data</a>
+    {% elsif post.citation %}
+      <p><u>Citation (IEEE format):</u> {{ post.citation }} </p>
+    {% elsif post.paperurl %}
+      <p>Download <a href=" {{ post.paperurl }} "><u>here</u></a></p>
+    {% endif %}
+    {% if post.bibtex and post.pdfurl and post.codedata %}
       <style>
         input[type='checkbox'] {
           display: none;
@@ -195,11 +201,6 @@
         </div>
       </div>
     </div>
-    {% elsif post.citation %}
-      <p><u>Citation (IEEE format):</u> {{ post.citation }} </p>
-    {% elsif post.paperurl %}
-      <p>Download <a href=" {{ post.paperurl }} "><u>here</u></a></p>
     {% endif %}
-
   </article>
 </div>
