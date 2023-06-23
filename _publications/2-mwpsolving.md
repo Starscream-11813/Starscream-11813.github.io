@@ -4,7 +4,7 @@ collection: publications
 permalink: /publications/1-mwpsolving
 excerpt: 
 date: 2023-07-09
-venue: 'Proceedings of the 60th Annual Meeting of the Association for Computational Linguistics: Student Research Workshop (ACL-SRW)'
+venue: 'Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics: Student Research Workshop (ACL-SRW)'
 paperurl: 'TODO'
 pdfurl: 'TODO'
 codedata: 'https://github.com/Starscream-11813/Variational-Mathematical-Reasoning'
