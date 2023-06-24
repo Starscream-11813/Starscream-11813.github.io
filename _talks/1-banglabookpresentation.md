@@ -12,4 +12,4 @@ video: "https://drive.google.com/file/d/1i7lnR2y3NdoglmYt31QR1R18mOOYtA76/view?u
 paper: "https://arxiv.org/ftp/arxiv/papers/2305/2305.06595.pdf"
 ---
 
-The presentation of my co-author Obayed Bin Mahfuz's M.Sc. thesis work as a virtual attendee at ACL 2023. Thanks to the Diversity & Inclusion (D&I) Committee of ACL 2023 for subsidising the virtual registration and ACL membership fees.
+The presentation of my co-author, Obayed Bin Mahfuz's M.Sc. (postgraduate) thesis work as a virtual attendee at ACL 2023. Thanks to the Diversity & Inclusion (D&I) Committee of ACL 2023 for subsidising the virtual registration and ACL membership fees.

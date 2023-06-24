@@ -12,4 +12,4 @@ video: "https://drive.google.com/file/d/1cw0vTJtkPChXC_bSkMBVbZPYThmf-p_5/view?u
 paper: "TODO"
 ---
 
-The presentation of my B.Sc. thesis work as a virtual attendee at ACL 2023. Thanks to the Diversity & Inclusion (D&I) Committee of ACL 2023 for subsidising the virtual registration and ACL membership fees.
+The presentation of my B.Sc. (undergraduate) thesis work as a virtual attendee at ACL 2023. Thanks to the Diversity & Inclusion (D&I) Committee of ACL 2023 for subsidising the virtual registration and ACL membership fees.
