@@ -267,7 +267,7 @@ plugins:
   - jekyll-redirect-from
   - jekyll-last-modified-at
 
-last_modified_at:
+last-modified-at:
   date-format: '%d-%b-%y'
 # mimic GitHub Pages with --safe
 whitelist:
