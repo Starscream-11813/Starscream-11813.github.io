@@ -18,6 +18,9 @@ bibtex: '@misc{kabir2023banglabook,<br>
             &emsp;&emsp;&emsp;&emsp;archivePrefix={arXiv},<br>
             &emsp;&emsp;&emsp;&emsp;primaryClass={cs.CL}<br>
             }'
+poster: 
+slides: "https://drive.google.com/file/d/1-UkYs_Rx11S7qKOfR-6rnO2VDp3W78vQ/view?usp=sharing"
+video: "https://drive.google.com/file/d/1i7lnR2y3NdoglmYt31QR1R18mOOYtA76/view?usp=sharing"
 ---
 <u>Authors:</u> Mohsinul Kabir†, Obayed Bin Mahfuz†, **Syed Rifat Raiyan**†, Hasan Mahmud, and Md Kamrul Hasan.
 <br>

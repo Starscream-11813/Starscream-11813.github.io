@@ -68,6 +68,15 @@ layout: default
           <a href="{{ page.paperurl }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button">arXiv</a>
           <a href="{{ page.pdfurl }}" style="background-color: #428bca; width:47px; text-decoration: none;" class="button">PDF</a>
           <a href="{{ page.codedata }}" style="background-color: #5cb85c; width:90px; text-decoration: none;" class="button">Code/Data</a>
+          {% if post.slides %}
+          <a href="{{ page.slides }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button">Slides</a>
+          {% endif %}
+          {% if post.poster %}
+          <a href="{{ page.poster }}" style="background-color: #428bca; width: 52px; text-decoration: none;" class="button">Poster</a>
+          {% endif %}
+          {% if post.video %}
+            <a href="{{ page.video }}" style="background-color: #5cb85c; width: 49px; text-decoration: none;" class="button">Video</a>
+          {% endif %}
         {% elsif page.citation %}
           <p><u>Citation (IEEE format):</u> {{ page.citation }} </p>
         {% endif %}
