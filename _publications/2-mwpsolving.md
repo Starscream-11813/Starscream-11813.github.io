@@ -5,12 +5,19 @@ permalink: /publications/2-mwpsolving
 excerpt: 
 date: 2023-07-09
 venue: 'Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics: Student Research Workshop (ACL-SRW)'
-paperurl: 'TODO'
-pdfurl: 'TODO'
+paperurl: 'https://arxiv.org/abs/2306.13899'
+pdfurl: 'https://arxiv.org/pdf/2306.13899.pdf'
 codedata: 'https://github.com/Starscream-11813/Variational-Mathematical-Reasoning'
-citation: 'TODO'
+citation: 'S. R. Raiyan, Md. N. Faiyaz, S. Md. J. Kabir, M. Kabir, H. Mahmud, and M. K. Hasan, “Math Word Problem Solving by Generating Linguistic Variants of Problem Statements,” arXiv preprint arXiv:2306.13899, 2023.'
 authors: '<b>Syed Rifat Raiyan</b>, Md. Nafis Faiyaz, Shah Md. Jawad Kabir, Mohsinul Kabir, Hasan Mahmud, Md Kamrul Hasan.'
-bibtex: 'TODO'
+bibtex: '@misc{raiyan2023math,<br>
+      &emsp;&emsp;&emsp;&emsp;title={Math Word Problem Solving by Generating Linguistic Variants of Problem Statements},<br> 
+      &emsp;&emsp;&emsp;&emsp;author={Syed Rifat Raiyan and Md. Nafis Faiyaz and Shah Md. Jawad Kabir and Mohsinul Kabir and Hasan Mahmud and Md Kamrul Hasan},<br>
+      &emsp;&emsp;&emsp;&emsp;year={2023},<br>
+      &emsp;&emsp;&emsp;&emsp;eprint={2306.13899},<br>
+      &emsp;&emsp;&emsp;&emsp;archivePrefix={arXiv},<br>
+      &emsp;&emsp;&emsp;&emsp;primaryClass={cs.CL}<br>
+}'
 poster: "https://drive.google.com/file/d/1FfexZxsKqL0mw2cUy7hTr4vhp7WBjhRW/view?usp=sharing"
 slides: "https://drive.google.com/file/d/1R-lB53BeaM-7XE0EoBZ5qfy-BSc61gup/view?usp=sharing"
 video: "https://drive.google.com/file/d/1cw0vTJtkPChXC_bSkMBVbZPYThmf-p_5/view?usp=sharing"
