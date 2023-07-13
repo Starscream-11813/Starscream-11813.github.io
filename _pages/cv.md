@@ -9,7 +9,7 @@ redirect_from:
 
 {% include base_path %}
 
-Last update: 13th July, 2023 <!--Update date manually/>
+Last update: 13th July, 2023 {% comment %} (Remenber to update date manually.) {% endcomment %}
 
 You can download a PDF copy of my CV [here](/files/CVRifat_v7_Redacted.pdf).
 
