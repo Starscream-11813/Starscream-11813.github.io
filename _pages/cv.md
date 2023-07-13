@@ -9,6 +9,8 @@ redirect_from:
 
 {% include base_path %}
 
+Last update: 13th July, 2023 <!--Update date manually/>
+
 You can download a PDF copy of my CV [here](/files/CVRifat_v7_Redacted.pdf).
 
 Redacted information are available upon request.
