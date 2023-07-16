@@ -10,7 +10,14 @@ pdfurl: 'https://arxiv.org/ftp/arxiv/papers/2305/2305.06595.pdf'
 codedata: 'https://github.com/mohsinulkabir14/BanglaBook'
 citation: 'M. Kabir, O. B. Mahfuz, S. R. Raiyan, H. Mahmud, and M. K. Hasan, “BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews,” arXiv preprint arXiv:2305.06595, 2023.'
 authors: 'Mohsinul Kabir†, Obayed Bin Mahfuz†, <b>Syed Rifat Raiyan</b>†, Hasan Mahmud, and Md Kamrul Hasan.'
-bibtex: 
+bibtex: '@misc{kabir2023banglabook,<br>
+            &emsp;&emsp;&emsp;&emsp;title={BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews},<br>
+            &emsp;&emsp;&emsp;&emsp;author={Mohsinul Kabir and Obayed Bin Mahfuz and Syed Rifat Raiyan and Hasan Mahmud and Md Kamrul Hasan},<br>
+            &emsp;&emsp;&emsp;&emsp;year={2023},<br>
+            &emsp;&emsp;&emsp;&emsp;eprint={2305.06595},<br>
+            &emsp;&emsp;&emsp;&emsp;archivePrefix={arXiv},<br>
+            &emsp;&emsp;&emsp;&emsp;primaryClass={cs.CL}<br>
+            }'
 # '@inproceedings{kabir-etal-2023-banglabook,<br>
 #     &emsp;&emsp;&emsp;&emsp;title = "{B}angla{B}ook: A Large-scale {B}angla Dataset for Sentiment Analysis from Book Reviews",<br>
 #     &emsp;&emsp;&emsp;&emsp;author = "Kabir, Mohsinul  and<br>
@@ -27,14 +34,7 @@ bibtex:
 #     &emsp;&emsp;&emsp;&emsp;pages = "1237--1247",<br>
 #     &emsp;&emsp;&emsp;&emsp;abstract = "The analysis of consumer sentiment, as expressed through reviews, can provide a wealth of insight regarding the quality of a product. While the study of sentiment analysis has been widely explored in many popular languages, relatively less attention has been given to the Bangla language, mostly due to a lack of relevant data and cross-domain adaptability. To address this limitation, we present BanglaBook, a large-scale dataset of Bangla book reviews consisting of 158,065 samples classified into three broad categories: positive, negative, and neutral. We provide a detailed statistical analysis of the dataset and employ a range of machine learning models to establish baselines including SVM, LSTM, and Bangla-BERT. Our findings demonstrate a substantial performance advantage of pre-trained models over models that rely on manually crafted features, emphasizing the necessity for additional training resources in this domain. Additionally, we conduct an in-depth error analysis by examining sentiment unigrams, which may provide insight into common classification errors in under-resourced languages like Bangla. Our codes and data are publicly available at https://github.com/mohsinulkabir14/BanglaBook.",<br>
 # }'
-'@misc{kabir2023banglabook,<br>
-            &emsp;&emsp;&emsp;&emsp;title={BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews},<br>
-            &emsp;&emsp;&emsp;&emsp;author={Mohsinul Kabir and Obayed Bin Mahfuz and Syed Rifat Raiyan and Hasan Mahmud and Md Kamrul Hasan},<br>
-            &emsp;&emsp;&emsp;&emsp;year={2023},<br>
-            &emsp;&emsp;&emsp;&emsp;eprint={2305.06595},<br>
-            &emsp;&emsp;&emsp;&emsp;archivePrefix={arXiv},<br>
-            &emsp;&emsp;&emsp;&emsp;primaryClass={cs.CL}<br>
-            }'
+
 poster: 
 slides: "https://drive.google.com/file/d/1-UkYs_Rx11S7qKOfR-6rnO2VDp3W78vQ/view?usp=sharing"
 video: "https://drive.google.com/file/d/1i7lnR2y3NdoglmYt31QR1R18mOOYtA76/view?usp=sharing"
