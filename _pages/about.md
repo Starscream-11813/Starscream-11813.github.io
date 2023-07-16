@@ -233,13 +233,15 @@ body {
     }
 }
 </style>
-Hello! <span class="emoji wave" role="img" aria-label="hand wave"></span>
+Hello! <span class="emoji wave" role="img" aria-label="hand wave"></span><br>
 I am Syed Rifat Raiyan.
 <div id="pronounceLink" style="display:block;"><p><a href="#" onclick="$('#pronounce').toggle(); return false;"><i>How to pronounce?</i></a></p></div>
 <div id="pronounce" style="display: none;" class="alert">
-	<p>Here is a standard Bangla pronunciation:
+	<p>Here is a standard Bangla pronunciation:<br>
         <audio controls="">
             <source src="audio/Syed-Rifat-Raiyan.mp3" type="audio/mpeg">
         </audio>
     </p>
 </div>
+<br>
+In May of 2023, I attained my Bachelor of Science (B.Sc.) degree with Honors from the Department of Computer Science and Engineering (CSE) at Islamic University of Technology (IUT).
