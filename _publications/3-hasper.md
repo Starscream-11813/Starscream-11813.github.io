@@ -1,6 +1,7 @@
 ---
 title: "HaSPeR: An Image Repository for Hand Shadow Puppet Recognition"
-collection: preprints
+collection: publications
+type: preprints
 permalink: /publications/3-hasper
 excerpt: 
 date: 2024-08-19
