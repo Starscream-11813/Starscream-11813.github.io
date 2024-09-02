@@ -1,9 +1,9 @@
 ---
 title: "Winter Semester 2023"
 collection: teaching
-type: "Undergraduate course"
+type: "Undergraduate courses"
 permalink: /teaching/2023-winter-teaching-iut
-venue: "Islamic University of Technology, Department of Computer Science and Engineering (CSE)"
+venue: "Islamic University of Technology, Department of CSE"
 date: 2023-08-16
 location: "Dhaka, Bangladesh"
 ---

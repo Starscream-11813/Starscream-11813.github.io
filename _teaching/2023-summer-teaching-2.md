@@ -1,20 +1,27 @@
 ---
-title: "Teaching experience 2"
+title: "Summer Semester 2023"
 collection: teaching
-type: "Workshop"
-permalink: /teaching/2015-spring-teaching-1
-venue: "University 1, Department"
-date: 2015-01-01
-location: "City, Country"
+type: "Undegraduate courses"
+permalink: /teaching/2023-summer-teaching-iut
+venue: "Islamic University of Technology, Department of CSE"
+date: 2024-01-15
+location: "Dhaka, Bangladesh"
 ---
 
-This is a description of a teaching experience. You can use markdown like any other post.
+Imagine lecturing for 5 hours straight while fasting. With a sore throat. And a 102&deg;F fever.
+A test of fortitude, perhaps.
 
-Heading 1
+Math 4641: Numerical Methods
 ======
+Taught my most talented set of students, CSE-20.
+Course Materials and Resources: [Google Classroom](https://classroom.google.com/c/NjQ2ODg3NDEyNjg1?cjc=tfgz3j7).
 
-Heading 2
+Math 4642: Numerical Methods Lab
 ======
+Python implementations of the topics taught in Math 4641.
+Course Materials and Resources: [Google Classroom for CSE A](https://classroom.google.com/c/NjQ2ODg3NDkwOTMw?cjc=tu2lmzk) and [Google Classroom for CSE B](https://classroom.google.com/c/NjQ2ODg3NDU1NzA1?cjc=62ccgep).
 
-Heading 3
+CSE 4202: Structured Programming II Lab
 ======
+Main lab instructor for CSE-22. Created new lecture materials. Authored classified problem statements for lab tasks, tests, and assignments.
+Course Materials and Resources: Confidential, for obvious reasons.
