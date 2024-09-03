@@ -84,12 +84,12 @@ author:
   avatar           : "profile.png"
   bio              : "Lecturer, CSE"
   location         : "Dhaka, Bangladesh"
-  employer         : "Islamic University of Technology (IUT)"
+  employer         : "Islamic University of Technology"
   pubmed           : 
   googlescholar    : "https://scholar.google.com/citations?user=4L_7vaoAAAAJ&hl=en&oi=ao"
   email            : "rifatraiyan@iut-dhaka.edu"
   researchgate     : "https://www.researchgate.net/profile/Syed-Rifat-Raiyan" # example: "https://www.researchgate.net/profile/yourprofile"
-  uri              :
+  uri              : "https://cse.iutoic-dhaka.edu/profile/rifatraiyan/"
   bitbucket        :
   codepen          :
   dribbble         :
