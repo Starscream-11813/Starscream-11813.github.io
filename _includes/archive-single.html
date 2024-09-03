@@ -25,11 +25,11 @@
           alt="">
       </div>
     {% endif %}
-    <!-- <div class="row">
+    <div class="row">
       <div class="col-md-3">
-				<img class="img-fluid img-rounded" src="images\android-chrome-192x192.png" style="" alt="">
-			</div> -->
-      <!-- <div class="col-md-9"> -->
+				<img src="images\android-chrome-192x192.png" style="" alt="">
+			</div>
+      <div class="col-md-9">
     <h2 class="archive__item-title" itemprop="headline">
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
@@ -219,7 +219,7 @@
     {% elsif post.paperurl %}
       <p>Download <a href=" {{ post.paperurl }} "><u>here</u></a></p>
     {% endif %}
-  <!-- </div>
-  </div> -->
+  </div>
+  </div>
   </article>
 </div>
