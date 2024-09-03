@@ -40,6 +40,7 @@ author_profile: true
 				<a href="bibs/arxiv24_vdebugger.txt" target="_blank"> <small>[BibTex]</small></a><br>
 			</div>
 		</div>
+  </div>
 {% include base_path %}
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
