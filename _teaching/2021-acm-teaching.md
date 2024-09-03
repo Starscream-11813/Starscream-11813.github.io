@@ -1,5 +1,5 @@
 ---
-title: "Competitive Programming Classes 2021-22"
+title: "Competitive Programming Classes 2021–22"
 collection: teaching
 type: "Training"
 permalink: /teaching/2021-acm-teaching-iut
