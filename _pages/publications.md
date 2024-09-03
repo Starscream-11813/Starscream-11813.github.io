@@ -10,8 +10,9 @@ author_profile: true
   † denotes equal contribution.
 
 {% include base_path %}
-
+<div class="container">
 {% for post in site.publications reversed %}
   {% include archive-single.html %}
   <hr>
 {% endfor %}
+</div>
