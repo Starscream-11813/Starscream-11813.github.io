@@ -11,6 +11,8 @@ location: "Dhaka, Bangladesh"
 My first teaching gig, for intermediate competitive programming aspirants.
 <br>
 Lecture materials and class recordings of the online classes conducted amidst the pandemic: [Google Drive](https://drive.google.com/drive/folders/17H7GnZsCFehxjpeLmNM93dVoF_18qAJJ?usp=sharing)
+<br>
+Problemsets and Weekly Contest links can be found in the IUT Programming Community [Discord server](https://discord.gg/nWxeNahjvB).
 
 Class 1: 17th July, 2021
 ======
