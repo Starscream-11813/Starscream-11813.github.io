@@ -18,7 +18,7 @@ author_profile: true
 		<!-- VDebugger -->
 		<div class="row">
 			<div class="col-md-3">
-				<img class="img-fluid img-rounded" src="images/android-chrome-192x192.png" style="" alt="">
+				<img src="images/android-chrome-192x192.png" style="" alt="">
 			</div>
 			<div class="col-md-9">
 				<b>
