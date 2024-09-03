@@ -11,12 +11,12 @@ main:
     
   - title: "Portfolio"
     url: /portfolio/
-        
-  - title: "Lit Posts"
-    url: /books/
     
   - title: "CV"
     url: /cv/
+
+  - title: "Lit Posts"
+    url: /books/
     
   # - title: "Guide"
   #   url: /markdown/
