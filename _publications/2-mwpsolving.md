@@ -39,7 +39,7 @@ bibtex: '@misc{raiyan2023math,<br>
 poster: "https://drive.google.com/file/d/1FfexZxsKqL0mw2cUy7hTr4vhp7WBjhRW/view?usp=sharing"
 slides: "https://drive.google.com/file/d/1R-lB53BeaM-7XE0EoBZ5qfy-BSc61gup/view?usp=sharing"
 video: "https://drive.google.com/file/d/1cw0vTJtkPChXC_bSkMBVbZPYThmf-p_5/view?usp=sharing"
-teaser: "ACLMWP5.PNG"
+teaser: "ACLMWP.PNG"
 ---
 <u>Authors:</u> **Syed Rifat Raiyan**, Md. Nafis Faiyaz, Shah Md. Jawad Kabir, Mohsinul Kabir, Hasan Mahmud, Md Kamrul Hasan.
 <br>
