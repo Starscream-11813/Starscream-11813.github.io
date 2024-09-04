@@ -33,6 +33,72 @@
     <!-- <img src="https://github.com/Starscream-11813/Starscream-11813.github.io/blob/master/images/android-chrome-192x192.png" style="" alt=""> -->
     <style>
       .row {
+          display: flex;
+          flex-wrap: wrap;
+          margin-bottom: 20px;
+          border: 1px solid #ccc;
+          padding: 10px;
+          border-radius: 5px;
+          background-color: #f9f9f9;
+      }
+      .column {
+          flex: 1;
+          padding: 10px;
+      }
+      .teaser-image {
+          flex-basis: 150px;
+          max-width: 150px;
+      }
+
+      .teaser-image img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 5px;
+      }
+
+      .publication-details {
+          flex: 3;
+      }
+
+      .publication-details h3 {
+          margin-top: 0;
+          margin-bottom: 5px;
+          font-size: 1.2em;
+      }
+
+      .publication-details p {
+          margin: 5px 0;
+          color: #333;
+      }
+
+      .publication-details a {
+          display: inline-block;
+          margin-top: 10px;
+          padding: 5px 10px;
+          background-color: #007bff;
+          color: white;
+          text-decoration: none;
+          border-radius: 3px;
+      }
+
+      .publication-details a:hover {
+          background-color: #0056b3;
+      }
+    </style>
+    <div class="row">
+      <div class="column teaser-image">
+          <img src="teaser-image.jpg" alt="Teaser Image">
+      </div>
+      <div class="column publication-details">
+          <h3>Publication Title</h3>
+          <p>Author(s): Name1, Name2, Name3</p>
+          <p><i>Journal Name, Year, DOI</i></p>
+          <p>Short description or abstract of the paper goes here...</p>
+          <a href="publication-link">Read More</a>
+      </div>
+  </div>
+    <!-- <style>
+      .row {
         display: flex;
       }
 
@@ -41,8 +107,8 @@
         flex: 33.33%;
         padding: 5px;
       }
-    </style>
-    <div class="row">
+    </style> -->
+    <!-- <div class="row">
       <div class="column">
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/android-chrome-192x192.png" alt="Snow" style="width:100%">
       </div>
@@ -52,7 +118,7 @@
       <div class="column">
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/android-chrome-192x192.png" alt="Mountains" style="width:100%">
       </div>
-    </div>
+    </div> -->
     <h2 class="archive__item-title" itemprop="headline">
       {% if post.link %}
         <a href="{{ post.link }}">{{ title }}</a> <a href="{{ base_path }}{{ post.url }}" rel="permalink"><i class="fa fa-link" aria-hidden="true" title="permalink"></i><span class="sr-only">Permalink</span></a>
