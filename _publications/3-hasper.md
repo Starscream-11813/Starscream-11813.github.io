@@ -40,7 +40,7 @@ bibtex: '@misc{raiyan2024hasper,<br>
 poster: 
 slides: 
 video: 
-teaser: images\android-chrome-192x192.png
+teaser: "android-chrome-192x192.png"
 ---
 <u>Authors:</u> **Syed Rifat Raiyan**, Zibran Zarif Amio, Sabbir Ahmed.
 <br>
