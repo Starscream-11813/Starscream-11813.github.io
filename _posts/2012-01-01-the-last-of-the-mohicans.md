@@ -12,4 +12,4 @@ tags:
   - History
 ---
 
-Thanks to my best friend Md. Ahanaf Tahmid, for lending me his copy of the book. I never got the chance to return it him though. One day, insha'Allah.
+Thanks to my best friend Md. Ahanaf Tahmid, for lending me his copy of the book. I never got the chance to return it to him though. One day, insha'Allah.
