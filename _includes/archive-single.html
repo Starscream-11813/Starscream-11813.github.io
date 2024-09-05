@@ -66,6 +66,17 @@
           border-radius: 5px;
       }
 
+      .teaser-image3 {
+          flex-basis: 100px;
+          max-width: 100px;
+      }
+
+      .teaser-image3 img {
+          max-width: 100%;
+          height: auto;
+          border-radius: 5px;
+      }
+
       .publication-details {
           flex: 3;
       }
@@ -124,8 +135,11 @@
       <div class="column teaser-image2">
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
       </div>
+      {% elsif post.collection == 'teaching' %}
+      <div class="column teaser-image3">
+        <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
+      </div>
       {% endif %}
-      
     <div class="column publication-details">
     <h2 class="archive__item-title" itemprop="headline">
       {% if post.link %}
