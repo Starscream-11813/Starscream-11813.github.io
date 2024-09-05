@@ -1,6 +1,6 @@
 ---
 title: 'Treasure Island'
-author: ' Robert Louis Stevenson'
+author: 'Robert Louis Stevenson'
 collection: 'books'
 date: 2007-01-01
 permalink: /books/treasure-island/
