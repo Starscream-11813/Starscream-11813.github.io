@@ -1,11 +1,15 @@
 ---
-title: 'Future Blog Post'
-date: 2199-01-01
-permalink: /posts/2012/08/blog-post-4/
+title: 'The Little Match Girl'
+author: 'Hans Christian Andersen'
+collection: 'books'
+date: 2008-02-01
+permalink: /books/the-little-match-girl/
+excerpts: "She took the little girl in her arms, and both of them flew in brightness and joy above the earth, very, very high, and up there was neither cold, nor hunger, nor fear—they were with God."
+teaser: "TheLittleMatchGirl.jpg"
 tags:
-  - cool posts
-  - category1
-  - category2
+  - Childhood
+  - Fiction
+  - Death
 ---
 
-This post will show up by default. To disable scheduling of future posts, edit `config.yml` and set `future: false`. 
+I believe this was the first and probably the only time I was driven to tears while reading a book. Thanks to Kamal mama for gifting the storybook to my elder brother and me.
