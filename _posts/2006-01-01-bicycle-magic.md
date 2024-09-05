@@ -1,7 +1,7 @@
 ---
 title: 'Bicycle Magic and Other Stories'
 author: 'Enid Blyton'
-collection: 'books'
+collection: books
 date: 2006-01-01
 permalink: /books/bicycle-magic/
 excerpts: "If you're dealing with clever people you've got to be clever yourself."

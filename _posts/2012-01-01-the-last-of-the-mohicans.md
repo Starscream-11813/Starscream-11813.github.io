@@ -1,7 +1,7 @@
 ---
 title: 'The Last of the Mohicans'
 author: 'James Fenimore Cooper'
-collection: 'books'
+collection: books
 date: 2012-01-01
 permalink: /books/the-last-of-the-mohicans/
 excerpts: "When a man consorts much with a people, if they are honest, and he no knave, love will grow up atwixt them."

@@ -1,7 +1,7 @@
 ---
 title: 'Oliver Twist'
 author: 'Charles Dickens'
-collection: 'books'
+collection: books
 date: 2008-01-01
 permalink: /books/oliver-twist/
 excerpts: "There are books of which the backs and covers are by far the best parts."

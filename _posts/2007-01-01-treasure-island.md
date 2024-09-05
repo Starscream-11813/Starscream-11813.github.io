@@ -1,7 +1,7 @@
 ---
 title: 'Treasure Island'
 author: 'Robert Louis Stevenson'
-collection: 'books'
+collection: books
 date: 2007-01-01
 permalink: /books/treasure-island/
 excerpts: "Fifteen men on the dead man’s chest—\nYo-ho-ho, and a bottle of rum!\nDrink and the devil had done for the rest—\n Yo-ho-ho, and a bottle of rum!"

@@ -1,7 +1,7 @@
 ---
 title: 'The Little Match Girl'
 author: 'Hans Christian Andersen'
-collection: 'books'
+collection: books
 date: 2008-02-01
 permalink: /books/the-little-match-girl/
 excerpts: "She took the little girl in her arms, and both of them flew in brightness and joy above the earth, very, very high, and up there was neither cold, nor hunger, nor fear—they were with God."
