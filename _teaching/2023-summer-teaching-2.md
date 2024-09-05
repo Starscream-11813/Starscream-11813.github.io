@@ -6,6 +6,7 @@ permalink: /teaching/2023-summer-teaching-iut
 venue: "Islamic University of Technology, Department of CSE"
 date: 2024-01-15
 location: "Dhaka, Bangladesh"
+teaser: "iut.png"
 ---
 
 Imagine lecturing for 5 hours straight. While fasting. With a sore throat. And a 102&deg;F fever.

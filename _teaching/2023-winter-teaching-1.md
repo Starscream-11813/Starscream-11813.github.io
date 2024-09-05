@@ -6,6 +6,7 @@ permalink: /teaching/2023-winter-teaching-iut
 venue: "Islamic University of Technology, Department of CSE"
 date: 2023-08-16
 location: "Dhaka, Bangladesh"
+teaser: "iut.png"
 ---
 
 The beginning of my teaching career. I only had around 48 hours to prepare myself to teach in this semester. I don't know if I did a good job as a teacher, but I tried my very best to carry out my duties as responsibly as I could. As someone with little to no pedagogical experience, my rule of thumb was to be like a teacher that I wish I had back when I was a student.

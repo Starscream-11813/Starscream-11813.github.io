@@ -6,6 +6,7 @@ permalink: /teaching/2021-acm-teaching-iut
 venue: "Islamic University of Technology, Department of CSE"
 date: 2021-07-17
 location: "Dhaka, Bangladesh"
+teaser: "iutcse.png"
 ---
 
 My first teaching gig, for intermediate competitive programming aspirants.
