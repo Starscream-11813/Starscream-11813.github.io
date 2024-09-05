@@ -120,7 +120,7 @@
       <div class="column teaser-image">
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
       </div>
-      {% elsif post.collection == 'books' %}
+      {% elsif post.collection == 'posts' %}
       <div class="column teaser-image2">
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
       </div>
@@ -140,7 +140,7 @@
     <!-- {% if post.read_time %}
       <p class="page__meta"><i class="fa-solid fa-clock"></i> {% include read-time.html %}</p>
     {% endif %} -->
-    {% if post.excerpt %}
+    {% if post.collection == 'posts' and post.excerpt %}
       <p>Excerpt: <em>"{{ post.excerpt }}"</em></p>
     {% endif %}
 
