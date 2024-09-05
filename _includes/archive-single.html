@@ -123,6 +123,9 @@
     <!-- {% if post.read_time %}
       <p class="page__meta"><i class="fa-solid fa-clock"></i> {% include read-time.html %}</p>
     {% endif %} -->
+    {% if post.excerpt %}
+      <p><em>Excerpt: "{{ post.excerpt }}"</em></p>
+    {% endif %}
 
         {% if post.collection == 'teaching' %}
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
@@ -130,7 +133,7 @@
           <p>Under review in <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
           {% elsif post.collection == 'publications' %}
           <p>Published in <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif post.date and post.collection == 'literature' %}
+        {% elsif post.date and post.collection == 'books' %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
 
