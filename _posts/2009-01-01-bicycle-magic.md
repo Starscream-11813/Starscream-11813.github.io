@@ -4,7 +4,7 @@ author: 'Enid Blyton'
 collection: 'books'
 date: 2009-01-01
 permalink: /books/bicycle-magic/
-excerpt: "If you're dealing with clever people you've got to be clever yourself."
+excerpts: "If you're dealing with clever people you've got to be clever yourself."
 teaser: "BicycleMagic.jpg"
 tags:
   - Childhood

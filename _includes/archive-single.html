@@ -140,8 +140,8 @@
     <!-- {% if post.read_time %}
       <p class="page__meta"><i class="fa-solid fa-clock"></i> {% include read-time.html %}</p>
     {% endif %} -->
-    {% if post.collection == 'posts' and post.excerpt %}
-      <p>Excerpt: <em>"{{ post.excerpt }}"</em></p>
+    {% if post.collection == 'posts' and post.excerpts %}
+      <p>Excerpt: <em>"{{ post.excerpts }}"</em></p>
     {% endif %}
 
         {% if post.collection == 'teaching' %}
