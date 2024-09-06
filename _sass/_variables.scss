@@ -15,7 +15,7 @@ $indent-var                 : 1.3em;
 /* system typefaces */
 $serif                      : Georgia, Times, serif;
 // $sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$sans-serif                 : 'Helvetica Neue', sans-serif;//"Trebuchet MS", sans-serif; // Product Sans doesn't work if not locally available :(
+$sans-serif                 : 'Fira Sans', sans-serif;//"Trebuchet MS", sans-serif; // Product Sans doesn't work if not locally available :(
 $monospace                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* sans serif typefaces */
@@ -58,6 +58,7 @@ $lighter-lavender           : mix(#8482E6, #fff, 50%);
 $lighter-lavender2          : mix(#8482E6, #fff, 69%);
 $light-lavender             : mix(#8482E6, #fff, 95%);
 $dark-lavender              : #6962D2;
+$dark-green                 : #006400;
 
 $body-color                 : #fff;
 $background-color           : #fff;
