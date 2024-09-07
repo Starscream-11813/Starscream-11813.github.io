@@ -252,7 +252,7 @@ body {
             margin-right: -220px;
             border-left: 2px solid #ccc;
             padding-left: 20px;
-            font-size: 0.675em;
+            font-size: 0.8em;
             height: 400px; /* Adjust height as needed */
         }
 
@@ -292,6 +292,12 @@ body {
     <h3>Chronicle</h3>
     <div class="news-content">
     <ul>
+        <li>17th July 2024: Submitted my CSE 4836 project's paper to <a href="https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence">IEEE TAI</a>. Preprint is available at <a href="https://www.arxiv.org/abs/2408.10360">arXiv</a>.</li>
+        <li>2nd February 2024: Became a reviewer at <a href="https://link.springer.com/journal/42979">Springer Nature Computer Science</a>.</li>
+        <li>16th August 2023: Got my first-ever job — Lecturer at <a href="https://cse.iutoic-dhaka.edu/">IUT CSE</a>.</li>
+        <li>9th July 2023: Virtually presented a poster of my B.Sc. thesis work at ACL 2023.</li>
+        <li>8th June 2023: My B.Sc. thesis work on MWPs got accepted for publication in <a href="https://aclanthology.org/2023.acl-srw.49/">ACL-SRW 2023</a>.</li>
+        <li>2nd May 2023: My first-ever paper got accepted for publication in the <a href="https://aclanthology.org/2023.findings-acl.80/">Findings of ACL 2023</a>.</li>
         <li>17th July 2024: Submitted my CSE 4836 project's paper to <a href="https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence">IEEE TAI</a>. Preprint is available at <a href="https://www.arxiv.org/abs/2408.10360">arXiv</a>.</li>
         <li>2nd February 2024: Became a reviewer at <a href="https://link.springer.com/journal/42979">Springer Nature Computer Science</a>.</li>
         <li>16th August 2023: Got my first-ever job — Lecturer at <a href="https://cse.iutoic-dhaka.edu/">IUT CSE</a>.</li>
