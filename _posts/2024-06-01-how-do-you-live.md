@@ -13,4 +13,4 @@ tags:
   - History
 ---
 
-My third most favorite anime director Hayao Miyazaki has called it his favorite childhood book and announced plans to emerge from retirement to make it the basis of his *"final film"* named *The Boy and the Heron*. That's why I wanted to read the book prior to watching the film. Bought a paperback version to gift it to a special someone, but couldn't do so for reasons. ¯\\\_(ツ)_/¯
+My third most favorite anime director Hayao Miyazaki has called it his favorite childhood book and announced plans to emerge from retirement to make it the basis of his *"final film"* named *The Boy and the Heron*. That's why I wanted to read the book prior to watching the film. Bought a paperback version to gift it to a certain someone, but couldn't do so for reasons. ¯\\\_(ツ)_/¯
