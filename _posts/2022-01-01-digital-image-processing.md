@@ -11,4 +11,4 @@ tags:
   - Computer Science
 ---
 
-This was probably the most well-written book that I have studied during my time as a CS undergrad. CSE 4733 and CSE 4734 were two super fine experiences.
+This was probably the most well-written book that I have studied during my time as a CS undergrad. Looking back, CSE 4733 and CSE 4734 were two super fine experiences.
