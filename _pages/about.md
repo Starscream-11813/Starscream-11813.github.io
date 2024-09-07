@@ -11,6 +11,7 @@ redirect_from:
 body {
     min-height: 100vh;
     background-color: #fff;
+    margin-left: 100px;
 }
 
 .emoji {
