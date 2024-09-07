@@ -248,6 +248,10 @@ body {
             border-left: 2px solid #ccc;
             padding-left: 20px;
         }
+
+        .emoji {
+            display: inline-block;
+        }
     </style>
 <div class="container">
 Hello! <span class="emoji wave" role="img" aria-label="hand wave"></span><br>
