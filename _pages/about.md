@@ -241,7 +241,6 @@ body {
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
-            margin-left: 100px;
             padding: 20px;
         }
 
@@ -250,6 +249,7 @@ body {
         }
 
         .news {
+            margin-left: 100px;
             border-left: 2px solid #ccc;
             padding-left: 20px;
         }
