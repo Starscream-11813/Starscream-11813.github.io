@@ -13,10 +13,11 @@ $paragraph-indent           : false; // true, false (default)
 $indent-var                 : 1.3em;
 
 /* system typefaces */
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700'; 
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700';
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap'); 
 $serif                      : Georgia, Times, serif;
 // $sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
-$sans-serif                 : 'Open Sans', sans-serif;//"Trebuchet MS", sans-serif; // Product Sans doesn't work if not locally available :(
+$sans-serif                 : 'Outfit', sans-serif;//"Trebuchet MS", sans-serif; // Product Sans doesn't work if not locally available :(
 $monospace                  : Monaco, Consolas, "Lucida Console", monospace;
 
 /* sans serif typefaces */
