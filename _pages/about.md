@@ -240,7 +240,8 @@ body {
             grid-template-columns: 2fr 1fr;
             gap: 20px;
             max-width: 1200px;
-            margin: -100px;
+            margin: 0 auto;
+            margin-left: 100px;
             padding: 20px;
         }
 
