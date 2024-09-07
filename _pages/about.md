@@ -249,7 +249,7 @@ body {
         }
 
         .news {
-            margin-left: 100px;
+            /* margin-left: 100px; */
             border-left: 2px solid #ccc;
             padding-left: 20px;
         }
