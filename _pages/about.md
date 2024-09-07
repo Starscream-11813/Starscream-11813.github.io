@@ -283,10 +283,12 @@ body {
 <div class="news">
     <h3>Chronicle</h3>
     <ul>
-        <li>August 2024: Submitted research paper to IEEE TAI.</li>
-        <li>July 2024: Presented at the International AI Conference.</li>
-        <li>June 2024: Awarded grant for project on Language Models.</li>
-        <li>May 2024: Collaborating with industry partners on NLP projects.</li>
+        <li>17th July 2024: Submitted my CSE 4836 project's paper to <a href="https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence">IEEE Transactions on Artificial Intelligence</a>. Preprint is available at <a href="https://www.arxiv.org/abs/2408.10360">arXiv</a>.</li>
+        <li>2nd February 2024: Became a reviewer at <a href="https://link.springer.com/journal/42979">Springer Nature Computer Science</a>.</li>
+        <li>16th August 2023: Got my first-ever job — Lecturer at <a href="https://cse.iutoic-dhaka.edu/">IUT CSE</a>.</li>
+        <li>9th July 2023: Virtually presented a poster of my B.Sc. thesis work at ACL 2023.</li>
+        <li>8th June 2023: My B.Sc. thesis work on MWPs got accepted for publication in <a href="https://aclanthology.org/2023.acl-srw.49/">ACL-SRW 2023</a>.</li>
+        <li>2nd May 2023: My first-ever paper got accepted for publication in the <a href="https://aclanthology.org/2023.findings-acl.80/">Findings of ACL 2023</a>.</li>
     </ul>
 </div>
 </div>
