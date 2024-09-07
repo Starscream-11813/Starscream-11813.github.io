@@ -291,29 +291,35 @@ body {
 <div class="news">
     <h3>Chronicle</h3>
     <div class="news-content">
-    <ul>
         <b>17th July 2024:</b> Submitted my CSE 4836 project's paper to <a href="https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence">IEEE TAI</a>. Preprint is available at <a href="https://www.arxiv.org/abs/2408.10360">arXiv</a>.
+        
         <br>
         <b>2nd February 2024:</b> Became a reviewer at <a href="https://link.springer.com/journal/42979">Springer Nature Computer Science</a>.
         16th August 2023:</b> Got my first-ever job — Lecturer at <a href="https://cse.iutoic-dhaka.edu/">IUT CSE</a>.
+        
         <br>
         <b>9th July 2023:</b> Virtually presented a poster of my B.Sc. thesis work at ACL 2023.
         <b>8th June 2023:</b> My B.Sc. thesis work on MWPs got accepted for publication in <a href="https://aclanthology.org/2023.acl-srw.49/">ACL-SRW 2023</a>.
+        
         <br>
         <b>2nd May 2023:</b> My first-ever paper got accepted for publication in the <a href="https://aclanthology.org/2023.findings-acl.80/">Findings of ACL 2023</a>.
+        
         <br>
         <b>17th July 2024:</b> Submitted my CSE 4836 project's paper to <a href="https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence">IEEE TAI</a>. Preprint is available at <a href="https://www.arxiv.org/abs/2408.10360">arXiv</a>.
+        
         <br>
         <b>2nd February 2024:</b> Became a reviewer at <a href="https://link.springer.com/journal/42979">Springer Nature Computer Science</a>.
+        
         <br>
         <b>16th August 2023:</b> Got my first-ever job — Lecturer at <a href="https://cse.iutoic-dhaka.edu/">IUT CSE</a>.
+        
         <br>
         <b>9th July 2023:</b> Virtually presented a poster of my B.Sc. thesis work at ACL 2023.
         <br>
         <b>8th June 2023:</b> My B.Sc. thesis work on MWPs got accepted for publication in <a href="https://aclanthology.org/2023.acl-srw.49/">ACL-SRW 2023</a>.
+        
         <br>
         <b>2nd May 2023:</b> My first-ever paper got accepted for publication in the <a href="https://aclanthology.org/2023.findings-acl.80/">Findings of ACL 2023</a>.
-    </ul>
     </div>
 </div>
 </div>
