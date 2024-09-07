@@ -17,6 +17,7 @@ $indent-var                 : 1.3em;
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&display=swap');
 @import url('https://fonts.cdnfonts.com/css/product-sans');
+@import url('https://fonts.cdnfonts.com/css/palatino');
 $serif                      : Georgia, Times, serif;
 // $sans-serif                 : -apple-system, ".SFNSText-Regular", "San Francisco", "Roboto", "Segoe UI", "Helvetica Neue", "Lucida Grande", Arial, sans-serif;
 $sans-serif                 : 'Product Sans', sans-serif;//"Trebuchet MS", sans-serif; // Product Sans doesn't work if not locally available :(
@@ -32,7 +33,7 @@ $times                      : Times, serif;
 $bodoni                     : "Bodoni MT", serif;
 $calisto                    : "Calisto MT", serif;
 $garamond                   : Garamond, serif;
-$palatinolinotype           : "Palatino Linotype", serif;
+$palatinolinotype           : "Palatino", serif;
 
 $global-font-family         : $palatinolinotype;
 $header-font-family         : $palatinolinotype;
