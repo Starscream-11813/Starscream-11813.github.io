@@ -12,4 +12,4 @@ tags:
   - Non-fiction
 ---
 
-My first foray into the realm of theoretical cosmology. This is, perhaps, my most favorite book of all time.
+My first foray into the realm of theoretical cosmology. This is, perhaps, my favorite book of all time.
