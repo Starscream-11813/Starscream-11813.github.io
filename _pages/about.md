@@ -280,12 +280,10 @@ body {
         </div>
         <p>
         I am a Lecturer of the Department of Computer Science and Engineering (CSE) at the Islamic University of Technology (IUT). In May of 2023, I attained my Bachelor of Science (B.Sc.) degree with Honors from the Department of Computer Science and Engineering (CSE) at the Islamic University of Technology (IUT). I was affiliated with the <a href="https://cse.iutoic-dhaka.edu/ssl">Systems and Software Lab (SSL)</a> research group of IUT while I was working on my undergraduate thesis under the supervision of <a href="https://cse.iutoic-dhaka.edu/profile/mohsinul/education">Mohsinul Kabir</a>.</p>
-
-<br>
+<!-- <br> -->
         <p>
         My research interests lie broadly in Natural Language Processing, Computer Vision, and Deep Learning. These days, I am working on projects related to Mathematical Reasoning in Language Models, In-context Learning for Text Classification, Bangla Sentiment Analysis, and Image Classification.</p>
-
-<br>
+<!-- <br> -->
         <p>
         Some people in academia that I follow/look up to — 
 <br>
@@ -295,32 +293,32 @@ body {
     <h2>Chronicle</h2>
     <div class="news-content">
         <b>17th July 2024:</b> Submitted my CSE 4836 project's paper to <a href="https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence">IEEE TAI</a>. Preprint is available at <a href="https://www.arxiv.org/abs/2408.10360">arXiv</a>.
-        
+        <br>
         <br>
         <b>2nd February 2024:</b> Became a reviewer at <a href="https://link.springer.com/journal/42979">Springer Nature Computer Science</a>.
         16th August 2023:</b> Got my first-ever job — Lecturer at <a href="https://cse.iutoic-dhaka.edu/">IUT CSE</a>.
-        
+        <br>
         <br>
         <b>9th July 2023:</b> Virtually presented a poster of my B.Sc. thesis work at ACL 2023.
         <b>8th June 2023:</b> My B.Sc. thesis work on MWPs got accepted for publication in <a href="https://aclanthology.org/2023.acl-srw.49/">ACL-SRW 2023</a>.
-        
+        <br>
         <br>
         <b>2nd May 2023:</b> My first-ever paper got accepted for publication in the <a href="https://aclanthology.org/2023.findings-acl.80/">Findings of ACL 2023</a>.
-        
+        <br>
         <br>
         <b>17th July 2024:</b> Submitted my CSE 4836 project's paper to <a href="https://cis.ieee.org/publications/ieee-transactions-on-artificial-intelligence">IEEE TAI</a>. Preprint is available at <a href="https://www.arxiv.org/abs/2408.10360">arXiv</a>.
-        
+        <br>
         <br>
         <b>2nd February 2024:</b> Became a reviewer at <a href="https://link.springer.com/journal/42979">Springer Nature Computer Science</a>.
-        
+        <br>
         <br>
         <b>16th August 2023:</b> Got my first-ever job — Lecturer at <a href="https://cse.iutoic-dhaka.edu/">IUT CSE</a>.
-        
+        <br>
         <br>
         <b>9th July 2023:</b> Virtually presented a poster of my B.Sc. thesis work at ACL 2023.
         <br>
         <b>8th June 2023:</b> My B.Sc. thesis work on MWPs got accepted for publication in <a href="https://aclanthology.org/2023.acl-srw.49/">ACL-SRW 2023</a>.
-        
+        <br>
         <br>
         <b>2nd May 2023:</b> My first-ever paper got accepted for publication in the <a href="https://aclanthology.org/2023.findings-acl.80/">Findings of ACL 2023</a>.
     </div>
