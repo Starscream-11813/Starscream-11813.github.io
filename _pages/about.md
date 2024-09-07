@@ -279,7 +279,6 @@ body {
             </p>
         </div>
         <br>
-        <br>
         I am a Lecturer of the Department of Computer Science and Engineering (CSE) at the Islamic University of Technology (IUT). In May of 2023, I attained my Bachelor of Science (B.Sc.) degree with Honors from the Department of Computer Science and Engineering (CSE) at the Islamic University of Technology (IUT). I was affiliated with the <a href="https://cse.iutoic-dhaka.edu/ssl">Systems and Software Lab (SSL)</a> research group of IUT while I was working on my undergraduate thesis under the supervision of <a href="https://cse.iutoic-dhaka.edu/profile/mohsinul/education">Mohsinul Kabir</a>.
 <!-- <br> -->
         <br>
