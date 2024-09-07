@@ -237,7 +237,7 @@ body {
         /* Basic CSS for layout */
         .container {
             display: grid;
-            grid-template-columns: 3fr 1fr;
+            grid-template-columns: 4fr 1fr;
             gap: 20px;
             max-width: 1200px;
             margin: 0 auto;
@@ -249,7 +249,7 @@ body {
         }
 
         .news {
-            margin-right: -150px;
+            margin-right: -190px;
             border-left: 2px solid #ccc;
             padding-left: 20px;
         }
