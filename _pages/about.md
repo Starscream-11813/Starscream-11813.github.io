@@ -251,7 +251,7 @@ body {
         .news {
             margin-right: -220px;
             border-left: 2px solid #ccc;
-            line-height: 450px;
+            /* line-height: 450px; */
             padding-left: 20px;
             font-size: 0.8em;
             height: 400px; /* Adjust height as needed */
