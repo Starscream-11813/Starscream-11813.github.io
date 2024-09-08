@@ -254,7 +254,7 @@ body {
             /* line-height: 450px; */
             padding-left: 20px;
             font-size: 0.8em;
-            height: 400px; /* Adjust height as needed */
+            height: 430px; /* Adjust height as needed */
         }
 
         .news-content {
