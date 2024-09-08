@@ -257,7 +257,7 @@ body {
         }
 
         .news-content {
-            max-height: 350px; /* Set the scrollable height */
+            max-height: 400px; /* Set the scrollable height */
             overflow-y: auto; /* Enable vertical scrolling */
             padding-right: 10px;
         }
