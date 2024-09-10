@@ -39,6 +39,7 @@
     {% if post.venue %}<p class="archive__item-excerpt" itemprop="description">{{post.type}}, <b><i>{{ post.venue }}</i></b>,  {{post.location}} {% endif %}
     {% if post.excerpt %}<p class="archive__item-excerpt" itemprop="description">{{ post.excerpt | markdownify }}</p>{% endif %}
     <style>
+      @import url('https://fonts.cdnfonts.com/css/cmu-serif');
       .button {
         width: 87px;
         border: none;
