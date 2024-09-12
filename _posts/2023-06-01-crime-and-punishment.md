@@ -5,7 +5,7 @@ collection: books
 date: 2023-06-01
 permalink: /books/crime-and-punishment/
 excerpts: "Pain and suffering are always inevitable for a large intelligence and a deep heart. The really great men must, I think, have great sadness on earth."
-teaser: "CrimeAndPunishment.webp"
+teaser: "CrimeAndPunishment.jpg"
 tags:
   - Nihilism
   - Utilitarianism
