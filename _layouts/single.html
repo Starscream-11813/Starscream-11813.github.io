@@ -43,8 +43,11 @@ layout: default
         {% elsif page.date %}
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
-        
         <style>
+          @import url('https://fonts.cdnfonts.com/css/cmu-serif');
+        </style>
+        <style>
+          @import url('https://fonts.cdnfonts.com/css/cmu-serif');
           .button {
             width: 87px;
             border: none;
@@ -87,6 +90,7 @@ layout: default
       {% endunless %}
       {% if page.venue and page.date and page.pdfurl and page.codedata and page.bibtex %}
           <style>
+            @import url('https://fonts.cdnfonts.com/css/cmu-serif');
             input[type='checkbox'] {
               display: none;
             }
