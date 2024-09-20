@@ -14,6 +14,7 @@ layout: default
   {% endunless %}
 {% endif %}
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div id="main" role="main">
   {% include sidebar.html %}
 
@@ -70,7 +71,7 @@ layout: default
           }
         </style>
         {% if post.slides %}
-        <a href="{{ post.slides }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button">Slides</a>
+        <a href="{{ post.slides }}" style="background-color: #b31b1b; width: 50px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
         {% endif %}
         {% if post.poster %}
         <a href="{{ post.poster }}" style="background-color: #428bca; width: 52px; text-decoration: none;" class="button">Poster</a>
