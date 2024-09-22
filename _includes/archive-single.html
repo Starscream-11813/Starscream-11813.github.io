@@ -339,7 +339,7 @@
           alert('Content copied to clipboard!');
       }
     </script> -->
-    <!-- <script>
+    <script>
       function copyToClipboard(content) {
         const tempInput = document.createElement('textarea');
         tempInput.value = content;
@@ -348,26 +348,6 @@
         document.execCommand('copy');
         document.body.removeChild(tempInput);
         alert('BibTeX copied to clipboard!');
-      }
-    </script> -->
-    <script>
-      function copyToClipboard(content, btn) {
-        const tempInput = document.createElement('textarea');
-        tempInput.value = content;
-        document.body.appendChild(tempInput);
-        tempInput.select();
-        document.execCommand('copy');
-        document.body.removeChild(tempInput);
-    
-        // Change the button text and add a tick mark
-        btn.innerHTML = 'BibTeX copied! &#10003;';
-        btn.style.backgroundColor = '#28a745'; // Optionally change button color to green
-    
-        // Revert the button text after a delay (optional)
-        setTimeout(() => {
-          btn.innerHTML = 'Copy';
-          btn.style.backgroundColor = ''; // Reset button color
-        }, 3000);
       }
     </script>
     {% if post.citation and post.paperurl %}
@@ -421,7 +401,7 @@
       <div class="collapsible-content">
         <div class="content-inner">
           <p style="font-family: 'Courier New', Courier, monospace;">
-            <button class="copy-btn" onclick="copyToClipboard(`{{ post.bibtexraw }}`, this)"><i class="fa fa-quote-left" aria-hidden="true"></i> Cite</button>
+            <button class="copy-btn" onclick="copyToClipboard('{{ post.bibtexraw }}')"><i class="fa fa-quote-left" aria-hidden="true"></i> Cite</button>
             {{ post.bibtex }}
           </p>
         </div>
