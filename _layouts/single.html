@@ -82,6 +82,8 @@ layout: default
           {% endif %}
           {% if page.video %}
             <a href="{{ page.video }}" style="background-color: #999; width: 61px; text-decoration: none;" class="button"><i class="fa fa-video-camera" aria-hidden="true"></i> Video</a>
+          {% if page.doi %}
+            <a href="{{ page.doi }}" style="background-color: #FCB520; width: 10px; text-decoration: none;" class="button"><i class="ai ai-doi" aria-hidden="true"></i></a>
           {% endif %}
         {% elsif page.citation %}
           <p><u>Citation (IEEE format):</u> {{ page.citation }} </p>

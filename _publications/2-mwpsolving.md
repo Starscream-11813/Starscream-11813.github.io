@@ -8,6 +8,7 @@ venue: 'Proceedings of the 61st Annual Meeting of the Association for Computatio
 paperurl: 'https://arxiv.org/abs/2306.13899'
 pdfurl: 'https://arxiv.org/pdf/2306.13899.pdf'
 codedata: 'https://github.com/Starscream-11813/Variational-Mathematical-Reasoning'
+doi: 'https://doi.org/10.18653/v1/2023.acl-srw.49'
 citation: 'S. R. Raiyan, Md. N. Faiyaz, S. Md. J. Kabir, M. Kabir, H. Mahmud, and M. K. Hasan, “Math Word Problem Solving by Generating Linguistic Variants of Problem Statements,” arXiv preprint arXiv:2306.13899, 2023.'
 authors: '<b>Syed Rifat Raiyan</b>, Md. Nafis Faiyaz, Shah Md. Jawad Kabir, Mohsinul Kabir, Hasan Mahmud, Md Kamrul Hasan.'
 bibtex: '@misc{raiyan2023math,<br>

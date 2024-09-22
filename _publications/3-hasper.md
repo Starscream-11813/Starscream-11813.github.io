@@ -9,6 +9,7 @@ venue: 'IEEE Transactions on Artificial Intelligence (IEEE TAI)'
 paperurl: 'https://www.arxiv.org/abs/2408.10360'
 pdfurl: 'https://www.arxiv.org/pdf/2408.10360'
 codedata: 'https://github.com/Starscream-11813/HaSPeR'
+doi: 'https://doi.org/10.48550/arXiv.2408.10360'
 citation: 'S. R. Raiyan, Z. Z. Amio, and S. Ahmed, “HaSPeR: An Image Repository for Hand Shadow Puppet Recognition,” arXiv preprint arXiv:2408.10360, 2024.'
 authors: '<b>Syed Rifat Raiyan</b>, Zibran Zarif Amio, Sabbir Ahmed.'
 bibtex: '@misc{raiyan2024hasper,<br>
