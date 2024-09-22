@@ -398,9 +398,9 @@
       <label for="collapsible{{ post.permalink }}" class="lbl-toggle">
         <span style="font-variant: small-caps; font-size: 13.5px;" class="latex">B<span style="font-size: 12px;">ib</span>T<sub>e</sub>X</span>
       </label>
-      <button class="copy-btn" onclick="copyToClipboard(`{{ post.bibtex }}`)">Copy</button>
       <div class="collapsible-content">
         <div class="content-inner">
+          <button class="copy-btn" onclick="copyToClipboard('{{ post.bibtex }}')">Copy</button>
           <p style="font-family: 'Courier New', Courier, monospace;">
             {{ post.bibtex }}
           </p>
