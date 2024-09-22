@@ -361,8 +361,8 @@
         class="lbl-toggle"><span style="font-variant: small-caps; font-size: 13.5px;" class="latex">B<span style="font-size: 12px;">ib</span>T<sub>e</sub>X</span></label>
         <button class="copy-btn" onclick="copyToClipboard('{{ post.permalink }}')">Copy</button>
         <div class="collapsible-content">
-        <div class="content-inner" id="collapsibleContent{{ post.permalink }}">
-          <p style="font-family: 'Courier New', Courier, monospace;">
+        <div class="content-inner">
+          <p style="font-family: 'Courier New', Courier, monospace;" id="collapsibleContent{{ post.permalink }}">
               {{ post.bibtex }}
           </p>
         </div>
