@@ -308,7 +308,36 @@
           .multiline {
         white-space: pre-wrap;
       }
+
+      .copy-btn {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    .copy-btn:hover {
+      background-color: #45a049;
+    }
     </style>
+    <script>
+      function copyToClipboard(permalink) {
+        const content = document.getElementById('collapsibleContent' + permalink).innerText;
+        const tempInput = document.createElement('textarea');
+        tempInput.value = content;
+        document.body.appendChild(tempInput);
+        tempInput.select();
+        document.execCommand('copy');
+        document.body.removeChild(tempInput);
+        alert('Content copied to clipboard!');
+      }
+    </script>
     {% if post.citation and post.paperurl %}
       <p><u>Citation (IEEE format):</u> {{ post.citation }}</p>
       <a href="{{ post.paperurl }}" style="background-color: #b31b1b; width: 57px; text-decoration: none;" class="button"><i class="ai ai-arxiv"></i> arXiv</a>
@@ -327,12 +356,26 @@
         <a href="{{ post.doi }}" style="background-color: #FCB520; width: 25.65px; text-decoration: none; color: black;" class="button"><i style="text-align: center; vertical-align: middle; font-size: 1.25em;" class="ai ai-doi" aria-hidden="true"></i></a>
       {% endif %}
       <!-- <a href="{{ base_path }}{{ post.url }}" rel="permalink" style="background-color: #6962D2; width:87px; text-decoration: none;" class="button"><span style="font-variant: small-caps; font-size: 13.5px;" class="latex">B<span style="font-size: 14.5px;">ib</span>T<sub>e</sub>X</span></a> -->
-      <div class="wrap-collabsible"> <input id="collapsible{{ post.permalink }}" class="toggle" type="checkbox"> <label for="collapsible{{ post.permalink }}"
+      <!-- <div class="wrap-collabsible"> <input id="collapsible{{ post.permalink }}" class="toggle" type="checkbox"> <label for="collapsible{{ post.permalink }}"
         class="lbl-toggle"><span style="font-variant: small-caps; font-size: 13.5px;" class="latex">B<span style="font-size: 12px;">ib</span>T<sub>e</sub>X</span></label>
       <div class="collapsible-content">
         <div class="content-inner">
           <p style="font-family: 'Courier New', Courier, monospace;">
               {{ post.bibtex }}
+          </p>
+        </div>
+      </div>
+    </div> -->
+    <div class="wrap-collabsible">
+      <input id="collapsible{{ post.permalink }}" class="toggle" type="checkbox">
+      <label for="collapsible{{ post.permalink }}" class="lbl-toggle">
+        <span style="font-variant: small-caps; font-size: 13.5px;" class="latex">B<span style="font-size: 12px;">ib</span>T<sub>e</sub>X</span>
+      </label>
+      <button class="copy-btn" onclick="copyToClipboard('{{ post.permalink }}')">Copy</button>
+      <div class="collapsible-content">
+        <div class="content-inner" id="collapsibleContent{{ post.permalink }}">
+          <p style="font-family: 'Courier New', Courier, monospace;">
+            {{ post.bibtex }}
           </p>
         </div>
       </div>
