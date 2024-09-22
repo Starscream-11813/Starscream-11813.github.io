@@ -20,14 +20,13 @@ bibtex: '@misc{raiyan2024hasper,<br>
       &emsp;&emsp;&emsp;&emsp;archivePrefix={arXiv},<br>
       &emsp;&emsp;&emsp;&emsp;primaryClass={cs.CV}<br>
 }'
-bibtexraw: "@misc{raiyan2024hasper,
-                  title={HaSPeR: An Image Repository for Hand Shadow Puppet Recognition}, 
-                  author={Syed Rifat Raiyan and Zibran Zarif Amio and Sabbir Ahmed},
-                  year={2024},
-                  eprint={2408.10360},
-                  archivePrefix={arXiv},
-                  primaryClass={cs.CV}
-}"
+bibtexraw: "@misc{raiyan2024hasper,\n
+                  title={HaSPeR: An Image Repository for Hand Shadow Puppet Recognition},\n 
+                  author={Syed Rifat Raiyan and Zibran Zarif Amio and Sabbir Ahmed},\n
+                  year={2024},\n
+                  eprint={2408.10360},\n
+                  archivePrefix={arXiv},\n
+                  primaryClass={cs.CV}\n}"
 # '@inproceedings{raiyan-etal-2023-math,<br>
 #     &emsp;&emsp;&emsp;&emsp;title = "Math Word Problem Solving by Generating Linguistic Variants of Problem Statements",<br>
 #     &emsp;&emsp;&emsp;&emsp;author = "Raiyan, Syed Rifat  and<br>

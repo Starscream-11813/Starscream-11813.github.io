@@ -19,14 +19,13 @@ bibtex: '@misc{raiyan2023math,<br>
       &emsp;&emsp;&emsp;&emsp;archivePrefix={arXiv},<br>
       &emsp;&emsp;&emsp;&emsp;primaryClass={cs.CL}<br>
 }'
-bibtexraw: "@misc{raiyan2023math,
-                  title={Math Word Problem Solving by Generating Linguistic Variants of Problem Statements}, 
-                  author={Syed Rifat Raiyan and Md. Nafis Faiyaz and Shah Md. Jawad Kabir and Mohsinul Kabir and Hasan Mahmud and Md Kamrul Hasan},
-                  year={2023},
-                  eprint={2306.13899},
-                  archivePrefix={arXiv},
-                  primaryClass={cs.CL}
-}"
+bibtexraw: "@misc{raiyan2023math,\n
+                  title={Math Word Problem Solving by Generating Linguistic Variants of Problem Statements},\n 
+                  author={Syed Rifat Raiyan and Md. Nafis Faiyaz and Shah Md. Jawad Kabir and Mohsinul Kabir and Hasan Mahmud and Md Kamrul Hasan},\n
+                  year={2023},\n
+                  eprint={2306.13899},\n
+                  archivePrefix={arXiv},\n
+                  primaryClass={cs.CL}\n}"
 # '@inproceedings{raiyan-etal-2023-math,<br>
 #     &emsp;&emsp;&emsp;&emsp;title = "Math Word Problem Solving by Generating Linguistic Variants of Problem Statements",<br>
 #     &emsp;&emsp;&emsp;&emsp;author = "Raiyan, Syed Rifat  and<br>
