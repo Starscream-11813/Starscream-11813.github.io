@@ -19,13 +19,13 @@ bibtex: '@misc{kabir2023banglabook,<br>
             &emsp;&emsp;&emsp;&emsp;archivePrefix={arXiv},<br>
             &emsp;&emsp;&emsp;&emsp;primaryClass={cs.CL}<br>
             }'
-bibtexraw: "@misc{kabir2023banglabook,\n
-                title={BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews},\n
-                author={Mohsinul Kabir and Obayed Bin Mahfuz and Syed Rifat Raiyan and Hasan Mahmud and Md Kamrul Hasan},\n
-                year={2023},\n
-                eprint={2305.06595},\n
-                archivePrefix={arXiv},\n
-                primaryClass={cs.CL}\n}"
+bibtexraw: "@misc{kabir2023banglabook,\\n
+                title={BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews},\\n
+                author={Mohsinul Kabir and Obayed Bin Mahfuz and Syed Rifat Raiyan and Hasan Mahmud and Md Kamrul Hasan},\\n
+                year={2023},\\n
+                eprint={2305.06595},\\n
+                archivePrefix={arXiv},\\n
+                primaryClass={cs.CL}\\n}"
 # '@inproceedings{kabir-etal-2023-banglabook,<br>
 #     &emsp;&emsp;&emsp;&emsp;title = "{B}angla{B}ook: A Large-scale {B}angla Dataset for Sentiment Analysis from Book Reviews",<br>
 #     &emsp;&emsp;&emsp;&emsp;author = "Kabir, Mohsinul  and<br>
