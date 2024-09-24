@@ -33,6 +33,11 @@
       <!-- <div class="col-md-9"> -->
     <!-- <img src="https://github.com/Starscream-11813/Starscream-11813.github.io/blob/master/images/android-chrome-192x192.png" style="" alt=""> -->
     <style>
+      .helper {
+          display: inline-block;
+          height: 100%;
+          vertical-align: middle;
+      }
       .row {
           display: flex;
           flex-wrap: wrap;
@@ -137,14 +142,17 @@
     <div class="row">
       {% if post.collection == 'publications' %}
       <div class="column teaser-image">
+        <span class="helper"></span>
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
       </div>
       {% elsif post.collection == 'posts' %}
       <div class="column teaser-image2">
+        <span class="helper"></span>
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
       </div>
       {% elsif post.collection == 'teaching' %}
       <div class="column teaser-image3">
+        <span class="helper"></span>
         <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
       </div>
       {% endif %}
