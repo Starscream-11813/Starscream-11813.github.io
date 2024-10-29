@@ -12,6 +12,17 @@
   {% assign title = post.title %}
 {% endif %}
 
+<script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.js"
+        integrity="sha256-A5GMUmGHpY8mVpfcaRLQFeHtmdjZLumKBOMpf81FXX0="
+        crossorigin="anonymous" referrerpolicy="no-referrer">
+</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-solarizedlight.min.css"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js">
+</script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.min.js">
+</script>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
@@ -406,10 +417,13 @@
       </label>
       <div class="collapsible-content">
         <div class="content-inner">
-          <p style="font-family: 'Courier New', Courier, monospace;">
+          <!-- <p style="font-family: 'Courier New', Courier, monospace;"> -->
             <button class="copy-btn" onclick="copyToClipboard('{{ post.bibtexraw }}')"><i class="fa fa-quote-left" aria-hidden="true"></i> Cite</button>
+            <pre><code class="language-bibtex">
             {{ post.bibtex }}
-          </p>
+            </code>
+            </pre>
+          <!-- </p> -->
         </div>
       </div>
     </div>
