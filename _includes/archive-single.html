@@ -343,6 +343,11 @@
     .copy-btn:hover {
       background-color: #0273af;
     }
+    pre {
+    font-size: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    /* font-style: italic; */
+    }
     </style>
     <!-- <script>
       function copyToClipboard() {
@@ -420,7 +425,7 @@
           <!-- <p style="font-family: 'Courier New', Courier, monospace;"> -->
             <button class="copy-btn" onclick="copyToClipboard('{{ post.bibtexraw }}')"><i class="fa fa-quote-left" aria-hidden="true"></i> Cite</button>
             <pre><code class="language-bibtex">
-            {{ post.bibtexraw }}
+            {{ post.bibtexsuperraw }}
             </code>
             </pre>
           <!-- </p> -->
