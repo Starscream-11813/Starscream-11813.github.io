@@ -202,6 +202,7 @@
           </script>
         {% endif %}
       <style>
+      @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
 	    @import url('https://fonts.cdnfonts.com/css/cmu-serif');
       @import url('https://fonts.cdnfonts.com/css/product-sans');
       @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
@@ -420,7 +421,7 @@
         <div class="content-inner">
           <!-- <p style="font-family: 'Courier New', Courier, monospace;"> -->
             <button class="copy-btn" onclick="copyToClipboard('{{ post.bibtexraw }}')"><i class="fa fa-quote-left" aria-hidden="true"></i> Cite</button>
-            <pre><code class="language-bibtex">{{ post.bibtexprettify }}</code></pre>
+            <pre><code class="language-bibtex" style="font-family: Courier Prime; font-size: 10pt">{{ post.bibtexprettify }}</code></pre>
           <!-- </p> -->
         </div>
       </div>
