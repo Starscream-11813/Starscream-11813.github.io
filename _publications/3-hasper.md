@@ -56,7 +56,7 @@ bibtexprettify: "@misc{raiyan2024hasper,\n
 poster: 
 slides: 
 video: 
-teaser: "hasper_combined_xai.PNG"
+teaser: "hasper_teaser.PNG"
 ---
 <u>Authors:</u> **Syed Rifat Raiyan**, Zibran Zarif Amio, Sabbir Ahmed.
 <br>
