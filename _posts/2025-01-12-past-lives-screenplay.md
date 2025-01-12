@@ -4,9 +4,9 @@ author: 'Celine Song, Nicholas Dowker'
 collection: books
 date: 2025-01-12
 permalink: /books/past-lives-screenplay/
-excerpts: 'Hae Sung: What if this is a past life as well, and we are already something else to each other in our next life? Who do you think we are then?<br>
-Nora: I don’t know.<br>
-Hae Sung: Me neither... See you then.'
+excerpts: '<b>Hae Sung:</b> What if this is a past life as well, and we are already something else to each other in our next life? Who do you think we are then?<br>
+<b>Nora:</b> I don’t know.<br>
+<b>Hae Sung:</b> Me neither... See you then.'
 teaser: "PastLives.jpeg"
 tags:
   - Fiction
