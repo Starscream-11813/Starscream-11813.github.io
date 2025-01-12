@@ -9,7 +9,7 @@ location: "Dhaka, Bangladesh"
 teaser: "iut.png"
 ---
 
-Imagine lecturing for 5 hours straight. While fasting. With a sore throat. And a 102&deg;F fever.
+Imagine lecturing for 5 hours straight. While fasting. With a sore throat. And a $102^{\circ}\text{F}$ fever.
 <br>
 A test of fortitude, perhaps.
 
