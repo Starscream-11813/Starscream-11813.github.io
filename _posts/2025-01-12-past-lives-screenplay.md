@@ -4,9 +4,9 @@ author: 'Celine Song, Nicholas Dowker'
 collection: books
 date: 2025-01-12
 permalink: /books/past-lives-screenplay/
-excerpts: 'What if this is a past life as well, and we are already something else to each other in our next life? Who do you think we are then?<br>
-I don’t know.<br>
-Me neither... See you then.'
+excerpts: 'Hae Sung: What if this is a past life as well, and we are already something else to each other in our next life? Who do you think we are then?<br>
+Nora: I don’t know.<br>
+Hae Sung: Me neither... See you then.'
 teaser: "PastLives.jpeg"
 tags:
   - Fiction
@@ -14,7 +14,7 @@ tags:
   - Romance
 ---
 
-I think I came across the film back in 2023, and I distinctly remember it as being one of the most beautiful romance dramas I've ever watched. Two years later, in 2025, amidst a banter with some of my childhood friends (we were teasing Fateen about his unrequited love life hehe) at a wedding event, the topic of this movie came up. I wanted to jog my memory about the plot of the film; but instead of rewatching it, I decided to read the script that was originally written by Celine Song. Why? Because not everyone gets their feature directorial debut film nominated for best picture in the Oscars. The screenplay was quite insightful — in a sense that it provides a nice idea about the director's train of thought while she divines the story. The experience of parsing through the script evoked a fascinating phenomenon of episodic memory retrieval, as the scenes that I witnessed two years prior flowed back with renewed clarity.
+I think I came across the film back in 2023, and I distinctly remember it as being one of the most beautiful romance dramas I've ever watched. Two years later, in 2025, amidst a banter with some of my childhood friends (we were teasing Fateen about his unrequited love life hehe) at a wedding event, the topic of this movie came up. I wanted to jog my memory about the plot of the film; but instead of rewatching it, I decided to read the script that was originally written by Celine Song. Why? Because not everyone gets their feature directorial debut film nominated for best picture at the Oscars. The screenplay was quite insightful — in a sense that it provides a nice idea about the director's train of thought while she divines the story. The experience of parsing through the script evoked a fascinating phenomenon of episodic memory retrieval, as the scenes that I witnessed two years prior flowed back with renewed clarity.
 
 Here's an interesting tidbit. This is one of the interactions between Na Young and her Korean classmates.
 <p align="center">
