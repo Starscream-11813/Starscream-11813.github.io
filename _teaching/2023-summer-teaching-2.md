@@ -18,15 +18,21 @@ Math 4641: Numerical Methods
 Taught my most talented set of students, CSE-20.
 <br>
 Course Materials and Resources: [Google Classroom](https://classroom.google.com/c/NjQ2ODg3NDEyNjg1?cjc=tfgz3j7).
+<br>
+Student Evaluation: [IUTSIS Course Feedback Report](/files/Math4641_Summer_22-23_StudentEvaluation.pdf).
 
 Math 4642: Numerical Methods Lab
 ======
 Python implementations of the topics taught in Math 4641.
 <br>
 Course Materials and Resources: [Google Classroom for CSE A](https://classroom.google.com/c/NjQ2ODg3NDkwOTMw?cjc=tu2lmzk) and [Google Classroom for CSE B](https://classroom.google.com/c/NjQ2ODg3NDU1NzA1?cjc=62ccgep).
+<br>
+Student Evaluation: [IUTSIS Course Feedback Report](/files/Math4642_Summer_22-23_StudentEvaluation.pdf).
 
 CSE 4202: Structured Programming II Lab
 ======
 Main lab instructor for CSE-22. Created new lecture materials. Authored classified problem statements for lab tasks, tests, and assignments.
 <br>
 Course Materials and Resources: Confidential, for obvious reasons.
+<br>
+Student Evaluation: [IUTSIS Course Feedback Report 1](/files/CSE4202_Summer_22-23_StudentEvaluation.pdf) and [IUTSIS Course Feedback Report 2](/files/CSE4202_Summer_22-23_StudentEvaluation2.pdf).

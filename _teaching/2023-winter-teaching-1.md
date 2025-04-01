@@ -16,18 +16,24 @@ Math 4543: Numerical Methods
 Taught my first ever set of students, SWE-20.
 <br>
 Course Materials and Resources: [Google Classroom](https://classroom.google.com/c/NTIzNDQyMzE5NjE5?cjc=2ih7k33).
+<br>
+Student Evaluation: [IUTSIS Course Feedback Report](/files/Math4543_Winter_22-23_StudentEvaluation.pdf).
 
 Math 4544: Numerical Methods Lab
 ======
 Python implementations of the topics taught in Math 4543.
 <br>
 Course Materials and Resources: [Google Classroom for SWE A](https://classroom.google.com/c/NjE4Mjc5MTM0OTk4?cjc=ozypcun) and [Google Classroom for SWE B](https://classroom.google.com/c/NTIzNDQyMjUxNTUy?cjc=2ionped).
+<br>
+Student Evaluation: [IUTSIS Course Feedback Report](/files/Math4544_Winter_22-23_StudentEvaluation.pdf).
 
 CSE 4304: Data Structures Lab
 ======
 Lab instructor for CSE-21. Authored classified problem statements for lab tasks, tests, and assignments.
 <br>
-Course Materials and Resources: Confidential, for obvious reasons. 
+Course Materials and Resources: Confidential, for obvious reasons.
+<br>
+Student Evaluation: [IUTSIS Course Feedback Report 1](/files/CSE4304_Winter_22-23_StudentEvaluation.pdf) and [IUTSIS Course Feedback Report 2](/files/CSE4304_Winter_22-23_StudentEvaluation2.pdf).
 
 CSE 4308: Database Management System Lab
 ======
@@ -39,4 +45,4 @@ SWE 4304: Software Project Lab I
 ======
 Supervised Team Voyager consisting of Adib Sakhawat Shuvro, Takia Farhin, and Tahsin Islam Rayshad.
 <br>
-Their project repository: [MathVoyage](https://github.com/sakhadib/vmath).
+Their project repository: [`MathVoyage`](https://github.com/sakhadib/vmath).
