@@ -294,6 +294,9 @@ body {
 <div class="news">
     <h2><img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/refs/heads/master/images/quill-pen-cropped.svg" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>10th August 2025:</b> My CSE 6265 project's paper has been accepted for oral presentation at <a href="https://acpr2025.com/">ACPR 2025</a>. Alhamdulillah!
+        <br>
+        <br>
         <b>14th July 2025:</b> My CSE 4836 project's paper has been accepted for oral presentation at <a href="https://openreview.net/forum?id=AAGhroilqL">ICCV 2025 WCCA</a>. Alhamdulillah!
         <br>
         <br>

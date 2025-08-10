@@ -1,11 +1,11 @@
 ---
 title: "SCReedSolo: A Secure and Robust LSB Image Steganography Framework with Randomized Symmetric Encryption and Reed-Solomon Coding"
 collection: publications
-type: preprints
+type: notpreprints
 permalink: /publications/4-screedsolo
 excerpt: 
-date: 2025-03-16
-venue: 'Asian Conference on Pattern Recognition (ACPR 2025)'
+date: 2025-08-10
+venue: 'Proceedings of the 8th Asian Conference on Pattern Recognition (ACPR 2025)'
 paperurl: 'https://arxiv.org/abs/2503.12368'
 pdfurl: 'https://arxiv.org/pdf/2503.12368'
 codedata: 'https://github.com/Starscream-11813/SCReedSolo-Steganography'
