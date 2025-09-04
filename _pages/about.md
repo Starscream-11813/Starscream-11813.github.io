@@ -294,6 +294,9 @@ body {
 <div class="news">
     <h2><img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/refs/heads/master/images/quill-pen-cropped.svg" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>16th August 2025:</b> Worked as problem setter for the <a href="https://codeforces.com/gym/629683">IUT Intra University Programming Contest 2025</a>. Links: [<a href="https://github.com/ir-rafio/AHIUPC-2025-Problemset/blob/main/Statements.pdf">Problemset</a>], [<a href="https://github.com/ir-rafio/AHIUPC-2025-Problemset/blob/main/Editorial.md">Editorial</a>], [<a href="https://codeforces.com/gym/106045">Replay</a>]
+        <br>
+        <br>
         <b>10th August 2025:</b> My CSE 6265 project's paper has been accepted for oral presentation at <a href="https://acpr2025.com/">ACPR 2025</a>. Alhamdulillah!
         <br>
         <br>
