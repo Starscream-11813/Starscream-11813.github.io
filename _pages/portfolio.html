@@ -8,7 +8,24 @@ author_profile: true
 {% include base_path %}
 
 <p>To see the projects that I have worked on, please visit <a href="https://github.com/Starscream-11813">my GitHub profile</a> or <a href="https://www.linkedin.com/in/syed-rifat-raiyan/">my LinkedIn profile</a>.</p>
+<h2>My GitHub Repositories</h2>
+<div id="github-repos"></div>
 {% for post in site.portfolio %}
   {% include archive-single.html %}
 {% endfor %}
+
+<script>
+fetch('https://api.github.com/users/Starscream-11813/repos?sort=updated')
+  .then(response => response.json())
+  .then(repos => {
+    const container = document.getElementById('github-repos');
+    container.innerHTML = repos.slice(0, 6).map(repo => `
+      <div style="margin-bottom:1em;">
+        <a href="${repo.html_url}" target="_blank"><strong>${repo.name}</strong></a>
+        <p>${repo.description || ''}</p>
+        <span>⭐ ${repo.stargazers_count}</span>
+      </div>
+    `).join('');
+  });
+</script>
 
