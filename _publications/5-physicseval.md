@@ -5,7 +5,7 @@ type: preprints
 permalink: /publications/5-physicseval
 excerpt: 
 date: 2025-08-11
-venue: 'Under review in AACL-IJCNLP 2025'
+venue: 'AACL-IJCNLP 2025'
 paperurl: 'https://arxiv.org/abs/2508.00079'
 pdfurl: 'https://arxiv.org/pdf/2508.00079'
 codedata: 'https://github.com/Starscream-11813/PhysicsEval'
