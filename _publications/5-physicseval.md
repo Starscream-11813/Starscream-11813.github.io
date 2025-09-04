@@ -10,7 +10,7 @@ paperurl: 'https://arxiv.org/abs/2508.00079'
 pdfurl: 'https://arxiv.org/pdf/2508.00079'
 codedata: 'https://github.com/Starscream-11813/PhysicsEval'
 doi: 'https://doi.org/10.48550/arXiv.2508.00079'
-citation: 'O. Siddique, J. M. A. U. Alam, M. J. R. Rafy, S. R. Raiyan, H. Mahmud and M. K. Hasan, “SCReedSolo: A Secure and Robust LSB Image Steganography Framework with Randomized Symmetric Encryption and Reed-Solomon Coding,” arXiv preprint arXiv:2503.12368, 2025.'
+citation: 'O. Siddique, J. M. A. U. Alam, M. J. R. Rafy, S. R. Raiyan, H. Mahmud and M. K. Hasan, “PhysicsEval: Inference-Time Techniques to Improve the Reasoning Proficiency of Large Language Models on Physics Problems,” arXiv preprint arXiv:2508.00079, 2025.'
 authors: 'Oshayer Siddique†, J. M Areeb Uzair Alam†, Md Jobayer Rahman Rafy†, <b>Syed Rifat Raiyan</b>†, Hasan Mahmud, Md Kamrul Hasan.'
 bibtex: '@article{siddique2025physicseval,<br>
       &emsp;&emsp;&emsp;&emsp;title={PhysicsEval: Inference-Time Techniques to Improve the Reasoning Proficiency of Large Language Models on Physics Problems},<br> 
