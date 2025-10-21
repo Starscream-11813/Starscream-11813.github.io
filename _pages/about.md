@@ -294,6 +294,12 @@ body {
 <div class="news">
     <h2><img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/refs/heads/master/images/quill-pen-cropped.svg" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>20th October 2025:</b> Presented at an international conference for the first time in-person — <a href="https://iccv.thecvf.com/">ICCV 2025</a> at Honolulu, Hawaii, USA.
+        <br>
+        <br>
+        <b>24th August 2025:</b> Contributed to the writing of <a href="https://web.stanford.edu/~jurafsky/slp3/">Speech and Language Processing (3rd Edition)</a> by <a href="http://web.stanford.edu/people/jurafsky/">Dan Jurafsky</a> and <a href="http://www.cs.colorado.edu/~martin/">James H. Martin</a>. Thanks for the <a href="https://web.stanford.edu/~jurafsky/slp3/thanks.html#:~:text=Syed%20Hasany-,Syed%20Rifat%20Raiyan,-Taishi%20Nakashima">shoutout</a>!
+        <br>
+        <br>
         <b>16th August 2025:</b> Worked as problem setter for the <a href="https://codeforces.com/gym/629683">IUT Intra University Programming Contest 2025</a>. Links: [<a href="https://github.com/ir-rafio/AHIUPC-2025-Problemset/blob/main/Statements.pdf">Problemset</a>], [<a href="https://github.com/ir-rafio/AHIUPC-2025-Problemset/blob/main/Editorial.md">Editorial</a>], [<a href="https://codeforces.com/gym/106045">Replay</a>]
         <br>
         <br>
