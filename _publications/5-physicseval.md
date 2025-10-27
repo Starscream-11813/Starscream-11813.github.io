@@ -1,14 +1,14 @@
 ---
 title: "PhysicsEval: Inference-Time Techniques to Improve the Reasoning Proficiency of Large Language Models on Physics Problems"
 collection: publications
-type: preprints
+type: notpreprints
 permalink: /publications/5-physicseval
 excerpt: 
-date: 2025-08-11
-venue: 'AACL-IJCNLP 2025'
+date: 2025-10-25
+venue: 'IJCNLP-AACL 2025'
 paperurl: 'https://arxiv.org/abs/2508.00079'
 pdfurl: 'https://arxiv.org/pdf/2508.00079'
-codedata: 'https://github.com/Starscream-11813/PhysicsEval'
+codedata: 'https://github.com/areebuzair/PhysicsEval'
 doi: 'https://doi.org/10.48550/arXiv.2508.00079'
 citation: 'O. Siddique, J. M. A. U. Alam, M. J. R. Rafy, S. R. Raiyan, H. Mahmud and M. K. Hasan, “PhysicsEval: Inference-Time Techniques to Improve the Reasoning Proficiency of Large Language Models on Physics Problems,” arXiv preprint arXiv:2508.00079, 2025.'
 authors: 'Oshayer Siddique†, J. M Areeb Uzair Alam†, Md Jobayer Rahman Rafy†, <b>Syed Rifat Raiyan</b>†, Hasan Mahmud, Md Kamrul Hasan.'
