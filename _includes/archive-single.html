@@ -184,24 +184,26 @@
         {% endif %}
 
         <style>
-            .glow {
+            .glownote {
               text-align: center;
-              animation: glow 2s ease-in-out infinite alternate;
+              animation: glow 1.5s ease-in-out infinite alternate;
             }
             
-            @-webkit-keyframes glow {
+            @-webkit-keyframes glownote {
               from {
-                text-shadow: 0 0 2px #fff, 0 0 4px #e660937a;
+                text-shadow: 
+                  0 0 5px rgba(184, 134, 11, 0.4);
               }
-              
               to {
-                text-shadow: 0 0 3px #fff, 0 0 5px #ff4da67a;
+                text-shadow:
+                  0 0 15px rgba(255, 215, 0, 0.9),
+                  0 0 25px rgba(255, 223, 100, 0.6);
               }
             }
         </style>
 
         {% if post.collection == 'publications' and post.note %}
-          <p><b class="glow">{{ post.note }}</b></p>
+          <p><b class="glownote">{{ post.note }}</b></p>
         {% endif %}
 
         {% if post.authors and post.paperurl %}
