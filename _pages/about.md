@@ -294,6 +294,9 @@ body {
 <div class="news">
     <h2><img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/refs/heads/master/images/quill-pen-cropped.svg" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>25th October 2025:</b> PhysicsEval has been accepted for publication in the <a href="https://openreview.net/forum?id=HVoNaOfE8M">Findings of the ACL: IJCNLP-AACL 2025</a>. Alhamdulillah!
+        <br>
+        <br>
         <b>20th October 2025:</b> Presented at an international conference for the first time in-person — <a href="https://iccv.thecvf.com/">ICCV 2025</a> at Honolulu, Hawaii, USA.
         <br>
         <br>
