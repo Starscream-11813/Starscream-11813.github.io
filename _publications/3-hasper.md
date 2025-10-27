@@ -4,7 +4,7 @@ collection: publications
 type: notpreprints
 permalink: /publications/3-hasper
 excerpt:
-note: '🏆 Outstanding Presentation'
+note: 'Outstanding Presentation'
 date: 2025-07-14
 venue: 'Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops (WCCA Oral)'
 paperurl: 'https://www.arxiv.org/abs/2408.10360'

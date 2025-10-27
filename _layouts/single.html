@@ -45,27 +45,76 @@ layout: default
           <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "Published:" }}</strong> <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
         
-        <style>
-            .glownote {
-              text-align: center;
-              animation: glownote 1.5s ease-in-out infinite alternate;
-            }
-            
-            @-webkit-keyframes glownote {
-              from {
-                text-shadow: 
-                  0 0 5px rgba(184, 134, 11, 0.6);
-              }
-              to {
-                text-shadow:
-                  0 0 15px rgba(255, 215, 0, 1),
-                  0 0 25px rgba(255, 223, 100, 0.8);
-              }
-            }
-        </style>
+<style>
+  /* Keep your existing golden glow */
+  .glownote {
+    text-align: center;
+    animation: glownote 1.5s ease-in-out infinite alternate;
+  }
+
+  @-webkit-keyframes glownote {
+    from {
+      text-shadow: 0 0 5px rgba(184, 134, 11, 0.6);
+    }
+    to {
+      text-shadow:
+        0 0 15px rgba(255, 215, 0, 1),
+        0 0 25px rgba(255, 223, 100, 0.8);
+    }
+  }
+
+  /* Trophy container */
+  .trophy {
+    position: relative;
+    display: inline-block;
+  }
+
+  /* Small sparkles */
+  .trophy::before,
+  .trophy::after {
+    content: "✨";
+    position: absolute;
+    font-size: 0.8rem;
+    color: gold;
+    animation: sparkleAnim 1.5s infinite ease-in-out;
+    opacity: 0;
+  }
+
+  /* Sparkle placement near the trophy */
+  .trophy::before {
+    top: -10px;
+    left: 10px;
+    animation-delay: 0s;
+  }
+  .trophy::after {
+    top: 8px;
+    left: -3px;
+    animation-delay: 0.8s;
+  }
+
+  /* Sparkle animation */
+  @keyframes sparkleAnim {
+    0% {
+      transform: scale(0.3) rotate(0deg);
+      opacity: 0;
+    }
+    50% {
+      transform: scale(0.9) rotate(20deg);
+      opacity: 1;
+    }
+    100% {
+      transform: scale(0.3) rotate(0deg);
+      opacity: 0;
+    }
+  }
+</style>
 
         {% if page.collection == 'publications' and page.note %}
-          <p><b class="glownote">{{ page.note }}</b></p>
+          <p>
+            <b class="glownote">
+              <span class="trophy">🏆</span> {{ page.note }}
+            </b>
+          </p>
         {% endif %}
 
         <style>
