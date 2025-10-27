@@ -183,8 +183,25 @@
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}
 
+        <style>
+            .glow {
+              text-align: center;
+              animation: glow 1s ease-in-out infinite alternate;
+            }
+            
+            @-webkit-keyframes glow {
+              from {
+                text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+              }
+              
+              to {
+                text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+              }
+            }
+        </style>
+
         {% if post.collection == 'publications' and post.note %}
-          <p><strong>{{ post.note }}</strong></p>
+          <p><b class="glow">{{ post.note }}</b></p>
         {% endif %}
 
         {% if post.authors and post.paperurl %}
