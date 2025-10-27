@@ -5,7 +5,7 @@ type: notpreprints
 permalink: /publications/5-physicseval
 excerpt: 
 date: 2025-10-25
-venue: 'IJCNLP-AACL 2025'
+venue: 'Findings of the Association for Computational Linguistics: IJCNLP-AACL 2025'
 paperurl: 'https://arxiv.org/abs/2508.00079'
 pdfurl: 'https://arxiv.org/pdf/2508.00079'
 codedata: 'https://github.com/areebuzair/PhysicsEval'
