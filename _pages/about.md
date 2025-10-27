@@ -254,11 +254,11 @@ body {
             /* line-height: 450px; */
             padding-left: 20px;
             font-size: 0.8em;
-            height: 450px; /* Adjust height as needed */
+            height: 550px; /* Adjust height as needed */
         }
 
         .news-content {
-            max-height: 350px; /* Set the scrollable height */
+            max-height: 450px; /* Set the scrollable height */
             overflow-y: auto; /* Enable vertical scrolling */
             padding-right: 10px;
         }
