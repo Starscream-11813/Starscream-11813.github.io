@@ -63,43 +63,28 @@ layout: default
     }
   }
 
-  /* Trophy container */
-  .trophy {
+  /* Trophy + sparkles wrapper */
+  .trophy-container {
     position: relative;
     display: inline-block;
   }
 
-  /* Small sparkles */
-  .trophy::before,
-  .trophy::after {
-    content: "✨";
+  /* Smaller sparkle animation */
+  .sparkle {
     position: absolute;
-    font-size: 0.8rem;
     color: gold;
+    font-size: 0.8rem; /* smaller ✨ size */
     animation: sparkleAnim 1.5s infinite ease-in-out;
     opacity: 0;
   }
 
-  /* Sparkle placement near the trophy */
-  .trophy::before {
-    top: -10px;
-    left: 10px;
-    animation-delay: 0s;
-  }
-  .trophy::after {
-    top: 8px;
-    left: -3px;
-    animation-delay: 0.8s;
-  }
-
-  /* Sparkle animation */
   @keyframes sparkleAnim {
     0% {
       transform: scale(0.3) rotate(0deg);
       opacity: 0;
     }
     50% {
-      transform: scale(0.9) rotate(20deg);
+      transform: scale(0.8) rotate(20deg);
       opacity: 1;
     }
     100% {
@@ -107,12 +92,27 @@ layout: default
       opacity: 0;
     }
   }
+
+  /* Sparkle placement near the trophy */
+  .sparkle:nth-child(1) {
+    top: -10px;
+    left: 10px;
+    animation-delay: 0s;
+  }
+  .sparkle:nth-child(2) {
+    top: 8px;
+    left: -3px;
+    animation-delay: 0.8s;
+  }
 </style>
 
         {% if page.collection == 'publications' and page.note %}
           <p>
             <b class="glownote">
-              <span class="trophy">🏆</span> {{ page.note }}
+              <span class="trophy-container">🏆</span>
+              <span class="sparkle">✨</span>
+              <span class="sparkle">✨</span>
+              {{ page.note }}
             </b>
           </p>
         {% endif %}
