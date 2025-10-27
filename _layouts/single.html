@@ -46,20 +46,21 @@ layout: default
         {% endif %}
         
 <style>
-  /* Keep your existing golden glow */
+  /* Subtle golden shimmer effect */
   .glownote {
     text-align: center;
-    animation: glownote 1.5s ease-in-out infinite alternate;
+    animation: glownote 4s linear infinite alternate;
   }
 
   @-webkit-keyframes glownote {
     from {
-      text-shadow: 0 0 5px rgba(184, 134, 11, 0.6);
+      text-shadow: 0 0 3px rgba(184, 134, 11, 0.4);
+    }
+    50% {
+      text-shadow: 0 0 4px rgba(255, 215, 0, 0.5);
     }
     to {
-      text-shadow:
-        0 0 15px rgba(255, 215, 0, 1),
-        0 0 25px rgba(255, 223, 100, 0.8);
+      text-shadow: 0 0 3px rgba(255, 223, 100, 0.4);
     }
   }
 
