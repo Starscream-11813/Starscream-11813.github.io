@@ -33,7 +33,7 @@ bibtexprettify: "@article{raiyan2025frugalprompt,\n
 poster: 
 slides: 
 video: 
-teaser: "frugal_prompt_teaser.png"
+teaser: "frugal_prompt_teaser2.png"
 ---
 <u>Authors:</u> **Syed Rifat Raiyan**, Md Farhan Ishmam, Abdullah Al Imran, Mohammad Ali Moni.
 <br>
