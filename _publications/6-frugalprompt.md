@@ -12,7 +12,7 @@ codedata: 'https://github.com/Starscream-11813/Frugal-ICL'
 doi: 'https://doi.org/10.48550/arXiv.2510.16439'
 citation: 'S. R. Raiyan, M. F. Ishmam, A. A. Imran and M. A. Moni, “FrugalPrompt: Reducing Contextual Overhead in Large Language Models via Token Attribution,” arXiv preprint arXiv:2510.16439, 2025.'
 authors: '<b>Syed Rifat Raiyan</b>, Md Farhan Ishmam, Abdullah Al Imran, Mohammad Ali Moni.'
-bibtex: bibtex: '@article{raiyan2025frugalprompt,<br>
+bibtex: '@article{raiyan2025frugalprompt,<br>
       &emsp;&emsp;&emsp;&emsp;title={FrugalPrompt: Reducing Contextual Overhead in Large Language Models via Token Attribution},<br> 
       &emsp;&emsp;&emsp;&emsp;author={Raiyan, Syed Rifat and Ishmam, Md Farhan and Imran, Abdullah Al and Moni, Mohammad Ali},<br>
       &emsp;&emsp;&emsp;&emsp;journal={arXiv preprint arXiv:2510.16439},<br>
