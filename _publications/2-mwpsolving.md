@@ -3,6 +3,7 @@ title: "Math Word Problem Solving by Generating Linguistic Variants of Problem S
 collection: publications
 permalink: /publications/2-mwpsolving
 excerpt: 
+pptmode: 'Poster Presentation'
 date: 2023-07-09
 venue: 'Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 4: Student Research Workshop)'
 paperurl: 'https://arxiv.org/abs/2306.13899'

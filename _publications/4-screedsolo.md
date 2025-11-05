@@ -4,6 +4,7 @@ collection: publications
 type: notpreprints
 permalink: /publications/4-screedsolo
 excerpt: 
+pptmode: 'Oral Presentation'
 date: 2025-08-10
 venue: 'Proceedings of the 8th Asian Conference on Pattern Recognition (ACPR 2025)'
 paperurl: 'https://arxiv.org/abs/2503.12368'

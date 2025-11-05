@@ -176,7 +176,7 @@
         {% if post.collection == 'teaching' %}
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' and post.type == 'preprints' %}
-          <p>Under review in <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>Under review at <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
           {% elsif post.collection == 'publications' %}
           <p>Published in <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.date and post.collection == 'books' %}
@@ -248,10 +248,17 @@
   }
 </style>
 
+        {% if post.collection == 'publications' and post.pptmode %}
+          <p>
+            <b class="glownote" style="color: #5bcefa;">
+              {{ post.pptmode }}
+            </b>
+          </p>
+        {% endif %}
         {% if post.collection == 'publications' and post.note %}
           <p>
             <b class="glownote" style="color: magenta;">
-              <span class="trophy">🏆</span> {{ post.note }}
+              {{ post.note }} <span class="trophy">🏆</span>
             </b>
           </p>
         {% endif %}
