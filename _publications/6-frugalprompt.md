@@ -5,7 +5,6 @@ type: preprints
 permalink: /publications/6-frugalprompt
 excerpt: 
 date: 2025-10-30
-venue: 'LREC 2025'
 paperurl: 'https://www.arxiv.org/abs/2510.16439'
 pdfurl: 'https://www.arxiv.org/pdf/2510.16439'
 codedata: 'https://github.com/Starscream-11813/Frugal-ICL'

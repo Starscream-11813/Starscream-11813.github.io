@@ -292,8 +292,11 @@ body {
         <a href="https://karpathy.ai/">Andrej Karpathy</a>, <a href="https://www.andrewng.org/">Andrew Ng</a>, <a href="https://www.maths.ox.ac.uk/people/andrew.wiles">Andrew Wiles</a>, <a href="https://autarkaw.com">Autar Kaw</a>, <a href="https://en.wikipedia.org/wiki/Bret_Weinstein">Bret Weinstein</a>, <a href="https://nlp.stanford.edu/~manning/">Christopher D. Manning</a>, <a href="https://www.cs.princeton.edu/~danqic/">Danqi Chen</a>, <a href="https://cs.harvard.edu/malan/">David J. Malan</a>, <a href="https://www-cs-faculty.stanford.edu/~knuth/">Donald E. Knuth</a>, <a href="http://erikdemaine.org/">Erik Demaine</a>, <a href="https://math.mit.edu/~gs/">Gilbert Strang</a>, <a href="https://www.3blue1brown.com/">Grant Sanderson</a>, <a href="http://www-formal.stanford.edu/jmc/index.html">John McCarthy</a>, <a href="https://jonathanhaidt.com/">Jonathan Haidt</a>, <a href="https://www.jordanbpeterson.com/">Jordan B Peterson</a>, <a href="https://web.eecs.umich.edu/~justincj/">Justin Johnson</a>, <a href="https://scholar.google.com/citations?user=WgyrxUAAAAAJ&hl=en">Károly Zsolnai-Fehér</a>, <a href="https://www.math.mcgill.ca/lnchen/">Linan Chen</a>, <a href="https://chomsky.info/">Noam Chomsky</a>, <a href="https://web.archive.org/web/20230808013415/https://rebeccashafee.com/index.html">Rebecca Shafee</a>, <a href="https://en.wikipedia.org/wiki/Roger_Penrose">Roger Penrose</a>, <a href="https://people.csail.mit.edu/devadas/">Srinivas Devadas</a>, <a href="https://www.math.ucla.edu/~tao/">Terence Tao</a>.
 </div>
 <div class="news">
-    <h2><img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/refs/heads/master/images/quill-pen-cropped.svg" style="width: 25px; vertical-align: bottom">Chronicle</h2>
+    <h2><img src="{{ '/images/quill-pen-cropped.svg' | relative_url }}" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>27th May 2026:</b> CircuitLM has been accepted for publication at the <a href="https://iclad.ai/">2026 IEEE International Conference on LLM-Aided Design (ICLAD)</a>. Alhamdulillah!
+        <br>
+        <br>
         <b>16th January 2026:</b> Won a silver medal at the <a href="https://www.uphysicsc.com/2025contest.html">2025 University Physics Competition</a>. Alhamdulillah! Kudos to my students Abrar Naguib, Md Niamul Al Zihan, and Shaheen Rahman Dibya.
         <br>
         <br>

@@ -16,7 +16,11 @@ gem "github-pages", group: :jekyll_plugins
 
 # gem "jekyll"
 
-gem "wdm", "~> 0.1.0" if Gem.win_platform?
+# The old wdm watcher gem no longer builds reliably on modern RubyInstaller.
+# Jekyll can still serve locally without it.
+# gem "wdm", "~> 0.1.0" if Gem.win_platform?
+gem "webrick", "~> 1.8"
+gem "tzinfo-data"
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do

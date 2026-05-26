@@ -143,15 +143,15 @@
     <div class="row">
       {% if post.collection == 'publications' %}
       <div class="column teaser-image">
-        <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
+        <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="Teaser Image">
       </div>
       {% elsif post.collection == 'posts' %}
       <div class="column teaser-image2">
-        <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
+        <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="Teaser Image">
       </div>
       {% elsif post.collection == 'teaching' %}
       <div class="column teaser-image3">
-        <img src="https://raw.githubusercontent.com/Starscream-11813/Starscream-11813.github.io/master/images/{{ post.teaser }}" alt="Teaser Image">
+        <img src="{{ post.teaser | prepend: '/images/' | prepend: base_path }}" alt="Teaser Image">
       </div>
       {% endif %}
     <div class="column publication-details">
@@ -176,8 +176,12 @@
         {% if post.collection == 'teaching' %}
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' and post.type == 'preprints' %}
-          <p>Under review at <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
-          {% elsif post.collection == 'publications' %}
+          {% if post.venue %}
+            <p>Under review at <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          {% else %}
+            <p>Under review</p>
+          {% endif %}
+        {% elsif post.collection == 'publications' %}
           <p>Published in <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.date and post.collection == 'books' %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
@@ -305,6 +309,29 @@
         .button:hover {
           background-color: #f1f1f1;
           color: #FFF;
+        }
+
+        .button--openreview {
+          width: auto;
+          min-width: 86px;
+          height: 25.64px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          padding: 0 7px;
+          line-height: 1;
+          vertical-align: middle;
+          background-color: #8c1d40;
+        }
+
+        .button--openreview .button__logo {
+          width: 16px;
+          height: 16px;
+          display: block;
+          flex: 0 0 16px;
+          border-radius: 2px;
+          object-fit: cover;
         }
       </style>
       <style>
@@ -452,9 +479,17 @@
     </script>
     {% if post.citation and post.paperurl %}
       <p><u>Citation (IEEE format):</u> {{ post.citation }}</p>
-      <a href="{{ post.paperurl }}" style="background-color: #b31b1b; width: 57px; text-decoration: none;" class="button"><i class="ai ai-arxiv"></i> arXiv</a>
+      {% if post.paperurl contains "openreview.net" %}
+        <a href="{{ post.paperurl }}" style="text-decoration: none;" class="button button--openreview"><img src="https://pbs.twimg.com/profile_images/1309249465056989189/Wwyw4IhM_400x400.jpg" alt="" aria-hidden="true" class="button__logo">OpenReview</a>
+      {% else %}
+        <a href="{{ post.paperurl }}" style="background-color: #b31b1b; width: 57px; text-decoration: none;" class="button"><i class="ai ai-arxiv"></i> arXiv</a>
+      {% endif %}
+      {% if post.pdfurl %}
       <a href="{{ post.pdfurl }}" style="background-color: #428bca; width:50px; text-decoration: none;" class="button"><i class="fa fa-file-pdf"></i> PDF</a>
+      {% endif %}
+      {% if post.codedata %}
       <a href="{{ post.codedata }}" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
+      {% endif %}
       {% if post.slides %}
       <a href="{{ post.slides }}" style="background-color: #ea641a; width: 60px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
       {% endif %}

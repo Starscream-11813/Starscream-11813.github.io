@@ -1,3 +1,11 @@
 _site/
 node_modules/
+Gemfile.lock
+.bundle/
+vendor/bundle/
+.jekyll-cache/
+.jekyll-metadata
+.sass-cache/
+.jekyll-server.log
+.jekyll-server.err
 

@@ -37,8 +37,12 @@ layout: default
         
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
-        {% elsif page.collection == 'publications' and page.type == 'preprints' and page.venue and page.date %}
-          <p>Under review at <b><i>{{ page.venue }}</i></b>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {% elsif page.collection == 'publications' and page.type == 'preprints' %}
+          {% if page.venue and page.date %}
+            <p>Under review at <b><i>{{ page.venue }}</i></b>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+          {% else %}
+            <p>Under review</p>
+          {% endif %}
         {% elsif page.collection == 'publications' and page.venue and page.date %}
           <p>Published in <b><i>{{ page.venue }}</i></b>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.date %}
@@ -150,12 +154,43 @@ layout: default
             background-color: #f1f1f1;
             color: #FFF;
           }
+
+          .button--openreview {
+            width: auto;
+            min-width: 86px;
+            height: 25.64px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 0 7px;
+            line-height: 1;
+            vertical-align: middle;
+            background-color: #8c1d40;
+          }
+
+          .button--openreview .button__logo {
+            width: 16px;
+            height: 16px;
+            display: block;
+            flex: 0 0 16px;
+            border-radius: 2px;
+            object-fit: cover;
+          }
           </style>     
         {% if page.citation and page.paperurl %}
           <p><u>Citation (IEEE format):</u> {{ page.citation }}</p>
-          <a href="{{ page.paperurl }}" style="background-color: #b31b1b; width: 57px; text-decoration: none;" class="button"><i class="ai ai-arxiv"></i> arXiv</a>
+          {% if page.paperurl contains "openreview.net" %}
+            <a href="{{ page.paperurl }}" style="text-decoration: none;" class="button button--openreview"><img src="https://pbs.twimg.com/profile_images/1309249465056989189/Wwyw4IhM_400x400.jpg" alt="" aria-hidden="true" class="button__logo">OpenReview</a>
+          {% else %}
+            <a href="{{ page.paperurl }}" style="background-color: #b31b1b; width: 57px; text-decoration: none;" class="button"><i class="ai ai-arxiv"></i> arXiv</a>
+          {% endif %}
+          {% if page.pdfurl %}
           <a href="{{ page.pdfurl }}" style="background-color: #428bca; width:50px; text-decoration: none;" class="button"><i class="fa fa-file-pdf"></i>  PDF</a>
+          {% endif %}
+          {% if page.codedata %}
           <a href="{{ page.codedata }}" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
+          {% endif %}
           {% if page.slides %}
           <a href="{{ page.slides }}" style="background-color: #ea641a; width: 60px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
           {% endif %}
@@ -174,7 +209,7 @@ layout: default
     
         </header>
       {% endunless %}
-      {% if page.venue and page.date and page.pdfurl and page.codedata and page.bibtex %}
+      {% if page.venue and page.date and page.pdfurl and page.bibtex %}
           <style>
             @import url('https://fonts.cdnfonts.com/css/cmu-serif');
             @import url('https://fonts.cdnfonts.com/css/product-sans');
