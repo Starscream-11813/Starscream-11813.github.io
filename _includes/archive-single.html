@@ -333,6 +333,20 @@
           border-radius: 2px;
           object-fit: cover;
         }
+
+        .button--aipodcast {
+          width: auto;
+          min-width: 104px;
+          height: 25.64px;
+          display: inline-flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4px;
+          padding: 0 7px;
+          line-height: 1;
+          vertical-align: middle;
+          background-color: #7c3aed;
+        }
       </style>
       <style>
         @import url('https://fonts.cdnfonts.com/css/cmu-serif');
@@ -489,6 +503,9 @@
       {% endif %}
       {% if post.codedata %}
       <a href="{{ post.codedata }}" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
+      {% endif %}
+      {% if post.aipodcast %}
+      <a href="{{ post.aipodcast }}" style="text-decoration: none;" class="button button--aipodcast"><i class="fa fa-magic" aria-hidden="true"></i> AI Podcast</a>
       {% endif %}
       {% if post.slides %}
       <a href="{{ post.slides }}" style="background-color: #ea641a; width: 60px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
