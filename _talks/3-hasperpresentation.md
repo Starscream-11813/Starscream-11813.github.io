@@ -12,4 +12,4 @@ video: "https://drive.google.com/file/d/1jqyhQShNlnk2KD6Ngo_nXvLra-8geXt1/view?u
 paper: "https://www.arxiv.org/pdf/2408.10360"
 ---
 
-The presentation of my CSE 4836 project work as an attendee at ACL 2023. Thanks to the Broadening Participation (BP) Committee of ICCV 2025 for waiving the registration fee. Thanks to IUT as well for funding the travel and accomodation expenses.
+The presentation of my CSE 4836 project work as an attendee at ICCV 2025. Thanks to the Broadening Participation (BP) Committee of ICCV 2025 for waiving the registration fee. Thanks to IUT as well for funding the travel and accomodation expenses.
