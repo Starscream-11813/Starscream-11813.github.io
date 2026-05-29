@@ -336,16 +336,34 @@
 
         .button--aipodcast {
           width: auto;
-          min-width: 104px;
+          min-width: 96px;
           height: 25.64px;
           display: inline-flex;
           align-items: center;
           justify-content: center;
-          gap: 4px;
-          padding: 0 7px;
+          gap: 3px;
+          padding: 0 5px;
           line-height: 1;
           vertical-align: middle;
           background-color: #7c3aed;
+        }
+
+        .button--aipodcast .button__sparkle-logo {
+          width: 15px;
+          height: 15px;
+          display: block;
+          flex: 0 0 15px;
+          filter: brightness(0) invert(1);
+        }
+
+        .button--aipodcast .fa-sparkles {
+          font-style: normal;
+          line-height: 1;
+        }
+
+        .button--aipodcast .fa-sparkles::before {
+          content: "\2728";
+          font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
         }
       </style>
       <style>
@@ -505,7 +523,7 @@
       <a href="{{ post.codedata }}" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
       {% endif %}
       {% if post.aipodcast %}
-      <a href="{{ post.aipodcast }}" style="text-decoration: none;" class="button button--aipodcast"><i class="fa fa-magic" aria-hidden="true"></i> AI Podcast</a>
+      <a href="{{ post.aipodcast }}" style="text-decoration: none;" class="button button--aipodcast"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="button__sparkle-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="fa-solid fa-sparkles" aria-hidden="true" style="display: none;"></i> AI Podcast</a>
       {% endif %}
       {% if post.slides %}
       <a href="{{ post.slides }}" style="background-color: #ea641a; width: 60px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
