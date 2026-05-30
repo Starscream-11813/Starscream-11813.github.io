@@ -1,0 +1,201 @@
+---
+layout: default
+---
+
+{% include base_path %}
+
+<style>
+  .publication-project {
+    background: #fffdf9;
+  }
+
+  .publication-project__hero {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem 1.6rem;
+    text-align: center;
+  }
+
+  .publication-project__status {
+    margin: 0 0 0.65rem;
+    color: #6d4fc2;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  .publication-project__title {
+    max-width: 960px;
+    margin: 0 auto;
+    color: #161722;
+    font-size: clamp(1.85rem, 4vw, 3.15rem);
+    line-height: 1.08;
+  }
+
+  .publication-project__authors {
+    margin: 1rem auto 0;
+    color: #4a4a50;
+    font-size: 1.02rem;
+    line-height: 1.55;
+  }
+
+  .publication-project__venue {
+    margin: 0.55rem auto 0;
+    color: #60606a;
+    font-size: 0.94rem;
+  }
+
+  .publication-project__links {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.45rem;
+    margin: 1.25rem auto 0;
+  }
+
+  .publication-project__button {
+    min-height: 31px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.35rem;
+    padding: 0.28rem 0.64rem;
+    border-radius: 7px;
+    color: #fff !important;
+    font-size: 0.86rem;
+    font-weight: 700;
+    line-height: 1;
+    text-decoration: none;
+    box-shadow: 0 6px 14px rgba(31, 35, 51, 0.10);
+    transition: transform 0.16s ease, box-shadow 0.16s ease, opacity 0.16s ease;
+  }
+
+  .publication-project__button:hover {
+    color: #fff !important;
+    opacity: 0.94;
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(31, 35, 51, 0.14);
+  }
+
+  .publication-project__button--paper {
+    background: #b31b1b;
+  }
+
+  .publication-project__button--pdf {
+    background: #428bca;
+  }
+
+  .publication-project__button--code {
+    background: #3c9f61;
+  }
+
+  .publication-project__button--podcast {
+    background: #7c3aed;
+  }
+
+  .publication-project__button--doi {
+    background: #fcb520;
+    color: #161722 !important;
+  }
+
+  .publication-project__button--doi:hover {
+    color: #161722 !important;
+  }
+
+  .publication-project__sparkle {
+    width: 15px;
+    height: 15px;
+    display: block;
+    flex: 0 0 15px;
+    filter: brightness(0) invert(1);
+  }
+
+  .publication-project__sparkle-fallback {
+    display: none;
+    font-style: normal;
+    line-height: 1;
+  }
+
+  .publication-project__sparkle-fallback::before {
+    content: "\2728";
+    font-family: "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  }
+
+  .publication-project__rule {
+    max-width: 920px;
+    margin: 0.9rem auto 0;
+    border: 0;
+    border-top: 1px solid #e8e2d6;
+  }
+
+  .publication-project__content {
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 1.25rem 3rem;
+  }
+
+  @media (max-width: 640px) {
+    .publication-project__hero {
+      padding-top: 2.1rem;
+    }
+
+    .publication-project__button {
+      min-height: 30px;
+      font-size: 0.82rem;
+    }
+  }
+</style>
+
+<main class="publication-project" role="main">
+  <header class="publication-project__hero">
+    {% if page.type == 'preprints' %}
+      {% if page.venue %}
+        <p class="publication-project__status">Under Review at {{ page.venue }}</p>
+      {% else %}
+        <p class="publication-project__status">Under Review</p>
+      {% endif %}
+    {% elsif page.venue %}
+      <p class="publication-project__status">{{ page.venue }}</p>
+    {% endif %}
+
+    <h1 class="publication-project__title">{{ page.title }}</h1>
+
+    {% if page.authors %}
+      <p class="publication-project__authors">{{ page.authors }}</p>
+    {% endif %}
+
+    {% if page.date %}
+      <p class="publication-project__venue">{{ page.date | date: "%Y" }}</p>
+    {% endif %}
+
+    <nav class="publication-project__links" aria-label="Paper links">
+      {% if page.paperurl %}
+        <a href="{{ page.paperurl }}" class="publication-project__button publication-project__button--paper"><i class="ai ai-arxiv" aria-hidden="true"></i> arXiv</a>
+      {% endif %}
+      {% if page.pdfurl %}
+        <a href="{{ page.pdfurl }}" class="publication-project__button publication-project__button--pdf"><i class="fas fa-file-pdf" aria-hidden="true"></i> PDF</a>
+      {% endif %}
+      {% if page.codedata %}
+        <a href="{{ page.codedata }}" class="publication-project__button publication-project__button--code"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
+      {% endif %}
+      {% if page.aipodcast %}
+        <a href="{{ page.aipodcast }}" class="publication-project__button publication-project__button--podcast"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="publication-project__sparkle" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="publication-project__sparkle-fallback" aria-hidden="true"></i> AI Podcast</a>
+      {% endif %}
+      {% if page.doi %}
+        <a href="{{ page.doi }}" class="publication-project__button publication-project__button--doi"><i class="ai ai-doi" aria-hidden="true"></i> DOI</a>
+      {% endif %}
+    </nav>
+
+    <hr class="publication-project__rule">
+  </header>
+
+  <article class="publication-project__content" itemscope itemtype="http://schema.org/CreativeWork">
+    {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
+    {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
+    <section itemprop="text">
+      {{ content }}
+    </section>
+  </article>
+</main>
