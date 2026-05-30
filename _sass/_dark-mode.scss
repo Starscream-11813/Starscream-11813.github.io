@@ -224,6 +224,12 @@ html[data-theme="dark"] .author__urls a {
   overflow-wrap: break-word;
 }
 
+html[data-theme="dark"] .author__urls .fa-map-marker,
+html[data-theme="dark"] .author__urls .fa-university,
+html[data-theme="dark"] .author__urls .fa-github {
+  color: #fff !important;
+}
+
 html[data-theme="dark"] .greedy-nav .hidden-links:before,
 html[data-theme="dark"] .author__urls:before {
   border-color: var(--theme-border) transparent;
