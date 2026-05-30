@@ -17,6 +17,10 @@ layout: default
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div id="main" role="main">
   {% include sidebar.html %}
+  {% assign is_lit_post = false %}
+  {% if page.collection == 'posts' or page.collection == 'books' or page.path contains '_posts/' %}
+    {% assign is_lit_post = true %}
+  {% endif %}
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     {% if page.title %}<meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
@@ -197,6 +201,9 @@ layout: default
             height: 15px;
             display: block;
             flex: 0 0 15px;
+          }
+
+          .button--aipodcast .button__sparkle-logo--fallback {
             filter: brightness(0) invert(1);
           }
 
@@ -224,7 +231,7 @@ layout: default
           <a href="{{ page.codedata }}" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
           {% endif %}
           {% if page.aipodcast %}
-          <a href="{{ page.aipodcast }}" style="text-decoration: none;" class="button button--aipodcast"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="button__sparkle-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="fa-solid fa-sparkles" aria-hidden="true" style="display: none;"></i> AI Podcast</a>
+          <a href="{{ page.aipodcast }}" style="text-decoration: none;" class="button button--aipodcast"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEwLjUgMS41QzExIDcuMyAxMy4yIDkuNSAxOSAxMEMxMy4yIDEwLjUgMTEgMTIuNyAxMC41IDE4LjVDMTAgMTIuNyA3LjggMTAuNSAyIDEwQzcuOCA5LjUgMTAgNy4zIDEwLjUgMS41WiIvPjxwYXRoIGQ9Ik0xOC41IDEzLjVDMTguNyAxNS44IDE5LjcgMTYuOCAyMiAxN0MxOS43IDE3LjIgMTguNyAxOC4yIDE4LjUgMjAuNUMxOC4zIDE4LjIgMTcuMyAxNy4yIDE1IDE3QzE3LjMgMTYuOCAxOC4zIDE1LjggMTguNSAxMy41WiIvPjxwYXRoIGQ9Ik01IDE1LjVDNS4xMiAxNyA1LjUgMTcuMzggNyAxNy41QzUuNSAxNy42MiA1LjEyIDE4IDUgMTkuNUM0Ljg4IDE4IDQuNSAxNy42MiAzIDE3LjVDNC41IDE3LjM4IDQuODggMTcgNSAxNS41WiIvPjwvc3ZnPg==" alt="" aria-hidden="true" class="button__sparkle-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="button__sparkle-logo button__sparkle-logo--fallback" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="fa-solid fa-sparkles" aria-hidden="true" style="display: none;"></i> AI Podcast</a>
           {% endif %}
           {% if page.slides %}
           <a href="{{ page.slides }}" style="background-color: #ea641a; width: 60px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
@@ -370,6 +377,45 @@ layout: default
       {% if page.share %}{% include social-share.html %}{% endif %}
 
       {% include post_pagination.html %}
+
+      {% if is_lit_post and page.id and page.related and site.related_posts.size > 0 %}
+        <div class="page__related page__related--lit">
+          {% if site.data.ui-text[site.locale].related_label %}
+            <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+          {% endif %}
+          <div class="related-posts" aria-label="Related lit posts">
+            {% for post in site.related_posts limit:4 %}
+              {% assign related_teaser = post.teaser | default: post.header.teaser | default: site.teaser %}
+              {% assign related_title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
+              <article class="related-post-card">
+                <a class="related-post-card__link" href="{{ base_path }}{{ post.url }}" aria-label="Read {{ post.title | strip_html | escape }}">
+                  {% if related_teaser %}
+                    <span class="related-post-card__media">
+                      <img src=
+                        {% if related_teaser contains "://" %}
+                          "{{ related_teaser }}"
+                        {% else %}
+                          "{{ related_teaser | prepend: "/images/" | prepend: base_path }}"
+                        {% endif %}
+                        alt="">
+                    </span>
+                  {% endif %}
+                  <span class="related-post-card__body">
+                    <span class="related-post-card__date">{{ post.date | date: "%Y" }}</span>
+                    <span class="related-post-card__title">{{ related_title }}</span>
+                    {% if post.author %}
+                      <span class="related-post-card__author">by <strong>{{ post.author }}</strong></span>
+                    {% endif %}
+                    {% if post.excerpts %}
+                      <span class="related-post-card__excerpt">{{ post.excerpts | strip_html | truncate: 132 }}</span>
+                    {% endif %}
+                  </span>
+                </a>
+              </article>
+            {% endfor %}
+          </div>
+        </div>
+      {% endif %}
     </div>
 
     {% if site.comments.provider and page.comments %}
@@ -378,16 +424,16 @@ layout: default
   </article>
 
   {% comment %}<!-- only show related on a post page when not disabled -->{% endcomment %}
-  {% if page.id and page.related and site.related_posts.size > 0 %}
-    <div class="page__related">
-      {% if site.data.ui-text[site.locale].related_label %}
-        <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
-      {% endif %}
-      <div class="grid__wrapper">
-        {% for post in site.related_posts limit:4 %}
-          {% include archive-single.html type="grid" %}
-        {% endfor %}
+  {% if page.id and page.related and site.related_posts.size > 0 and is_lit_post == false %}
+      <div class="page__related">
+        {% if site.data.ui-text[site.locale].related_label %}
+          <h4 class="page__related-title">{{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}</h4>
+        {% endif %}
+        <div class="grid__wrapper">
+          {% for post in site.related_posts limit:4 %}
+            {% include archive-single.html type="grid" %}
+          {% endfor %}
+        </div>
       </div>
-    </div>
   {% endif %}
 </div>

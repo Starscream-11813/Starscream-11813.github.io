@@ -121,6 +121,7 @@ teaser: "ivellm_teaser.png"
     color: #6d4fc2;
     font-size: 1.3rem;
     line-height: 1.15;
+    white-space: nowrap;
   }
 
   .ive-stat span {
@@ -210,7 +211,7 @@ teaser: "ivellm_teaser.png"
         <span>IVE experiments</span>
       </div>
       <div class="ive-stat">
-        <strong>$d=0.223$</strong>
+        <strong><em>d</em> = 0.223</strong>
         <span>pooled IVE effect</span>
       </div>
     </div>

@@ -219,7 +219,8 @@
   }
 
   li {
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
   }
 
   a {
@@ -231,6 +232,8 @@
     color: inherit;
     font-size: $type-size-5;
     text-decoration: none;
+    white-space: normal;
+    overflow-wrap: break-word;
 
     &:hover {
       text-decoration: underline;

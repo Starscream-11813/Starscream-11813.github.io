@@ -108,6 +108,9 @@ layout: default
     height: 15px;
     display: block;
     flex: 0 0 15px;
+  }
+
+  .publication-project__sparkle--fallback {
     filter: brightness(0) invert(1);
   }
 
@@ -180,7 +183,7 @@ layout: default
         <a href="{{ page.codedata }}" class="publication-project__button publication-project__button--code"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
       {% endif %}
       {% if page.aipodcast %}
-        <a href="{{ page.aipodcast }}" class="publication-project__button publication-project__button--podcast"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="publication-project__sparkle" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="publication-project__sparkle-fallback" aria-hidden="true"></i> AI Podcast</a>
+        <a href="{{ page.aipodcast }}" class="publication-project__button publication-project__button--podcast"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEwLjUgMS41QzExIDcuMyAxMy4yIDkuNSAxOSAxMEMxMy4yIDEwLjUgMTEgMTIuNyAxMC41IDE4LjVDMTAgMTIuNyA3LjggMTAuNSAyIDEwQzcuOCA5LjUgMTAgNy4zIDEwLjUgMS41WiIvPjxwYXRoIGQ9Ik0xOC41IDEzLjVDMTguNyAxNS44IDE5LjcgMTYuOCAyMiAxN0MxOS43IDE3LjIgMTguNyAxOC4yIDE4LjUgMjAuNUMxOC4zIDE4LjIgMTcuMyAxNy4yIDE1IDE3QzE3LjMgMTYuOCAxOC4zIDE1LjggMTguNSAxMy41WiIvPjxwYXRoIGQ9Ik01IDE1LjVDNS4xMiAxNyA1LjUgMTcuMzggNyAxNy41QzUuNSAxNy42MiA1LjEyIDE4IDUgMTkuNUM0Ljg4IDE4IDQuNSAxNy42MiAzIDE3LjVDNC41IDE3LjM4IDQuODggMTcgNSAxNS41WiIvPjwvc3ZnPg==" alt="" aria-hidden="true" class="publication-project__sparkle" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="publication-project__sparkle publication-project__sparkle--fallback" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="publication-project__sparkle-fallback" aria-hidden="true"></i> AI Podcast</a>
       {% endif %}
       {% if page.doi %}
         <a href="{{ page.doi }}" class="publication-project__button publication-project__button--doi"><i class="ai ai-doi" aria-hidden="true"></i> DOI</a>
