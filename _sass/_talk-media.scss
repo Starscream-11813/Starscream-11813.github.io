@@ -1,0 +1,208 @@
+/* ==========================================================================
+   TALK MEDIA CAROUSEL
+   ========================================================================== */
+
+.talk-media {
+  margin: 1rem 0 0;
+  max-width: 980px;
+  overflow: hidden;
+  border: 1px solid rgba(105, 98, 210, 0.16);
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 14px 32px rgba(31, 37, 68, 0.08);
+}
+
+.talk-media--single {
+  margin: 1.5rem 0 1rem;
+}
+
+.talk-media__tabs {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.16rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0.58rem 0.65rem 0;
+  border-bottom: 1px solid rgba(105, 98, 210, 0.16);
+  background: linear-gradient(135deg, rgba(105, 98, 210, 0.08), rgba(76, 168, 165, 0.08));
+  scrollbar-width: none;
+  scroll-snap-type: x proximity;
+}
+
+.talk-media__tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.talk-media__tab {
+  --talk-tab-color: #6962d2;
+
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 2.05rem;
+  padding: 0 0.85rem;
+  border: 1px solid var(--talk-tab-color);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  background: var(--talk-tab-color);
+  color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  filter: saturate(0.72) brightness(0.88);
+  opacity: 0.56;
+  position: relative;
+  scroll-snap-align: start;
+  transform: translateY(1px);
+  transition: background 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease, color 0.18s ease, opacity 0.18s ease, transform 0.18s ease;
+}
+
+.talk-media__tab[data-talk-target="slides"] {
+  --talk-tab-color: #ea641a;
+}
+
+.talk-media__tab[data-talk-target="poster"] {
+  --talk-tab-color: #428bca;
+}
+
+.talk-media__tab[data-talk-target="video"] {
+  --talk-tab-color: #5cb85c;
+}
+
+.talk-media__tab[data-talk-target="paper"] {
+  --talk-tab-color: #6962d2;
+}
+
+.talk-media__tab:hover,
+.talk-media__tab:focus {
+  border-color: var(--talk-tab-color);
+  color: #fff;
+  filter: saturate(0.92) brightness(0.98);
+  outline: none;
+  opacity: 0.82;
+  transform: translateY(0);
+}
+
+.talk-media__tab.is-active {
+  border-color: var(--talk-tab-color);
+  background: var(--talk-tab-color);
+  color: #fff;
+  filter: none;
+  opacity: 1;
+  z-index: 2;
+  transform: translateY(1px);
+  box-shadow: 0 -6px 16px color-mix(in srgb, var(--talk-tab-color) 24%, transparent);
+}
+
+.talk-media__stage {
+  padding: 0.78rem 0.75rem 0.75rem;
+  background: #f9f9ff;
+}
+
+.talk-media__panel[hidden] {
+  display: none !important;
+}
+
+.talk-media__panel-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+  color: #5b6173;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.talk-media__open,
+.talk-media__open:hover {
+  color: #6962d2;
+  text-decoration: none;
+  border-bottom: 0;
+  white-space: nowrap;
+}
+
+.talk-media__viewer {
+  position: relative;
+  width: 100%;
+  min-height: 260px;
+  overflow: hidden;
+  border-radius: 7px;
+  background: #111827;
+  aspect-ratio: 16 / 9;
+}
+
+.talk-media__viewer--document {
+  min-height: 360px;
+  background: #fff;
+  aspect-ratio: 16 / 10;
+}
+
+.talk-media--single .talk-media__viewer--video {
+  min-height: 360px;
+}
+
+.talk-media--single .talk-media__viewer--document {
+  min-height: 520px;
+}
+
+.talk-media__frame,
+.talk-media__image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.talk-media__frame {
+  background: #fff;
+}
+
+.talk-media__image {
+  object-fit: contain;
+  background: #f7f6ff;
+}
+
+@media (max-width: 640px) {
+  .talk-media {
+    border-radius: 8px;
+  }
+
+  .talk-media__tabs {
+    padding: 0.48rem 0.48rem 0;
+  }
+
+  .talk-media__tab {
+    height: 1.92rem;
+    padding: 0 0.66rem;
+    border-radius: 7px 7px 0 0;
+    font-size: 0.78rem;
+  }
+
+  .talk-media__stage {
+    padding: 0.5rem;
+  }
+
+  .talk-media__panel-bar {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  .talk-media__viewer,
+  .talk-media--single .talk-media__viewer--video {
+    min-height: 210px;
+  }
+
+  .talk-media__viewer--document,
+  .talk-media--single .talk-media__viewer--document {
+    min-height: 300px;
+  }
+}

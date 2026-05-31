@@ -1,0 +1,167 @@
+{% include base_path %}
+
+{% assign talk = include.talk %}
+{% assign talk_context = include.context | default: "archive" %}
+
+{% if talk.video or talk.slides or talk.poster or talk.paper %}
+  {% assign active_media = "" %}
+  {% if talk.video %}
+    {% assign active_media = "video" %}
+  {% elsif talk.slides %}
+    {% assign active_media = "slides" %}
+  {% elsif talk.poster %}
+    {% assign active_media = "poster" %}
+  {% elsif talk.paper %}
+    {% assign active_media = "paper" %}
+  {% endif %}
+
+  {% assign talk_title = talk.title | markdownify | strip_html | strip_newlines %}
+
+  {% assign video_src = talk.video %}
+  {% if talk.video contains "drive.google.com/file/d/" %}
+    {% assign drive_id = talk.video | split: "/d/" | last | split: "/" | first %}
+    {% assign video_src = "https://drive.google.com/file/d/" | append: drive_id | append: "/preview" %}
+  {% elsif talk.video contains "youtube.com/watch" %}
+    {% assign youtube_id = talk.video | split: "v=" | last | split: "&" | first %}
+    {% assign video_src = "https://www.youtube.com/embed/" | append: youtube_id %}
+  {% elsif talk.video contains "youtu.be/" %}
+    {% assign youtube_id = talk.video | split: "youtu.be/" | last | split: "?" | first %}
+    {% assign video_src = "https://www.youtube.com/embed/" | append: youtube_id %}
+  {% endif %}
+
+  {% assign slides_src = talk.slides %}
+  {% if talk.slides contains "drive.google.com/file/d/" %}
+    {% assign drive_id = talk.slides | split: "/d/" | last | split: "/" | first %}
+    {% assign slides_src = "https://drive.google.com/file/d/" | append: drive_id | append: "/preview" %}
+  {% endif %}
+
+  {% assign poster_src = talk.poster %}
+  {% if talk.poster contains "drive.google.com/file/d/" %}
+    {% assign drive_id = talk.poster | split: "/d/" | last | split: "/" | first %}
+    {% assign poster_src = "https://drive.google.com/file/d/" | append: drive_id | append: "/preview" %}
+  {% endif %}
+
+  {% assign paper_src = talk.paper %}
+  {% if talk.paper contains "drive.google.com/file/d/" %}
+    {% assign drive_id = talk.paper | split: "/d/" | last | split: "/" | first %}
+    {% assign paper_src = "https://drive.google.com/file/d/" | append: drive_id | append: "/preview" %}
+  {% endif %}
+
+  {% assign poster_lower = talk.poster | downcase %}
+  {% assign poster_is_image = false %}
+  {% if poster_lower contains ".png" or poster_lower contains ".jpg" or poster_lower contains ".jpeg" or poster_lower contains ".webp" or poster_lower contains ".gif" %}
+    {% assign poster_is_image = true %}
+  {% endif %}
+
+<div class="talk-media talk-media--{{ talk_context }}" data-talk-media>
+  <div class="talk-media__tabs" role="tablist" aria-label="Presentation materials">
+    {% if talk.video %}
+      <button class="talk-media__tab{% if active_media == "video" %} is-active{% endif %}" type="button" role="tab" data-talk-target="video" aria-selected="{% if active_media == "video" %}true{% else %}false{% endif %}">
+        <i class="fa fa-video-camera" aria-hidden="true"></i>
+        <span>Video</span>
+      </button>
+    {% endif %}
+    {% if talk.slides %}
+      <button class="talk-media__tab{% if active_media == "slides" %} is-active{% endif %}" type="button" role="tab" data-talk-target="slides" aria-selected="{% if active_media == "slides" %}true{% else %}false{% endif %}">
+        <i class="fa fa-file-powerpoint-o" aria-hidden="true"></i>
+        <span>Slides</span>
+      </button>
+    {% endif %}
+    {% if talk.poster %}
+      <button class="talk-media__tab{% if active_media == "poster" %} is-active{% endif %}" type="button" role="tab" data-talk-target="poster" aria-selected="{% if active_media == "poster" %}true{% else %}false{% endif %}">
+        <i class="fa fa-picture-o" aria-hidden="true"></i>
+        <span>Poster</span>
+      </button>
+    {% endif %}
+    {% if talk.paper %}
+      <button class="talk-media__tab{% if active_media == "paper" %} is-active{% endif %}" type="button" role="tab" data-talk-target="paper" aria-selected="{% if active_media == "paper" %}true{% else %}false{% endif %}">
+        <i class="fa fa-file-pdf-o" aria-hidden="true"></i>
+        <span>Paper</span>
+      </button>
+    {% endif %}
+  </div>
+
+  <div class="talk-media__stage">
+    {% if talk.video %}
+      <section class="talk-media__panel{% if active_media == "video" %} is-active{% endif %}" role="tabpanel" data-talk-panel="video" {% unless active_media == "video" %}hidden{% endunless %}>
+        <div class="talk-media__panel-bar">
+          <span>Presentation video</span>
+          <a class="talk-media__open" href="{{ talk.video }}" target="_blank" rel="noopener">Open video</a>
+        </div>
+        <div class="talk-media__viewer talk-media__viewer--video">
+          <iframe class="talk-media__frame" src="{{ video_src }}" title="{{ talk_title | escape }} video" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+      </section>
+    {% endif %}
+
+    {% if talk.slides %}
+      <section class="talk-media__panel{% if active_media == "slides" %} is-active{% endif %}" role="tabpanel" data-talk-panel="slides" {% unless active_media == "slides" %}hidden{% endunless %}>
+        <div class="talk-media__panel-bar">
+          <span>Presentation slides</span>
+          <a class="talk-media__open" href="{{ talk.slides }}" target="_blank" rel="noopener">Open slides</a>
+        </div>
+        <div class="talk-media__viewer talk-media__viewer--document">
+          <iframe class="talk-media__frame" src="{{ slides_src }}" title="{{ talk_title | escape }} slides" loading="lazy"></iframe>
+        </div>
+      </section>
+    {% endif %}
+
+    {% if talk.poster %}
+      <section class="talk-media__panel{% if active_media == "poster" %} is-active{% endif %}" role="tabpanel" data-talk-panel="poster" {% unless active_media == "poster" %}hidden{% endunless %}>
+        <div class="talk-media__panel-bar">
+          <span>Poster</span>
+          <a class="talk-media__open" href="{{ talk.poster }}" target="_blank" rel="noopener">Open poster</a>
+        </div>
+        <div class="talk-media__viewer talk-media__viewer--document">
+          {% if poster_is_image %}
+            <img class="talk-media__image" src="{{ poster_src }}" alt="{{ talk_title | escape }} poster" loading="lazy">
+          {% else %}
+            <iframe class="talk-media__frame" src="{{ poster_src }}" title="{{ talk_title | escape }} poster" loading="lazy"></iframe>
+          {% endif %}
+        </div>
+      </section>
+    {% endif %}
+
+    {% if talk.paper %}
+      <section class="talk-media__panel{% if active_media == "paper" %} is-active{% endif %}" role="tabpanel" data-talk-panel="paper" {% unless active_media == "paper" %}hidden{% endunless %}>
+        <div class="talk-media__panel-bar">
+          <span>Paper PDF</span>
+          <a class="talk-media__open" href="{{ talk.paper }}" target="_blank" rel="noopener">Open paper</a>
+        </div>
+        <div class="talk-media__viewer talk-media__viewer--document">
+          <iframe class="talk-media__frame" src="{{ paper_src }}" title="{{ talk_title | escape }} paper PDF" loading="lazy"></iframe>
+        </div>
+      </section>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    if (window.talkMediaCarouselReady) return;
+    window.talkMediaCarouselReady = true;
+
+    document.addEventListener("click", function(event) {
+      var tab = event.target.closest("[data-talk-target]");
+      if (!tab) return;
+
+      var root = tab.closest("[data-talk-media]");
+      if (!root) return;
+
+      var target = tab.getAttribute("data-talk-target");
+
+      root.querySelectorAll("[data-talk-target]").forEach(function(button) {
+        var isActive = button.getAttribute("data-talk-target") === target;
+        button.classList.toggle("is-active", isActive);
+        button.setAttribute("aria-selected", isActive ? "true" : "false");
+      });
+
+      root.querySelectorAll("[data-talk-panel]").forEach(function(panel) {
+        var isActive = panel.getAttribute("data-talk-panel") === target;
+        panel.classList.toggle("is-active", isActive);
+        panel.hidden = !isActive;
+      });
+    });
+  })();
+</script>
+{% endif %}

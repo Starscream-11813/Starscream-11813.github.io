@@ -524,6 +524,57 @@ html[data-theme="dark"] .related-post-card__title {
   color: var(--theme-link) !important;
 }
 
+html[data-theme="dark"] .talk-media {
+  border-color: var(--theme-border);
+  background: var(--theme-surface);
+  box-shadow: var(--theme-shadow);
+}
+
+html[data-theme="dark"] .talk-media__tabs {
+  background: linear-gradient(135deg, rgba(159, 151, 255, 0.13), rgba(76, 168, 165, 0.09));
+}
+
+html[data-theme="dark"] .talk-media__tab {
+  border-color: var(--talk-tab-color);
+  background: var(--talk-tab-color);
+  color: #fff;
+}
+
+html[data-theme="dark"] .talk-media__tab:hover,
+html[data-theme="dark"] .talk-media__tab:focus {
+  border-color: var(--talk-tab-color);
+  color: #fff;
+}
+
+html[data-theme="dark"] .talk-media__tab.is-active {
+  border-color: var(--talk-tab-color);
+  background: var(--talk-tab-color);
+  color: #fff;
+  box-shadow: 0 10px 24px rgba(13, 14, 26, 0.36);
+}
+
+html[data-theme="dark"] .talk-media__stage {
+  background: var(--theme-surface-raised);
+}
+
+html[data-theme="dark"] .talk-media__panel-bar {
+  color: var(--theme-muted);
+}
+
+html[data-theme="dark"] .talk-media__open,
+html[data-theme="dark"] .talk-media__open:hover {
+  color: var(--theme-link-hover);
+}
+
+html[data-theme="dark"] .talk-media__viewer {
+  background: #111322;
+}
+
+html[data-theme="dark"] .talk-media__viewer--document,
+html[data-theme="dark"] .talk-media__frame {
+  background: #fff;
+}
+
 @media (max-width: 640px) {
   .masthead__menu {
     padding-right: 2.7rem;
