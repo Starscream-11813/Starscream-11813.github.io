@@ -1,0 +1,265 @@
+- title: "Pokémon: Into the Pokéverse"
+  subtitle: "Starscream-11813/Pokemon-Into-the-Pokeverse"
+  categories:
+    - "CSE 4202"
+  description: "An ASCII-art C/SDL Pokémon trainer game where players battle opponents, buy items, heal Pokémon, and explore a 2D map."
+  accent: "#ef5b43"
+  tags:
+    - C
+    - Game
+    - Coursework
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/Pokemon-Into-the-Pokeverse"
+      kind: "github"
+
+- title: "Machine Learning by Stanford University"
+  subtitle: "Starscream-11813/Machine-Learning-by-Stanford-University"
+  category: "MOOC"
+  description: "Coursework and programming exercises from Stanford University's Machine Learning course."
+  accent: "#5c7cfa"
+  tags:
+    - ML
+    - Coursework
+    - Exercises
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/Machine-Learning-by-Stanford-University"
+      kind: "github"
+
+- title: "InQ"
+  subtitle: "Starscream-11813/InQ"
+  categories:
+    - "CSE 4302"
+  description: "A Qt/C++ sketchbook application with brush controls, color palettes, geometric shapes, flood fill, zoom, image saving, and resolution adjustment."
+  accent: "#12b886"
+  tags:
+    - Project
+    - Undergraduate
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/InQ"
+      kind: "github"
+
+- title: "IUTForces"
+  subtitle: "Starscream-11813/IUTForces"
+  categories:
+    - "CSE 4402"
+    - "CSE 4408"
+  description: "An offline Java/Swing judge that lets lab instructors create programming problem sets, evaluate submissions automatically, and publish rank lists, verdicts, and submission histories."
+  accent: "#228be6"
+  tags:
+    - CP
+    - Tooling
+    - IUT
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/IUTForces"
+      kind: "github"
+
+- title: "CpZen"
+  subtitle: "Starscream-11813/CpZen"
+  categories:
+    - "CSE 4510"
+  description: "A Flask-based competitive-programming IDE with CodeMirror editing, support for 20 languages, code execution, saved templates, contest tracking, profile statistics, and algorithm-learning logs."
+  accent: "#7048e8"
+  tags:
+    - CP
+    - Algorithms
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/CpZen"
+      kind: "github"
+
+- title: "Torii Gate"
+  subtitle: "Computer Graphics and Multimedia Systems Lab"
+  category: "CSE 4552"
+  description: "A Blender day-night timelapse scene modeling the Itsukushima Shrine Torii Gate as a stylized architectural landmark."
+  accent: "#f76707"
+  tags:
+    - Blender
+    - Graphics
+    - Animation
+  links:
+    - label: "Watch Animation"
+      url: "https://tinyurl.com/ToriiGate"
+      kind: "youtube"
+    - label: "Live Wallpaper"
+      url: "https://steamcommunity.com/sharedfiles/filedetails/?id=2622573686"
+      kind: "steam"
+
+- title: "Productive Muslim"
+  subtitle: "iambashar/Productive-Muslim"
+  categories:
+    - "CSE 4508"
+  description: "A PERN-stack Islamic productivity app with categorized duas, salah times, a fasting calendar, to-do lists, a 30-days-30-deeds challenge, and a discussion forum."
+  accent: "#0ca678"
+  tags:
+    - Productivity
+    - Collaboration
+  links:
+    - label: "Repository"
+      url: "https://github.com/iambashar/Productive-Muslim"
+      kind: "github"
+
+- title: "MathBot"
+  subtitle: "Starscream-11813/MathBot"
+  categories:
+    - "CSE 4622"
+  description: "A Transformer-based math word problem solver that translates natural-language problem statements into executable mathematical expressions."
+  accent: "#15aabf"
+  tags:
+    - Math
+    - Bot
+    - AI
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/MathBot"
+      kind: "github"
+
+- title: "BanglaBook"
+  subtitle: "mohsinulkabir14/BanglaBook"
+  category: "Research"
+  description: "A large-scale Bangla book-review sentiment dataset with 158,065 positive, negative, and neutral samples plus statistical analysis and baseline models."
+  accent: "#2f9e44"
+  tags:
+    - NLP
+    - Dataset
+    - Bangla
+  links:
+    - label: "Repository"
+      url: "https://github.com/mohsinulkabir14/BanglaBook"
+      kind: "github"
+
+- title: "Variational Mathematical Reasoning"
+  subtitle: "Starscream-11813/Variational-Mathematical-Reasoning"
+  categories:
+    - "BSc Thesis"
+    - "Research"
+  description: "A math word problem solving framework that generates linguistic variants and selects the predicted expression by majority vote, evaluated with the ParaMAWPS dataset."
+  accent: "#7c3aed"
+  tags:
+    - NLP
+    - Reasoning
+    - MWP
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/Variational-Mathematical-Reasoning"
+      kind: "github"
+
+- title: "HaSPeR"
+  subtitle: "Starscream-11813/HaSPeR"
+  categories:
+    - "CSE 4836"
+    - "Research"
+  description: "A 15,000-image hand shadow puppet recognition dataset with baseline models, representation analyses, and a lightweight Flutter Android classifier."
+  accent: "#7950f2"
+  tags:
+    - Computer Vision
+    - Dataset
+    - Recognition
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/HaSPeR"
+      kind: "github"
+
+- title: "Frugal-ICL"
+  subtitle: "Starscream-11813/Frugal-ICL"
+  category: "Research"
+  description: "A training-free prompt compression method that filters low-importance tokens using saliency scores from pre-trained encoders while preserving performance across core NLP tasks."
+  accent: "#20c997"
+  tags:
+    - NLP
+    - ICL
+    - Efficiency
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/Frugal-ICL"
+      kind: "github"
+
+- title: "FairOpt"
+  subtitle: "Cloud Computing"
+  category: "CSE 6273"
+  description: "A fairness-aware federated learning optimizer that weights clients by data diversity and size to promote more equitable distributed model performance."
+  accent: "#fab005"
+  tags:
+    - Cloud
+    - Colab
+    - Coursework
+  links:
+    - label: "Open Colab"
+      url: "https://tinyurl.com/fairopt"
+      kind: "colab"
+
+- title: "Food Yammy"
+  subtitle: "Advanced Artificial Intelligence"
+  category: "CSE 6213"
+  description: "A PDDL formulation of food delivery route planning with time and capacity constraints, paired with a Python Turtle animation of the delivery process."
+  accent: "#e64980"
+  tags:
+    - AI
+    - Project
+    - Coursework
+  links:
+    - label: "Food Yammy"
+      url: "https://tinyurl.com/food-yammy"
+      kind: "github"
+
+- title: "Routine MiniZinc"
+  subtitle: "Advanced Artificial Intelligence"
+  category: "CSE 6213"
+  description: "A MiniZinc constraint satisfaction model for generating class routines across weekdays, time slots, rooms, sections, courses, and credit-hour constraints."
+  accent: "#d6336c"
+  tags:
+    - AI
+    - MiniZinc
+    - Coursework
+  links:
+    - label: "Routine MiniZinc"
+      url: "https://tinyurl.com/routine-minizinc"
+      kind: "drive"
+
+- title: "FitQuest Exergames"
+  subtitle: "Maksud627/FitQuest-Exergames"
+  categories:
+    - "CSE 4849"
+    - "CSE 6275"
+  description: "A MediaPipe-based exergame project that converts sedentary games such as Chrome Dino and Pinball into camera-driven motion gameplay."
+  accent: "#fd7e14"
+  tags:
+    - Game
+    - Fitness
+    - Collaboration
+  links:
+    - label: "Repository"
+      url: "https://github.com/Maksud627/FitQuest-Exergames"
+      kind: "github"
+
+- title: "SCReedSolo Steganography"
+  subtitle: "Starscream-11813/SCReedSolo-Steganography"
+  categories:
+    - "CSE 6265"
+    - "Research"
+  description: "A secure LSB image steganography framework combining random shuffling, Fernet encryption, and Reed-Solomon error-correction for confidentiality and integrity."
+  accent: "#495057"
+  tags:
+    - Security
+    - Steganography
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/SCReedSolo-Steganography"
+      kind: "github"
+
+- title: "IVE-LLM"
+  subtitle: "Starscream-11813/IVE-LLM"
+  category: "Research"
+  description: "Code and data for studying the Identifiable Victim Effect in large language models."
+  accent: "#9c36b5"
+  tags:
+    - LLMs
+    - AI Ethics
+    - Behavioral Bias
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/IVE-LLM"
+      kind: "github"

@@ -575,6 +575,64 @@ html[data-theme="dark"] .talk-media__frame {
   background: #fff;
 }
 
+html[data-theme="dark"] .portfolio-intro,
+html[data-theme="dark"] .portfolio-card__description,
+html[data-theme="dark"] .portfolio-update {
+  color: var(--theme-muted) !important;
+}
+
+html[data-theme="dark"] .portfolio-card {
+  border-color: var(--theme-border);
+  background: var(--theme-surface);
+  box-shadow: var(--theme-shadow);
+}
+
+html[data-theme="dark"] .portfolio-card:hover {
+  border-color: color-mix(in srgb, var(--portfolio-accent) 55%, var(--theme-border));
+  box-shadow: 0 18px 36px rgba(13, 14, 26, 0.42);
+}
+
+html[data-theme="dark"] .portfolio-card__title a {
+  color: var(--theme-text-strong) !important;
+}
+
+html[data-theme="dark"] .portfolio-card__title a:hover,
+html[data-theme="dark"] .portfolio-card__index,
+html[data-theme="dark"] .portfolio-card__category {
+  color: color-mix(in srgb, var(--portfolio-accent) 78%, #fff) !important;
+}
+
+html[data-theme="dark"] .portfolio-card__subtitle {
+  color: var(--theme-muted-2) !important;
+}
+
+html[data-theme="dark"] .portfolio-card__category {
+  border-color: color-mix(in srgb, var(--portfolio-accent) 42%, var(--theme-border));
+  background: rgba(255, 255, 255, 0.035);
+}
+
+html[data-theme="dark"] .portfolio-card__tag {
+  background: color-mix(in srgb, var(--portfolio-accent) 18%, var(--theme-surface-raised));
+  color: color-mix(in srgb, var(--portfolio-accent) 58%, #fff);
+}
+
+html[data-theme="dark"] .portfolio-card__link--secondary {
+  background: transparent;
+  color: color-mix(in srgb, var(--portfolio-accent) 70%, #fff) !important;
+}
+
+html[data-theme="dark"] .portfolio-card__link--secondary:hover {
+  color: color-mix(in srgb, var(--portfolio-accent) 70%, #fff) !important;
+}
+
+html[data-theme="dark"] .portfolio-pdf__title {
+  color: var(--theme-text-strong) !important;
+}
+
+html[data-theme="dark"] .portfolio-pdf iframe {
+  border-color: var(--theme-border);
+}
+
 @media (max-width: 640px) {
   .masthead__menu {
     padding-right: 2.7rem;

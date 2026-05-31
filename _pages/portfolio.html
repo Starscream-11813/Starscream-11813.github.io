@@ -7,10 +7,79 @@ author_profile: true
 
 {% include base_path %}
 
-<p>To see the projects that I have worked on, please visit <a href="https://github.com/Starscream-11813">my GitHub profile</a> or <a href="https://www.linkedin.com/in/syed-rifat-raiyan/">my LinkedIn profile</a>.</p>
-Last update: 6th November, 2025 {% comment %} (Remember to update date manually.) {% endcomment %}
-<br>
-<iframe src="/files/project-portfolio.pdf" width="100%" height="500" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
-{% for post in site.portfolio %}
-  {% include archive-single.html %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<p class="portfolio-intro">
+  A reverse-chronological gallery of repositories, course projects, research code, and a few visual artifacts from postgraduate research back to freshman-year builds. For the full firehose, see <a href="https://github.com/Starscream-11813">my GitHub profile</a> or <a href="https://www.linkedin.com/in/syed-rifat-raiyan/">my LinkedIn profile</a>.
+</p>
+
+<section class="portfolio-grid" aria-label="Project portfolio">
+{% for project in site.data.portfolio_projects reversed %}
+  {% assign primary_link = project.links | first %}
+  <article class="portfolio-card" style="--portfolio-accent: {{ project.accent | default: '#6962d2' }};">
+    <div class="portfolio-card__inner">
+      <div class="portfolio-card__topline">
+        <span class="portfolio-card__index">{{ forloop.index | prepend: '0' | slice: -2, 2 }}</span>
+        <span class="portfolio-card__categories" aria-label="Project categories">
+          {% if project.categories %}
+            {% for category in project.categories %}
+              <span class="portfolio-card__category">{{ category }}</span>
+            {% endfor %}
+          {% else %}
+            <span class="portfolio-card__category">{{ project.category }}</span>
+          {% endif %}
+        </span>
+      </div>
+
+      <h2 class="portfolio-card__title">
+        <a href="{{ primary_link.url }}" target="_blank" rel="noopener">{{ project.title }}</a>
+      </h2>
+      <p class="portfolio-card__subtitle">{{ project.subtitle }}</p>
+      <p class="portfolio-card__description">{{ project.description }}</p>
+
+      {% if project.tags %}
+      <ul class="portfolio-card__tags" aria-label="Project tags">
+        {% for tag in project.tags %}
+          <li class="portfolio-card__tag">{{ tag }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <div class="portfolio-card__links">
+        {% for link in project.links %}
+          <a class="portfolio-card__link portfolio-card__link--{{ link.kind }}{% unless forloop.first %} portfolio-card__link--secondary{% endunless %}" href="{{ link.url }}" target="_blank" rel="noopener">
+            {% case link.kind %}
+              {% when "github" %}
+                <i class="fa fa-github" aria-hidden="true"></i>
+              {% when "youtube" %}
+                <i class="fa fa-youtube-play" aria-hidden="true"></i>
+              {% when "colab" %}
+                <i class="fa fa-cloud" aria-hidden="true"></i>
+              {% when "drive" %}
+                <i class="fa fa-google" aria-hidden="true"></i>
+              {% when "steam" %}
+                <i class="fa fa-steam" aria-hidden="true"></i>
+              {% else %}
+                <i class="fa fa-external-link" aria-hidden="true"></i>
+            {% endcase %}
+            {% assign compact_label = link.label %}
+            {% if link.label == "Repository" %}
+              {% assign compact_label = "GitHub" %}
+            {% elsif link.label == "Watch Animation" %}
+              {% assign compact_label = "Watch" %}
+            {% endif %}
+            <span>{{ compact_label }}</span>
+          </a>
+        {% endfor %}
+      </div>
+    </div>
+  </article>
 {% endfor %}
+</section>
+
+<p class="portfolio-update">Last update: 31 May 2026.</p>
+
+<section class="portfolio-pdf" aria-label="Project portfolio PDF">
+  <h2 class="portfolio-pdf__title">Project Portfolio PDF</h2>
+  <iframe src="{{ '/files/project-portfolio.pdf' | relative_url }}" width="100%" height="500" frameborder="no" border="0" marginwidth="0" marginheight="0"></iframe>
+</section>
