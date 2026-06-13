@@ -294,6 +294,9 @@ body {
 <div class="news">
     <h2><img src="{{ '/images/quill-pen-cropped.svg' | relative_url }}" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>12th June 2026:</b> Became a reviewer at <a href="https://www.computer.org/csdl/journal/tp">IEEE Transactions on Pattern Analysis and Machine Intelligence</a>.
+        <br>
+        <br>
         <b>27th May 2026:</b> CircuitLM has been accepted for publication at the <a href="https://iclad.ai/">2026 IEEE International Conference on LLM-Aided Design (ICLAD)</a>. Alhamdulillah!
         <br>
         <br>
