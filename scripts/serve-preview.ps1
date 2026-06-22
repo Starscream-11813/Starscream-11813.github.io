@@ -1,6 +1,8 @@
-param(
+﻿param(
     [switch]$Drafts,
-    [switch]$SkipBundleInstall
+    [switch]$SkipBundleInstall,
+    [int]$Port = 4000,
+    [string]$HostAddress = "127.0.0.1"
 )
 
 $ErrorActionPreference = "Stop"
@@ -69,6 +71,8 @@ function Invoke-Native {
 Set-LocalBundleEnvironment
 Add-KnownRubyToPath
 
+$env:PAGES_REPO_NWO = "Starscream-11813/Starscream-11813.github.io"
+
 Assert-Command "ruby" "Install Ruby+Devkit for Windows, then reopen PowerShell and run this script again."
 Assert-Command "bundle" "Bundler is required. After Ruby is installed, run: gem install bundler"
 
@@ -84,17 +88,24 @@ if (-not $SkipBundleInstall) {
 $jekyllArgs = @(
     "exec",
     "jekyll",
-    "build",
+    "serve",
     "--config",
-    "_config.yml,_config.dev.yml"
+    "_config.yml,_config.dev.yml",
+    "--host",
+    $HostAddress,
+    "--port",
+    $Port.ToString(),
+    "--watch"
 )
 
 if ($Drafts) {
     $jekyllArgs += "--drafts"
 }
 
+Write-Host ""
+Write-Host "Serving preview at http://$HostAddress`:$Port/"
+Write-Host "Keep this terminal open while previewing. Press Ctrl+C to stop."
+Write-Host ""
+
 Invoke-Native "bundle" $jekyllArgs
 
-Write-Host ""
-Write-Host "Build complete. This command only writes _site; it does not start localhost:4000."
-Write-Host "To preview in a browser, run: .\serve-preview.cmd"
