@@ -33,7 +33,7 @@ bibtexprettify: "@article{sakhawat2026llmideoplasticity,\n
 poster:
 slides:
 video:
-teaser: "llm_ideoplasticity_teaser.png"
+teaser: "llm_ideoplasticity_teaser.gif"
 ---
 <u>Authors:</u> Adib Sakhawat†, **Syed Rifat Raiyan**†, Tahsin Islam, Takia Farhin, Hasan Mahmud, Md Kamrul Hasan.
 <br>
