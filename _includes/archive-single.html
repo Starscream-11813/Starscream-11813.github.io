@@ -549,33 +549,33 @@
     {% if post.citation and post.paperurl %}
       <p><u>Citation (IEEE format):</u> {{ post.citation }}</p>
       {% if post.paperurl contains "openreview.net" %}
-        <a href="{{ post.paperurl }}" style="text-decoration: none;" class="button button--openreview"><img src="https://pbs.twimg.com/profile_images/1309249465056989189/Wwyw4IhM_400x400.jpg" alt="" aria-hidden="true" class="button__logo">OpenReview</a>
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;" class="button button--openreview"><img src="https://pbs.twimg.com/profile_images/1309249465056989189/Wwyw4IhM_400x400.jpg" alt="" aria-hidden="true" class="button__logo">OpenReview</a>
       {% else %}
-        <a href="{{ post.paperurl }}" style="background-color: #b31b1b; width: 57px; text-decoration: none;" class="button"><i class="ai ai-arxiv"></i> arXiv</a>
+        <a href="{{ post.paperurl }}" target="_blank" rel="noopener noreferrer" style="background-color: #b31b1b; width: 57px; text-decoration: none;" class="button"><i class="ai ai-arxiv"></i> arXiv</a>
       {% endif %}
       {% if post.pdfurl %}
-      <a href="{{ post.pdfurl }}" style="background-color: #428bca; width:50px; text-decoration: none;" class="button"><i class="fa fa-file-pdf"></i> PDF</a>
+      <a href="{{ post.pdfurl }}" target="_blank" rel="noopener noreferrer" style="background-color: #428bca; width:50px; text-decoration: none;" class="button"><i class="fa fa-file-pdf"></i> PDF</a>
       {% endif %}
       {% if post.codedata %}
-      <a href="{{ post.codedata }}" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
+      <a href="{{ post.codedata }}" target="_blank" rel="noopener noreferrer" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
       {% endif %}
       {% if post.projectpage %}
-      <a href="{{ post.projectpage }}" style="background-color: #00a9b8; width:83px; text-decoration: none;" class="button"><i class="fa fa-globe" aria-hidden="true"></i> Website</a>
+      <a href="{{ post.projectpage }}" target="_blank" rel="noopener noreferrer" style="background-color: #00a9b8; width:83px; text-decoration: none;" class="button"><i class="fa fa-globe" aria-hidden="true"></i> Website</a>
       {% endif %}
       {% if post.aipodcast %}
-      <a href="{{ post.aipodcast }}" style="text-decoration: none;" class="button button--aipodcast"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEwLjUgMS41QzExIDcuMyAxMy4yIDkuNSAxOSAxMEMxMy4yIDEwLjUgMTEgMTIuNyAxMC41IDE4LjVDMTAgMTIuNyA3LjggMTAuNSAyIDEwQzcuOCA5LjUgMTAgNy4zIDEwLjUgMS41WiIvPjxwYXRoIGQ9Ik0xOC41IDEzLjVDMTguNyAxNS44IDE5LjcgMTYuOCAyMiAxN0MxOS43IDE3LjIgMTguNyAxOC4yIDE4LjUgMjAuNUMxOC4zIDE4LjIgMTcuMyAxNy4yIDE1IDE3QzE3LjMgMTYuOCAxOC4zIDE1LjggMTguNSAxMy41WiIvPjxwYXRoIGQ9Ik01IDE1LjVDNS4xMiAxNyA1LjUgMTcuMzggNyAxNy41QzUuNSAxNy42MiA1LjEyIDE4IDUgMTkuNUM0Ljg4IDE4IDQuNSAxNy42MiAzIDE3LjVDNC41IDE3LjM4IDQuODggMTcgNSAxNS41WiIvPjwvc3ZnPg==" alt="" aria-hidden="true" class="button__sparkle-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="button__sparkle-logo button__sparkle-logo--fallback" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="fa-solid fa-sparkles" aria-hidden="true" style="display: none;"></i> AI Podcast</a>
+      <a href="{{ post.aipodcast }}" target="_blank" rel="noopener noreferrer" style="text-decoration: none;" class="button button--aipodcast"><img src="data:image/svg+xml;base64,PHN2ZyByb2xlPSJpbWciIHZpZXdCb3g9IjAgMCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiBmaWxsPSJ3aGl0ZSI+PHBhdGggZD0iTTEwLjUgMS41QzExIDcuMyAxMy4yIDkuNSAxOSAxMEMxMy4yIDEwLjUgMTEgMTIuNyAxMC41IDE4LjVDMTAgMTIuNyA3LjggMTAuNSAyIDEwQzcuOCA5LjUgMTAgNy4zIDEwLjUgMS41WiIvPjxwYXRoIGQ9Ik0xOC41IDEzLjVDMTguNyAxNS44IDE5LjcgMTYuOCAyMiAxN0MxOS43IDE3LjIgMTguNyAxOC4yIDE4LjUgMjAuNUMxOC4zIDE4LjIgMTcuMyAxNy4yIDE1IDE3QzE3LjMgMTYuOCAxOC4zIDE1LjggMTguNSAxMy41WiIvPjxwYXRoIGQ9Ik01IDE1LjVDNS4xMiAxNyA1LjUgMTcuMzggNyAxNy41QzUuNSAxNy42MiA1LjEyIDE4IDUgMTkuNUM0Ljg4IDE4IDQuNSAxNy42MiAzIDE3LjVDNC41IDE3LjM4IDQuODggMTcgNSAxNS41WiIvPjwvc3ZnPg==" alt="" aria-hidden="true" class="button__sparkle-logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='block';"><img src="{{ '/images/icons8-sparkles.svg' | relative_url }}" alt="" aria-hidden="true" class="button__sparkle-logo button__sparkle-logo--fallback" style="display: none;" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline-block';"><i class="fa-solid fa-sparkles" aria-hidden="true" style="display: none;"></i> AI Podcast</a>
       {% endif %}
       {% if post.slides %}
-      <a href="{{ post.slides }}" style="background-color: #ea641a; width: 60px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
+      <a href="{{ post.slides }}" target="_blank" rel="noopener noreferrer" style="background-color: #ea641a; width: 60px; text-decoration: none;" class="button"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
       {% endif %}
       {% if post.poster %}
-      <a href="{{ post.poster }}" style="background-color: #5bc0de; width: 67px; text-decoration: none;" class="button"><i class="fa fa-picture-o" aria-hidden="true"></i> Poster</a>
+      <a href="{{ post.poster }}" target="_blank" rel="noopener noreferrer" style="background-color: #5bc0de; width: 67px; text-decoration: none;" class="button"><i class="fa fa-picture-o" aria-hidden="true"></i> Poster</a>
       {% endif %}
       {% if post.video %}
-        <a href="{{ post.video }}" style="background-color: #999; width: 61px; text-decoration: none;" class="button"><i class="fa fa-video-camera" aria-hidden="true"></i> Video</a>
+        <a href="{{ post.video }}" target="_blank" rel="noopener noreferrer" style="background-color: #999; width: 61px; text-decoration: none;" class="button"><i class="fa fa-video-camera" aria-hidden="true"></i> Video</a>
       {% endif %}
       {% if post.doi %}
-        <a href="{{ post.doi }}" style="background-color: #FCB520; width: 25.65px; text-decoration: none; color: black;" class="button"><i style="text-align: center; vertical-align: middle; font-size: 1.25em;" class="ai ai-doi" aria-hidden="true"></i></a>
+        <a href="{{ post.doi }}" target="_blank" rel="noopener noreferrer" style="background-color: #FCB520; width: 25.65px; text-decoration: none; color: black;" class="button"><i style="text-align: center; vertical-align: middle; font-size: 1.25em;" class="ai ai-doi" aria-hidden="true"></i></a>
       {% endif %}
       <!-- <a href="{{ base_path }}{{ post.url }}" rel="permalink" style="background-color: #6962D2; width:87px; text-decoration: none;" class="button"><span style="font-variant: small-caps; font-size: 13.5px;" class="latex">B<span style="font-size: 14.5px;">ib</span>T<sub>e</sub>X</span></a> -->
       <!-- <div class="wrap-collabsible"> <input id="collapsible{{ post.permalink }}" class="toggle" type="checkbox"> <label for="collapsible{{ post.permalink }}"
