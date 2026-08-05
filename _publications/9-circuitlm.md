@@ -4,6 +4,7 @@ collection: publications
 type: notpreprints
 permalink: /publications/9-circuitlm
 excerpt:
+pptmode: 'Oral Presentation'
 date: 2026-03-17
 venue: '2026 IEEE International Conference on LLM-Aided Design (ICLAD)'
 paperurl: 'https://arxiv.org/abs/2601.04505'
@@ -34,7 +35,7 @@ bibtexprettify: "@inproceedings{hasan2026circuitlm,\n
 }"
 
 poster:
-slides:
+slides: "https://starscream-11813.github.io/files/CircuitLM_presentation.pdf"
 video:
 teaser: "circuitlm_teaser.png"
 ---
