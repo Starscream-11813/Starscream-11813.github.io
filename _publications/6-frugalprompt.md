@@ -8,6 +8,7 @@ date: 2025-10-30
 paperurl: 'https://www.arxiv.org/abs/2510.16439'
 pdfurl: 'https://www.arxiv.org/pdf/2510.16439'
 codedata: 'https://github.com/Starscream-11813/Frugal-ICL'
+projectpage: 'https://frugalprompt.github.io/'
 doi: 'https://doi.org/10.48550/arXiv.2510.16439'
 citation: 'S. R. Raiyan, M. F. Ishmam, A. A. Imran and M. A. Moni, “FrugalPrompt: Reducing Contextual Overhead in Large Language Models via Token Attribution,” arXiv preprint arXiv:2510.16439, 2025.'
 authors: '<b>Syed Rifat Raiyan</b>, Md Farhan Ishmam, Abdullah Al Imran, Mohammad Ali Moni.'
