@@ -41,6 +41,8 @@ layout: default
         
         {% if page.collection == 'teaching' %}
           <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+        {% elsif page.collection == 'publications' and page.status == 'accepted' and page.venue %}
+          <p>Accepted to <b><i>{{ page.venue }}</i></b>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.collection == 'publications' and page.type == 'preprints' %}
           {% if page.venue and page.date %}
             <p>Under review at <b><i>{{ page.venue }}</i></b>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>

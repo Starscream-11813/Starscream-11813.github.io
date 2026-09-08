@@ -1,10 +1,13 @@
 ---
 title: "FrugalPrompt: Reducing Contextual Overhead in Large Language Models via Token Attribution"
 collection: publications
-type: preprints
+type: notpreprints
+status: accepted
 permalink: /publications/6-frugalprompt
 excerpt: 
-date: 2025-10-30
+date: 2026-01-01
+venue: 'Proceedings of the 3rd LUHME Workshop at EMNLP 2026'
+pptmode: 'Poster Presentation'
 paperurl: 'https://www.arxiv.org/abs/2510.16439'
 pdfurl: 'https://www.arxiv.org/pdf/2510.16439'
 codedata: 'https://github.com/Starscream-11813/Frugal-ICL'

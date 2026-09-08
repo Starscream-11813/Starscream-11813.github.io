@@ -1,10 +1,13 @@
 ---
 title: "LLM-Ideoplasticity: Measuring Ideological Plasticity in the Political Behavior of LLMs as a Context-Conditioned Distribution"
 collection: publications
-type: preprints
+type: notpreprints
+status: accepted
 permalink: /publications/11-llmideoplasticity
 excerpt:
 date: 2026-05-26
+venue: 'Proceedings of the 15th International Joint Conference on Natural Language Processing and the 5th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics (IJCNLP-AACL 2026)'
+pptmode: 'Oral Presentation'
 paperurl: 'https://arxiv.org/abs/2606.28335'
 pdfurl: 'https://arxiv.org/pdf/2606.28335'
 codedata: 'https://github.com/sakhadib/LLM-Ideoplasticity'
