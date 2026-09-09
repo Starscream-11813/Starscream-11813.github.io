@@ -118,6 +118,44 @@ layout: default
       opacity: 0;
     }
   }
+
+  .ranknote {
+    color: #7c3aed;
+    text-align: center;
+  }
+
+  .ranknote__icon {
+    position: relative;
+    display: inline-block;
+    margin-left: 0.18em;
+  }
+
+  .ranknote__icon::before,
+  .ranknote__icon::after {
+    content: "\2728";
+    position: absolute;
+    color: #a78bfa;
+    font-size: 0.68rem;
+    line-height: 1;
+    opacity: 0;
+    animation: ranknoteSparkle 1.7s ease-in-out infinite;
+  }
+
+  .ranknote__icon::before {
+    top: -0.38rem;
+    right: -0.34rem;
+  }
+
+  .ranknote__icon::after {
+    bottom: -0.18rem;
+    left: -0.3rem;
+    animation-delay: 0.78s;
+  }
+
+  @keyframes ranknoteSparkle {
+    0%, 100% { transform: scale(0.45) rotate(0deg); opacity: 0; }
+    50% { transform: scale(1) rotate(20deg); opacity: 1; }
+  }
 </style>
         {% if page.collection == 'publications' and page.pptmode %}
           <p>
@@ -130,6 +168,13 @@ layout: default
           <p>
             <b class="glownote" style="color: magenta;">
               {{ page.note }} <span class="trophy">🏆</span>
+            </b>
+          </p>
+        {% endif %}
+        {% if page.collection == 'publications' and page.ranknote %}
+          <p>
+            <b class="ranknote">
+              {{ page.ranknote }} <span class="ranknote__icon" aria-hidden="true">&#128200;</span>
             </b>
           </p>
         {% endif %}

@@ -8,6 +8,7 @@ excerpt:
 date: 2026-05-26
 venue: 'Proceedings of the 15th International Joint Conference on Natural Language Processing and the 5th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics (IJCNLP-AACL 2026)'
 pptmode: 'Oral Presentation'
+ranknote: '99th Percentile in ARR May 2026 (Top 62 / 17,087 submissions)'
 paperurl: 'https://arxiv.org/abs/2606.28335'
 pdfurl: 'https://arxiv.org/pdf/2606.28335'
 codedata: 'https://github.com/sakhadib/LLM-Ideoplasticity'

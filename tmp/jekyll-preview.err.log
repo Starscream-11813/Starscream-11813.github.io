@@ -1,0 +1,12 @@
+To use retry middleware with Faraday v2.0+, install `faraday-retry` gem
+[33m   GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.[0m
+[33m   GitHub Metadata: Failed to open TCP connection to 127.0.0.1:9 (No connection could be made because the target machine actively refused it. - connect(2) for "127.0.0.1" port 9)[0m
+#<Thread:0x0000022fe7eec460 C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/jekyll-3.10.0/lib/jekyll/commands/serve.rb:310 run> terminated with exception (report_on_exception is true):
+C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/webrick-1.9.2/lib/webrick/server.rb:338:in `pipe': Permission denied (Errno::EACCES)
+	from C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/webrick-1.9.2/lib/webrick/server.rb:338:in `setup_shutdown_pipe'
+	from C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/webrick-1.9.2/lib/webrick/server.rb:158:in `start'
+	from C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/jekyll-3.10.0/lib/jekyll/commands/serve.rb:310:in `block in boot_or_detach'
+C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/webrick-1.9.2/lib/webrick/server.rb:338:in `pipe': Permission denied (Errno::EACCES)
+	from C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/webrick-1.9.2/lib/webrick/server.rb:338:in `setup_shutdown_pipe'
+	from C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/webrick-1.9.2/lib/webrick/server.rb:158:in `start'
+	from C:/Users/rifat/Desktop/GitHub/Starscream-11813.github.io/vendor/bundle/ruby/3.2.0/gems/jekyll-3.10.0/lib/jekyll/commands/serve.rb:310:in `block in boot_or_detach'
