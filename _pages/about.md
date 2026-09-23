@@ -294,6 +294,9 @@ body {
 <div class="news">
     <h2><img src="{{ '/images/quill-pen-cropped.svg' | relative_url }}" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>22nd September 2026:</b> Became a reviewer at <a href="https://dl.acm.org/journal/tist">ACM TIST</a> and <a href="https://www.tandfonline.com/journals/uaai20">Applied AI</a>.
+        <br>
+        <br>
         <b>8th September 2026:</b> LLM-Ideoplasticity has been accepted at <a href="https://2026.aaclnet.org/">IJCNLP-AACL 2026</a> (Main Conference) with 99th percentile ratings (Top 62 out of 17,087 <a href="https://openreview.net/group?id=aclweb.org/ACL/ARR/2026/May">ARR May 2026</a> submissions). Alhamdulillah!
         <br>
         <br>
