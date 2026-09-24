@@ -210,12 +210,17 @@ html[data-theme="dark"] .author__urls {
   box-shadow: var(--theme-shadow);
 }
 
-html[data-theme="dark"] .author__urls {
-  width: 100%;
-  max-width: 100%;
-  padding: 0.65rem 0.75rem;
-  border: 1px solid var(--theme-border);
-  border-radius: 7px;
+// Themes must not change the author links' available text width or position.
+// On desktop, paint the card outside the list instead of adding layout padding.
+// Mobile dropdown sizing and padding are shared by both themes in _responsive.
+@media screen and (min-width: 1200px) {
+  html[data-theme="dark"] .author__urls {
+    border-radius: 7px;
+    box-shadow:
+      0 0 0 0.65rem var(--theme-surface-raised),
+      0 0 0 calc(0.65rem + 1px) var(--theme-border),
+      var(--theme-shadow);
+  }
 }
 
 html[data-theme="dark"] .author__urls li,

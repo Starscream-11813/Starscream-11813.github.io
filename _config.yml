@@ -145,6 +145,7 @@ exclude:
   - log
   - node_modules
   - package.json
+  - scripts/check-responsive.py
   - tmp
   - vendor
 keep_files:

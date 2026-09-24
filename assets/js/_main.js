@@ -3,23 +3,7 @@
    ========================================================================== */
 
 $(document).ready(function(){
-   // Sticky footer
-  var bumpIt = function() {
-      $("body").css("margin-bottom", $(".page__footer").outerHeight(true));
-    },
-    didResize = false;
-
-  bumpIt();
-
-  $(window).resize(function() {
-    didResize = true;
-  });
-  setInterval(function() {
-    if (didResize) {
-      didResize = false;
-      bumpIt();
-    }
-  }, 250);
+  // Footer spacing is handled by CSS, as in the previously shipped bundle.
   // FitVids init
   $("#main").fitVids();
 
@@ -41,6 +25,7 @@ $(document).ready(function(){
       // unfix
       Stickyfill.stop();
       $(".author__urls").hide();
+      $(".author__urls-wrapper button").removeClass("open").attr("aria-expanded", "false");
     }
   };
 
@@ -55,6 +40,20 @@ $(document).ready(function(){
   $(".author__urls-wrapper button").on("click", function() {
     $(".author__urls").fadeToggle("fast", function() {});
     $(".author__urls-wrapper button").toggleClass("open");
+    $(this).attr("aria-expanded", String($(this).hasClass("open")));
+  });
+
+  $(document).on("click", function(event) {
+    if (!$(event.target).closest(".author__urls-wrapper").length && $(".author__urls-wrapper button").is(":visible")) {
+      $(".author__urls").hide();
+      $(".author__urls-wrapper button").removeClass("open").attr("aria-expanded", "false");
+    }
+  }).on("keydown", function(event) {
+    var followButton = $(".author__urls-wrapper button.open");
+    if (event.key === "Escape" && followButton.is(":visible")) {
+      $(".author__urls").hide();
+      followButton.removeClass("open").attr("aria-expanded", "false").focus();
+    }
   });
 
   // init smooth scroll

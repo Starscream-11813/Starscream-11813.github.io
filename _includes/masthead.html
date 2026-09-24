@@ -3,8 +3,8 @@
 <div class="masthead">
   <div class="masthead__inner-wrap">
     <div class="masthead__menu">
-      <nav id="site-nav" class="greedy-nav">
-        <button><div class="navicon"></div></button>
+      <nav id="site-nav" class="greedy-nav" aria-label="Main navigation">
+        <button type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="navigation-links"><div class="navicon" aria-hidden="true"></div></button>
         <ul class="visible-links">
           <style>
             .px-app,
@@ -87,10 +87,10 @@
               {% else %}
               {% assign domain = base_path %}
             {% endif %}
-            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}">{{ link.title }}</a></li>
+            <li class="masthead__menu-item"><a href="{{ domain }}{{ link.url }}"{% if page.url == link.url %} aria-current="page"{% endif %}>{{ link.title }}</a></li>
           {% endfor %}
         </ul>
-        <ul class="hidden-links hidden"></ul>
+        <ul id="navigation-links" class="hidden-links hidden"></ul>
       </nav>
       <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
         <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>

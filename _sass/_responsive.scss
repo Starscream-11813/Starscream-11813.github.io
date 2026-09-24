@@ -1,0 +1,294 @@
+/* Phone and tablet layouts. Keep all desktop rules above 1199px untouched.
+   This breakpoint is also used by jquery.greedy-navigation.js. */
+@media screen and (max-width: 1199px) {
+  html { font-size: 16px; }
+
+  body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100svh;
+    padding-bottom: 0;
+    // The legacy sticky-footer script sets an inline bottom margin.
+    margin-bottom: 0 !important;
+  }
+
+  #main {
+    width: 100%;
+    max-width: 1040px;
+    margin: 1.5rem auto 0;
+    padding: 0 clamp(1rem, 4vw, 2.5rem);
+    flex: 1 0 auto;
+  }
+
+  #main .page, #main .archive {
+    float: none;
+    width: 100%;
+    min-width: 0;
+    margin: 0 0 2rem;
+    padding: 0;
+  }
+
+  .page__inner-wrap, .page__content, .publication-project {
+    min-width: 0;
+    max-width: 100%;
+    overflow-wrap: anywhere;
+  }
+
+  #main .page__title { font-size: 1.8rem; line-height: 1.2; }
+  #main .page__content { line-height: 1.7; }
+  #main .page__content p, #main .page__content li { font-size: 1rem; }
+  #main .archive { overflow-wrap: anywhere; }
+  #main img, #main video, #main audio, #main iframe { max-width: 100%; }
+  #main audio { width: 100%; }
+  #main pre { max-width: 100%; overflow-x: auto; }
+  #main table { display: block; max-width: 100%; overflow-x: auto; }
+  #main .sidebar__right { float: none; width: 100%; margin: 0 0 1.5rem; }
+
+  /* One consistent header, with room for both menu and theme controls. */
+  .masthead__inner-wrap { padding: 0.8rem clamp(1rem, 4vw, 2.5rem); }
+  .masthead__menu { padding-right: 3.25rem; }
+  #site-nav { min-width: 0; min-height: 48px; }
+  #site-nav .visible-links { display: block; padding-right: 3.25rem; }
+  #site-nav .visible-links > li { display: block; padding: 0; }
+  #site-nav .masthead__menu-item--lg a {
+    margin: 0;
+    padding: 0.2rem 0;
+    font-size: clamp(18px, 5vw, 25px) !important;
+    line-height: 1.15 !important;
+    white-space: normal;
+  }
+  #site-nav > button, .masthead .theme-toggle {
+    width: 44px;
+    height: 44px;
+    border: 1px solid var(--theme-border, rgba(105, 98, 210, 0.22));
+    border-radius: 50%;
+    background: var(--theme-surface, #f7f6fd);
+    color: var(--theme-accent, #6962d2);
+  }
+  #site-nav > button { top: 2px; padding: 0 10px; }
+  #site-nav .navicon, #site-nav .navicon::before, #site-nav .navicon::after {
+    width: 22px;
+    height: 2px;
+    background: currentColor;
+  }
+  #site-nav .close .navicon { background: transparent; }
+  #site-nav .hidden-links {
+    width: calc(100% + 3.25rem);
+    right: -3.25rem;
+    top: 100%;
+    margin-top: 1rem;
+    padding: 0.5rem;
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(31, 37, 68, 0.14);
+    max-height: calc(100svh - 100px);
+    overflow-y: auto;
+  }
+  #site-nav .hidden-links:not(.hidden) { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #site-nav .hidden-links::before, #site-nav .hidden-links::after { display: none; }
+  #site-nav .hidden-links li { min-width: 0; padding: 0; border: 0; }
+  #site-nav .hidden-links a { margin: 0; padding: 0.7rem; border-radius: 7px; white-space: normal; }
+  #site-nav .hidden-links a[aria-current="page"] {
+    background: var(--theme-accent-soft, #efedf9);
+    color: var(--theme-accent, #6962d2);
+  }
+  #site-nav > button:focus-visible, #main a:focus-visible, #main button:focus-visible {
+    outline: 2px solid var(--theme-accent, #6962d2);
+    outline-offset: 3px;
+  }
+
+  /* A compact profile instead of a desktop sidebar or a tiny table-cell avatar. */
+  #main .sidebar {
+    position: static !important;
+    float: none;
+    width: 100% !important;
+    margin: 0 0 1.75rem;
+    padding: 0 0 1.25rem;
+    border-bottom: 1px solid var(--theme-border, #e9e5f3);
+    transform: none;
+  }
+  .sidebar > [itemscope] {
+    display: grid;
+    grid-template-columns: 80px minmax(0, 1fr);
+    gap: 0.35rem 1rem;
+    align-items: center;
+  }
+  .sidebar div.author__avatar { display: block; grid-row: 1 / 3; width: 80px; }
+  .sidebar .author__avatar img {
+    display: block;
+    width: 80px;
+    height: 80px;
+    padding: 3px;
+    object-fit: cover;
+    background: linear-gradient(135deg, #e9baf1, #c1ddf5, #c9ebda);
+    border: 0;
+  }
+  .sidebar .author__content { display: block; width: auto; min-width: 0; padding: 0; }
+  .sidebar .author__name { margin: 0 0 0.3rem; font-size: 1.1rem; line-height: 1.25; }
+  .sidebar .author__bio { margin: 0; font-size: 0.875rem; }
+  .sidebar .author__urls-wrapper { display: block; grid-column: 2; justify-self: start; }
+  .sidebar .author__urls-wrapper > button {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    margin: 0;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+  }
+  .sidebar .author__urls {
+    position: absolute;
+    left: -96px;
+    right: auto;
+    width: min(320px, calc(100vw - 2rem));
+    max-height: 65vh;
+    max-height: 65svh;
+    overflow-y: auto;
+    margin: 0.5rem 0 0;
+    padding: 0.65rem;
+    z-index: 15;
+    border: 1px solid var(--theme-border, #e9e5f3);
+    border-radius: 12px;
+    background: var(--theme-surface-raised, #fff);
+    box-shadow: 0 12px 32px rgba(31, 37, 68, 0.14);
+  }
+  .sidebar .author__urls::before, .sidebar .author__urls::after { display: none; }
+  .sidebar .author__urls li { font-size: 0.9rem; }
+  .sidebar .author__urls a { padding: 0.65rem 0.5rem; margin: 0; }
+
+  /* Home: remove the negative margin; let the Chronicle read naturally on phones. */
+  #main .container { grid-template-columns: minmax(0, 1fr); gap: 2rem; padding: 0; }
+  #main .container > .content { min-width: 0; font-size: 1rem; line-height: 1.7; }
+  #main .news {
+    min-width: 0;
+    height: auto;
+    margin: 0;
+    padding: 1.25rem;
+    border: 1px solid var(--theme-border, #e7e1f3);
+    border-top: 3px solid var(--theme-accent, #b4abe7);
+    border-radius: 12px;
+    background: var(--theme-surface, #faf9fd);
+    font-size: 0.9375rem;
+    line-height: 1.65;
+  }
+  #main .news h2 { margin: 0 0 1rem; font-size: 1.4rem; }
+  #main .news-content { max-height: none; overflow: visible; padding: 0; }
+  #main .visitor-map {
+    float: none !important;
+    width: 100%;
+    max-width: 500px;
+    margin: 1.5rem auto;
+  }
+  #main .visitor-map div, #main .visitor-map iframe, #main .visitor-map a, #main .visitor-map img {
+    max-width: 100% !important;
+  }
+  // The widget's world is a fixed-size background image under its SVG markers.
+  // Scale both dimensions together so the map and markers remain aligned.
+  #main .visitor-map .mapmyvisitors-map {
+    width: 100% !important;
+    height: auto !important;
+    aspect-ratio: 2.04;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+  }
+
+  /* Cards keep their hierarchy without letting code blocks dictate their width. */
+  #main .archive__item .row {
+    gap: 1rem;
+    padding: 1rem;
+    border-color: var(--theme-border, #e3dfee);
+    border-radius: 12px;
+    align-items: flex-start;
+  }
+  #main .archive__item .column { min-width: 0; padding: 0; }
+  #main .archive__item .publication-details { flex: 1 1 0%; }
+  #main .publication-details .archive__item-title { font-size: 1.15rem; line-height: 1.35; }
+  #main .publication-details p { margin: 0.5rem 0; font-size: 0.9rem; line-height: 1.6; }
+  #main .archive__item-excerpt { font-size: 0.9375rem; line-height: 1.65; }
+  #main .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    width: auto !important; // Individual buttons have fixed inline desktop widths.
+    min-width: 44px;
+    min-height: 44px;
+    height: auto;
+    max-width: 100%;
+    margin: 0.25rem 0.15rem 0.25rem 0;
+    padding: 0.45rem 0.65rem;
+    font-size: 0.875rem;
+    line-height: 1.2;
+    vertical-align: middle;
+    white-space: normal;
+  }
+  #main .wrap-collabsible { max-width: 100%; margin: 1rem 0 0; }
+  #main .lbl-toggle { min-height: 44px; }
+  #main input.toggle {
+    display: block;
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: 0;
+    clip-path: inset(50%);
+    overflow: hidden;
+  }
+  #main .toggle:focus-visible + .lbl-toggle { outline: 2px solid var(--theme-accent, #6962d2); outline-offset: 3px; }
+  #main .copy-btn { min-height: 44px; top: 0; right: 0; }
+  #main .collapsible-content .content-inner { padding: 0.5rem; }
+  #main .collapsible-content pre { margin: 0; padding: 0.75rem; }
+  #main .collapsible-content code { white-space: pre-wrap; overflow-wrap: anywhere; word-break: normal; }
+  #main .toggle:checked + .lbl-toggle + .collapsible-content { max-height: none; }
+
+  /* Media, portfolio actions, and long document pages. */
+  #main .talk-media { max-width: 100%; }
+  #main .talk-media__tabs { flex-wrap: wrap; gap: 0.35rem; padding-bottom: 0.5rem; }
+  #main .talk-media__tab { min-height: 44px; border-radius: 7px; }
+  #main .talk-media__panel-bar { flex-wrap: wrap; }
+  #main .talk-media__open { padding: 0.5rem 0; white-space: normal; }
+  #main .portfolio-grid { grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1rem; }
+  #main .portfolio-card { min-width: 0; }
+  #main .portfolio-card__inner { padding: 1rem; min-width: 0; }
+  #main .portfolio-card__title { font-size: 1.1rem; line-height: 1.3; }
+  #main .portfolio-card__description { font-size: 0.9375rem; line-height: 1.6; }
+  #main .portfolio-card__subtitle { font-size: 0.8rem; }
+  #main .portfolio-card__tag, #main .portfolio-card__category { font-size: 0.7rem; white-space: normal; }
+  #main .portfolio-card__links { flex-wrap: wrap; gap: 0.5rem; }
+  #main .portfolio-card__link { min-height: 44px; padding: 0.5rem 0.65rem; font-size: 0.8rem; }
+  .publication-project .publication-project__button { min-height: 44px; }
+
+  /* In-flow footer: no overlap, negative margins, or empty space beneath it. */
+  body > .page__footer { position: static; float: none; margin: 2rem 0 0; }
+  .page__footer footer { margin-top: 1.5rem; padding: 0 clamp(1rem, 4vw, 2.5rem) 1.5rem; }
+  .page__footer .footer-signature {
+    float: none !important;
+    width: 120px;
+    margin: 0 0 1rem !important;
+  }
+  .page__footer .page__footer-follow ul { display: flex; flex-wrap: wrap; align-items: center; gap: 0.25rem 0.65rem; margin: 0.75rem 0; }
+  .page__footer-follow li + li::before { display: none; }
+  .page__footer-follow a { display: inline-flex; align-items: center; gap: 0.3rem; min-height: 44px; padding: 0; }
+  .page__footer .page__footer-copyright { font-size: 0.75rem; line-height: 1.7; overflow-wrap: anywhere; }
+}
+
+@media screen and (min-width: 900px) and (max-width: 1199px) {
+  #main .container { grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); align-items: start; }
+  #main .news-content { max-height: 36rem; overflow-y: auto; padding-right: 0.5rem; scrollbar-width: thin; }
+}
+
+@media screen and (max-width: 599px) {
+  #main .archive__item .row { flex-direction: column; }
+  #main .archive__item .publication-details { flex: auto; width: 100%; }
+  #main .archive__item .teaser-image { flex: auto; width: 100%; max-width: 100%; }
+  #main .teaser-image img { display: block; width: 100%; height: auto; max-height: 260px; object-fit: contain; }
+  #main .archive__item .teaser-image2, #main .archive__item .teaser-image3 {
+    flex: auto;
+    align-self: center;
+    max-width: 130px;
+  }
+}
+
+@media screen and (max-width: 1199px) and (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
