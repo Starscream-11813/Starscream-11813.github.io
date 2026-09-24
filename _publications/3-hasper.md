@@ -7,7 +7,7 @@ excerpt:
 pptmode: 'Oral Presentation'
 note: 'Outstanding Presentation'
 date: 2025-07-14
-venue: 'Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops (WCCA Oral)'
+venue: 'Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops'
 paperurl: 'https://www.arxiv.org/abs/2408.10360'
 pdfurl: 'https://www.arxiv.org/pdf/2408.10360'
 codedata: 'https://github.com/Starscream-11813/HaSPeR'

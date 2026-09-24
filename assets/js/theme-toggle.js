@@ -47,10 +47,31 @@
     }
   }
 
+  function syncSisyphusAnimations(theme) {
+    var frames = document.querySelectorAll('[data-sisyphus-animation]');
+
+    for (var i = 0; i < frames.length; i += 1) {
+      if (frames[i].contentWindow) {
+        frames[i].contentWindow.postMessage({ sisyphusTheme: theme }, window.location.origin);
+      }
+    }
+  }
+
+  function bindSisyphusAnimations() {
+    var frames = document.querySelectorAll('[data-sisyphus-animation]');
+
+    for (var i = 0; i < frames.length; i += 1) {
+      frames[i].addEventListener('load', function() {
+        syncSisyphusAnimations(currentTheme());
+      });
+    }
+  }
+
   function applyTheme(theme, persist) {
     document.documentElement.setAttribute('data-theme', theme);
     updateThemeColor(theme);
     updateButtons(theme);
+    syncSisyphusAnimations(theme);
 
     if (persist) {
       setStoredTheme(theme);
@@ -64,6 +85,7 @@
   document.addEventListener('DOMContentLoaded', function() {
     var buttons = document.querySelectorAll('[data-theme-toggle]');
 
+    bindSisyphusAnimations();
     applyTheme(currentTheme(), false);
 
     for (var i = 0; i < buttons.length; i += 1) {

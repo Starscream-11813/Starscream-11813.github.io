@@ -15,8 +15,11 @@ layout: default
 <div id="main" role="main">
   {% include sidebar.html %}
 
-  <div class="archive">
+  <div class="archive{% if page.sisyphus_animation %} archive--sisyphus{% endif %}">
     {% unless page.header.overlay_color or page.header.overlay_image %}
+      {% if page.sisyphus_animation %}
+        {% include sisyphus-animation.html animation=page.sisyphus_animation title=page.sisyphus_animation_title %}
+      {% endif %}
       <h1 class="page__title">{{ page.title }}</h1>
     {% endunless %}
     {{ content }}

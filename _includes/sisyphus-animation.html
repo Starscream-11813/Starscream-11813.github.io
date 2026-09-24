@@ -1,0 +1,12 @@
+{% assign sisyphus_title = include.title | default: "Animated ink illustration of Sisyphus" %}
+<figure class="sisyphus-animation sisyphus-animation--{{ include.animation }}">
+  <object
+    class="sisyphus-animation__frame fitvidsignore"
+    data-sisyphus-animation
+    data="{{ '/images/' | relative_url }}{{ include.animation }}.html?bg=transparent&amp;theme=auto"
+    type="text/html"
+    title="{{ sisyphus_title }}"
+    aria-label="{{ sisyphus_title }}">
+    <a href="{{ '/images/' | relative_url }}{{ include.animation }}.html">View the Sisyphus animation</a>
+  </object>
+</figure>
