@@ -1,0 +1,20 @@
+{%- comment -%}
+  Render raw dagger markers as author superscripts without changing author names.
+  For rendered publication content, only format the labeled Authors line; do not
+  superscript daggers in the abstract, captions, or equal-contribution legends.
+{%- endcomment -%}
+{%- assign author_dagger_markup = '<sup class="author-dagger">&dagger;</sup>' -%}
+{%- if include.content -%}
+  {%- assign author_dagger_sections = include.content | split: '<u>Authors:</u>' -%}
+  {%- for author_dagger_section in author_dagger_sections -%}
+    {%- if forloop.first -%}
+      {{- author_dagger_section -}}
+    {%- else -%}
+      {%- assign author_dagger_line = author_dagger_section | split: '<br' | first | split: '</p>' | first -%}
+      {%- assign author_dagger_remainder = author_dagger_section | remove_first: author_dagger_line -%}
+      <u>Authors:</u>{{- author_dagger_line | replace: '†', author_dagger_markup -}}{{- author_dagger_remainder -}}
+    {%- endif -%}
+  {%- endfor -%}
+{%- else -%}
+  {{- include.authors | replace: '†', author_dagger_markup -}}
+{%- endif -%}

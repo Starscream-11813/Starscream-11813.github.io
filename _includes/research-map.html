@@ -1,0 +1,66 @@
+{% assign research_map = site.data.research_map %}
+{% assign map_id = include.id | default: 'research-map' %}
+<section class="research-map" data-research-map aria-labelledby="{{ map_id }}-title">
+  <header class="research-map__header">
+    <h3 id="{{ map_id }}-title">{{ research_map.heading }}</h3>
+    <p>{{ research_map.intro }}</p>
+  </header>
+  <div class="research-map__drawing">
+    <div class="research-map__aura" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    {% include research-brain.html map_id=map_id research_map=research_map %}
+    <div class="research-map__controls" role="group" aria-label="Research areas">
+      {% for area in research_map.areas %}
+      {%- comment %}On phones the drawing zooms to the brain (x 160-480, y 3.2-339.2) and labels sit on their hubs.{% endcomment %}
+      <button class="research-map__node" type="button" style="--map-x:{{ area.x }}%;--map-y:{{ area.y }}%;--map-small-x:{{ area.hub[0] | minus: 160 | divided_by: 3.2 }}%;--map-small-y:{{ area.hub[1] | minus: 3.2 | divided_by: 3.36 }}%" data-align="{{ area.align | default: 'center' }}" data-map-control="{{ area.key }}" aria-controls="{{ map_id }}-{{ area.key }}" aria-describedby="{{ map_id }}-instructions" aria-expanded="false" aria-pressed="false"><span class="research-map__node-dot" aria-hidden="true"></span><span>{{ area.label }}</span></button>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="research-map__guide">
+    <span class="research-map__hint research-map__hint--pointer">Hover to explore; click to keep a view.</span><span class="research-map__hint research-map__hint--touch">Tap a region to explore.</span>
+    <span class="research-map__legend"><span><i aria-hidden="true"></i>Shared paper</span><span><i class="research-map__legend-dash" aria-hidden="true"></i>Conceptual link</span></span>
+  </div>
+  <div class="research-map__details">
+    {% for area in research_map.areas %}
+    <details class="research-map__panel" data-map-panel="{{ area.key }}" id="{{ map_id }}-{{ area.key }}"{% if forloop.first %} open{% endif %}>
+      <summary>{{ area.label }}</summary>
+      <div class="research-map__panel-content" role="region" tabindex="-1" aria-labelledby="{{ map_id }}-{{ area.key }}-heading">
+        <h4 class="research-map__panel-title" id="{{ map_id }}-{{ area.key }}-heading">{{ area.label }}</h4>
+        <p class="research-map__summary">{{ area.summary }}</p>
+        <div class="research-map__papers">
+          {% assign map_seen = '|' %}
+          {% for topic_key in area.topics %}
+            {% for entry in site.data.research_topics[topic_key].papers %}
+              {% assign map_token = entry.publication | prepend: '|' | append: '|' %}
+              {% unless map_seen contains map_token %}
+                {% include research-map-paper.html entry=entry %}
+                {% assign map_seen = map_seen | append: entry.publication | append: '|' %}
+              {% endunless %}
+            {% endfor %}
+          {% endfor %}
+        </div>
+        {% if area.work_in_progress %}
+        <div class="research-map__ongoing"><span class="research-map__status">In progress</span><span class="research-map__ongoing-title">{{ area.work_in_progress.title }}</span><p>{{ area.work_in_progress.description }}</p></div>
+        {% endif %}
+        {% assign map_has_connections = false %}
+        {% capture map_connections %}
+          {% for edge in research_map.relationships %}
+            {% if edge.kind == 'shared' %}
+              {% if edge.from == area.key or edge.to == area.key %}
+                {% if edge.from == area.key %}{% assign other_key = edge.to %}{% else %}{% assign other_key = edge.from %}{% endif %}
+                {% assign other_area = research_map.areas | where: 'key', other_key | first %}
+                {% assign shared_paper = site.publications | where: 'url', edge.publication | first %}
+                {% if other_area and shared_paper %}
+                {% if map_has_connections %}<span aria-hidden="true"> &middot; </span>{% endif %}<span>{{ edge.name | default: shared_paper.title }} also connects to {{ other_area.label | downcase }}</span>{% assign map_has_connections = true %}
+                {% endif %}
+              {% endif %}
+            {% endif %}
+          {% endfor %}
+        {% endcapture %}
+        {% if map_has_connections %}<p class="research-map__overlaps">{{ map_connections | strip }}</p>{% endif %}
+      </div>
+    </details>
+    {% endfor %}
+  </div>
+  <span class="research-map__announcement" id="{{ map_id }}-instructions">Focus a region to preview it. Press Enter or Space to select it, or Down Arrow to move to its papers. Left and Right Arrow move between regions. Escape returns to the selected region.</span>
+  <span class="research-map__announcement" data-map-announcement role="status" aria-live="polite" aria-atomic="true"></span>
+</section>

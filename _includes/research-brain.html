@@ -1,0 +1,128 @@
+{%- assign brain_id = include.map_id | append: '-brain' -%}
+{%- assign brain_map = include.research_map -%}
+{%- assign cortex = site.data.research_cortex -%}
+<svg class="research-map__brain research-brain" viewBox="0 0 640 400" fill="none" aria-hidden="true" focusable="false">
+  <defs>
+    <path id="{{ brain_id }}-left" d="{{ cortex.hemispheres.left }}"/>
+    <path id="{{ brain_id }}-right" d="{{ cortex.hemispheres.right }}"/>
+    <clipPath id="{{ brain_id }}-clip"><use href="#{{ brain_id }}-left"/><use href="#{{ brain_id }}-right"/></clipPath>
+    <linearGradient id="{{ brain_id }}-left-fill" x1="182" y1="12" x2="318" y2="334" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#74D2FA" stop-opacity="0.2"/>
+      <stop offset="0.3" stop-color="#A7A8F0" stop-opacity="0.27"/>
+      <stop offset="0.66" stop-color="#8180DE" stop-opacity="0.23"/>
+      <stop offset="1" stop-color="#211CBF" stop-opacity="0.22"/>
+    </linearGradient>
+    <linearGradient id="{{ brain_id }}-right-fill" x1="322" y1="12" x2="458" y2="334" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#EC8DFF" stop-opacity="0.17"/>
+      <stop offset="0.35" stop-color="#74D2FA" stop-opacity="0.2"/>
+      <stop offset="0.7" stop-color="#9194E4" stop-opacity="0.24"/>
+      <stop offset="1" stop-color="#7A4DFF" stop-opacity="0.22"/>
+    </linearGradient>
+    <linearGradient id="{{ brain_id }}-ridges" x1="182" y1="20" x2="316" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#74D2FA"/>
+      <stop offset="0.3" stop-color="#A7A8F0"/>
+      <stop offset="0.65" stop-color="#6E65CE"/>
+      <stop offset="1" stop-color="#5445B5"/>
+    </linearGradient>
+    <linearGradient id="{{ brain_id }}-ridges-right" x1="458" y1="20" x2="324" y2="330" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#A7A8F0"/>
+      <stop offset="0.12" stop-color="#EC8DFF"/>
+      <stop offset="0.26" stop-color="#A7A8F0"/>
+      <stop offset="0.63" stop-color="#8180DE"/>
+      <stop offset="1" stop-color="#7A4DFF"/>
+    </linearGradient>
+    <linearGradient id="{{ brain_id }}-contour" x1="182" y1="12" x2="458" y2="334" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#74D2FA"/>
+      <stop offset="0.24" stop-color="#8180DE"/>
+      <stop offset="0.53" stop-color="#5445B5"/>
+      <stop offset="0.8" stop-color="#7A4DFF"/>
+      <stop offset="1" stop-color="#EC8DFF"/>
+    </linearGradient>
+    <radialGradient id="{{ brain_id }}-indigo"><stop stop-color="#211CBF" stop-opacity="0.2"/><stop offset="1" stop-color="#211CBF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="{{ brain_id }}-cyan"><stop stop-color="#74D2FA" stop-opacity="0.28"/><stop offset="1" stop-color="#74D2FA" stop-opacity="0"/></radialGradient>
+    <radialGradient id="{{ brain_id }}-violet"><stop stop-color="#7A4DFF" stop-opacity="0.23"/><stop offset="1" stop-color="#7A4DFF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="{{ brain_id }}-magenta"><stop stop-color="#EC8DFF" stop-opacity="0.2"/><stop offset="1" stop-color="#EC8DFF" stop-opacity="0"/></radialGradient>
+    <radialGradient id="{{ brain_id }}-lavender"><stop stop-color="#9194E4" stop-opacity="0.3"/><stop offset="1" stop-color="#9194E4" stop-opacity="0"/></radialGradient>
+    <!-- A soft specular highlight makes each hemisphere read as glass. -->
+    <radialGradient id="{{ brain_id }}-sheen" cx="0.36" cy="0.12" r="0.62"><stop class="research-brain__sheen-stop"/><stop offset="1" class="research-brain__sheen-stop research-brain__sheen-stop--end"/></radialGradient>
+    <linearGradient id="{{ brain_id }}-core" x1="253" y1="149" x2="387" y2="195" gradientUnits="userSpaceOnUse"><stop class="research-brain__core-stop"/><stop offset="1" class="research-brain__core-stop research-brain__core-stop--end"/></linearGradient>
+    <g id="{{ brain_id }}-folds-left">{% for fold in cortex.folds.left %}<path d="{{ fold }}"/>{% endfor %}</g>
+    <g id="{{ brain_id }}-folds-right">{% for fold in cortex.folds.right %}<path d="{{ fold }}"/>{% endfor %}</g>
+  </defs>
+
+  <g class="research-brain__silhouette">
+    <use href="#{{ brain_id }}-left"/><use href="#{{ brain_id }}-right"/>
+  </g>
+  <use href="#{{ brain_id }}-left" fill="url(#{{ brain_id }}-left-fill)"/>
+  <use href="#{{ brain_id }}-right" fill="url(#{{ brain_id }}-right-fill)"/>
+  <g clip-path="url(#{{ brain_id }}-clip)">
+    {% for area in brain_map.areas %}
+      {% case area.key %}{% when 'reasoning' %}{% assign region_tint = 'indigo' %}{% when 'creativity' %}{% assign region_tint = 'violet' %}{% when 'social' %}{% assign region_tint = 'magenta' %}{% when 'agentic' %}{% assign region_tint = 'cyan' %}{% else %}{% assign region_tint = 'lavender' %}{% endcase %}
+      <g class="research-brain__region" data-brain-region="{{ area.key }}"><ellipse cx="{{ area.hub[0] }}" cy="{{ area.hub[1] }}" rx="78" ry="86" fill="url(#{{ brain_id }}-{{ region_tint }})"/></g>
+    {% endfor %}
+    <!-- Soft color fields on the creative side; radial fades keep them edgeless. -->
+    <g class="research-brain__creative-wash">
+      <ellipse cx="368" cy="50" rx="40" ry="28" fill="url(#{{ brain_id }}-magenta)"/>
+      <ellipse cx="428" cy="98" rx="36" ry="32" fill="url(#{{ brain_id }}-cyan)"/>
+      <ellipse cx="392" cy="150" rx="30" ry="26" fill="url(#{{ brain_id }}-violet)"/>
+      <ellipse cx="436" cy="206" rx="30" ry="32" fill="url(#{{ brain_id }}-lavender)"/>
+      <ellipse cx="386" cy="264" rx="36" ry="30" fill="url(#{{ brain_id }}-cyan)"/>
+      <ellipse cx="420" cy="302" rx="32" ry="24" fill="url(#{{ brain_id }}-magenta)"/>
+    </g>
+    <g class="research-brain__grooves">
+      <use href="#{{ brain_id }}-folds-left"/>
+      <use href="#{{ brain_id }}-folds-right"/>
+    </g>
+    <g class="research-brain__ridges">
+      <use href="#{{ brain_id }}-folds-left" stroke="url(#{{ brain_id }}-ridges)"/>
+      <use href="#{{ brain_id }}-folds-right" stroke="url(#{{ brain_id }}-ridges-right)"/>
+    </g>
+    <g class="research-brain__ridge-highlights" transform="translate(-0.5 -0.7)">
+      <use href="#{{ brain_id }}-folds-left"/>
+      <use href="#{{ brain_id }}-folds-right"/>
+    </g>
+  </g>
+  <g class="research-brain__sheen" fill="url(#{{ brain_id }}-sheen)"><use href="#{{ brain_id }}-left"/><use href="#{{ brain_id }}-right"/></g>
+  <g class="research-brain__rim" stroke="url(#{{ brain_id }}-contour)"><use href="#{{ brain_id }}-left"/><use href="#{{ brain_id }}-right"/></g>
+  {% include research-circuits.html %}
+  <g class="research-map__connections">
+    {% for edge in brain_map.relationships %}
+      {% assign edge_from = brain_map.areas | where: 'key', edge.from | first %}
+      {% assign edge_to = brain_map.areas | where: 'key', edge.to | first %}
+      {% if edge_from and edge_to %}
+        {% assign from_x = edge_from.hub[0] %}{% assign from_y = edge_from.hub[1] %}
+        {% assign to_x = edge_to.hub[0] %}{% assign to_y = edge_to.hub[1] %}
+        {% comment %}Each link bows a little toward the central chip.{% endcomment %}
+        {% assign middle_x = from_x | plus: to_x | divided_by: 2.0 %}{% assign middle_y = from_y | plus: to_y | divided_by: 2.0 %}
+        {% assign bend_x = 320 | minus: middle_x | times: 0.35 | plus: middle_x %}{% assign bend_y = 172 | minus: middle_y | times: 0.35 | plus: middle_y %}
+        {% capture edge_path %}M{{ from_x }} {{ from_y }}Q{{ bend_x }} {{ bend_y }} {{ to_x }} {{ to_y }}{% endcapture %}
+        <path class="research-map__connection-casing" d="{{ edge_path }}" data-map-edge data-from="{{ edge.from }}" data-to="{{ edge.to }}" data-kind="{{ edge.kind }}" pathLength="100"/>
+        <path class="research-map__connection research-map__connection--{{ edge.kind }}" d="{{ edge_path }}" data-map-edge data-from="{{ edge.from }}" data-to="{{ edge.to }}" data-kind="{{ edge.kind }}" pathLength="100"/>
+      {% endif %}
+    {% endfor %}
+  </g>
+  <!-- The central chip bridges the hemispheres like a corpus callosum; its pins
+       line up with the traces in _data/research_circuits.yml. -->
+  <g class="research-brain__core">
+    <g class="research-brain__chip-pins">
+      {%- for pin in (0..12) %}{% assign pin_x = pin | times: 8 | plus: 270.9 %}
+      <rect x="{{ pin_x }}" y="143.5" width="2.2" height="6" rx="1.1"/><rect x="{{ pin_x }}" y="194.5" width="2.2" height="6" rx="1.1"/>
+      {%- endfor %}
+      {%- for pin in (0..4) %}{% assign pin_y = pin | times: 6 | plus: 158.9 %}
+      <rect x="247.5" y="{{ pin_y }}" width="6" height="2.2" rx="1.1"/><rect x="386.5" y="{{ pin_y }}" width="6" height="2.2" rx="1.1"/>
+      {%- endfor %}
+    </g>
+    <rect class="research-brain__chip" x="253" y="149" width="134" height="46" rx="8" fill="url(#{{ brain_id }}-core)"/>
+    <rect class="research-brain__chip-die" x="257.5" y="153.5" width="125" height="37" rx="5"/>
+    <!-- The words keep their natural spacing; the line, the caption, and the
+         hairlines beside it are centered on the midline. -->
+    <g class="research-brain__chip-text">
+      <text x="320.8" y="169" text-anchor="middle">HUMAN<tspan class="research-brain__chip-times"> &#215; </tspan>MACHINE</text>
+      <text class="research-brain__chip-caption" x="321.07" y="182.4" text-anchor="middle">COGNITION</text>
+    </g>
+    <path class="research-brain__chip-rule" d="M271.4 180.4H289.8M350.2 180.4H368.6"/>
+  </g>
+  <g class="research-map__fallback-labels">
+    {% for area in brain_map.areas %}<text x="{{ area.hub[0] }}" y="{{ area.hub[1] | plus: 5 }}" text-anchor="middle">{{ area.label }}</text>{% endfor %}
+  </g>
+</svg>

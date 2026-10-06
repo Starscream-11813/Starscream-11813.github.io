@@ -1,0 +1,4 @@
+{%- assign map_paper = site.publications | where: 'url', include.entry.publication | first -%}
+{%- if map_paper.pdfurl -%}
+<a class="research-map__paper" href="{{ map_paper.pdfurl }}" target="_blank" rel="noopener noreferrer" title="{{ map_paper.title | escape }}" aria-label="{{ include.entry.name | default: map_paper.title | escape }} (PDF, opens in a new tab)"><span>{{ include.entry.name | default: map_paper.title }}</span><span class="research-map__pdf" aria-hidden="true">PDF &nearr;</span></a>
+{%- endif -%}

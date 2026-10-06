@@ -1,8 +1,10 @@
 ---
 permalink: /
 title: "Home"
-excerpt: "About me"
+excerpt: "Research on large language models, reasoning, creativity, and social behavior at the intersection of human and machine cognition."
 author_profile: true
+research_topic_menus: true
+research_map: true
 redirect_from: 
   - /about/
   - /about.html
@@ -266,30 +268,486 @@ body {
         .emoji {
             display: inline-block;
         }
+
+        .content .intellectual-influences {
+            margin-top: 1.75rem;
+            padding-top: 0.9rem;
+            border-top: 1px solid var(--theme-border, #e7e1f3);
+        }
+
+        .content .intellectual-influences summary {
+            cursor: pointer;
+            color: var(--theme-muted, #62666b);
+            font-size: 0.95em;
+        }
+
+        .content .intellectual-influences summary:focus-visible {
+            outline: 2px solid var(--theme-accent, #6962d2);
+            outline-offset: 4px;
+        }
+
+        .content .intellectual-influences p {
+            margin: 0.75rem 0 0;
+        }
+
+        /* "How to pronounce?" opens a compact card: each name in Bangla, IPA,
+           and an English-style respelling, a note, then the recording. */
+        .content .name-pronunciation {
+            margin: 0.1rem 0 1.1rem;
+        }
+
+        .content .name-pronunciation > summary {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4em;
+            color: var(--theme-link, #52adc8);
+            font-style: italic;
+            text-decoration: underline;
+            text-underline-offset: 0.18em;
+            cursor: pointer;
+            list-style: none;
+        }
+
+        .content .name-pronunciation > summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .content .name-pronunciation > summary::after {
+            content: "";
+            width: 0.36em;
+            height: 0.36em;
+            border-right: 1.5px solid currentColor;
+            border-bottom: 1.5px solid currentColor;
+            transform: translateY(-0.12em) rotate(45deg);
+            transition: transform 180ms ease;
+        }
+
+        .content .name-pronunciation[open] > summary::after {
+            transform: translateY(0.1em) rotate(225deg);
+        }
+
+        .content .name-pronunciation > summary:focus-visible {
+            outline: 2px solid var(--theme-accent, #6962d2);
+            outline-offset: 3px;
+            border-radius: 3px;
+        }
+
+        .content .name-pronunciation__card {
+            width: 22rem;
+            max-width: 100%;
+            margin-top: 0.45rem;
+            padding: 0.55rem 0.7rem 0.5rem;
+            border: 1px solid var(--theme-border, #e5e0f0);
+            border-radius: 10px;
+            background: var(--theme-surface, #faf9fc);
+        }
+
+        /* One column per name and one row per form, labeled at the left;
+           #main outranks the theme's phone rule that blocks out tables. */
+        #main .content .name-pronunciation__gloss {
+            display: table;
+            width: 100%;
+            margin: 0;
+            border: 0;
+            border-collapse: collapse;
+            font-family: inherit;
+            font-size: 1em;
+            line-height: 1.3;
+        }
+
+        #main .content .name-pronunciation__gloss th,
+        #main .content .name-pronunciation__gloss td {
+            padding: 0.05rem 0.35rem;
+            border: 0;
+            text-align: center;
+            white-space: nowrap;
+        }
+
+        #main .content .name-pronunciation__gloss th {
+            padding-left: 0;
+            color: var(--theme-muted, #77717f);
+            font-size: 0.62em;
+            font-weight: 400;
+            letter-spacing: 0.08em;
+            text-align: left;
+            text-transform: uppercase;
+        }
+
+        .content .name-pronunciation__bangla td {
+            font-family: Kalpurush, "Noto Sans Bengali", "Nirmala UI", serif;
+            font-size: 1.15em;
+            color: var(--theme-text-strong, #36333f);
+        }
+
+        .content .name-pronunciation__ipa td {
+            font-family: "Charis SIL", "Doulos SIL", "Gentium Plus", "Noto Serif", "Segoe UI", "Lucida Sans Unicode", "DejaVu Sans", serif;
+            font-size: 0.86em;
+        }
+
+        .content .name-pronunciation__respelling td {
+            color: var(--theme-muted, #77717f);
+            font-size: 0.86em;
+            font-style: italic;
+        }
+
+        /* Listen and the player's time, timeline, volume, and menu share one pill. */
+        .content .name-pronunciation__player {
+            display: flex;
+            align-items: center;
+            margin-top: 0.55rem;
+            border: 1px solid var(--theme-border-strong, #d6d0ea);
+            border-radius: 999px;
+            background: var(--theme-surface-raised, #fff);
+            overflow: hidden;
+        }
+
+        .content .name-pronunciation__play {
+            display: inline-flex;
+            flex: 0 0 auto;
+            align-items: center;
+            align-self: stretch;
+            gap: 0.4em;
+            padding: 0 0.7em 0 0.75em;
+            border: 0;
+            border-right: 1px solid var(--theme-border, #e5e0f0);
+            background: transparent;
+            color: var(--theme-link, #52adc8);
+            font: inherit;
+            font-size: 0.85em;
+            cursor: pointer;
+            transition: background-color 160ms ease;
+        }
+
+        .content .name-pronunciation__play[hidden] {
+            display: none;
+        }
+
+        .content .name-pronunciation__play:hover,
+        .content .name-pronunciation__play.is-playing {
+            background: var(--theme-accent-soft, #eef8fb);
+        }
+
+        .content .name-pronunciation__play:focus-visible {
+            outline: 2px solid var(--theme-accent, #6962d2);
+            outline-offset: -2px;
+        }
+
+        .content .name-pronunciation__icon {
+            width: 1.15em;
+            height: 1.15em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .content .name-pronunciation__icon .speaker {
+            fill: currentColor;
+            stroke: none;
+        }
+
+        .content .is-playing .name-pronunciation__icon .wave {
+            animation: pronunciation-wave 0.45s ease-in-out infinite alternate;
+        }
+
+        .content .is-playing .name-pronunciation__icon .wave-outer {
+            animation-delay: 0.2s;
+        }
+
+        @keyframes pronunciation-wave {
+            from { opacity: 0.2; }
+            to { opacity: 1; }
+        }
+
+        /* Wide enough for the time display, which the player drops when cramped. */
+        #main .content .name-pronunciation__player audio {
+            display: block;
+            flex: 1 1 auto;
+            width: auto;
+            min-width: 12rem;
+            height: 34px;
+            background: transparent;
+        }
+
+        /* Chromium lets the player blend into the pill; Listen then plays it. */
+        .content .name-pronunciation__player audio::-webkit-media-controls-enclosure {
+            border-radius: 0;
+            background: transparent;
+        }
+
+        .content .name-pronunciation__player audio::-webkit-media-controls-panel {
+            padding-left: 6px;
+            background: transparent;
+        }
+
+        .content .name-pronunciation__player.has-listen audio::-webkit-media-controls-play-button {
+            display: none;
+        }
+
+        .content .name-pronunciation__notes {
+            margin-top: 0.4rem;
+            color: var(--theme-muted, #77717f);
+            font-size: 0.74em;
+            line-height: 1.45;
+        }
+
+        .content .name-pronunciation__credit {
+            margin-top: 0.35rem;
+            color: var(--theme-muted, #77717f);
+            font-size: 0.74em;
+            text-align: center;
+        }
+
+        /* Set like the sidebar's Google Scholar link. */
+        .content .name-pronunciation__brand {
+            font-family: "Product Sans", sans-serif;
+        }
+
+        .content .google-wordmark span:nth-child(1),
+        .content .google-wordmark span:nth-child(4) { color: #4285f4; }
+        .content .google-wordmark span:nth-child(2),
+        .content .google-wordmark span:nth-child(6) { color: #db4437; }
+        .content .google-wordmark span:nth-child(3) { color: #f4b400; }
+        .content .google-wordmark span:nth-child(5) { color: #0f9d58; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .content .name-pronunciation > summary::after,
+            .content .name-pronunciation__play { transition: none; }
+            .content .is-playing .name-pronunciation__icon .wave { animation: none; }
+        }
+
+        /* reason, create, behave: each word is a slowly drifting, iridescent
+           liquid in its own hue, and every few seconds a glint of light runs
+           through the three in turn, swelling its glow as it passes. Light mode
+           keeps the letters in deeper tones for contrast and lets the bright
+           palette carry the glint and the glow. */
+        /* The site's Palatino webfont has only a regular face, so the verbs use
+           the installed Palatino Bold Italic (Windows, macOS, iOS) and fall back
+           to the browser's synthesized bold italic elsewhere. */
+        @font-face {
+            font-family: "Research Verb Palatino";
+            font-style: italic;
+            font-weight: 700;
+            src: local("Palatino Linotype Bold Italic"), local("PalatinoLinotype-BoldItalic"),
+                local("Palatino Bold Italic"), local("Palatino-BoldItalic"),
+                local("Book Antiqua Bold Italic"), local("BookAntiqua-BoldItalic"),
+                local("TeX Gyre Pagella Bold Italic"), local("TeXGyrePagella-BoldItalic"),
+                local("P052 Bold Italic"), local("P052-BoldItalic");
+        }
+
+        .content .research-verb {
+            --verb-delay: 0s;
+            color: var(--verb-solid);
+            font-family: "Research Verb Palatino", Palatino, serif;
+            font-style: italic;
+            font-weight: 700;
+        }
+
+        /* Italic letters lean past their box; padding, undone by negative
+           margins, keeps the gradient fill from clipping them. */
+        .content .research-verb,
+        .content .research-verb__glint {
+            padding: 0 0.12em 0 0.06em;
+            margin: 0 -0.12em 0 -0.06em;
+        }
+
+        @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+            .content .research-verb,
+            .content .research-verb__glint {
+                -webkit-background-clip: text;
+                background-clip: text;
+            }
+
+            .content .research-verb {
+                background-image: linear-gradient(100deg, var(--verb-flow));
+                background-size: 300% 100%;
+                background-position: 0% 0;
+                -webkit-text-fill-color: transparent;
+                filter: drop-shadow(0 0 0.2em var(--verb-glow));
+                animation: research-verb-flow 9s ease-in-out infinite alternate,
+                    research-verb-halo 7.5s ease-in-out var(--verb-delay) infinite;
+            }
+
+            /* The glint rides a second layer, clear except for one bright band. */
+            .content .research-verb__glint {
+                background-image: linear-gradient(100deg, transparent 41%, var(--verb-glint) 50%, transparent 59%);
+                background-size: 320% 100%;
+                background-position: 0% 0;
+                animation: research-verb-glint 7.5s ease-in-out var(--verb-delay) infinite;
+            }
+        }
+
+        .content .research-verb--reason {
+            --verb-solid: #0b77ad;
+            --verb-flow: #0b77ad 0%, #1592cc 22%, #0a6f9f 45%, #2f7cc4 62%, #0b77ad 80%, #1592cc 100%;
+            --verb-glint: rgba(138, 217, 251, 0.95);
+            --verb-glow: rgba(116, 210, 250, 0.45);
+            --verb-glow-peak: rgba(116, 210, 250, 0.85);
+        }
+
+        .content .research-verb--create {
+            --verb-solid: #a03dc3;
+            --verb-flow: #a03dc3 0%, #b84fd6 22%, #9536b8 45%, #ad46cf 62%, #a03dc3 80%, #b84fd6 100%;
+            --verb-glint: rgba(242, 166, 255, 0.95);
+            --verb-glow: rgba(236, 141, 255, 0.42);
+            --verb-glow-peak: rgba(236, 141, 255, 0.85);
+            --verb-delay: 0.45s;
+        }
+
+        .content .research-verb--behave {
+            --verb-solid: #5445b5;
+            --verb-flow: #5445b5 0%, #6e65ce 22%, #4b3ca8 45%, #8180de 62%, #5445b5 80%, #6e65ce 100%;
+            --verb-glint: rgba(167, 168, 240, 0.95);
+            --verb-glow: rgba(145, 148, 228, 0.45);
+            --verb-glow-peak: rgba(129, 128, 222, 0.85);
+            --verb-delay: 0.9s;
+        }
+
+        html[data-theme="dark"] .content .research-verb--reason {
+            --verb-solid: #74d2fa;
+            --verb-flow: #74d2fa 0%, #62c8f6 22%, #8ad9fb 45%, #9a9ff0 62%, #74d2fa 80%, #62c8f6 100%;
+            --verb-glint: rgba(232, 249, 255, 0.95);
+            --verb-glow: rgba(116, 210, 250, 0.4);
+            --verb-glow-peak: rgba(116, 210, 250, 0.8);
+        }
+
+        html[data-theme="dark"] .content .research-verb--create {
+            --verb-solid: #ec8dff;
+            --verb-flow: #ec8dff 0%, #e27bf8 22%, #f2a6ff 45%, #c9a3ff 62%, #ec8dff 80%, #e27bf8 100%;
+            --verb-glint: rgba(254, 236, 255, 0.95);
+            --verb-glow: rgba(236, 141, 255, 0.38);
+            --verb-glow-peak: rgba(236, 141, 255, 0.78);
+        }
+
+        html[data-theme="dark"] .content .research-verb--behave {
+            --verb-solid: #a7a8f0;
+            --verb-flow: #a7a8f0 0%, #9194e4 22%, #b8b9f5 45%, #8180de 62%, #a7a8f0 80%, #9194e4 100%;
+            --verb-glint: rgba(240, 240, 255, 0.95);
+            --verb-glow: rgba(167, 168, 240, 0.4);
+            --verb-glow-peak: rgba(167, 168, 240, 0.8);
+        }
+
+        @keyframes research-verb-flow {
+            from { background-position: 0% 0; }
+            to { background-position: 100% 0; }
+        }
+
+        @keyframes research-verb-glint {
+            0% { background-position: 100% 0; }
+            34%, 100% { background-position: 0% 0; }
+        }
+
+        @keyframes research-verb-halo {
+            0%, 34%, 100% { filter: drop-shadow(0 0 0.2em var(--verb-glow)); }
+            17% { filter: drop-shadow(0 0 0.38em var(--verb-glow-peak)); }
+        }
+
+        /* Rest while the sentence is scrolled out of view. */
+        .content .research-verbs.is-offscreen .research-verb,
+        .content .research-verbs.is-offscreen .research-verb__glint {
+            animation-play-state: paused;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .content .research-verb,
+            .content .research-verb__glint { animation: none; }
+        }
+
+        /* Printing and forced colors drop background clipping; keep solid text. */
+        @media print, (forced-colors: active) {
+            .content .research-verb,
+            .content .research-verb__glint {
+                background: none;
+                -webkit-text-fill-color: currentColor;
+                filter: none;
+                animation: none;
+            }
+        }
 </style>
 <div class="container">
         <div class="content">
-        Hello! <span class="emoji wave" role="img" aria-label="hand wave"></span><br>
+        Hello! <span class="emoji wave" role="img" aria-label="Waving hand"></span><br>
         I am Syed Rifat Raiyan.
-        <div id="pronounceLink" style="display:block;"><p><a href="#" onclick="$('#pronounce').toggle(); return false;"><i>How to pronounce?</i></a></p></div>
-        <div id="pronounce" style="display: none;" class="alert">
-            <p>Here is a standard Bangla pronunciation:<br>
-                <audio controls="">
-                    <source src="audio/Syed-Rifat-Raiyan.mp3" type="audio/mpeg">
-                </audio>
-            </p>
+        <details class="name-pronunciation">
+        <summary>How to pronounce?</summary>
+        <div class="name-pronunciation__card">
+            <table class="name-pronunciation__gloss" aria-label="How to pronounce Syed Rifat Raiyan">
+                <tr class="name-pronunciation__bangla"><th scope="row">Bangla</th><td lang="bn">সৈয়দ</td><td lang="bn">রিফাত</td><td lang="bn">রাইয়ান</td></tr>
+                <tr class="name-pronunciation__ipa"><th scope="row"><abbr title="International Phonetic Alphabet">IPA</abbr></th><td>/soi̯.ɔd/</td><td>/ɾi.fat̪/</td><td>/ɾai̯.jan/</td></tr>
+                <tr class="name-pronunciation__respelling"><th scope="row">Sounds like</th><td>soi-awd</td><td>ree-fahth</td><td>rye-yahn</td></tr>
+            </table>
+            <div class="name-pronunciation__notes">The <i>r</i> is a light tap, as in Spanish <i lang="es">pero</i>. Rifat ends in Bangla&rsquo;s soft ত (t̪), a <i>t</i> made against the teeth, close to the <i>th</i> of a British &ldquo;bath&rdquo;.</div>
+            <div class="name-pronunciation__player">
+                <button class="name-pronunciation__play" type="button" aria-pressed="false" hidden><svg class="name-pronunciation__icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path class="speaker" d="M3.5 9.5H7l4.5-3.8v12.6L7 14.5H3.5z"/><path class="wave" d="M15 9.3a3.8 3.8 0 0 1 0 5.4"/><path class="wave wave-outer" d="M17.7 6.6a7.6 7.6 0 0 1 0 10.8"/></svg>Listen</button>
+                <audio controls preload="none" src="{{ '/audio/Syed-Rifat-Raiyan.mp3' | relative_url }}" aria-label="Pronunciation of Syed Rifat Raiyan"></audio>
+            </div>
+            <div class="name-pronunciation__credit">Spoken by <span class="name-pronunciation__brand"><span class="google-wordmark"><span>G</span><span>o</span><span>o</span><span>g</span><span>l</span><span>e</span></span> Translate</span>&rsquo;s default Bangla voice</div>
         </div>
-        I am a Lecturer of the Department of Computer Science and Engineering (CSE) at the Islamic University of Technology (IUT). In May of 2023, I attained my Bachelor of Science (B.Sc.) degree with Honors from the Department of Computer Science and Engineering (CSE) at the Islamic University of Technology (IUT). I was affiliated with the <a href="https://cse.iutoic-dhaka.edu/ssl">Systems and Software Lab (SSL)</a> research group of IUT while I was working on my undergraduate thesis under the supervision of <a href="https://cse.iutoic-dhaka.edu/profile/mohsinul/education">Mohsinul Kabir</a>.
-<!-- <br> -->
-        <br>
-        <br>
-        My research interests lie broadly in Natural Language Processing, Computer Vision, and Deep Learning. These days, I am working on projects related to Mathematical Reasoning in Language Models, In-context Learning for Text Classification, Bangla Sentiment Analysis, and Image Classification.
-<!-- <br> -->
-        <br>
-        <br>
-        Some people in academia that I follow/look up to:
-<br>
+        </details>
+        <script>
+        (function () {
+            var box = document.querySelector('.name-pronunciation');
+            var audio = box && box.querySelector('audio');
+            var button = box && box.querySelector('.name-pronunciation__play');
+            if (!audio || !button) { return; }
+            // Listen plays and pauses; the player keeps its time, timeline,
+            // volume, and menu (download and playback speed) beside it.
+            button.hidden = false;
+            button.parentNode.classList.add('has-listen');
+            button.addEventListener('click', function () {
+                if (!audio.paused && !audio.ended) { audio.pause(); return; }
+                if (audio.ended) { audio.currentTime = 0; }
+                var playing = audio.play();
+                if (playing && playing.catch) { playing.catch(function () {}); }
+            });
+            function sync() {
+                var on = !audio.paused && !audio.ended;
+                button.classList.toggle('is-playing', on);
+                button.setAttribute('aria-pressed', on ? 'true' : 'false');
+            }
+            ['play', 'playing', 'pause', 'ended'].forEach(function (name) { audio.addEventListener(name, sync); });
+            box.addEventListener('toggle', function () {
+                // Fetch the clip's length only once someone opens the panel.
+                if (box.open && audio.readyState === 0 && audio.preload === 'none') {
+                    audio.preload = 'metadata';
+                    audio.load();
+                }
+                if (!box.open) { audio.pause(); }
+            });
+        }());
+        </script>
+        <p>I am a Lecturer in the Department of Computer Science and Engineering (CSE) at the Islamic University of Technology (IUT), where I also earned my B.Sc. with Honors in May 2023. I completed my undergraduate thesis being affiliated with the <a href="https://cse.iutoic-dhaka.edu/ssl">Systems and Software Lab (SSL)</a> under the supervision of <a href="https://cse.iutoic-dhaka.edu/profile/mohsinul/education">Mohsinul Kabir</a>.</p>
+
+        <p class="research-verbs">My research examines how large language models (LLMs) <span class="research-verb research-verb--reason"><span class="research-verb__glint">reason</span></span>, <span class="research-verb research-verb--create"><span class="research-verb__glint">create</span></span>, and <span class="research-verb research-verb--behave"><span class="research-verb__glint">behave</span></span> in social settings. Underlying this work is a broader aim: to bridge the gap between human and machine cognition by understanding the capabilities these systems acquire, the mechanisms that support them, and the limits of their resemblance to human thought.</p>
+        <script>
+        (function () {
+            // The verbs' glow animates only while their sentence is on screen.
+            var sentence = document.querySelector('.research-verbs');
+            if (!sentence || !('IntersectionObserver' in window)) { return; }
+            new IntersectionObserver(function (entries) {
+                sentence.classList.toggle('is-offscreen', !entries[entries.length - 1].isIntersecting);
+            }).observe(sentence);
+        }());
+        </script>
+
+        {% include research-map.html %}
+
+        <p>One strand of my work concerns {% include research-topic.html topic="mathematical" text="mathematical" %} and {% include research-topic.html topic="scientific" text="scientific reasoning" %}: how reliably LLMs solve problems, and how their performance shifts with language, context, and inference-time strategies. Its creative counterpart is narrative generation, where I am currently exploring nonlinear storytelling with LLMs. Together, these directions span two complementary sides of cognition: structured problem-solving and creative expression.</p>
+
+        <p>A second strand lies at the intersection of computational social science and responsible AI. Here I investigate how framing, language, and alignment shape models' {% include research-topic.html topic="political" text="political behavior" %} and {% include research-topic.html topic="moral" text="moral decision-making" %}, with particular attention to ethics, bias, and fairness.</p>
+
+        <p>To understand what drives such behavior, I also look inside the models, using {% include research-topic.html topic="interpretability" text="mechanistic interpretability and activation-space interventions" %} to explain and steer it. Beyond individual models, I explore {% include research-topic.html topic="agentic" text="multi-agent systems and agentic AI" %}, studying how coordinated reasoning, retrieval, and verification can tackle complex tasks.</p>
+
+        <p>Alongside these central directions, I pursue projects in Bangla NLP and computer vision, from language resources to visual understanding. My <a href="{{ '/publications/' | relative_url }}">publications</a> give a fuller account of these lines of inquiry.</p>
+
+        <details class="intellectual-influences">
+        <summary>Intellectual influences</summary>
+        <p>Some people in academia that I follow/look up to:</p>
+        <p>
         <a href="https://karpathy.ai/">Andrej Karpathy</a>, <a href="https://www.andrewng.org/">Andrew Ng</a>, <a href="https://www.maths.ox.ac.uk/people/andrew.wiles">Andrew Wiles</a>, <a href="https://autarkaw.com">Autar Kaw</a>, <a href="https://en.wikipedia.org/wiki/Bret_Weinstein">Bret Weinstein</a>, <a href="https://nlp.stanford.edu/~manning/">Christopher D. Manning</a>, <a href="https://www.cs.princeton.edu/~danqic/">Danqi Chen</a>, <a href="https://cs.harvard.edu/malan/">David J. Malan</a>, <a href="https://www-cs-faculty.stanford.edu/~knuth/">Donald E. Knuth</a>, <a href="http://erikdemaine.org/">Erik Demaine</a>, <a href="https://math.mit.edu/~gs/">Gilbert Strang</a>, <a href="https://www.3blue1brown.com/">Grant Sanderson</a>, <a href="http://www-formal.stanford.edu/jmc/index.html">John McCarthy</a>, <a href="https://jonathanhaidt.com/">Jonathan Haidt</a>, <a href="https://www.jordanbpeterson.com/">Jordan B Peterson</a>, <a href="https://web.eecs.umich.edu/~justincj/">Justin Johnson</a>, <a href="https://scholar.google.com/citations?user=WgyrxUAAAAAJ&hl=en">Károly Zsolnai-Fehér</a>, <a href="https://www.math.mcgill.ca/lnchen/">Linan Chen</a>, <a href="https://chomsky.info/">Noam Chomsky</a>, <a href="https://web.archive.org/web/20230808013415/https://rebeccashafee.com/index.html">Rebecca Shafee</a>, <a href="https://en.wikipedia.org/wiki/Roger_Penrose">Roger Penrose</a>, <a href="https://people.csail.mit.edu/devadas/">Srinivas Devadas</a>, <a href="https://www.math.ucla.edu/~tao/">Terence Tao</a>.
+        </p>
+        </details>
 </div>
 <div class="news">
     <h2><img src="{{ '/images/quill-pen-cropped.svg' | relative_url }}" style="width: 25px; vertical-align: bottom">Chronicle</h2>

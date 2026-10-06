@@ -1,0 +1,13 @@
+/* Use the same serif glyph in author markers and contribution legends. */
+.author-dagger {
+  font-family: "Times New Roman", Times, serif;
+  font-style: normal;
+}
+
+sup.author-dagger {
+  position: relative;
+  top: -0.5em;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}

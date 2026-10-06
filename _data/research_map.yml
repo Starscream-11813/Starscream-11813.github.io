@@ -1,0 +1,88 @@
+# The About-page research map is conceptual, not an anatomical account of the brain.
+# Topic keys below reuse research_topics.yml; paper metadata stays in _publications/.
+# x and y place an area's label as percentages of the drawing; align says which
+# edge of the label sits at that point (end: right edge, start: left edge).
+# hub is the area's point on the brain, in the drawing's 640 x 400 units: paper
+# links meet there, the label's callout line ends there, and on phones the label
+# sits there instead.
+
+heading: Explore my research
+intro: A conceptual map of the questions and methods that connect my work on human and machine cognition.
+
+areas:
+  - key: reasoning
+    label: Reasoning
+    summary: I study how reliably language models solve mathematical and scientific problems across languages, contexts, and inference strategies.
+    topics:
+      - mathematical
+      - scientific
+    x: 25
+    y: 9
+    align: end
+    hub: [236, 88]
+
+  - key: creativity
+    label: Creativity
+    summary: I explore how language models generate narratives and sustain coherence across branching, nonlinear stories.
+    topics: []
+    x: 75
+    y: 9
+    align: start
+    hub: [404, 88]
+    work_in_progress:
+      title: Nonlinear storytelling with LLMs
+      description: An ongoing project exploring narrative structure and coherence beyond a single linear storyline.
+
+  - key: social
+    label: Social behavior
+    summary: I examine how context, language, and alignment shape political behavior and moral decisions, with attention to bias and fairness.
+    topics:
+      - political
+      - moral
+    x: 50
+    y: 93.5
+    hub: [320, 300]
+
+  - key: interpretability
+    label: Interpretability
+    summary: I investigate the internal features and token contributions that help explain and steer model behavior.
+    topics:
+      - interpretability
+    x: 25
+    y: 79
+    align: end
+    hub: [236, 258]
+
+  - key: agentic
+    label: Agentic systems
+    summary: I explore how coordinated language-model agents combine reasoning, retrieval, and verification to tackle complex tasks.
+    topics:
+      - agentic
+    x: 75
+    y: 79
+    align: start
+    hub: [404, 258]
+
+# Shared relationships are supported by a paper that appears in both areas.
+# Conceptual relationships indicate interests that inform one another; they do
+# not assert a shared publication or a demonstrated finding.
+relationships:
+  - from: reasoning
+    to: interpretability
+    kind: shared
+    publication: /publications/6-frugalprompt
+    name: FrugalPrompt
+
+  - from: reasoning
+    to: agentic
+    kind: shared
+    publication: /publications/5-physicseval
+    name: PhysicsEval
+
+  - from: social
+    to: interpretability
+    kind: conceptual
+
+  - from: creativity
+    to: agentic
+    kind: conceptual

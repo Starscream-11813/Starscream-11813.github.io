@@ -1,0 +1,820 @@
+/* Top view of an organic cortex with circuit-board traces, a liquid-glass aura, and occasional impulses. */
+.research-map {
+  --map-ink: #6e65ce;
+  --map-groove: #6e65ce;
+  --map-crest: rgba(255, 255, 255, 0.6);
+  --map-line: #a7a8f0;
+  --map-paper: #fff;
+  --map-spark: #fff;
+  --map-accent: #211cbf;
+  --map-shared: #4498c4;
+  --map-violet: #7a4dff;
+  --map-cyan: #74d2fa;
+  --map-magenta: #ec8dff;
+  --map-lavender: #9194e4;
+  --map-core-start: #fff;
+  --map-core-end: #eeeafb;
+  --map-chip-ink: #4b4396;
+  --map-node-surface: rgba(255, 255, 255, 0.86);
+  --node-accent: #211cbf;
+  --node-ink: #343060;
+  --node-border: #bbb5ed;
+  --node-soft: linear-gradient(135deg, #edeafb, #f5f3ff);
+  --aura-a: #8fd5f8;
+  --aura-b: #eea8fc;
+  --aura-c: #a796ff;
+  --aura-d: #bfc3ff;
+  margin: 1.5rem 0 1.8rem;
+  padding: 1rem 0 0.9rem;
+  border-top: 1px solid var(--theme-border, #e5e0eb);
+  border-bottom: 1px solid var(--theme-border, #e5e0eb);
+  color: var(--theme-text, #494e52);
+  font-size: 0.8rem;
+  line-height: 1.5;
+
+  .research-map__header h3 {
+    margin: 0 0 0.3em;
+    font-size: 1.15em;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .research-map__header p {
+    margin: 0;
+    color: var(--theme-muted, #74707e);
+    font-size: 0.9em;
+    line-height: 1.5;
+  }
+
+  button {
+    border: 0;
+    font-family: inherit;
+    cursor: pointer;
+  }
+
+  button:focus-visible,
+  a:focus-visible,
+  summary:focus-visible {
+    outline: 2px solid var(--map-accent);
+    outline-offset: 3px;
+  }
+}
+
+.research-map__drawing {
+  position: relative;
+  width: 100%;
+  max-width: 640px;
+  margin: 0 auto;
+}
+
+// Iridescent liquid behind the glassy brain: blurred color pools drift, a conic
+// sheet turns, and a second sheet shimmers in and out like oil on water. Only
+// transforms and opacity animate, so it stays on the compositor, and only while
+// the drawing is on screen.
+.research-map__aura {
+  position: absolute;
+  top: -12%;
+  left: 8%;
+  width: 84%;
+  height: 118%;
+  pointer-events: none;
+  -webkit-mask-image: radial-gradient(closest-side, #000 46%, transparent);
+  mask-image: radial-gradient(closest-side, #000 46%, transparent);
+
+  span {
+    position: absolute;
+    border-radius: 50%;
+    opacity: 0.72;
+    filter: blur(20px);
+    will-change: transform;
+    animation-duration: 7s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+    animation-fill-mode: both;
+    animation-play-state: paused;
+  }
+
+  span:nth-child(1) {
+    top: 8%;
+    left: 6%;
+    width: 52%;
+    height: 42%;
+    background: var(--aura-a);
+    animation-name: research-aura-drift-a;
+  }
+
+  span:nth-child(2) {
+    top: 28%;
+    right: 4%;
+    width: 48%;
+    height: 40%;
+    background: var(--aura-b);
+    animation-name: research-aura-drift-b;
+    animation-duration: 9s;
+  }
+
+  span:nth-child(3) {
+    bottom: 6%;
+    left: 20%;
+    width: 56%;
+    height: 38%;
+    background: var(--aura-c);
+    animation-name: research-aura-drift-c;
+    animation-duration: 11s;
+  }
+
+  span:nth-child(4),
+  span:nth-child(5) {
+    top: 14%;
+    left: 16%;
+    width: 68%;
+    height: 72%;
+    border-radius: 46% 54% 58% 42%;
+    background: conic-gradient(from 20deg, var(--aura-a), var(--aura-d), var(--aura-b), var(--aura-c), var(--aura-a));
+    opacity: 0.5;
+    animation-name: research-aura-turn;
+    animation-duration: 14s;
+    animation-timing-function: linear;
+    animation-direction: normal;
+  }
+
+  span:nth-child(5) {
+    background: conic-gradient(from 200deg, var(--aura-b), var(--aura-a), var(--aura-c), var(--aura-d), var(--aura-b));
+    animation-name: research-aura-turn-back, research-aura-shimmer;
+    animation-duration: 19s, 5s;
+    animation-timing-function: linear, ease-in-out;
+    animation-direction: normal, alternate;
+  }
+}
+
+.research-map.is-onscreen .research-map__aura span { animation-play-state: running; }
+
+.research-map__brain {
+  position: relative;
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+// Slightly translucent, so the aura glows faintly through the glass.
+.research-brain__silhouette {
+  fill: var(--map-paper);
+  fill-opacity: 0.6;
+}
+
+.research-brain__sheen-stop { stop-color: #fff; stop-opacity: 0.5; }
+.research-brain__sheen-stop--end { stop-opacity: 0; }
+
+.research-brain__rim {
+  stroke-width: 1.4;
+  opacity: 0.85;
+}
+
+.research-brain__creative-wash {
+  opacity: 0.9;
+}
+
+.research-brain__grooves {
+  stroke: var(--map-groove);
+  stroke-width: 4.6;
+  opacity: 0.15;
+}
+
+.research-brain__ridges {
+  stroke-width: 1.25;
+  opacity: 0.8;
+}
+
+.research-brain__ridge-highlights {
+  stroke: var(--map-crest);
+  stroke-width: 0.6;
+}
+
+.research-brain__region {
+  opacity: 0;
+  transition: opacity 240ms ease;
+  &.is-active { opacity: 1; }
+}
+
+.research-brain__circuit {
+  color: #6e65ce;
+  opacity: 0.7;
+  transition: opacity 240ms ease;
+  &.is-active { opacity: 1; }
+  // Detailed traces need stronger midtones than the pale decorative fills.
+  &[data-brain-region="reasoning"] { color: #5445b5; }
+  &[data-brain-region="creativity"] { color: #7a4dff; }
+  &[data-brain-region="social"] { color: #b95acc; }
+  &[data-brain-region="agentic"] { color: #359ac9; }
+}
+
+// A paper-colored casing lifts the traces cleanly over the folds.
+.research-brain__casing {
+  stroke: var(--map-paper);
+  stroke-width: 3;
+  opacity: 0.6;
+}
+
+.research-brain__trace {
+  stroke: currentColor;
+  stroke-width: 0.95;
+  &--bus { stroke-width: 1.1; }
+}
+
+.research-brain__via,
+.research-brain__pad-core,
+.research-brain__pad-dot {
+  fill: currentColor;
+}
+
+.research-brain__pad,
+.research-brain__hub {
+  fill: var(--map-paper);
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.research-brain__hub { stroke-width: 1.3; }
+
+// Labels reach their areas through thin callouts laid over the board, kept
+// distinct from the traces by their angle, weight, and paper-colored casing.
+.research-brain__callout {
+  stroke: currentColor;
+  stroke-width: 0.85;
+}
+
+.research-brain__callout-casing {
+  stroke: var(--map-paper);
+  stroke-width: 2.8;
+  opacity: 0.75;
+}
+
+// Pads glow faintly, more so in the area being explored.
+.research-brain__glow-stop { stop-color: currentColor; stop-opacity: 0.4; }
+.research-brain__glow-stop--end { stop-opacity: 0; }
+
+.research-brain__glow {
+  opacity: 0.45;
+  transition: opacity 300ms ease;
+  .is-active > & { opacity: 1; }
+}
+
+.research-brain__spark {
+  stroke: var(--map-spark);
+  stroke-width: 1.35;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+
+.research-brain__spark--glow {
+  stroke: currentColor;
+  stroke-width: 4.6;
+  stroke-opacity: 0.5;
+}
+
+.research-brain__core-ripple {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.research-brain__flash {
+  fill: currentColor;
+  fill-opacity: 0.2;
+  stroke: currentColor;
+  stroke-width: 0.8;
+  transform-box: fill-box;
+  transform-origin: center;
+  pointer-events: none;
+}
+
+.research-map__connection {
+  stroke: var(--map-shared);
+  stroke-width: 1;
+  opacity: 0.28;
+  transition: opacity 180ms ease, stroke-width 180ms ease;
+}
+
+.research-map__connection--conceptual {
+  stroke: var(--map-violet);
+  stroke-dasharray: 3 3;
+}
+
+.research-map__connection.is-active {
+  opacity: 0.88;
+  stroke-width: 1.4;
+}
+
+// A paper-colored casing lifts an active link cleanly above the folds.
+.research-map__connection-casing {
+  stroke: var(--map-paper);
+  stroke-width: 4.4;
+  opacity: 0;
+  transition: opacity 180ms ease;
+  &.is-active { opacity: 0.55; }
+}
+
+.research-map__connection--shared.is-tracing,
+.research-map__connection-casing[data-kind="shared"].is-tracing {
+  animation: research-map-trace 650ms ease-out both;
+}
+
+// The central chip: the corpus callosum of the drawing, symmetric about the midline.
+.research-brain__chip {
+  stroke: var(--map-line);
+  stroke-width: 1.1;
+}
+
+.research-brain__chip-die {
+  stroke: var(--map-line);
+  stroke-width: 0.6;
+  stroke-dasharray: 1.5 2.5;
+  opacity: 0.7;
+}
+
+.research-brain__chip-pins { fill: var(--map-line); }
+
+.research-brain__core-stop { stop-color: var(--map-core-start); }
+.research-brain__core-stop--end { stop-color: var(--map-core-end); }
+
+// Silkscreen-style capitals, like the markings on a real chip.
+.research-brain__chip-text {
+  fill: var(--map-chip-ink);
+  font-family: inherit;
+  font-size: 8.6px;
+  letter-spacing: 0.06em;
+}
+
+// A slightly larger sign centers on the capitals rather than the math axis.
+.research-brain__chip-times {
+  fill: var(--map-shared);
+  font-size: 1.15em;
+}
+
+.research-brain__chip-caption {
+  fill: var(--theme-muted, #6e65ce);
+  font-size: 6.2px;
+  letter-spacing: 0.3em;
+}
+
+.research-brain__chip-rule {
+  stroke: var(--map-line);
+  stroke-width: 0.6;
+}
+
+// Inline components on a few traces, like resistors on a board.
+.research-brain__part rect {
+  fill: var(--map-paper);
+  stroke: currentColor;
+  stroke-width: 0.8;
+}
+
+.research-brain__part .research-brain__part-cap {
+  fill: currentColor;
+  stroke: none;
+}
+
+.research-map__fallback-labels {
+  fill: var(--map-accent);
+  stroke: var(--map-paper);
+  stroke-width: 4;
+  paint-order: stroke;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.research-map__controls,
+.research-map__guide {
+  display: none;
+}
+
+// Leaders and callouts only make sense beside the interactive labels.
+.research-map:not(.is-enhanced) {
+  .research-brain__trace--leader,
+  .research-brain__casing-leader,
+  .research-brain__callout,
+  .research-brain__callout-casing { display: none; }
+}
+
+.research-map.is-enhanced {
+  .research-map__fallback-labels { display: none; }
+  .research-map__controls { display: block; }
+  .research-map__guide { display: flex; }
+  .research-map__panel > summary { display: none; }
+  .research-map__panel-title { display: block; }
+  .research-map__details { display: grid; }
+  .research-map__panel { grid-area: 1 / 1; }
+  // Invisible panels share one grid cell and reserve the tallest view's height.
+  // Visibility also keeps their links out of keyboard/accessibility navigation.
+  .research-map__panel[hidden] { display: block; visibility: hidden; pointer-events: none; }
+  // Global link/text transitions must not delay hiding a panel's contents.
+  .research-map__panel[hidden] * { visibility: hidden; transition: none; }
+}
+
+.research-map__node {
+  position: absolute;
+  left: var(--map-x);
+  top: var(--map-y);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4em;
+  min-height: 44px;
+  max-width: 46%;
+  padding: 0.35em 0.65em;
+  border-radius: 9px;
+  background: transparent;
+  isolation: isolate;
+  color: var(--theme-text, #625b70);
+  font-size: clamp(12px, 1.1vw, 15px);
+  line-height: 1.25;
+  white-space: nowrap;
+  transform: translate(-50%, -50%);
+  transition: color 180ms ease;
+
+  // Side labels meet their callouts with the dot nearest the brain.
+  &[data-align="end"] { flex-direction: row-reverse; transform: translate(-100%, -50%); }
+  &[data-align="start"] { transform: translate(0, -50%); }
+
+  // Keep a comfortable hit target while the visible label stays slim.
+  &::before {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    inset: 6px 0;
+    border-radius: 8px;
+    background: var(--map-node-surface);
+    -webkit-backdrop-filter: blur(3px);
+    backdrop-filter: blur(3px);
+    transition: background 180ms ease, box-shadow 180ms ease;
+  }
+
+  &.is-previewed {
+    color: var(--node-ink);
+    &::before {
+      background: var(--node-soft);
+      box-shadow: inset 0 0 0 1px var(--node-border);
+    }
+  }
+
+  &.is-connected .research-map__node-dot { border-color: var(--map-shared); }
+  // Keep pale decorative accents separate from readable small-type colors.
+  // Opaque pastel surfaces prevent the cortex underneath from muddying hues.
+  &[data-map-control="creativity"] {
+    --node-accent: #7a4dff;
+    --node-ink: #4d3678;
+    --node-border: #cbb5ef;
+    --node-soft: linear-gradient(135deg, #efe6ff, #f8f2ff);
+  }
+  &[data-map-control="social"] {
+    --node-accent: #ec8dff;
+    --node-ink: #654274;
+    --node-border: #dbb9e6;
+    --node-soft: linear-gradient(135deg, #f9e8fc, #f2ecff);
+  }
+  &[data-map-control="interpretability"] {
+    --node-accent: #6e65ce;
+    --node-ink: #464065;
+    --node-border: #bdbde6;
+    --node-soft: linear-gradient(135deg, #e8e8fa, #f2f0fc);
+  }
+  &[data-map-control="agentic"] {
+    --node-accent: #74d2fa;
+    --node-ink: #37325f;
+    --node-border: #8fcce5;
+    --node-soft: linear-gradient(135deg, #e5f6fd, #eeebfc);
+  }
+}
+
+.research-map__node-dot {
+  flex: 0 0 6px;
+  width: 6px;
+  height: 6px;
+  border: 1px solid var(--map-ink);
+  border-radius: 50%;
+  background: var(--map-paper);
+  transition: background 180ms ease;
+}
+
+.is-previewed .research-map__node-dot {
+  border-color: var(--node-accent);
+  background: var(--node-accent);
+}
+
+.research-map__guide {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0.3rem 0.75rem;
+  margin-bottom: 0.6rem;
+  color: var(--theme-muted, #77717f);
+  font-size: 0.72em;
+}
+
+.research-map__hint--touch { display: none; }
+
+.research-map__legend {
+  display: flex;
+  gap: 0.75em;
+
+  > span { display: inline-flex; align-items: center; gap: 0.35em; }
+
+  i {
+    display: inline-block;
+    width: 15px;
+    border-top: 1.5px solid var(--map-shared);
+  }
+
+  .research-map__legend-dash {
+    border-top-style: dashed;
+    border-top-color: var(--map-violet);
+  }
+}
+
+.research-map__details {
+  // Reserve the largest view in the grid, outside the visible content-sized box.
+  padding: 0;
+}
+
+.research-map__panel {
+  align-self: start;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid var(--theme-border, #e8e3ef);
+  border-radius: 8px;
+  background: var(--theme-surface, #faf9fc);
+  &[hidden] { display: none; }
+  > summary { padding: 0.5em 0; cursor: pointer; }
+
+  .research-map__panel-title {
+    margin: 0 0 0.25em;
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  .research-map__summary {
+    margin: 0 0 0.35em;
+    font-size: 0.88em;
+    line-height: 1.5;
+  }
+
+  .research-map__overlaps {
+    margin: 0.45em 0 0;
+    color: var(--theme-muted, #797282);
+    font-size: 0.72em;
+    line-height: 1.5;
+  }
+}
+
+.research-map__panel-title { display: none; }
+
+.research-map:not(.is-enhanced) .research-map__panel + .research-map__panel {
+  margin-top: 0.35em;
+}
+
+// Visibility must switch synchronously so keyboard focus can enter a preview.
+.research-map__panel-content,
+.research-map__panel-content * {
+  transition-property: color, background-color, border-color;
+}
+
+.research-map__papers {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.1em 0.5em;
+}
+
+.research-map .research-map__paper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5em;
+  min-height: 34px;
+  padding: 0.25em 0.3em;
+  border-radius: 5px;
+  color: var(--theme-link, #6553a8);
+  font-size: 0.82em;
+  line-height: 1.35;
+  text-decoration: none;
+  overflow-wrap: anywhere;
+
+  &:hover { background: var(--theme-accent-soft, #f0ebf8); text-decoration: none; }
+}
+
+.research-map__pdf {
+  flex-shrink: 0;
+  color: var(--theme-muted, #797282);
+  font-size: 0.7em;
+}
+
+.research-map__ongoing {
+  margin-top: 0.6em;
+  padding-left: 0.8em;
+  border-left: 2px solid var(--map-accent);
+
+  .research-map__status {
+    display: block;
+    margin-bottom: 0.3em;
+    color: var(--theme-link, #6553a8);
+    font-size: 0.68em;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  .research-map__ongoing-title { font-size: 0.9em; }
+
+  p {
+    margin: 0.3em 0 0;
+    color: var(--theme-muted, #797282);
+    font-size: 0.82em;
+    line-height: 1.5;
+  }
+}
+
+.research-map__announcement {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+}
+
+// The site's phone stylesheet assigns a size to every content paragraph.
+// Preserve this component's compact hierarchy without changing that global rule.
+#main .research-map {
+  .research-map__header p { font-size: 0.9em; }
+  .research-map__summary { font-size: 0.88em; }
+  .research-map__overlaps { font-size: 0.72em; }
+  .research-map__ongoing p { font-size: 0.82em; }
+}
+
+html[data-theme="dark"] .research-map {
+  --map-ink: #a7a8f0;
+  --map-groove: #211cbf;
+  --map-crest: rgba(214, 216, 255, 0.22);
+  --map-line: #6e65ce;
+  --map-paper: #25263a;
+  --map-accent: #a7a8f0;
+  --map-shared: #74d2fa;
+  --map-core-start: #292940;
+  --map-core-end: #383151;
+  --map-chip-ink: #e6e3fb;
+  --map-node-surface: rgba(34, 35, 56, 0.84);
+  --node-accent: #a7a8f0;
+  --node-ink: #dedaff;
+  --node-border: #7771b0;
+  --node-soft: linear-gradient(135deg, #33305b, #2a294b);
+
+  --aura-a: #4d8fd8;
+  --aura-b: #b45ad6;
+  --aura-c: #5b3fd1;
+  --aura-d: #3b4bb8;
+
+  .research-brain__circuit {
+    color: #b9baf7;
+    opacity: 0.8;
+    &.is-active { opacity: 1; }
+    &[data-brain-region="reasoning"] { color: #c3bfff; }
+    &[data-brain-region="creativity"] { color: #ccb2ff; }
+    &[data-brain-region="social"] { color: #f2a6ff; }
+    &[data-brain-region="agentic"] { color: #8fdcfb; }
+  }
+
+  .research-brain__casing { opacity: 0.7; }
+  .research-brain__glow { opacity: 0.75; }
+  .research-brain__glow-stop:not(.research-brain__glow-stop--end) { stop-opacity: 0.55; }
+  .research-brain__silhouette { fill-opacity: 0.66; }
+  .research-brain__sheen-stop:not(.research-brain__sheen-stop--end) { stop-opacity: 0.1; }
+  .research-map__aura span { opacity: 0.6; mix-blend-mode: screen; }
+  .research-map__aura span:nth-child(4),
+  .research-map__aura span:nth-child(5) { opacity: 0.42; }
+
+  .research-map__node[data-map-control="creativity"] {
+    --node-accent: #b898ff;
+    --node-ink: #e8dcff;
+    --node-border: #8d6dbb;
+    --node-soft: linear-gradient(135deg, #3b2d59, #302846);
+  }
+  .research-map__node[data-map-control="social"] {
+    --node-accent: #ec8dff;
+    --node-ink: #f1d7f7;
+    --node-border: #a370aa;
+    --node-soft: linear-gradient(135deg, #422d4a, #332c4d);
+  }
+  .research-map__node[data-map-control="interpretability"] {
+    --node-accent: #a7a8f0;
+    --node-ink: #e0dff4;
+    --node-border: #7d7aa3;
+    --node-soft: linear-gradient(135deg, #34334f, #2b2b46);
+  }
+  .research-map__node[data-map-control="agentic"] {
+    --node-accent: #74d2fa;
+    --node-ink: #dff5ff;
+    --node-border: #639bb5;
+    --node-soft: linear-gradient(135deg, #253f50, #2d2d49);
+  }
+}
+
+@keyframes research-map-trace {
+  from { stroke-dasharray: 100; stroke-dashoffset: 100; }
+  to { stroke-dasharray: 100; stroke-dashoffset: 0; }
+}
+
+@keyframes research-aura-drift-a {
+  0% { transform: translate(0, 0) scale(1, 1); }
+  50% { transform: translate(44%, 14%) scale(1.3, 0.85); }
+  100% { transform: translate(18%, 46%) scale(0.9, 1.25); }
+}
+
+@keyframes research-aura-drift-b {
+  0% { transform: translate(0, 0) scale(1.1, 1); }
+  50% { transform: translate(-34%, 30%) scale(0.85, 1.25); }
+  100% { transform: translate(-52%, 4%) scale(1.2, 0.9); }
+}
+
+@keyframes research-aura-drift-c {
+  0% { transform: translate(0, 0) scale(0.94, 1); }
+  50% { transform: translate(28%, -26%) scale(1.25, 0.95); }
+  100% { transform: translate(-12%, -48%) scale(1, 1.25); }
+}
+
+@keyframes research-aura-turn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes research-aura-turn-back {
+  to { transform: rotate(-360deg); }
+}
+
+@keyframes research-aura-shimmer {
+  from { opacity: 0; }
+  to { opacity: 0.55; }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .research-map__hint--pointer { display: none; }
+  .research-map__hint--touch { display: inline; }
+  .research-map .research-map__paper { min-height: 44px; }
+}
+
+@media screen and (max-width: 600px) {
+  .research-map { font-size: 1rem; }
+  // Phones zoom into the brain (drawing units x 160-480, y 3.2-339.2) and set
+  // each label on its area's hub; callouts and leader traces are hidden.
+  .research-map__drawing { overflow: hidden; }
+  .research-map__brain { width: 200%; max-width: none; margin: -1% 0 -19% -50%; }
+  .research-map__aura { top: 0; left: 0; width: 100%; height: 100%; }
+  .research-brain__trace--leader,
+  .research-brain__casing-leader,
+  .research-brain__callout,
+  .research-brain__callout-casing { display: none; }
+  .research-map__node,
+  .research-map__node[data-align] {
+    top: var(--map-small-y);
+    left: var(--map-small-x);
+    flex-direction: row;
+    gap: 0.25em;
+    padding: 0.35em 0.45em;
+    transform: translate(-50%, -50%);
+  }
+  .research-map__papers { grid-template-columns: minmax(0, 1fr); gap: 0.1em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .research-map__connection,
+  .research-brain__region,
+  .research-brain__circuit,
+  .research-brain__glow,
+  .research-map__node,
+  .research-map__node::before,
+  .research-map__node-dot { transition: none; }
+  .research-map__aura span { animation: none; }
+  .research-map__connection--shared.is-tracing,
+  .research-map__connection-casing[data-kind="shared"].is-tracing { animation: none; }
+}
+
+@media print {
+  .research-map__aura,
+  .research-brain__trace--leader,
+  .research-brain__casing-leader,
+  .research-brain__callout,
+  .research-brain__callout-casing,
+  .research-brain__spark,
+  .research-brain__flash,
+  .research-brain__core-ripple { display: none; }
+  .research-map__controls,
+  .research-map__guide { display: none !important; }
+  .research-map__fallback-labels { display: block !important; }
+  .research-map.is-enhanced .research-map__details { display: block; }
+  .research-map.is-enhanced .research-map__panel[hidden] { display: block; visibility: visible; }
+  .research-map.is-enhanced .research-map__panel[hidden] * { visibility: visible; }
+  .research-map__panel-content { display: block; }
+}

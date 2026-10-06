@@ -1,0 +1,52 @@
+# Topic menus in the About page.
+# Add a paper using its permalink from _publications/*.md. The menu reads its
+# full title and pdfurl from that entry, so those details stay in one place.
+# name is optional: omit it to display the full paper title.
+# A paper may be listed under more than one topic. Entries without a PDF are
+# omitted until their publication entry has a pdfurl.
+
+mathematical:
+  title: Mathematical reasoning
+  papers:
+    - publication: /publications/13-ai4math
+      name: AI for Mathematical Reasoning (Survey)
+    - publication: /publications/2-mwpsolving
+      name: Math Word Problem Solving (ParaMAWPS)
+    - publication: /publications/6-frugalprompt
+      name: FrugalPrompt
+
+scientific:
+  title: Scientific reasoning
+  papers:
+    - publication: /publications/5-physicseval
+      name: PhysicsEval
+
+political:
+  title: Political behavior
+  papers:
+    - publication: /publications/11-llmideoplasticity
+      name: LLM-Ideoplasticity
+    - publication: /publications/8-politicalalignment
+      name: Political Alignment in Large Language Models
+
+moral:
+  title: Moral decision-making
+  papers:
+    - publication: /publications/10-ivellm
+      name: Narrative over Numbers
+
+interpretability:
+  title: Mechanistic interpretability and activation-space interventions
+  papers:
+    - publication: /publications/12-sparsefeatureinterventions
+      name: Sparse-Feature Interventions
+    - publication: /publications/6-frugalprompt
+      name: FrugalPrompt (Token Attribution)
+
+agentic:
+  title: Multi-agent systems and agentic AI
+  papers:
+    - publication: /publications/9-circuitlm
+      name: CircuitLM
+    - publication: /publications/5-physicseval
+      name: PhysicsEval

@@ -1,0 +1,50 @@
+{%- assign circuit_data = site.data.research_circuits -%}
+<g class="research-brain__circuits">
+  {%- for circuit_region in circuit_data.regions %}
+  {%- assign circuit_area = brain_map.areas | where: 'key', circuit_region.key | first %}
+  <g class="research-brain__circuit" data-brain-region="{{ circuit_region.key }}">
+    <radialGradient id="{{ brain_id }}-{{ circuit_region.key }}-glow"><stop class="research-brain__glow-stop" offset="0.15"/><stop class="research-brain__glow-stop research-brain__glow-stop--end" offset="1"/></radialGradient>
+    <g class="research-brain__casing">{% for circuit_trace in circuit_region.traces %}<path class="research-brain__casing-{{ circuit_trace.kind }}" d="{{ circuit_trace.d }}"/>{% endfor %}</g>
+    <g class="research-brain__traces">
+      {%- for circuit_trace in circuit_region.traces %}
+      <path class="research-brain__trace research-brain__trace--{{ circuit_trace.kind }}" d="{{ circuit_trace.d }}"/>
+      {%- endfor %}
+    </g>
+    {%- for circuit_trace in circuit_region.traces %}
+    {%- if circuit_trace.via %}
+    <circle class="research-brain__via" cx="{{ circuit_trace.via[0] }}" cy="{{ circuit_trace.via[1] }}" r="1.2"/>
+    {%- endif %}
+    {%- if circuit_trace.junction %}
+    <circle class="research-brain__via" cx="{{ circuit_trace.junction[0] }}" cy="{{ circuit_trace.junction[1] }}" r="1.6"/>
+    {%- endif %}
+    {%- if circuit_trace.part %}
+    <g class="research-brain__part" transform="translate({{ circuit_trace.part[0] }} {{ circuit_trace.part[1] }}) rotate({{ circuit_trace.part[2] }})"><rect x="-4.6" y="-2" width="9.2" height="4" rx="1"/><rect class="research-brain__part-cap" x="-4.6" y="-2" width="2.1" height="4" rx="0.7"/><rect class="research-brain__part-cap" x="2.5" y="-2" width="2.1" height="4" rx="0.7"/></g>
+    {%- endif %}
+    {%- if circuit_trace.bend_via %}
+    <circle class="research-brain__pad" cx="{{ circuit_trace.bend_via[0] }}" cy="{{ circuit_trace.bend_via[1] }}" r="1.7"/>
+    {%- endif %}
+    {%- if circuit_trace.pad == 'ring' %}
+    <circle class="research-brain__glow" cx="{{ circuit_trace.end[0] }}" cy="{{ circuit_trace.end[1] }}" r="6" fill="url(#{{ brain_id }}-{{ circuit_region.key }}-glow)"/>
+    <circle class="research-brain__pad" cx="{{ circuit_trace.end[0] }}" cy="{{ circuit_trace.end[1] }}" r="2.1"/>
+    <circle class="research-brain__pad-core" cx="{{ circuit_trace.end[0] }}" cy="{{ circuit_trace.end[1] }}" r="0.8"/>
+    {%- elsif circuit_trace.pad == 'dot' %}
+    <circle class="research-brain__pad-dot" cx="{{ circuit_trace.end[0] }}" cy="{{ circuit_trace.end[1] }}" r="1.6"/>
+    {%- endif %}
+    {%- endfor %}
+    {%- if circuit_area.align == 'end' or circuit_area.align == 'start' %}
+    {%- comment %}A callout runs from the label, past a short shoulder, to the hub.{% endcomment %}
+    {%- assign label_x = circuit_area.x | times: 6.4 %}{% assign label_y = circuit_area.y | times: 4.0 %}
+    {%- if circuit_area.align == 'end' %}{% assign callout_x = label_x | plus: 3 %}{% assign elbow_x = callout_x | plus: 14 %}
+    {%- else %}{% assign callout_x = label_x | minus: 3 %}{% assign elbow_x = callout_x | minus: 14 %}{% endif %}
+    {%- capture callout_path %}M{{ callout_x }} {{ label_y }}H{{ elbow_x }}L{{ circuit_area.hub[0] }} {{ circuit_area.hub[1] }}{% endcapture %}
+    <path class="research-brain__callout-casing" d="{{ callout_path }}"/>
+    <path class="research-brain__callout" d="{{ callout_path }}"/>
+    {%- endif %}
+    {%- if circuit_area.hub %}
+    <circle class="research-brain__glow research-brain__glow--hub" cx="{{ circuit_area.hub[0] }}" cy="{{ circuit_area.hub[1] }}" r="9" fill="url(#{{ brain_id }}-{{ circuit_region.key }}-glow)"/>
+    <circle class="research-brain__hub" cx="{{ circuit_area.hub[0] }}" cy="{{ circuit_area.hub[1] }}" r="2.8"/>
+    <circle class="research-brain__pad-core" cx="{{ circuit_area.hub[0] }}" cy="{{ circuit_area.hub[1] }}" r="1.1"/>
+    {%- endif %}
+  </g>
+  {%- endfor %}
+</g>

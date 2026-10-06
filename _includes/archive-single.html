@@ -264,10 +264,6 @@
     text-align: center;
   }
 
-  .author-dagger {
-    font-family: "Times New Roman", Times, serif;
-  }
-
   .ranknote__icon {
     position: relative;
     display: inline-block;
@@ -325,7 +321,7 @@
         {% endif %}
 
         {% if post.authors and post.paperurl %}
-          <p><u>Authors:</u><aa id="myName"> {{ post.authors | replace: '†', '<sup class="author-dagger">&dagger;</sup>' }}</aa></p>
+          <p><u>Authors:</u><aa id="myName"> {% include format-author-daggers.html authors=post.authors %}</aa></p>
           <script>
             var text = document.getElementById('myName');
             var substring = 'Syed Rifat Raiyan';

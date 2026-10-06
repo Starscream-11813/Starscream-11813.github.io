@@ -174,7 +174,7 @@ layout: default
     <h1 class="publication-project__title">{{ page.title }}</h1>
 
     {% if page.authors %}
-      <p class="publication-project__authors">{{ page.authors }}</p>
+      <p class="publication-project__authors">{% include format-author-daggers.html authors=page.authors %}</p>
     {% endif %}
 
     {% if page.date %}
@@ -207,7 +207,7 @@ layout: default
     {% if page.excerpt %}<meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once }}">{% endif %}
     {% if page.date %}<meta itemprop="datePublished" content="{{ page.date | date: "%B %d, %Y" }}">{% endif %}
     <section itemprop="text">
-      {{ content }}
+      {% include format-author-daggers.html content=content %}
     </section>
   </article>
 </main>
