@@ -1,0 +1,42 @@
+{%- comment -%}
+  Derives one paper's display details for the Publications page. Call with
+  pub=<publication>; it assigns pub_* variables that the other includes in
+  this folder read. The venue label above each title comes from
+  _data/publication_extras.yml; teaser thumbnails and their sizes come from
+  scripts/thumbnails.py, falling back to the original teaser.
+{%- endcomment -%}
+{%- assign pub = include.pub -%}
+{%- assign pub_extra = site.data.publication_extras[pub.url] -%}
+{%- assign pub_slug = pub.url | split: '/' | last -%}
+{%- assign pub_short = pub_extra.short | default: pub.title -%}
+{%- assign pub_year = pub.date | default: '1900-01-01' | date: '%Y' -%}
+
+{%- if pub.type == 'preprints' -%}
+  {%- assign pub_label = 'Preprint' -%}
+{%- else -%}
+  {%- assign pub_label = pub_extra.venue | default: pub.venue -%}
+{%- endif -%}
+{%- assign pub_kind = pub_extra.kind -%}
+
+{%- assign pub_thumb = nil -%}
+{%- assign pub_video = nil -%}
+{%- assign pub_full = nil -%}
+{%- assign pub_size = nil -%}
+{%- if pub.teaser -%}
+  {%- assign pub_teaser_stem = pub.teaser | split: '.' | first -%}
+  {%- assign pub_teaser_ext = pub.teaser | split: '.' | last | downcase -%}
+  {%- capture pub_full %}{{ '/images/' | append: pub.teaser | relative_url }}{% endcapture -%}
+  {%- capture pub_thumb_path %}/images/publications/{{ pub_teaser_stem }}.webp{% endcapture -%}
+  {%- assign pub_thumb_file = site.static_files | where: 'path', pub_thumb_path | first -%}
+  {%- if pub_thumb_file -%}
+    {%- assign pub_thumb = pub_thumb_path | relative_url -%}
+    {%- assign pub_size = site.data.publication_thumbnails[pub_teaser_stem] -%}
+    {%- if pub_teaser_ext == 'gif' -%}
+      {%- capture pub_video_path %}/images/publications/{{ pub_teaser_stem }}.mp4{% endcapture -%}
+      {%- assign pub_video_file = site.static_files | where: 'path', pub_video_path | first -%}
+      {%- if pub_video_file -%}{%- assign pub_video = pub_video_path | relative_url -%}{%- endif -%}
+    {%- endif -%}
+  {%- else -%}
+    {%- assign pub_thumb = pub_full -%}
+  {%- endif -%}
+{%- endif -%}

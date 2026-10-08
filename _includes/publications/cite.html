@@ -1,0 +1,32 @@
+{%- comment -%}
+  The citation panel opened by the BibTeX tab: the BibTeX entry (solarized,
+  in Courier Prime) and the IEEE citation, each with a copy button. A hidden
+  checkbox keeps it working without JavaScript; it comes after the card's text
+  so keyboard focus reaches the tab after the paper's links. The entry is
+  built from bibtexraw, so what is shown is exactly what is copied.
+{%- endcomment -%}
+{%- if pub.bibtexraw or pub.citation -%}
+{%- capture pub_newline %}
+{% endcapture -%}
+{%- assign pub_indent = pub_newline | append: '  ' -%}
+<input id="cite-{{ pub_slug }}" class="toggle" type="checkbox">
+<div class="pub-cite">
+  <div class="pub-cite__inner">
+    <div class="pub-cite__panel">
+      {%- if pub.bibtexraw %}
+      {%- assign pub_bibtex = pub.bibtexraw | replace: '\n ', pub_indent | replace: '\n', pub_newline %}
+      <div class="pub-cite__block">
+        <div class="pub-cite__head"><span class="pub-cite__label"><span class="visually-hidden">BibTeX</span><span class="bibtex-logo" aria-hidden="true"><span class="bibtex-logo__cap">B</span><span class="bibtex-logo__ib">ib</span><span class="bibtex-logo__cap">T</span><sub>e</sub><span class="bibtex-logo__cap">X</span></span></span><button class="pub-cite__copy" type="button" data-pub-copy aria-label="Copy the BibTeX entry" hidden><i class="fas fa-copy" aria-hidden="true"></i><span class="pub-cite__copy-label">Copy</span></button></div>
+        <pre class="pub-cite__bibtex"><code class="language-bibtex">{{ pub_bibtex | escape }}</code></pre>
+      </div>
+      {%- endif %}
+      {%- if pub.citation %}
+      <div class="pub-cite__block">
+        <div class="pub-cite__head"><span class="pub-cite__label">IEEE</span><button class="pub-cite__copy" type="button" data-pub-copy aria-label="Copy the IEEE citation" hidden><i class="fas fa-copy" aria-hidden="true"></i><span class="pub-cite__copy-label">Copy</span></button></div>
+        <p class="pub-cite__text">{{ pub.citation | escape }}</p>
+      </div>
+      {%- endif %}
+    </div>
+  </div>
+</div>
+{%- endif -%}

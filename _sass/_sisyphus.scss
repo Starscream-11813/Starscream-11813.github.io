@@ -2,14 +2,16 @@
    SISYPHUS ANIMATIONS
    =========================================================================== */
 
+// The scene floats at the right of the page heading, so the title starts at
+// the top of the page; the listing below clears it.
 .sisyphus-animation {
-  position: absolute;
-  top: 1rem;
-  right: -3rem;
+  position: relative;
+  float: right;
   z-index: 0;
-  width: min(72%, 640px);
+  width: min(62%, 600px);
   aspect-ratio: 40 / 13;
-  margin: 0;
+  // It reaches into the page margin, but never past the window's edge.
+  margin: 0 calc(-1 * clamp(0px, (100vw - 1280px) / 2, 3rem)) 0.5rem 1rem;
   overflow: hidden;
   background: transparent;
   opacity: 0.58;
@@ -28,14 +30,18 @@
 .archive--sisyphus {
   position: relative;
   isolation: isolate;
-  // Reserve a modest stage for the artwork: the title stays visually clear
-  // of the scene while the page still feels compact.
-  padding-top: 10.75rem;
 }
 
 .archive--sisyphus > :not(.sisyphus-animation) {
   position: relative;
   z-index: 1;
+}
+
+// Year headings (and the publication and book lists) begin below the scene.
+.archive--sisyphus .archive__subtitle,
+.archive--sisyphus .pubs,
+.archive--sisyphus .books {
+  clear: both;
 }
 
 // The scene may extend upward on narrow screens; keep the profile controls
@@ -57,14 +63,9 @@
 }
 
 @media screen and (min-width: 600px) and (max-width: 1199px) {
-  #main .archive.archive--sisyphus {
-    padding-top: 7rem;
-  }
-
   .sisyphus-animation {
-    top: -1.25rem;
-    right: -1.75rem;
     width: min(52vw, 400px);
+    margin: -0.75rem -1.25rem 0.5rem 1.25rem;
     opacity: 0.44;
   }
 }
@@ -77,11 +78,14 @@
   .sisyphus-animation {
     // Tuck the compact scene into the space beneath the profile. It reads as
     // a subtle backdrop without colliding with the title or introductory text.
+    position: absolute;
     top: -1.5rem;
-    right: -1.2rem;
-    width: calc(100% + 2.4rem);
+    right: -1rem;
+    float: none;
+    width: calc(100% + 2rem);
     height: 105px;
     aspect-ratio: auto;
+    margin: 0;
     opacity: 0.3;
   }
 }

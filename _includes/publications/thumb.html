@@ -1,0 +1,18 @@
+{%- comment -%}
+  The paper's teaser. On wider screens every thumbnail has the same width and
+  is as tall as its card's text (ending just past the BibTeX tab), filled from
+  the top; on phones it keeps its natural shape. It links to the full-size
+  teaser, which opens in a viewer when JavaScript is available. An animated
+  teaser plays as a looping video.
+{%- endcomment -%}
+{%- if pub_thumb -%}
+{%- if pub_size -%}{%- capture pub_size_attributes %} width="{{ pub_size[0] }}" height="{{ pub_size[1] }}"{% endcapture -%}{%- else -%}{%- assign pub_size_attributes = '' -%}{%- endif -%}
+<a class="pub-thumb" href="{{ pub_full }}" data-pub-zoom data-pub-caption="{{ pub.title | escape }}" aria-label="Enlarge the teaser figure for {{ pub_short | escape }}">
+  {%- if pub_video -%}
+  <video class="pub-thumb__media" src="{{ pub_video }}" poster="{{ pub_thumb }}"{{ pub_size_attributes }} autoplay muted loop playsinline preload="metadata" aria-hidden="true"></video>
+  {%- else -%}
+  <img class="pub-thumb__media" src="{{ pub_thumb }}" alt=""{{ pub_size_attributes }} loading="lazy" decoding="async">
+  {%- endif -%}
+  <span class="pub-thumb__zoom" aria-hidden="true"><i class="fas fa-search-plus"></i></span>
+</a>
+{%- endif -%}

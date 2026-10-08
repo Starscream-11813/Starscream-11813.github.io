@@ -1,0 +1,62 @@
+# The small venue label above each title on the Publications page, keyed by
+# each paper's permalink. Everything else (title, authors, venue line, notes,
+# links, BibTeX) stays in _publications/.
+#   short:  the paper's short name, used for accessible labels
+#   venue:  a compact venue label, e.g. "IJCNLP-AACL 2026"
+#   kind:   the track, shown after the venue (Main, Findings, Workshop, ...)
+# A paper without an entry shows its full venue; preprints show "Preprint".
+
+/publications/1-banglabook:
+  short: BanglaBook
+  venue: ACL 2023
+  kind: Findings
+
+/publications/2-mwpsolving:
+  short: ParaMAWPS
+  venue: ACL 2023
+  kind: Student Research Workshop
+
+/publications/3-hasper:
+  short: HaSPeR
+  venue: ICCV 2025
+  kind: Workshop
+
+/publications/4-screedsolo:
+  short: SCReedSolo
+  venue: ACPR 2025
+
+/publications/5-physicseval:
+  short: PhysicsEval
+  venue: IJCNLP-AACL 2025
+  kind: Findings
+
+/publications/6-frugalprompt:
+  short: FrugalPrompt
+  venue: EMNLP 2026
+  kind: Workshop
+
+/publications/7-adab:
+  short: ADAB
+  venue: NeurIPS 2025
+  kind: Workshop
+
+/publications/8-politicalalignment:
+  short: Political Alignment in LLMs
+
+/publications/9-circuitlm:
+  short: CircuitLM
+  venue: IEEE ICLAD 2026
+
+/publications/10-ivellm:
+  short: Narrative over Numbers
+
+/publications/11-llmideoplasticity:
+  short: LLM-Ideoplasticity
+  venue: IJCNLP-AACL 2026
+  kind: Main
+
+/publications/12-sparsefeatureinterventions:
+  short: Sparse-Feature Interventions
+
+/publications/13-ai4math:
+  short: AI for Mathematical Reasoning

@@ -5,20 +5,36 @@ permalink: /publications/
 author_profile: true
 sisyphus_animation: sisyphus-graph
 sisyphus_animation_title: "Sisyphus continuously rolling a boulder uphill, in graph style"
+publications_ui: true
 ---
-
-  You can also find my articles on <a href="https://scholar.google.com/citations?user=4L_7vaoAAAAJ&hl=en&oi=ao">my <span style="color:#4285F4">G</span><span style="color:#DB4437">o</span><span style="color:#F4B400">o</span><span style="color:#4285F4">g</span><span style="color:#0F9D58">l</span><span style="color:#DB4437">e</span> Scholar profile</a>.
-  <br>
-  <span class="author-dagger">&dagger;</span> denotes equal contribution.
-  
-{% include base_path %}
-{% capture written_year %}'None'{% endcapture %}
-{% for post in site.publications reversed %}
-    {% capture year %}{{ post.date | date: '%Y' }}{% endcapture %}
-    {% if year != written_year %}
-      <h2 id="{{ year | slugify }}" class="archive__subtitle">{{ year }}</h2>
-      {% capture written_year %}{{ year }}{% endcapture %}
-    {% endif %}
-  {% include archive-single.html %}
-  <hr>
-{% endfor %}
+{% include publications/intro.html %}
+{%- comment -%} Icon, code, and logo fonts used by the buttons and the BibTeX tab. {%- endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-solarizedlight.min.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&amp;display=swap">
+<link rel="stylesheet" href="https://fonts.cdnfonts.com/css/cmu-serif">
+<div class="pubs">
+  {%- assign pubs_by_year = site.publications | reverse | group_by_exp: 'p', "p.date | date: '%Y'" -%}
+  {%- for pubs_year in pubs_by_year %}
+  <section class="pubs-year" aria-labelledby="{{ pubs_year.name | slugify }}">
+    <h2 class="pubs-year__title" id="{{ pubs_year.name | slugify }}">{{ pubs_year.name }}<span class="pubs-year__count">{{ pubs_year.size }} paper{% if pubs_year.size != 1 %}s{% endif %}</span></h2>
+    {%- for p in pubs_year.items %}
+      {%- include publications/meta.html pub=p %}
+    <article class="pub-card{% unless pub_thumb %} pub-card--text{% endunless %}" id="{{ pub_slug }}">
+      {% include publications/thumb.html %}
+      <div class="pub-card__body">
+        {% include publications/eyebrow.html %}
+        <h3 class="pub-title"><a href="{{ pub.url | relative_url }}">{{ pub.title }}</a></h3>
+        {% include publications/venue-line.html %}
+        {% include publications/notes.html %}
+        <p class="pub-authors"><u>Authors:</u> {% include format-author-daggers.html authors=pub.authors %}</p>
+        {% include publications/buttons.html %}
+        {% include publications/bibtex.html %}
+      </div>
+      {% include publications/cite.html %}
+    </article>
+    {%- endfor %}
+  </section>
+  {%- endfor %}
+  <p class="visually-hidden" aria-live="polite" data-pub-status></p>
+</div>

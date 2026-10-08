@@ -1,0 +1,7 @@
+{%- comment -%}
+  The BibTeX tab with its LaTeX-style logo. It is the label of the checkbox
+  in cite.html, which opens the citation panel without JavaScript.
+{%- endcomment -%}
+{%- if pub.bibtexraw or pub.citation -%}
+<label for="cite-{{ pub_slug }}" class="lbl-toggle"><span class="visually-hidden">Citation for {{ pub_short | escape }}: BibTeX and IEEE</span><span class="bibtex-logo" aria-hidden="true"><span class="bibtex-logo__cap">B</span><span class="bibtex-logo__ib">ib</span><span class="bibtex-logo__cap">T</span><sub>e</sub><span class="bibtex-logo__cap">X</span></span></label>
+{%- endif -%}

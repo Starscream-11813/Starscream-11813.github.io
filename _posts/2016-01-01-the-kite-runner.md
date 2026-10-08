@@ -7,7 +7,7 @@ permalink: /books/the-kite-runner/
 excerpts: "For you a thousand times over!"
 teaser: "TheKiteRunner.jpg"
 tags:
-  - Adolesence
+  - Adolescence
   - Fiction
   - History
 ---

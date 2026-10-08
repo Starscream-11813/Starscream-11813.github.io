@@ -1,0 +1,807 @@
+/* The Publications page: paper cards around the original buttons, BibTeX tab,
+   and glowing notes. Everything is scoped to .pubs (or prefixed pub-), so other
+   pages that use the theme's archive styles are untouched. */
+
+// The site's Palatino webfont has only a regular face; bold text (and the Lit
+// posts quotes, in italic) use the installed Palatino faces where available and
+// are synthesized elsewhere.
+@font-face {
+  font-family: "Publication Palatino";
+  font-style: italic;
+  font-weight: 400;
+  src: local("Palatino Linotype Italic"), local("PalatinoLinotype-Italic"),
+    local("Palatino Italic"), local("Palatino-Italic"),
+    local("Book Antiqua Italic"), local("BookAntiqua-Italic"),
+    local("TeX Gyre Pagella Italic"), local("TeXGyrePagella-Italic");
+}
+
+@font-face {
+  font-family: "Publication Palatino";
+  font-style: normal;
+  font-weight: 700;
+  src: local("Palatino Linotype Bold"), local("PalatinoLinotype-Bold"),
+    local("Palatino Bold"), local("Palatino-Bold"),
+    local("Book Antiqua Bold"), local("BookAntiqua-Bold"),
+    local("TeX Gyre Pagella Bold"), local("TeXGyrePagella-Bold");
+}
+
+@font-face {
+  font-family: "Publication Palatino";
+  font-style: italic;
+  font-weight: 700;
+  src: local("Palatino Linotype Bold Italic"), local("PalatinoLinotype-BoldItalic"),
+    local("Palatino Bold Italic"), local("Palatino-BoldItalic"),
+    local("Book Antiqua Bold Italic"), local("BookAntiqua-BoldItalic"),
+    local("TeX Gyre Pagella Bold Italic"), local("TeXGyrePagella-BoldItalic");
+}
+
+// Beside the Sisyphus scene; if the first line must wrap, the link stays whole.
+.pubs-intro {
+  margin: 0.55rem 0 0.4rem;
+  color: var(--theme-muted, #6f6a7d);
+  font-size: 0.82em;
+  line-height: 1.6;
+  text-wrap: balance;
+
+  a { white-space: nowrap; }
+}
+
+.google-wordmark span:nth-child(1),
+.google-wordmark span:nth-child(4) { color: #4285f4; }
+.google-wordmark span:nth-child(2),
+.google-wordmark span:nth-child(6) { color: #db4437; }
+.google-wordmark span:nth-child(3) { color: #f4b400; }
+.google-wordmark span:nth-child(5) { color: #0f9d58; }
+
+.pubs {
+  --pub-text: #45414f;
+  --pub-strong: #29263a;
+  --pub-muted: #706b7e;
+  --pub-faint: #a19cae;
+  --pub-border: #e6e1f0;
+  --pub-border-strong: #d3cce6;
+  --pub-surface: #fbfaff;
+  --pub-raised: #fff;
+  --pub-accent: #6962d2;
+  --pub-link: #2f8fb0;
+  --pub-me: #2c2770;
+  --pub-me-mark: rgba(105, 98, 210, 0.16);
+  --pub-shadow: 0 12px 30px rgba(44, 34, 75, 0.09);
+  position: relative;
+  margin-top: 1rem;
+  color: var(--pub-text);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+html[data-theme="dark"] .pubs {
+  --pub-text: #dedaee;
+  --pub-strong: #fff;
+  --pub-muted: #b9b4cf;
+  --pub-faint: #8d88a6;
+  --pub-border: rgba(226, 222, 255, 0.14);
+  --pub-border-strong: rgba(226, 222, 255, 0.28);
+  --pub-surface: #24253a;
+  --pub-raised: #2b2c44;
+  --pub-accent: #a7a8f0;
+  --pub-link: #8fdcfb;
+  --pub-me: #fff;
+  --pub-me-mark: rgba(167, 168, 240, 0.24);
+  --pub-shadow: 0 14px 34px rgba(8, 8, 20, 0.36);
+}
+
+// --- Years ------------------------------------------------------------------
+
+.pubs .pubs-year {
+  margin: 0 0 2.2em;
+}
+
+.pubs .pubs-year__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65em;
+  margin: 0 0 0.85em;
+  padding: 0 0 0.35em;
+  border-bottom: 1px solid var(--pub-border);
+  color: var(--pub-strong);
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.pubs .pubs-year__count {
+  color: var(--pub-muted);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+// --- Cards ------------------------------------------------------------------
+
+// The citation panel opens in its own row beneath the text, so the thumbnail
+// (as tall as the text) keeps its size while the panel is open.
+.pubs .pub-card {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "thumb body"
+    ". cite";
+  grid-template-columns: 9em minmax(0, 1fr);
+  column-gap: 1.3em;
+  margin: 0 0 1.05em;
+  padding: 1.15em 1.2em;
+  border: 1px solid var(--pub-border);
+  border-radius: 16px;
+  background: var(--pub-surface);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+
+  &:hover {
+    border-color: var(--pub-border-strong);
+    box-shadow: var(--pub-shadow);
+  }
+}
+
+.pubs .pub-card--text {
+  grid-template-areas:
+    "body"
+    "cite";
+  grid-template-columns: minmax(0, 1fr);
+}
+
+// The thumbnail fills the first row, so this margin lets it end just past the
+// BibTeX tab; the open panel climbs back over the margin to meet the tab.
+.pubs .pub-card__body {
+  grid-area: body;
+  min-width: 0;
+  margin-bottom: 0.45em;
+}
+
+.pubs .pub-card--text .pub-card__body { margin-bottom: 0; }
+
+// Bold text uses the true Palatino Bold faces declared above.
+.pubs .pub-card b,
+.pubs .pub-card strong,
+.pubs .pub-title {
+  font-family: "Publication Palatino", Palatino, serif;
+}
+
+.pubs .pub-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.1em 0.55em;
+  margin: 0 0 0.3em;
+  color: var(--pub-accent);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.66em;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+
+  > span + span::before {
+    content: "\00b7";
+    margin-right: 0.55em;
+    color: var(--pub-faint);
+  }
+}
+
+.pubs .pub-title {
+  margin: 0;
+  color: var(--pub-strong);
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.32;
+  letter-spacing: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: color 180ms ease, background-size 260ms ease;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--pub-link);
+    background-size: 100% 1px;
+  }
+}
+
+// The venue line and authors keep the original list's 14.4px lines.
+.pubs .pub-venue,
+.pubs .pub-authors {
+  margin: 0.3em 0 0;
+  color: var(--pub-text);
+  font-size: 0.8em;
+  line-height: 1.5;
+}
+
+.pubs .pub-venue { margin-top: 0.4em; }
+
+// A soft highlighter marks my name among the authors.
+.pubs .pub-authors b {
+  color: var(--pub-me);
+  background: linear-gradient(transparent 58%, var(--pub-me-mark) 58%);
+}
+
+// --- Glowing notes (as in the original list), on one line -------------------
+
+.pubs .pub-notes {
+  margin: 0.3em 0 0;
+  font-size: 0.72em;
+  line-height: 1.6;
+}
+
+.pubs .pub-notes__sep {
+  margin: 0 0.4em;
+  color: var(--pub-muted);
+  font-weight: 700;
+
+  // The dot operator is a small glyph; enlarge it without growing the line.
+  > [aria-hidden] {
+    font-size: 1.35em;
+    line-height: 0;
+  }
+}
+
+.pubs .glownote {
+  animation: pub-glownote 4s linear infinite alternate;
+}
+
+.pubs .glownote--presentation { color: #5bcefa; }
+.pubs .glownote--award { color: magenta; }
+
+@keyframes pub-glownote {
+  from { text-shadow: 0 0 3px rgba(184, 134, 11, 0.4); }
+  50% { text-shadow: 0 0 4px rgba(255, 215, 0, 0.5); }
+  to { text-shadow: 0 0 3px rgba(255, 223, 100, 0.4); }
+}
+
+// Sparkles twinkle around the trophy; sizes follow the note's text size.
+.pubs .trophy {
+  position: relative;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: "\2728";
+    position: absolute;
+    color: gold;
+    font-size: 1em;
+    opacity: 0;
+    animation: pub-trophy-sparkle 1.5s infinite ease-in-out;
+  }
+
+  &::before { top: -0.69em; left: 0.69em; }
+  &::after { top: 0.56em; left: -0.21em; animation-delay: 0.8s; }
+}
+
+@keyframes pub-trophy-sparkle {
+  0% { transform: scale(0.3) rotate(0deg); opacity: 0; }
+  50% { transform: scale(0.9) rotate(20deg); opacity: 1; }
+  100% { transform: scale(0.3) rotate(0deg); opacity: 0; }
+}
+
+.pubs .ranknote { color: #7c3aed; }
+
+.pubs .ranknote__icon {
+  position: relative;
+  display: inline-block;
+  margin-left: 0.18em;
+
+  &::before,
+  &::after {
+    content: "\2728";
+    position: absolute;
+    color: #a78bfa;
+    font-size: 0.85em;
+    line-height: 1;
+    opacity: 0;
+    animation: pub-rank-sparkle 1.7s ease-in-out infinite;
+  }
+
+  &::before { top: -0.56em; right: -0.5em; }
+  &::after { bottom: -0.26em; left: -0.44em; animation-delay: 0.78s; }
+}
+
+@keyframes pub-rank-sparkle {
+  0%, 100% { transform: scale(0.45) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1) rotate(20deg); opacity: 1; }
+}
+
+// The dark theme's rule for bold text had turned the ranking note white.
+html[data-theme="dark"] .pubs .ranknote { color: #a78bfa; }
+
+// --- Buttons (as in the original list) --------------------------------------
+
+.pubs .pub-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin: 0.6em 0 0;
+}
+
+.pubs .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3em;
+  height: 25.6px;
+  padding: 0 0.55em;
+  border: none;
+  border-radius: 7px;
+  color: #eaeaea;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 13.5px;
+  font-weight: bold;
+  line-height: 1;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 160ms ease, filter 160ms ease;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    filter: brightness(1.07);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--pub-accent);
+    outline-offset: 2px;
+  }
+}
+
+.pubs .button--arxiv { background-color: #b31b1b; }
+.pubs .button--pdf { background-color: #428bca; }
+.pubs .button--code { background-color: #5cb85c; }
+.pubs .button--website { background-color: #00a9b8; }
+.pubs .button--slides { background-color: #ea641a; }
+.pubs .button--poster { background-color: #5bc0de; }
+.pubs .button--video { background-color: #999; }
+
+.pubs .button--openreview {
+  min-width: 86px;
+  gap: 4px;
+  padding: 0 7px;
+  background-color: #8c1d40;
+
+  .button__logo {
+    display: block;
+    flex: 0 0 16px;
+    width: 16px;
+    height: 16px;
+    border-radius: 2px;
+    object-fit: cover;
+  }
+}
+
+// The AI Podcast sparkle is the icons8 glyph, masked in white.
+.pubs .button--aipodcast {
+  min-width: 96px;
+  gap: 3px;
+  padding: 0 5px;
+  background-color: #7c3aed;
+
+  &::before {
+    content: "";
+    display: block;
+    flex: 0 0 14px;
+    width: 14px;
+    min-width: 14px;
+    height: 14px;
+    background-color: #fff;
+    -webkit-mask: url("/images/icons8-sparkles.svg") center / contain no-repeat;
+    mask: url("/images/icons8-sparkles.svg") center / contain no-repeat;
+  }
+}
+
+.pubs .button--doi {
+  width: 25.65px;
+  padding: 0;
+  background-color: #fcb520;
+  color: #000;
+
+  i { font-size: 1.25em; }
+}
+
+// The dark theme whitens button text; the DOI badge keeps dark ink.
+html[data-theme="dark"] .pubs .button--doi { color: #1e1f31 !important; }
+
+// --- BibTeX tab -------------------------------------------------------------
+
+// The LaTeX-style logo, as designed for the original tab.
+.pubs .bibtex-logo {
+  display: inline-block;
+  font-family: 'CMU Serif', 'Computer Modern Serif', serif;
+  font-variant: small-caps;
+  font-weight: bold;
+  letter-spacing: 0.01em;
+  line-height: 1;
+
+  sub {
+    margin-right: -0.08em;
+    margin-left: -0.12em;
+    font-size: 0.72em;
+    text-transform: uppercase;
+    vertical-align: 0.02em;
+  }
+}
+
+.pubs .bibtex-logo__ib { font-size: 0.92em; }
+.pubs .bibtex-logo__cap { font-size: 0.94em; }
+
+// A petite tab, as tall as the link buttons; open, it joins the panel below.
+.pubs .lbl-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  height: 25.6px;
+  margin: 0.55em 0 0;
+  padding: 0 10px 0 9px;
+  border-radius: 7px;
+  background: linear-gradient(180deg, #7a70e0 0%, #6258cf 100%);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 3px 9px rgba(105, 98, 210, 0.2);
+  color: #f1f0ff;
+  cursor: pointer;
+  -webkit-user-select: none;
+  user-select: none;
+  transition: filter 160ms ease, box-shadow 200ms ease, border-radius 200ms ease;
+
+  &:hover { filter: brightness(1.07); }
+
+  &::before {
+    content: '';
+    display: block;
+    border-top: 4px solid transparent;
+    border-bottom: 4px solid transparent;
+    border-left: 5px solid currentColor;
+    transition: transform 200ms ease-out;
+  }
+
+  .bibtex-logo { font-size: 15px; }
+}
+
+.pubs .pub-card:has(.toggle:checked) .lbl-toggle {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24);
+}
+
+.pubs .pub-card:has(.toggle:checked) .lbl-toggle::before { transform: rotate(90deg); }
+
+.pubs .pub-card:has(.toggle:focus-visible) .lbl-toggle {
+  outline: 2px solid var(--pub-accent);
+  outline-offset: 2px;
+}
+
+// The checkbox behind the tab stays focusable for keyboards, out of sight.
+.pubs .pub-card > .toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  opacity: 0;
+}
+
+// --- Citation panel ---------------------------------------------------------
+
+// It slides open beneath the tab; closed, it takes no space and no focus.
+.pubs .pub-cite {
+  display: grid;
+  grid-area: cite;
+  grid-template-rows: 0fr;
+  min-width: 0;
+  margin-top: -0.45em;
+  visibility: hidden;
+  transition: grid-template-rows 280ms ease, visibility 0s linear 280ms;
+}
+
+.pubs .toggle:checked ~ .pub-cite {
+  grid-template-rows: 1fr;
+  visibility: visible;
+  transition: grid-template-rows 280ms ease, visibility 0s linear 0s;
+}
+
+.pubs .pub-cite__inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+.pubs .pub-cite__panel {
+  padding: 0.6em 0.8em 0.75em;
+  border: 1px solid #d9d3f2;
+  border-radius: 0 10px 10px 10px;
+  background: var(--pub-raised);
+  font-size: 0.78em;
+}
+
+.pubs .pub-cite__block + .pub-cite__block {
+  margin-top: 0.75em;
+  padding-top: 0.65em;
+  border-top: 1px dashed var(--pub-border-strong);
+}
+
+.pubs .pub-cite__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1em;
+  margin: 0 0 0.4em;
+}
+
+.pubs .pub-cite__label {
+  color: var(--pub-muted);
+  font-family: 'CMU Serif', 'Computer Modern Serif', serif;
+  font-size: 1.05em;
+  font-variant: small-caps;
+  font-weight: bold;
+  letter-spacing: 0.04em;
+
+  .bibtex-logo { font-size: 1em; }
+}
+
+// Copy buttons wear the retired Cite button's blue, deepening on hover and
+// while they confirm a copy.
+.pubs .pub-cite__copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  height: 24px;
+  padding: 0 0.8em;
+  border: none;
+  border-radius: 999px;
+  background: #25c0ee;
+  color: #fff;
+  font-family: 'Product Sans', sans-serif;
+  font-size: 12px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.4s;
+
+  &:hover,
+  &:focus-visible,
+  &.is-copied { background-color: #0273af; }
+
+  &:focus-visible {
+    outline: 2px solid #25c0ee;
+    outline-offset: 2px;
+  }
+
+  &[hidden] { display: none; }
+}
+
+// The entry keeps the original solarized-light block in Courier Prime.
+.pubs .pub-cite__bibtex {
+  margin: 0;
+  padding: 0.7em 0.9em;
+  overflow-x: auto;
+  border: 1px solid #efe4c4;
+  border-radius: 8px;
+  background: #fdf6e3;
+  box-shadow: none;
+  font-size: 1em;
+  line-height: 1.55;
+  white-space: pre;
+
+  code {
+    padding: 0;
+    border: 0;
+    background: none;
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    font-size: 10pt;
+    font-weight: bold;
+    white-space: inherit;
+  }
+}
+
+.pubs .pub-cite__text {
+  margin: 0;
+  color: var(--pub-text);
+  font-size: 1.02em;
+  line-height: 1.55;
+}
+
+html[data-theme="dark"] .pubs {
+  .pub-cite__panel { border-color: rgba(167, 168, 240, 0.32); }
+  .pub-cite__bibtex { border-color: rgba(253, 246, 227, 0.4); }
+}
+
+// --- Thumbnails -------------------------------------------------------------
+
+// Every thumbnail has the same width and is as tall as its card's text,
+// ending just past the BibTeX tab. The teaser fills it from the top; the
+// whole figure opens on click.
+.pubs .pub-thumb {
+  position: relative;
+  display: block;
+  grid-area: thumb;
+  min-height: 8em;
+  overflow: hidden;
+  border: 1px solid var(--pub-border);
+  border-radius: 10px;
+  background: #fff;
+}
+
+.pubs .pub-thumb__media {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  transition: transform 400ms ease;
+}
+
+.pubs a.pub-thumb:hover .pub-thumb__media { transform: scale(1.03); }
+
+.pubs .pub-thumb__zoom {
+  position: absolute;
+  right: 0.45em;
+  bottom: 0.45em;
+  display: grid;
+  width: 1.75em;
+  height: 1.75em;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(30, 31, 49, 0.66);
+  color: #fff;
+  font-size: 0.68em;
+  opacity: 0;
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  transition: opacity 200ms ease;
+}
+
+.pubs a.pub-thumb:hover .pub-thumb__zoom,
+.pubs a.pub-thumb:focus-visible .pub-thumb__zoom { opacity: 1; }
+
+.pubs a.pub-thumb:focus-visible {
+  outline: 2px solid var(--pub-accent);
+  outline-offset: 2px;
+}
+
+html[data-theme="dark"] .pubs {
+  .pub-thumb { border-color: rgba(226, 222, 255, 0.2); }
+  .pub-thumb__media { filter: brightness(0.93); }
+}
+
+// --- Figure viewer ----------------------------------------------------------
+
+.pub-viewer {
+  max-width: min(92vw, 940px);
+  max-height: 92vh;
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(20, 16, 40, 0.35);
+
+  &::backdrop {
+    background: rgba(24, 20, 46, 0.62);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+}
+
+.pub-viewer__figure { margin: 0; }
+
+.pub-viewer__image {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: calc(92vh - 3.4em);
+  margin: 0 auto;
+}
+
+.pub-viewer__caption {
+  padding: 0.7em 3.4em 0.8em 1.1em;
+  border-top: 1px solid #ece8f4;
+  color: #4a4658;
+  font-family: Palatino, serif;
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.pub-viewer__close {
+  position: absolute;
+  top: 0.6em;
+  right: 0.6em;
+  display: grid;
+  width: 2.2em;
+  height: 2.2em;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(30, 31, 49, 0.72);
+  color: #fff;
+  font-size: 15px;
+  cursor: pointer;
+
+  &:focus-visible { outline: 2px solid #a7a8f0; outline-offset: 2px; }
+}
+
+html[data-theme="dark"] .pub-viewer {
+  background: #2a2c42;
+
+  .pub-viewer__caption { border-top-color: rgba(226, 222, 255, 0.16); color: #dedaee; }
+}
+
+// --- Small screens, touch, motion, print -------------------------------------
+
+@media screen and (max-width: 1024px) {
+  .pubs { font-size: 17px; }
+}
+
+// Phones wrap the text around a smaller thumbnail in its natural shape; the
+// links, tab, and citation panel run full width.
+@media screen and (max-width: 600px) {
+  .pubs { font-size: 16.5px; }
+
+  .pubs .pub-card {
+    display: flow-root;
+    padding: 0.9em;
+  }
+
+  .pubs .pub-thumb {
+    float: left;
+    width: 5.5em;
+    min-height: 0;
+    margin: 0.15em 0.9em 0.5em 0;
+  }
+
+  .pubs .pub-thumb__media {
+    position: static;
+    height: auto;
+  }
+
+  .pubs .pub-card__body,
+  .pubs .pub-cite { margin: 0; }
+
+  .pubs .pub-buttons { clear: both; }
+
+  // Prism's theme forbids wrapping on the code itself, so allow it there.
+  .pubs .pub-cite__bibtex,
+  .pubs .pub-cite__bibtex code {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+  }
+}
+
+@media (hover: none), (pointer: coarse) {
+  .pubs .pub-cite__copy { height: 36px; padding: 0 1em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pubs .glownote,
+  .pubs .trophy::before,
+  .pubs .trophy::after,
+  .pubs .ranknote__icon::before,
+  .pubs .ranknote__icon::after { animation: none; }
+  .pubs .pub-title a,
+  .pubs .pub-thumb__media,
+  .pubs .pub-card,
+  .pubs .lbl-toggle,
+  .pubs .lbl-toggle::before,
+  .pubs .pub-cite,
+  .pubs .toggle:checked ~ .pub-cite { transition: none; }
+}
+
+@media print {
+  .pubs .lbl-toggle,
+  .pubs .pub-cite,
+  .pubs .pub-thumb__zoom { display: none !important; }
+}

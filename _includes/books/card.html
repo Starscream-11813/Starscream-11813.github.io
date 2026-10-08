@@ -1,0 +1,48 @@
+{%- comment -%}
+  One book on the Lit posts page. Call with book=<post>. Every cover has the
+  same width and keeps its own shape, never cropped. Cover thumbnails and their
+  sizes come from scripts/thumbnails.py, falling back to the original cover.
+  The feather links to my thoughts on the book; it closes the excerpt (or, for
+  a book without one, follows the author), held to the last word so it never
+  wraps onto a line of its own.
+{%- endcomment -%}
+{%- assign book = include.book -%}
+{%- assign book_slug = book.url | split: '/' | last -%}
+{%- assign book_url = book.url | relative_url -%}
+{%- assign book_title = book.title | smartify -%}
+{%- assign book_cover = nil -%}
+{%- assign book_size = nil -%}
+{%- if book.teaser -%}
+  {%- assign book_stem = book.teaser | split: '.' | first -%}
+  {%- capture book_cover_path %}/images/books/{{ book_stem }}.webp{% endcapture -%}
+  {%- assign book_cover_file = site.static_files | where: 'path', book_cover_path | first -%}
+  {%- if book_cover_file -%}
+    {%- assign book_cover = book_cover_path | relative_url -%}
+    {%- assign book_size = site.data.book_covers[book_stem] -%}
+  {%- else -%}
+    {%- assign book_cover = '/images/' | append: book.teaser | relative_url -%}
+  {%- endif -%}
+{%- endif -%}
+{%- capture book_thoughts -%}
+<span class="book-thoughts-wrap">&nbsp;<a class="book-thoughts" href="{{ book_url }}"><i class="fas fa-feather-alt" aria-hidden="true"></i><span class="book-thoughts__tip">My thoughts<span class="visually-hidden"> on {{ book_title }}</span></span></a></span>
+{%- endcapture -%}
+<article class="book-card{% unless book_cover %} book-card--text{% endunless %}" id="{{ book_slug }}">
+  {%- if book_cover %}
+  <a class="book-cover" href="{{ book_url }}" tabindex="-1" aria-hidden="true">
+    <img class="book-cover__image" src="{{ book_cover }}" alt=""{% if book_size %} width="{{ book_size[0] }}" height="{{ book_size[1] }}"{% endif %} loading="lazy" decoding="async">
+  </a>
+  {%- endif %}
+  <div class="book-card__head">
+    {%- if book.tags.size > 0 %}
+    <p class="book-tags">{% for tag in book.tags %}<span>{{ tag }}</span>{% endfor %}</p>
+    {%- endif %}
+    <h3 class="book-title"><a href="{{ book_url }}">{{ book_title }}</a></h3>
+    <p class="book-author">{% if book.author %}by <b>{{ book.author }}</b>{% endif %}{% unless book.excerpts %}{{ book_thoughts }}{% endunless %}</p>
+  </div>
+  {%- if book.excerpts %}
+  <div class="book-excerpt">
+    <p class="book-excerpt__label">Excerpt</p>
+    <blockquote class="book-quote"><p>{{ book.excerpts }}</p></blockquote>{{ book_thoughts }}
+  </div>
+  {%- endif %}
+</article>

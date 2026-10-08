@@ -1,0 +1,496 @@
+/* The Lit posts page: book cards along a reading timeline, in the manner of
+   the Publications cards. Everything is scoped to .books (or prefixed book-),
+   so the posts' own pages and the other archives are untouched. */
+
+// Beside the Sisyphus scene, like the Publications introduction.
+.books-intro {
+  margin: 0.55rem 0 0.4rem;
+  color: var(--theme-muted, #6f6a7d);
+  font-size: 0.82em;
+  line-height: 1.6;
+  text-wrap: balance;
+}
+
+.books {
+  --book-text: #45414f;
+  --book-strong: #29263a;
+  --book-muted: #706b7e;
+  --book-faint: #a19cae;
+  --book-border: #e6e1f0;
+  --book-border-strong: #d3cce6;
+  --book-surface: #fbfaff;
+  --book-page: #fff;
+  --book-accent: #6962d2;
+  --book-link: #2f8fb0;
+  --book-thoughts-bg: rgba(105, 98, 210, 0.12);
+  --book-thoughts-ink: #6962d2;
+  --book-tip-bg: #2b2c44;
+  --book-tip-ink: #fff;
+  --book-shadow: 0 12px 30px rgba(44, 34, 75, 0.09);
+  --book-cover-shadow: 0 0 0 1px rgba(28, 20, 56, 0.07), 0 1px 2px rgba(28, 20, 56, 0.14), 0 10px 16px -8px rgba(28, 20, 56, 0.45);
+  --book-cover-lift: 0 0 0 1px rgba(28, 20, 56, 0.07), 0 2px 4px rgba(28, 20, 56, 0.14), 0 16px 22px -10px rgba(28, 20, 56, 0.5);
+  position: relative;
+  margin-top: 1.4rem;
+  color: var(--book-text);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+html[data-theme="dark"] .books {
+  --book-text: #dedaee;
+  --book-strong: #fff;
+  --book-muted: #b9b4cf;
+  --book-faint: #8d88a6;
+  --book-border: rgba(226, 222, 255, 0.14);
+  --book-border-strong: rgba(226, 222, 255, 0.28);
+  --book-surface: #24253a;
+  --book-page: var(--theme-bg, #1e1f31);
+  --book-accent: #a7a8f0;
+  --book-link: #8fdcfb;
+  --book-mark-opacity: 1;
+  --book-thoughts-bg: rgba(167, 168, 240, 0.16);
+  --book-thoughts-ink: #c9c6ff;
+  --book-tip-bg: #f1f0ff;
+  --book-tip-ink: #24253a;
+  --book-shadow: 0 14px 34px rgba(8, 8, 20, 0.36);
+  --book-cover-shadow: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 16px -8px rgba(0, 0, 0, 0.7);
+  --book-cover-lift: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 2px 4px rgba(0, 0, 0, 0.3), 0 16px 22px -10px rgba(0, 0, 0, 0.75);
+}
+
+// --- Reading timeline -------------------------------------------------------
+
+// Each year sits in a gutter beside its books, on a thread that runs through
+// the years. The year and its marker stay in view while its books scroll by.
+.books .books-year {
+  display: grid;
+  grid-template-columns: 3.2em minmax(0, 1fr);
+  column-gap: 1em;
+}
+
+.books .books-year__title {
+  position: sticky;
+  top: 1.25rem;
+  align-self: start;
+  margin: 0;
+  padding: 0.75em 0 0;
+  color: var(--book-strong);
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  text-align: right;
+
+  // The year's marker, centered on the thread one column gap away (the gap's
+  // 1em of list text is 0.8em of this larger text).
+  &::after {
+    content: "";
+    position: absolute;
+    top: 1.02em;
+    left: calc(100% + 0.8em - 4px);
+    box-sizing: border-box;
+    width: 9px;
+    height: 9px;
+    border: 2px solid var(--book-accent);
+    border-radius: 50%;
+    background: var(--book-page);
+  }
+}
+
+.books .books-year__count {
+  display: block;
+  margin-top: 0.4em;
+  color: var(--book-muted);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.books .books-year__list {
+  min-width: 0;
+  padding: 0 0 2em 1.1em;
+  border-left: 1px solid var(--book-border-strong);
+}
+
+// The thread fades out after the earliest year.
+.books .books-year:last-child .books-year__list {
+  padding-bottom: 1em;
+  border-image: linear-gradient(var(--book-border-strong) 75%, transparent) 1;
+}
+
+// --- Cards ------------------------------------------------------------------
+
+// The cover runs down the left; when it is taller than the text, the last
+// row takes up the difference.
+.books .book-card {
+  position: relative;
+  display: grid;
+  grid-template-areas:
+    "cover head"
+    "cover quote"
+    "cover .";
+  grid-template-columns: 6.25em minmax(0, 1fr);
+  grid-template-rows: auto auto 1fr;
+  column-gap: 1.3em;
+  margin: 0 0 1.05em;
+  padding: 1.15em 1.2em;
+  border: 1px solid var(--book-border);
+  border-radius: 16px;
+  background: var(--book-surface);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+
+  &:last-child { margin-bottom: 0; }
+
+  &:hover {
+    border-color: var(--book-border-strong);
+    box-shadow: var(--book-shadow);
+  }
+}
+
+.books .book-card--text {
+  grid-template-areas:
+    "head"
+    "quote";
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: auto;
+}
+
+.books .book-card__head {
+  grid-area: head;
+  min-width: 0;
+}
+
+// Every cover has the same width and its own height, never cropped. A crease
+// along the spine and a soft shadow make it read as a book; it lifts a little
+// when its card is hovered.
+.books .book-cover {
+  position: relative;
+  display: block;
+  grid-area: cover;
+  align-self: start;
+  overflow: hidden;
+  border-radius: 2px 5px 5px 2px;
+  box-shadow: var(--book-cover-shadow);
+  transition: transform 260ms ease, box-shadow 260ms ease;
+
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg,
+      rgba(0, 0, 0, 0.2) 0,
+      rgba(0, 0, 0, 0.05) 2.5%,
+      rgba(255, 255, 255, 0.2) 4.5%,
+      rgba(255, 255, 255, 0) 8%,
+      rgba(0, 0, 0, 0.07) 9.5%,
+      rgba(0, 0, 0, 0) 13%);
+    pointer-events: none;
+  }
+}
+
+.books .book-cover__image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.books .book-card:hover .book-cover {
+  transform: translateY(-3px);
+  box-shadow: var(--book-cover-lift);
+}
+
+html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
+
+// --- Text -------------------------------------------------------------------
+
+// Each tag carries its dot in front; the list starts one dot-width to the
+// left and clips that strip, so no wrapped line begins with a dot.
+.books .book-tags {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  row-gap: 0.1em;
+  margin: 0 0 0.3em -1.3em;
+  color: var(--book-accent);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.66em;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  clip-path: inset(0 0 0 1.3em);
+
+  > span::before {
+    content: "\00b7";
+    display: inline-block;
+    width: 1.3em;
+    color: var(--book-faint);
+    letter-spacing: 0;
+    text-align: center;
+  }
+}
+
+.books .book-title {
+  margin: 0;
+  color: var(--book-strong);
+  font-family: "Publication Palatino", Palatino, serif;
+  font-size: 1.1em;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: color 180ms ease, background-size 260ms ease;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--book-link);
+    background-size: 100% 1px;
+  }
+}
+
+.books .book-author {
+  margin: 0.2em 0 0;
+  color: var(--book-muted);
+  font-size: 0.8em;
+  line-height: 1.5;
+
+  b {
+    color: var(--book-text);
+    font-family: "Publication Palatino", Palatino, serif;
+  }
+}
+
+// The favorite passage, in true italic, under a small "Excerpt" label and an
+// opening mark in the About page's reason–create–behave colors. Line breaks
+// written into a passage (as in a verse) are kept.
+.books .book-excerpt {
+  position: relative;
+  grid-area: quote;
+  min-width: 0;
+  margin: 0.7em 0 0;
+  padding-left: 1.7em;
+  color: var(--book-text);
+  font-family: "Publication Palatino", Palatino, serif;
+  font-size: 0.86em;
+  line-height: 1.6;
+
+  &::before {
+    content: "\201C";
+    position: absolute;
+    top: -0.16em;
+    left: -0.04em;
+    color: var(--book-accent);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 3.4em;
+    line-height: 1;
+    opacity: var(--book-mark-opacity, 0.9);
+
+    @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+      background: linear-gradient(135deg, #74d2fa 15%, #ec8dff 50%, #8180de 85%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+  }
+}
+
+.books .book-excerpt__label {
+  margin: 0 0 0.1em;
+  color: var(--book-muted);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.68em;
+  letter-spacing: 0.14em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+
+// The passage runs inline, so the feather can close its last line.
+.books .book-quote {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-style: italic;
+
+  p {
+    display: inline;
+    margin: 0;
+    white-space: pre-line;
+  }
+
+  b { color: var(--book-strong); }
+}
+
+// --- My thoughts --------------------------------------------------------------
+
+// The feather and the no-break space before it wrap only together with the
+// last word; a break before an inline button is otherwise allowed.
+.books .book-thoughts-wrap { white-space: nowrap; }
+
+// A small feather links to my thoughts on the book: a soft lavender tile that
+// fills in on hover, when its name appears in a bubble above it.
+.books .book-thoughts {
+  position: relative;
+  display: inline-grid;
+  place-items: center;
+  width: 24px;
+  height: 24px;
+  margin-left: 0.15em;
+  border-radius: 7px;
+  background-color: var(--book-thoughts-bg);
+  color: var(--book-thoughts-ink);
+  font-size: 11.5px;
+  font-style: normal;
+  line-height: 1;
+  text-decoration: none;
+  vertical-align: -0.35em;
+  transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
+
+  &:hover,
+  &:focus-visible {
+    background-color: #6962d2;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.24), 0 3px 9px rgba(105, 98, 210, 0.25);
+    color: #fff;
+    text-decoration: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--book-accent);
+    outline-offset: 2px;
+  }
+
+  // The quill pivots on its nib and scribbles once on hover.
+  i { transform-origin: 15% 85%; }
+
+  &:hover i { animation: book-quill 650ms ease-in-out; }
+}
+
+// The bubble grows leftward from the tile, so it never passes the card's edge.
+.books .book-thoughts__tip {
+  position: absolute;
+  right: -3px;
+  bottom: calc(100% + 7px);
+  padding: 0.4em 0.65em;
+  border-radius: 6px;
+  background: var(--book-tip-bg);
+  box-shadow: 0 4px 12px rgba(28, 20, 56, 0.18);
+  color: var(--book-tip-ink);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 11.5px;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(3px);
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.books .book-thoughts:hover .book-thoughts__tip,
+.books .book-thoughts:focus-visible .book-thoughts__tip {
+  opacity: 1;
+  transform: none;
+}
+
+// On touch screens the tile stays small, but answers taps around it too.
+@media (pointer: coarse) {
+  .books .book-thoughts::after {
+    content: "";
+    position: absolute;
+    inset: -10px;
+  }
+}
+
+@keyframes book-quill {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(-16deg); }
+  65% { transform: rotate(7deg); }
+}
+
+// --- Small screens, motion, print -------------------------------------------
+
+@media screen and (max-width: 1024px) {
+  .books { font-size: 17px; }
+}
+
+// Narrower cards set a smaller cover beside the title, with the passage full
+// width beneath.
+@media screen and (max-width: 700px) {
+  .books .book-card {
+    grid-template-areas:
+      "cover head"
+      "quote quote";
+    grid-template-columns: 5em minmax(0, 1fr);
+    grid-template-rows: auto;
+    column-gap: 0.9em;
+  }
+
+  .books .book-card--text {
+    grid-template-areas:
+      "head"
+      "quote";
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .books .book-excerpt { margin-top: 0.95em; }
+}
+
+// Phones trade the timeline for year headings.
+@media screen and (max-width: 600px) {
+  .books { font-size: 16.5px; }
+
+  .books .books-year {
+    display: block;
+    margin: 0 0 2.2em;
+  }
+
+  .books .books-year__title {
+    position: static;
+    display: flex;
+    align-items: baseline;
+    gap: 0.65em;
+    margin: 0 0 0.85em;
+    padding: 0 0 0.35em;
+    border-bottom: 1px solid var(--book-border);
+    text-align: left;
+
+    &::after { display: none; }
+  }
+
+  .books .books-year__count {
+    display: inline;
+    margin: 0;
+  }
+
+  .books .books-year__list,
+  .books .books-year:last-child .books-year__list {
+    padding: 0;
+    border: 0;
+  }
+
+  .books .book-card { padding: 0.9em; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .books .book-card,
+  .books .book-cover,
+  .books .book-title a { transition: none; }
+  .books .book-card:hover .book-cover { transform: none; }
+  .books .book-thoughts,
+  .books .book-thoughts__tip { transition: none; }
+  .books .book-thoughts:hover i { animation: none; }
+}
+
+@media print {
+  .books .books-year__title { position: static; }
+  .books .book-thoughts { display: none; }
+}

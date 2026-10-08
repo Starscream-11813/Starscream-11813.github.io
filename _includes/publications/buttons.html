@@ -1,0 +1,37 @@
+{%- comment -%}
+  The paper's link buttons, as in the original publication list. Colors and
+  sizes live in _sass/_publications.scss instead of inline styles.
+{%- endcomment -%}
+<div class="pub-buttons">
+  {%- if pub.paperurl -%}
+    {%- if pub.paperurl contains 'openreview.net' -%}
+  <a href="{{ pub.paperurl }}" target="_blank" rel="noopener noreferrer" class="button button--openreview"><img src="https://pbs.twimg.com/profile_images/1309249465056989189/Wwyw4IhM_400x400.jpg" alt="" aria-hidden="true" class="button__logo">OpenReview</a>
+    {%- else -%}
+  <a href="{{ pub.paperurl }}" target="_blank" rel="noopener noreferrer" class="button button--arxiv"><i class="ai ai-arxiv" aria-hidden="true"></i> arXiv</a>
+    {%- endif -%}
+  {%- endif -%}
+  {%- if pub.pdfurl -%}
+  <a href="{{ pub.pdfurl }}" target="_blank" rel="noopener noreferrer" class="button button--pdf"><i class="fa fa-file-pdf" aria-hidden="true"></i> PDF</a>
+  {%- endif -%}
+  {%- if pub.codedata -%}
+  <a href="{{ pub.codedata }}" target="_blank" rel="noopener noreferrer" class="button button--code"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
+  {%- endif -%}
+  {%- if pub.projectpage -%}
+  <a href="{{ pub.projectpage }}" target="_blank" rel="noopener noreferrer" class="button button--website"><i class="fa fa-globe" aria-hidden="true"></i> Website</a>
+  {%- endif -%}
+  {%- if pub.aipodcast -%}
+  <a href="{{ pub.aipodcast }}" target="_blank" rel="noopener noreferrer" class="button button--aipodcast">AI Podcast</a>
+  {%- endif -%}
+  {%- if pub.slides -%}
+  <a href="{{ pub.slides }}" target="_blank" rel="noopener noreferrer" class="button button--slides"><i class="fa fa-file-powerpoint-o" aria-hidden="true"></i> Slides</a>
+  {%- endif -%}
+  {%- if pub.poster -%}
+  <a href="{{ pub.poster }}" target="_blank" rel="noopener noreferrer" class="button button--poster"><i class="fa fa-picture-o" aria-hidden="true"></i> Poster</a>
+  {%- endif -%}
+  {%- if pub.video -%}
+  <a href="{{ pub.video }}" target="_blank" rel="noopener noreferrer" class="button button--video"><i class="fa fa-video-camera" aria-hidden="true"></i> Video</a>
+  {%- endif -%}
+  {%- if pub.doi -%}
+  <a href="{{ pub.doi }}" target="_blank" rel="noopener noreferrer" class="button button--doi" title="DOI" aria-label="DOI"><i class="ai ai-doi" aria-hidden="true"></i></a>
+  {%- endif -%}
+</div>

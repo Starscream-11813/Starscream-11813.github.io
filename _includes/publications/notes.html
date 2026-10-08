@@ -1,0 +1,20 @@
+{%- comment -%}
+  The glowing notes beneath the venue, on one line: presentation, award (with
+  a sparkling trophy), and ranking (with a sparkling chart), separated by dots.
+{%- endcomment -%}
+{%- assign pub_note_items = '' | split: '' -%}
+{%- if pub.pptmode -%}
+  {%- capture pub_note_item %}<b class="glownote glownote--presentation">{{ pub.pptmode }}</b>{% endcapture -%}
+  {%- assign pub_note_items = pub_note_items | push: pub_note_item -%}
+{%- endif -%}
+{%- if pub.note -%}
+  {%- capture pub_note_item %}<b class="glownote glownote--award">{{ pub.note }} <span class="trophy" aria-hidden="true">🏆</span></b>{% endcapture -%}
+  {%- assign pub_note_items = pub_note_items | push: pub_note_item -%}
+{%- endif -%}
+{%- if pub.ranknote -%}
+  {%- capture pub_note_item %}<b class="ranknote">{{ pub.ranknote }} <span class="ranknote__icon" aria-hidden="true">&#128200;</span></b>{% endcapture -%}
+  {%- assign pub_note_items = pub_note_items | push: pub_note_item -%}
+{%- endif -%}
+{%- if pub_note_items.size > 0 -%}
+<p class="pub-notes">{{ pub_note_items | join: '<span class="pub-notes__sep"><span aria-hidden="true">&#8901;</span><span class="visually-hidden">;</span></span>' }}</p>
+{%- endif -%}

@@ -19,7 +19,7 @@ def in_bounds(page, label):
     assert max(widths['document'], widths['body']) <= widths['viewport'] + 1, (label, widths)
     assert page.locator('.masthead__menu-item--lg').is_visible(), (label, 'missing site title')
     # Check real content edges too, not only the document's scrollable width.
-    for box in page.locator('#main, .news, .archive__item .row, .page__footer').all():
+    for box in page.locator('#main, .news, .archive__item .row, .pub-card, .book-card, .page__footer').all():
         bounds = box.bounding_box()
         if bounds:
             assert bounds['x'] >= -1 and bounds['x'] + bounds['width'] <= widths['viewport'] + 1, (label, bounds)

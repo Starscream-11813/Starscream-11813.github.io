@@ -1,0 +1,14 @@
+{%- comment -%}
+  The paper's venue line, worded as in the original publication list.
+{%- endcomment -%}
+{%- if pub.status == 'accepted' and pub.venue -%}
+<p class="pub-venue">Accepted to <b><i>{{ pub.venue }}</i></b>, {{ pub_year }}</p>
+{%- elsif pub.type == 'preprints' -%}
+  {%- if pub.venue -%}
+<p class="pub-venue">Under review at <b><i>{{ pub.venue }}</i></b>, {{ pub_year }}</p>
+  {%- else -%}
+<p class="pub-venue">Under review</p>
+  {%- endif -%}
+{%- else -%}
+<p class="pub-venue">Published in <b><i>{{ pub.venue }}</i></b>, {{ pub_year }}</p>
+{%- endif -%}
