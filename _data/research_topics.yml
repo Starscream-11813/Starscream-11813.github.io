@@ -8,6 +8,8 @@
 mathematical:
   title: Mathematical reasoning
   papers:
+    - publication: /publications/15-marsgps
+      name: MARS-GPS (Geometric Reasoning)
     - publication: /publications/13-ai4math
       name: AI for Mathematical Reasoning (Survey)
     - publication: /publications/2-mwpsolving
@@ -46,6 +48,8 @@ interpretability:
 agentic:
   title: Multi-agent systems and agentic AI
   papers:
+    - publication: /publications/14-proclaim
+      name: PROClaim (Claim Verification)
     - publication: /publications/9-circuitlm
       name: CircuitLM
     - publication: /publications/5-physicseval
