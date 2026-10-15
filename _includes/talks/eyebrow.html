@@ -1,0 +1,12 @@
+{%- comment -%}
+  The small label above a talk's title: the venue and track of its paper
+  (linking to the paper on the Publications page) and how I took part, with a
+  plane for a trip there or a signal for a virtual talk; the date sits at the
+  right.
+{%- endcomment -%}
+<p class="talk-eyebrow">
+  {%- if talk_pub_link %}<a href="{{ talk_pub_link }}" title="{{ talk_short | escape }} on the Publications page">{{ talk_label }}</a>{% else %}<span>{{ talk_label }}</span>{% endif -%}
+  {%- if talk_kind %}<span>{{ talk_kind }}</span>{% endif -%}
+  {%- if talk_mode %}<span class="talk-eyebrow__mode"><i class="fas fa-{% if talk_mode == 'Virtual' %}wifi{% else %}plane{% endif %}" aria-hidden="true"></i>{{ talk_mode }}</span>{% endif -%}
+  <time class="talk-eyebrow__date" datetime="{{ talk.date | date: '%Y-%m-%d' }}">{{ talk.date | date: '%B %-d, %Y' }}</time>
+</p>

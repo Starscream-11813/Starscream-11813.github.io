@@ -1,0 +1,882 @@
+/* The Talks page: each talk as a card in the manner of the Publications
+   cards, with previews of its video, slides, poster, and paper, which open in
+   a viewer. Everything is scoped to .talks (or prefixed talk-), so the talks'
+   own pages keep the original media tabs. */
+
+// Flags are emoji, and Windows has none, so they come from Twemoji's flags
+// (CC-BY 4.0; see assets/fonts/TwemojiCountryFlags-LICENSE.txt). The font
+// covers only flags, and loads only where one is shown.
+@font-face {
+  font-family: "Twemoji Country Flags";
+  src: url("../fonts/TwemojiCountryFlags.woff2") format("woff2");
+  unicode-range: U+1F1E6-1F1FF, U+1F3F4, U+E0062-E0063, U+E0065, U+E0067,
+    U+E006C, U+E006E, U+E0073-E0074, U+E0077, U+E007F;
+  font-display: swap;
+}
+
+.talks {
+  --talk-text: #45414f;
+  --talk-strong: #29263a;
+  --talk-muted: #706b7e;
+  --talk-faint: #a19cae;
+  --talk-border: #e6e1f0;
+  --talk-border-strong: #d3cce6;
+  --talk-surface: #fbfaff;
+  --talk-accent: #6962d2;
+  --talk-link: #2f8fb0;
+  --talk-shadow: 0 12px 30px rgba(44, 34, 75, 0.09);
+  // The colors of the original media tabs.
+  --talk-video: #5cb85c;
+  --talk-slides: #ea641a;
+  --talk-poster: #428bca;
+  --talk-paper: #6962d2;
+  position: relative;
+  margin-top: 1rem;
+  color: var(--talk-text);
+  font-size: 18px;
+  line-height: 1.45;
+}
+
+html[data-theme="dark"] .talks {
+  --talk-text: #dedaee;
+  --talk-strong: #fff;
+  --talk-muted: #b9b4cf;
+  --talk-faint: #8d88a6;
+  --talk-border: rgba(226, 222, 255, 0.14);
+  --talk-border-strong: rgba(226, 222, 255, 0.28);
+  --talk-surface: #24253a;
+  --talk-accent: #a7a8f0;
+  --talk-link: #8fdcfb;
+  --talk-shadow: 0 14px 34px rgba(8, 8, 20, 0.36);
+}
+
+// --- Years ------------------------------------------------------------------
+
+.talks .talks-year {
+  margin: 0 0 2.2em;
+
+  &:last-child { margin-bottom: 0; }
+}
+
+.talks .talks-year__title {
+  display: flex;
+  align-items: baseline;
+  gap: 0.65em;
+  margin: 0 0 0.85em;
+  padding: 0 0 0.35em;
+  border-bottom: 1px solid var(--talk-border);
+  color: var(--talk-strong);
+  font-family: inherit;
+  font-size: 1.25em;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.talks .talks-year__count {
+  color: var(--talk-muted);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.5em;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+// --- Cards ------------------------------------------------------------------
+
+// The previews fill a column as tall as the card's text: the still keeps its
+// shape, and the strip of other previews takes the rest.
+.talks .talk-card {
+  position: relative;
+  display: grid;
+  grid-template-columns: 14.5em minmax(0, 1fr);
+  column-gap: 1.3em;
+  margin: 0 0 1.05em;
+  padding: 1.15em 1.2em;
+  // The badge's lanyard comes in at the top of the card.
+  overflow: hidden;
+  border: 1px solid var(--talk-border);
+  border-radius: 16px;
+  background: var(--talk-surface);
+  transition: border-color 220ms ease, box-shadow 220ms ease;
+
+  &:last-child { margin-bottom: 0; }
+
+  &:hover {
+    border-color: var(--talk-border-strong);
+    box-shadow: var(--talk-shadow);
+  }
+}
+
+.talks .talk-card--text { grid-template-columns: minmax(0, 1fr); }
+
+.talks .talk-card__media {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.45em;
+  min-width: 0;
+}
+
+.talks .talk-card__body { min-width: 0; }
+
+.talks .talk-cover,
+.talks .talk-strip__item {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  background: #15162a;
+
+  img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 400ms ease;
+  }
+
+  &:hover img { transform: scale(1.04); }
+}
+
+.talks .talk-cover {
+  flex: none;
+  aspect-ratio: 16 / 9;
+  border-radius: 10px;
+  box-shadow: 0 0 0 1px rgba(28, 20, 56, 0.08), 0 10px 18px -12px rgba(28, 20, 56, 0.55);
+}
+
+// A round play button in frosted glass, filled with the video's green on hover.
+.talks .talk-cover__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: grid;
+  place-items: center;
+  width: 2.5em;
+  height: 2.5em;
+  margin: -1.25em 0 0 -1.25em;
+  border-radius: 50%;
+  background: rgba(24, 22, 44, 0.5);
+  box-shadow: 0 0 0 1.5px rgba(255, 255, 255, 0.8), 0 6px 16px rgba(0, 0, 0, 0.3);
+  color: #fff;
+  font-size: 0.8em;
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  transition: transform 220ms ease, background-color 220ms ease;
+
+  .fa-play { margin-left: 0.18em; }
+}
+
+.talks .talk-cover:hover .talk-cover__play {
+  background: var(--talk-video);
+  transform: scale(1.1);
+}
+
+.talks .talk-strip {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 0.45em;
+  min-height: 3.4em;
+  max-height: 10em;
+
+  &:empty { display: none; }
+}
+
+// Each preview shows the top of its slide, poster, or page.
+.talks .talk-strip__item {
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: 7px;
+  background: #fff;
+  box-shadow: 0 0 0 1px rgba(28, 20, 56, 0.1);
+
+  img { object-position: center top; }
+}
+
+.talks .talk-strip__label {
+  position: absolute;
+  bottom: 0.35em;
+  left: 0.35em;
+  padding: 0.2em 0.42em 0.15em;
+  border-radius: 4px;
+  background: var(--talk-strip);
+  color: #fff;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 10.5px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.talks .talk-strip__item--video { --talk-strip: var(--talk-video); }
+.talks .talk-strip__item--slides { --talk-strip: var(--talk-slides); }
+.talks .talk-strip__item--poster { --talk-strip: var(--talk-poster); }
+.talks .talk-strip__item--paper { --talk-strip: var(--talk-paper); }
+
+html[data-theme="dark"] .talks {
+  .talk-cover,
+  .talk-strip__item { box-shadow: 0 0 0 1px rgba(226, 222, 255, 0.16); }
+  .talk-strip__item img { filter: brightness(0.93); }
+  .talk-cover:hover img,
+  .talk-strip__item:hover img { box-shadow: none; }
+}
+
+// --- The badge --------------------------------------------------------------
+
+// The badge I wore at the conference hangs at the top corner of the video's
+// still (clear of a title slide's text), partly over the card's margin, in
+// miniature, on a lanyard that comes in at the top of the card. Every measure
+// is in ems, so its print is the full-size badge's, a fifth the size, readable
+// up close. It sways when the card is hovered.
+.talks .talk-lanyard {
+  position: absolute;
+  // The strap runs up out of the card, which clips it at its edge.
+  top: -42px;
+  left: -14px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 12em;
+  font-size: 3.6px;
+  pointer-events: none;
+  transform-origin: 50% 0;
+}
+
+.talks .talk-card:hover .talk-lanyard { animation: talk-sway 2.4s ease-in-out; }
+
+@keyframes talk-sway {
+  0%, 100% { transform: rotate(0deg); }
+  16% { transform: rotate(-4deg); }
+  40% { transform: rotate(2.8deg); }
+  64% { transform: rotate(-1.4deg); }
+  84% { transform: rotate(0.5deg); }
+}
+
+.talks .talk-lanyard__strap {
+  display: block;
+  width: 1.7em;
+  height: 40px;
+  background: linear-gradient(90deg, var(--badge-b), var(--badge-a) 50%, var(--badge-b));
+  box-shadow: inset 0 -3px 3px -3px rgba(0, 0, 0, 0.4);
+}
+
+.talks .talk-lanyard__clip {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 2.4em;
+  height: 1.4em;
+  margin-top: -1px;
+  border-radius: 1px 1px 2px 2px;
+  background: linear-gradient(180deg, #f6f7fa, #c3c6d3 55%, #9ea1b4);
+  box-shadow: 0 0.5px 1.5px rgba(20, 16, 40, 0.45);
+}
+
+.talks .talk-badge {
+  position: relative;
+  width: 100%;
+  margin-top: 0.2em;
+  overflow: hidden;
+  border-radius: 2.5px;
+  background: #fff;
+  box-shadow: 0 0 0 0.5px rgba(28, 20, 56, 0.16), 0 5px 9px -3px rgba(20, 16, 40, 0.55);
+  color: #29263a;
+  text-align: center;
+
+  // Light catches the badge's clear plastic sleeve.
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(118deg, rgba(255, 255, 255, 0.45) 0 12%, rgba(255, 255, 255, 0) 28%);
+  }
+
+  p { margin: 0; }
+}
+
+.talks .talk-badge__slot {
+  position: absolute;
+  top: 0.5em;
+  left: 50%;
+  z-index: 1;
+  width: 2em;
+  height: 0.38em;
+  margin-left: -1em;
+  border-radius: 1em;
+  background: rgba(20, 16, 40, 0.35);
+}
+
+.talks .talk-badge__band {
+  display: grid;
+  justify-items: center;
+  padding: 1.35em 0.6em 0.75em;
+  background: linear-gradient(140deg, var(--badge-a), var(--badge-b));
+  color: #fff;
+}
+
+.talks .talk-badge__event {
+  color: #fff;
+  font-family: 'Product Sans', sans-serif;
+  font-size: 1.95em;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  line-height: 1;
+}
+
+.talks .talk-badge__year {
+  margin-top: 0.2em;
+  padding-left: 0.42em;
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.78em;
+  letter-spacing: 0.42em;
+  line-height: 1;
+}
+
+.talks .talk-badge__city {
+  margin-top: 0.6em;
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.55em;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.talks .talk-badge p.talk-badge__name {
+  margin: 0.75em 0.7em 0;
+  color: #29263a;
+  font-family: "Publication Palatino", Palatino, serif;
+  font-size: 1.02em;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.talks .talk-badge p.talk-badge__org {
+  margin: 0.4em 0.9em 0;
+  color: #706b7e;
+  font-size: 0.58em;
+  line-height: 1.35;
+}
+
+.talks .talk-badge p.talk-badge__role {
+  margin: 0.9em 0 0;
+  padding: 0.45em 0 0.42em 0.34em;
+  background: #29263a;
+  color: #fff;
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.6em;
+  font-weight: 700;
+  letter-spacing: 0.34em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+html[data-theme="dark"] .talks .talk-badge { filter: brightness(0.94); }
+
+// --- Text -------------------------------------------------------------------
+
+// The paper's venue and track, and how I took part; the date sits at the right.
+// Each label carries its dot in front; the row starts one dot-width to the left
+// and clips that strip, so no wrapped line begins with a dot.
+.talks .talk-eyebrow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  row-gap: 0.1em;
+  margin: 0 0 0.3em -1.3em;
+  color: var(--talk-accent);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.66em;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  clip-path: inset(-0.5em 0 -0.5em 1.3em);
+
+  > :is(a, span)::before {
+    content: "\00b7";
+    display: inline-block;
+    width: 1.3em;
+    color: var(--talk-faint);
+    letter-spacing: 0;
+    text-align: center;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: background-size 220ms ease;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: inherit;
+    background-size: 100% 1px;
+  }
+}
+
+// A plane for a trip to the conference, a signal for a virtual talk: the plane
+// takes off, and the signal flickers, when the card is hovered.
+.talks .talk-eyebrow__mode i {
+  margin-right: 0.45em;
+  font-size: 0.95em;
+  transition: transform 600ms cubic-bezier(0.3, 1.5, 0.5, 1);
+}
+
+.talks .talk-card:hover .talk-eyebrow__mode .fa-plane { transform: translate(0.25em, -0.2em) rotate(-14deg); }
+.talks .talk-card:hover .talk-eyebrow__mode .fa-wifi { animation: talk-signal 1.4s ease-in-out; }
+
+@keyframes talk-signal {
+  0%, 100% { opacity: 1; }
+  25% { opacity: 0.3; }
+  50% { opacity: 1; }
+  75% { opacity: 0.55; }
+}
+
+.talks .talk-eyebrow__date {
+  margin-left: auto;
+  padding-left: 1.3em;
+  color: var(--talk-muted);
+  letter-spacing: 0.08em;
+  white-space: nowrap;
+}
+
+// The lead-in ("Oral Presentation on") rests above the paper's title.
+.talks .talk-title {
+  margin: 0;
+  color: var(--talk-strong);
+  font-family: "Publication Palatino", Palatino, serif;
+  font-size: 1.05em;
+  font-weight: 700;
+  line-height: 1.32;
+  letter-spacing: 0;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0 1px;
+    transition: color 180ms ease, background-size 260ms ease;
+  }
+
+  a:hover,
+  a:focus-visible {
+    color: var(--talk-link);
+    background-size: 100% 1px;
+  }
+}
+
+.talks .talk-title__lead {
+  display: block;
+  margin: 0 0 0.1em;
+  color: var(--talk-muted);
+  font-size: 0.76em;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.talks .talk-venue {
+  margin: 0.4em 0 0;
+  color: var(--talk-text);
+  font-size: 0.8em;
+  line-height: 1.5;
+
+  b { font-family: "Publication Palatino", Palatino, serif; }
+}
+
+// The flag waves from its left edge. Its emoji is cut into sixteen strips (the
+// glyph's flag spans its full width, 0.725em tall from 0.095em down); the
+// strips rise and fall one after another, more the further they are from that
+// edge, and catch the light at the crest.
+.talks .talk-flag {
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  margin-left: 0.06em;
+  font-family: "Twemoji Country Flags", "Apple Color Emoji", "Segoe UI Emoji", "Noto Color Emoji", sans-serif;
+  font-size: 1.25em;
+  font-style: normal;
+  line-height: 1;
+  vertical-align: -0.22em;
+  user-select: none;
+}
+
+.talks .talk-flag__cloth {
+  --strips: 16;
+  position: absolute;
+  top: 0.12em;
+  left: 0;
+  width: 1em;
+  height: 0.725em;
+
+  // How far a strip is from the flag's fixed edge, from 0 to 1.
+  > span {
+    --reach: calc(var(--i) / (var(--strips) - 1));
+    position: absolute;
+    top: 0;
+    left: calc(var(--i) * 1em / var(--strips));
+    // A hair wider than its share, so no seam shows between strips.
+    width: calc(1em / var(--strips) + 0.6px);
+    height: 100%;
+    overflow: hidden;
+    animation: talk-flag-wave 1.9s ease-in-out infinite;
+    animation-delay: calc(var(--reach) * -1.45s);
+  }
+
+  > span > span {
+    position: absolute;
+    top: -0.095em;
+    left: calc(var(--i) * -1em / var(--strips));
+  }
+}
+
+@keyframes talk-flag-wave {
+  0%, 100% {
+    transform: translateY(calc(var(--reach) * -0.1em));
+    filter: brightness(calc(1 + var(--reach) * 0.13));
+  }
+
+  50% {
+    transform: translateY(calc(var(--reach) * 0.1em));
+    filter: brightness(calc(1 - var(--reach) * 0.13));
+  }
+}
+
+.talks .talk-desc {
+  margin: 0.4em 0 0;
+  color: var(--talk-muted);
+  font-size: 0.72em;
+  line-height: 1.55;
+
+  p { margin: 0; }
+  p + p { margin-top: 0.45em; }
+}
+
+// The award, glowing as on the Publications page, with its sparkling trophy.
+.talks .talk-notes {
+  margin: 0.35em 0 0;
+  font-size: 0.72em;
+  line-height: 1.6;
+}
+
+.talks .glownote {
+  color: magenta;
+  animation: pub-glownote 4s linear infinite alternate;
+}
+
+.talks .trophy {
+  position: relative;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: "\2728";
+    position: absolute;
+    color: gold;
+    font-size: 1em;
+    opacity: 0;
+    animation: pub-trophy-sparkle 1.5s infinite ease-in-out;
+  }
+
+  &::before { top: -0.69em; left: 0.69em; }
+  &::after { top: 0.56em; left: -0.21em; animation-delay: 0.8s; }
+}
+
+// --- Buttons (the original tabs' colors, the Publications buttons' shape) ----
+
+.talks .talk-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 5px;
+  margin: 0.7em 0 0;
+}
+
+.talks .talk-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35em;
+  height: 25.6px;
+  padding: 0 0.6em;
+  border-radius: 7px;
+  background-color: var(--talk-button);
+  color: #eaeaea;
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 13.5px;
+  font-weight: bold;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition: color 160ms ease, filter 160ms ease;
+
+  &:hover {
+    color: #fff;
+    text-decoration: none;
+    filter: brightness(1.07);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--talk-accent);
+    outline-offset: 2px;
+  }
+}
+
+.talks .talk-button--video { --talk-button: var(--talk-video); }
+.talks .talk-button--slides { --talk-button: var(--talk-slides); }
+.talks .talk-button--poster { --talk-button: var(--talk-poster); }
+.talks .talk-button--paper { --talk-button: var(--talk-paper); }
+
+html[data-theme="dark"] .talks .talk-button { color: #f1f0f8; }
+
+// --- The viewer -------------------------------------------------------------
+
+// The original media tabs above the material and the talk's title beneath. The
+// viewer takes the material's shape: as wide as it can be while the material,
+// in its own proportions (--talk-ratio, width over height), still fits the
+// screen's height beside the tabs and title (--talk-chrome, both set by
+// talks.js). A tall page keeps a comfortable reading width.
+.talk-viewer {
+  --talk-ratio: 1.7778;
+  --talk-chrome: 5.6rem;
+  --talk-height: 94vh;
+  --talk-fit: min(94vw, 1100px, calc((var(--talk-height) - var(--talk-chrome)) * var(--talk-ratio)));
+  container-type: inline-size;
+  width: max(var(--talk-fit), min(94vw, 34rem));
+  max-width: none;
+  max-height: var(--talk-height);
+  padding: 0;
+  overflow: hidden;
+  border: 0;
+  border-radius: 16px;
+  background: #fff;
+  box-shadow: 0 24px 60px rgba(20, 16, 40, 0.35);
+  color: #29263a;
+
+  &::backdrop {
+    background: rgba(24, 20, 46, 0.62);
+    -webkit-backdrop-filter: blur(4px);
+    backdrop-filter: blur(4px);
+  }
+}
+
+.talk-viewer__bar {
+  display: flex;
+  align-items: flex-end;
+  gap: 0.6em;
+  padding: 0.55em 0.6em 0;
+  border-bottom: 1px solid rgba(105, 98, 210, 0.16);
+  background: linear-gradient(135deg, rgba(105, 98, 210, 0.08), rgba(76, 168, 165, 0.08));
+}
+
+.talk-viewer__tabs {
+  display: flex;
+  flex: 1 1 auto;
+  gap: 0.16rem;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+.talk-viewer__tab {
+  --tab: #5cb85c;
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  height: 2.05rem;
+  padding: 0 0.85rem;
+  border: 0;
+  border-radius: 8px 8px 0 0;
+  background: var(--tab);
+  color: #fff;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  cursor: pointer;
+  opacity: 0.56;
+  filter: saturate(0.72) brightness(0.88);
+  transform: translateY(1px);
+  transition: opacity 180ms ease, filter 180ms ease, transform 180ms ease;
+
+  &:hover,
+  &:focus-visible {
+    opacity: 0.82;
+    filter: saturate(0.92) brightness(0.98);
+    transform: translateY(0);
+  }
+
+  &:focus-visible { outline: 2px solid #fff; outline-offset: -4px; }
+
+  &[aria-selected="true"] {
+    opacity: 1;
+    filter: none;
+    transform: translateY(1px);
+    box-shadow: 0 -6px 16px color-mix(in srgb, var(--tab) 24%, transparent);
+  }
+}
+
+.talk-viewer__tab--slides { --tab: #ea641a; }
+.talk-viewer__tab--poster { --tab: #428bca; }
+.talk-viewer__tab--paper { --tab: #6962d2; }
+
+.talk-viewer__open {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-bottom: 0.5em;
+  color: #6962d2;
+  font-family: "Titillium Web", sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  text-transform: uppercase;
+  white-space: nowrap;
+
+  &:hover { color: #4f47b8; text-decoration: none; }
+  i { margin-left: 0.2em; font-size: 0.85em; }
+}
+
+.talk-viewer__close {
+  flex: 0 0 auto;
+  align-self: center;
+  display: grid;
+  place-items: center;
+  width: 2.1em;
+  height: 2.1em;
+  margin-bottom: 0.45em;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(30, 31, 49, 0.72);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+
+  &:focus-visible { outline: 2px solid #a7a8f0; outline-offset: 2px; }
+}
+
+.talk-viewer__stage {
+  position: relative;
+  height: calc(var(--talk-fit) / var(--talk-ratio));
+  background: #111322;
+
+  .talk-frame {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    background: #fff;
+  }
+
+  .talk-frame--video { background: #000; }
+}
+
+// One line, so the viewer's height is known; the whole title shows on hover.
+.talk-viewer__caption {
+  overflow: hidden;
+  margin: 0;
+  padding: 0.65em 1.1em 0.75em;
+  border-top: 1px solid #ece8f4;
+  color: #4a4658;
+  font-family: Palatino, serif;
+  font-size: 14px;
+  line-height: 1.45;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// A narrow viewer keeps only the arrow of its "Open in a new tab" link.
+@container (max-width: 40rem) {
+  .talk-viewer__open span {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+}
+
+@supports (height: 1dvh) {
+  .talk-viewer { --talk-height: 94dvh; }
+}
+
+html[data-theme="dark"] .talk-viewer {
+  background: #2a2c42;
+  color: #dedaee;
+
+  .talk-viewer__bar {
+    border-bottom-color: rgba(226, 222, 255, 0.14);
+    background: linear-gradient(135deg, rgba(159, 151, 255, 0.13), rgba(76, 168, 165, 0.09));
+  }
+
+  .talk-viewer__open { color: #c9c2ff; }
+  .talk-viewer__caption { border-top-color: rgba(226, 222, 255, 0.16); color: #dedaee; }
+}
+
+// --- Small screens, motion, print -------------------------------------------
+
+@media screen and (max-width: 1024px) {
+  .talks { font-size: 17px; }
+}
+
+// Narrower screens set the previews above the text, the strip's in their own
+// shape.
+@media screen and (max-width: 700px) {
+  .talks .talk-card {
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.95em;
+  }
+
+  .talks .talk-strip {
+    flex: none;
+    min-height: 0;
+    max-height: none;
+  }
+
+  .talks .talk-strip__item { aspect-ratio: 3 / 2; }
+}
+
+@media screen and (max-width: 600px) {
+  .talks { font-size: 16.5px; }
+
+  .talks .talk-card { padding: 0.9em; }
+
+  // The card's margin is narrower here.
+  .talks .talk-lanyard { left: -8px; }
+
+  .talks .talk-eyebrow__date {
+    flex-basis: 100%;
+    margin-left: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .talks .glownote,
+  .talks .trophy::before,
+  .talks .trophy::after,
+  .talks .talk-card:hover .talk-lanyard,
+  .talks .talk-card:hover .talk-eyebrow__mode .fa-wifi,
+  .talks .talk-flag__cloth > span { animation: none; }
+  .talks .talk-card:hover .talk-eyebrow__mode .fa-plane { transform: none; }
+  .talks .talk-card,
+  .talks .talk-cover img,
+  .talks .talk-strip__item img,
+  .talks .talk-cover__play,
+  .talks .talk-eyebrow__mode i,
+  .talks .talk-title a,
+  .talk-viewer__tab { transition: none; }
+}
+
+@media print {
+  .talks .talk-cover__play,
+  .talks .talk-lanyard { display: none !important; }
+}

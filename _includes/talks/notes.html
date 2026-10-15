@@ -1,0 +1,7 @@
+{%- comment -%}
+  The award the talk's paper won, as the glowing note with the sparkling
+  trophy on the Publications page.
+{%- endcomment -%}
+{%- if talk_award -%}
+<p class="talk-notes"><b class="glownote glownote--award">{{ talk_award }} <span class="trophy" aria-hidden="true">🏆</span></b></p>
+{%- endif -%}

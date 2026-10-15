@@ -1,0 +1,16 @@
+# Written by scripts/talk-previews.py: the size of each preview in
+# images/talks/<talk>/<material>.webp, as [width, height].
+1-banglabookpresentation:
+  video: [1280, 720]
+  slides: [1024, 576]
+  paper: [778, 1100]
+2-mwpsolvingpresentation:
+  video: [1280, 720]
+  slides: [1024, 576]
+  poster: [778, 1100]
+  paper: [778, 1100]
+3-hasperpresentation:
+  video: [1280, 720]
+  slides: [1280, 720]
+  poster: [1280, 721]
+  paper: [850, 1100]

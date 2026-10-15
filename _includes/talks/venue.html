@@ -1,0 +1,9 @@
+{%- comment -%}
+  The talk's venue line, worded as in the original list, with the country's
+  flag waving after its name: the emoji, cut into sixteen strips that ripple
+  one after another from its left edge (see _sass/_talks.scss).
+{%- endcomment -%}
+<p class="talk-venue">{{ talk.type }}, <b><i>{{ talk.venue }}</i></b>, {{ talk.location }}
+  {%- if talk_flag %}&nbsp;<span class="talk-flag" aria-hidden="true"><span class="talk-flag__cloth">
+    {%- for talk_strip in (0..15) %}<span style="--i: {{ talk_strip }}"><span>{{ talk_flag }}</span></span>{% endfor -%}
+  </span></span>{% endif %}</p>

@@ -12,6 +12,9 @@
 <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.min.js"></script>
 <script src="{{ '/assets/js/publications.js' | relative_url }}"></script>
 {% endif %}
+{% if page.talks_ui %}
+<script src="{{ '/assets/js/talks.js' | relative_url }}"></script>
+{% endif %}
 
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}

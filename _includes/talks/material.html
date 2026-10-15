@@ -1,0 +1,18 @@
+{%- comment -%}
+  Names a material for the buttons and tabs: call with kind=video, slides,
+  poster, or paper; it assigns talk_m_label and talk_m_icon (Font Awesome 4.7,
+  as in the original media tabs) and talk_m_preview (the preview's path, or nil).
+{%- endcomment -%}
+{%- case include.kind -%}
+  {%- when 'video' -%}{%- assign talk_m_label = 'Video' -%}{%- assign talk_m_icon = 'fa-video-camera' -%}
+  {%- when 'slides' -%}{%- assign talk_m_label = 'Slides' -%}{%- assign talk_m_icon = 'fa-file-powerpoint-o' -%}
+  {%- when 'poster' -%}{%- assign talk_m_label = 'Poster' -%}{%- assign talk_m_icon = 'fa-picture-o' -%}
+  {%- else -%}{%- assign talk_m_label = 'Paper' -%}{%- assign talk_m_icon = 'fa-file-pdf-o' -%}
+{%- endcase -%}
+{%- if talk_previews[include.kind] -%}
+  {%- assign talk_m_size = talk_previews[include.kind] -%}
+  {%- capture talk_m_preview %}{{ talk_preview_base }}{{ include.kind }}.webp{% endcapture -%}
+{%- else -%}
+  {%- assign talk_m_size = nil -%}
+  {%- assign talk_m_preview = nil -%}
+{%- endif -%}

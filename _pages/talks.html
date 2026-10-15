@@ -3,6 +3,7 @@ layout: archive
 title: "Talks and presentations"
 permalink: /talks/
 author_profile: true
+talks_ui: true
 ---
 
 {% if site.talkmap_link == true %}
@@ -10,7 +11,17 @@ author_profile: true
 <p style="text-decoration:underline;"><a href="/talkmap.html">See a map of all the places I've given a talk!</a></p>
 
 {% endif %}
-
-{% for post in site.talks reversed %}
-  {% include archive-single-talk.html %}
-{% endfor %}
+{%- comment -%} The icon font of the original media tabs, used by the buttons and the viewer's tabs. {%- endcomment %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<div class="talks">
+  {%- assign talks_by_year = site.talks | reverse | group_by_exp: 'talk_item', "talk_item.date | date: '%Y'" -%}
+  {%- for talks_year in talks_by_year %}
+  <section class="talks-year" aria-labelledby="talks-{{ talks_year.name }}">
+    <h2 class="talks-year__title" id="talks-{{ talks_year.name }}">{{ talks_year.name }}<span class="talks-year__count">{{ talks_year.size }} talk{% if talks_year.size != 1 %}s{% endif %}</span></h2>
+    {%- for talk_item in talks_year.items %}
+      {%- include talks/meta.html talk=talk_item %}
+      {% include talks/card.html %}
+    {%- endfor %}
+  </section>
+  {%- endfor %}
+</div>

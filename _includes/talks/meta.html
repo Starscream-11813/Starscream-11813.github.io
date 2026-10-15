@@ -1,0 +1,56 @@
+{%- comment -%}
+  Derives one talk's display details for the Talks page. Call with
+  talk=<talk>; it assigns talk_* variables that the other includes in this
+  folder read. A title written as Oral Presentation on <i>"Paper"</i> splits
+  into its lead-in and the paper's title. The venue label and award come from
+  the talk's paper (see _data/talk_extras.yml), the flag from
+  _data/country_flags.yml, and the previews and their sizes from
+  scripts/talk-previews.py.
+{%- endcomment -%}
+{%- assign talk = include.talk -%}
+{%- assign talk_slug = talk.url | split: '/' | last -%}
+{%- assign talk_url = talk.url | relative_url -%}
+{%- assign talk_extra = site.data.talk_extras[talk.url] -%}
+{%- assign talk_mode = talk_extra.mode -%}
+{%- assign talk_pub = nil -%}
+{%- assign talk_pub_extra = nil -%}
+{%- assign talk_pub_link = nil -%}
+{%- if talk_extra.publication -%}
+  {%- assign talk_pub = site.publications | where: 'url', talk_extra.publication | first -%}
+  {%- assign talk_pub_extra = site.data.publication_extras[talk_extra.publication] -%}
+  {%- assign talk_pub_slug = talk_extra.publication | split: '/' | last -%}
+  {%- capture talk_pub_link %}{{ '/publications/' | relative_url }}#{{ talk_pub_slug }}{% endcapture -%}
+{%- endif -%}
+{%- assign talk_label = talk_pub_extra.venue | default: talk.venue -%}
+{%- assign talk_kind = talk_pub_extra.kind -%}
+{%- assign talk_award = talk_pub.note -%}
+{%- assign talk_event = talk_label | split: ' ' | first -%}
+{%- assign talk_event_year = talk_label | remove_first: talk_event | strip -%}
+{%- assign talk_city = talk.location | split: ',' | first | strip -%}
+{%- assign talk_country = talk.location | split: ',' | last | strip -%}
+{%- assign talk_flag = site.data.country_flags[talk_country] -%}
+{%- assign talk_previews = site.data.talk_previews[talk_slug] -%}
+
+{%- if talk.title contains '<i>' -%}
+  {%- assign talk_parts = talk.title | split: '<i>' -%}
+  {%- assign talk_lead = talk_parts[0] | strip -%}
+  {%- assign talk_name = talk_parts[1] | remove: '</i>' | remove: '"' | strip -%}
+  {%- capture talk_caption %}{{ talk_lead }} {{ talk_name }}{% endcapture -%}
+{%- else -%}
+  {%- assign talk_lead = nil -%}
+  {%- assign talk_name = talk.title | strip_html | strip -%}
+  {%- assign talk_caption = talk_name -%}
+{%- endif -%}
+{%- assign talk_short = talk_pub_extra.short | default: talk_name -%}
+
+{%- comment -%} The materials it has, and the first of them with a preview. {%- endcomment -%}
+{%- assign talk_kinds = 'video,slides,poster,paper' | split: ',' -%}
+{%- assign talk_has = '' | split: '' -%}
+{%- assign talk_cover_kind = nil -%}
+{%- for talk_k in talk_kinds -%}
+  {%- if talk[talk_k] and talk[talk_k] != '' -%}
+    {%- assign talk_has = talk_has | push: talk_k -%}
+    {%- if talk_cover_kind == nil and talk_previews[talk_k] -%}{%- assign talk_cover_kind = talk_k -%}{%- endif -%}
+  {%- endif -%}
+{%- endfor -%}
+{%- capture talk_preview_base %}{{ '/images/talks/' | relative_url }}{{ talk_slug }}/{% endcapture -%}

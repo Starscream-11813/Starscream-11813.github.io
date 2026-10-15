@@ -1,0 +1,59 @@
+{%- comment -%}
+  One talk on the Talks page, as a card like those on the Publications page.
+  The video's still (or the first preview) leads, with the other materials'
+  previews in a strip that fills the rest of its column; they open in the
+  viewer, like the buttons. Over the still hangs the badge I wore at the
+  conference, in miniature, on a lanyard from the top of the card; it sways
+  when the card is hovered. Each conference's badge has its own colors from
+  the site's palette.
+{%- endcomment -%}
+{%- case talk_event -%}
+  {%- when 'ICCV' -%}{%- assign talk_badge = '--badge-a: #ec8dff; --badge-b: #8180de;' -%}
+  {%- when 'ACL' -%}{%- assign talk_badge = '--badge-a: #74d2fa; --badge-b: #5445b5;' -%}
+  {%- else -%}{%- assign talk_badge = '--badge-a: #a7a8f0; --badge-b: #5445b5;' -%}
+{%- endcase -%}
+<article class="talk-card{% unless talk_cover_kind %} talk-card--text{% endunless %}" id="{{ talk_slug }}" data-talk data-talk-title="{{ talk_caption | escape }}">
+  {%- if talk_cover_kind %}
+  <div class="talk-card__media">
+    {%- include talks/material.html kind=talk_cover_kind %}
+    <a class="talk-cover" href="{{ talk[talk_cover_kind] }}" target="_blank" rel="noopener" data-talk-open="{{ talk_cover_kind }}" tabindex="-1" aria-hidden="true">
+      <img class="talk-cover__image" src="{{ talk_m_preview }}" alt="" width="{{ talk_m_size[0] }}" height="{{ talk_m_size[1] }}" loading="lazy" decoding="async">
+      <span class="talk-cover__play"><i class="fas fa-{% if talk_cover_kind == 'video' %}play{% else %}expand{% endif %}"></i></span>
+    </a>
+    <div class="talk-strip">
+      {%- for talk_k in talk_has -%}
+        {%- if talk_k != talk_cover_kind and talk_previews[talk_k] -%}
+          {%- include talks/material.html kind=talk_k %}
+      <a class="talk-strip__item talk-strip__item--{{ talk_k }}" href="{{ talk[talk_k] }}" target="_blank" rel="noopener" data-talk-open="{{ talk_k }}" tabindex="-1" aria-hidden="true">
+        <img src="{{ talk_m_preview }}" alt="" width="{{ talk_m_size[0] }}" height="{{ talk_m_size[1] }}" loading="lazy" decoding="async">
+        <span class="talk-strip__label">{{ talk_m_label }}</span>
+      </a>
+        {%- endif -%}
+      {%- endfor %}
+    </div>
+    <div class="talk-lanyard" aria-hidden="true" style="{{ talk_badge }}">
+      <span class="talk-lanyard__strap"></span>
+      <span class="talk-lanyard__clip"></span>
+      <div class="talk-badge">
+        <span class="talk-badge__slot"></span>
+        <div class="talk-badge__band">
+          <b class="talk-badge__event">{{ talk_event }}</b>
+          <span class="talk-badge__year">{{ talk_event_year }}</span>
+          <span class="talk-badge__city">{{ talk_city }}{% if talk_mode == 'Virtual' %} &middot; Virtual{% endif %}</span>
+        </div>
+        <p class="talk-badge__name">{{ site.author.name }}</p>
+        <p class="talk-badge__org">{{ site.author.employer }}</p>
+        <p class="talk-badge__role">Speaker</p>
+      </div>
+    </div>
+  </div>
+  {%- endif %}
+  <div class="talk-card__body">
+    {% include talks/eyebrow.html %}
+    {% include talks/title.html %}
+    {% include talks/venue.html %}
+    {% include talks/notes.html %}
+    <div class="talk-desc">{{ talk.content }}</div>
+    {% include talks/buttons.html %}
+  </div>
+</article>

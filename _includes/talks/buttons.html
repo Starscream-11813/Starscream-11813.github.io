@@ -1,0 +1,11 @@
+{%- comment -%}
+  The talk's materials as buttons in the colors of the original media tabs.
+  Each opens in the page's viewer when JavaScript is available, else in a new
+  tab.
+{%- endcomment -%}
+<div class="talk-buttons">
+  {%- for talk_k in talk_has -%}
+    {%- include talks/material.html kind=talk_k %}
+  <a class="talk-button talk-button--{{ talk_k }}" href="{{ talk[talk_k] }}" target="_blank" rel="noopener" data-talk-open="{{ talk_k }}"{% if talk_m_size %} data-talk-ratio="{{ talk_m_size[0] | times: 1.0 | divided_by: talk_m_size[1] | round: 3 }}"{% endif %}><i class="fa {{ talk_m_icon }}" aria-hidden="true"></i> {{ talk_m_label }}<span class="visually-hidden"> of the {{ talk_short }} talk</span></a>
+  {%- endfor %}
+</div>

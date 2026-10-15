@@ -206,13 +206,11 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
 // --- Text -------------------------------------------------------------------
 
 // Each tag carries its dot in front; the list starts one dot-width to the
-// left and clips that strip, so no wrapped line begins with a dot.
+// left and clips that strip, so no wrapped line begins with a dot. The tags
+// flow inline, wrapping around the feather in the corner, each kept whole
+// with a little space under its line.
 .books .book-tags {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  row-gap: 0.1em;
-  margin: 0 0 0.3em -1.3em;
+  margin: 0 0 0.2em -1.3em;
   color: var(--book-accent);
   font-family: 'Product Sans', sans-serif;
   font-size: 0.66em;
@@ -220,6 +218,11 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
   line-height: 1.4;
   text-transform: uppercase;
   clip-path: inset(0 0 0 1.3em);
+
+  > span {
+    display: inline-block;
+    margin-bottom: 0.1em;
+  }
 
   > span::before {
     content: "\00b7";
@@ -313,16 +316,13 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
   text-transform: uppercase;
 }
 
-// The passage runs inline, so the feather can close its last line.
 .books .book-quote {
-  display: inline;
   margin: 0;
   padding: 0;
   border: 0;
   font-style: italic;
 
   p {
-    display: inline;
     margin: 0;
     white-space: pre-line;
   }
@@ -332,27 +332,24 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
 
 // --- My thoughts --------------------------------------------------------------
 
-// The feather and the no-break space before it wrap only together with the
-// last word; a break before an inline button is otherwise allowed.
-.books .book-thoughts-wrap { white-space: nowrap; }
-
-// A small feather links to my thoughts on the book: a soft lavender tile that
-// fills in on hover, when its name appears in a bubble above it.
+// A small feather in the card's top-right corner links to my thoughts on the
+// book: a soft lavender tile that fills in on hover, when its name appears in
+// a bubble beside it. It sits 4px above the card's top padding, level with the
+// tags, and as far from the card's side as from its top.
 .books .book-thoughts {
-  position: relative;
-  display: inline-grid;
+  position: absolute;
+  top: calc(1.15em - 4px);
+  right: calc(1.15em - 4px);
+  display: grid;
   place-items: center;
   width: 24px;
   height: 24px;
-  margin-left: 0.15em;
   border-radius: 7px;
   background-color: var(--book-thoughts-bg);
   color: var(--book-thoughts-ink);
-  font-size: 11.5px;
   font-style: normal;
   line-height: 1;
   text-decoration: none;
-  vertical-align: -0.35em;
   transition: background-color 180ms ease, color 180ms ease, box-shadow 180ms ease;
 
   &:hover,
@@ -369,16 +366,27 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
   }
 
   // The quill pivots on its nib and scribbles once on hover.
-  i { transform-origin: 15% 85%; }
+  i {
+    font-size: 11.5px;
+    transform-origin: 15% 85%;
+  }
 
   &:hover i { animation: book-quill 650ms ease-in-out; }
 }
 
-// The bubble grows leftward from the tile, so it never passes the card's edge.
+// The tags and the title keep clear of the tile, with a 10px gap.
+.books .book-card__head::before {
+  content: "";
+  float: right;
+  width: 30px;
+  height: 20px;
+}
+
+// The bubble opens to the tile's left, so it stays inside the card.
 .books .book-thoughts__tip {
   position: absolute;
-  right: -3px;
-  bottom: calc(100% + 7px);
+  top: 50%;
+  right: calc(100% + 7px);
   padding: 0.4em 0.65em;
   border-radius: 6px;
   background: var(--book-tip-bg);
@@ -391,14 +399,14 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
   white-space: nowrap;
   opacity: 0;
   pointer-events: none;
-  transform: translateY(3px);
+  transform: translate(3px, -50%);
   transition: opacity 160ms ease, transform 160ms ease;
 }
 
 .books .book-thoughts:hover .book-thoughts__tip,
 .books .book-thoughts:focus-visible .book-thoughts__tip {
   opacity: 1;
-  transform: none;
+  transform: translateY(-50%);
 }
 
 // On touch screens the tile stays small, but answers taps around it too.
@@ -478,6 +486,11 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
   }
 
   .books .book-card { padding: 0.9em; }
+
+  .books .book-thoughts {
+    top: calc(0.9em - 4px);
+    right: calc(0.9em - 4px);
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -492,5 +505,6 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
 
 @media print {
   .books .books-year__title { position: static; }
-  .books .book-thoughts { display: none; }
+  .books .book-thoughts,
+  .books .book-card__head::before { display: none; }
 }

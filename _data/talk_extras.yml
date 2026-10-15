@@ -1,0 +1,17 @@
+# Extra details for the Talks page, keyed by each talk's permalink. Everything
+# else (title, venue, date, location, description, links) stays in _talks/.
+#   publication: the paper's page on this site; the talk shows its venue label
+#                (from publication_extras.yml) and its award
+#   mode:        how I took part, "In person" or "Virtual"
+
+/talks/3-hasperpresentation:
+  publication: /publications/3-hasper
+  mode: In person
+
+/talks/2-mwpsolvingpresentation:
+  publication: /publications/2-mwpsolving
+  mode: Virtual
+
+/talks/1-banglabookpresentation:
+  publication: /publications/1-banglabook
+  mode: Virtual

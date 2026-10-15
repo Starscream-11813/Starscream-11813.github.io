@@ -1,0 +1,59 @@
+# The flag shown after a talk's location on the Talks page, keyed by the
+# country's name as written at the end of the talk's `location`. Add a line
+# for a country that is not here yet.
+
+USA: 🇺🇸
+United States: 🇺🇸
+Canada: 🇨🇦
+Mexico: 🇲🇽
+Brazil: 🇧🇷
+Chile: 🇨🇱
+UK: 🇬🇧
+United Kingdom: 🇬🇧
+Ireland: 🇮🇪
+France: 🇫🇷
+Germany: 🇩🇪
+Netherlands: 🇳🇱
+Belgium: 🇧🇪
+Switzerland: 🇨🇭
+Austria: 🇦🇹
+Italy: 🇮🇹
+Spain: 🇪🇸
+Portugal: 🇵🇹
+Denmark: 🇩🇰
+Sweden: 🇸🇪
+Norway: 🇳🇴
+Finland: 🇫🇮
+Poland: 🇵🇱
+Czech Republic: 🇨🇿
+Greece: 🇬🇷
+Turkey: 🇹🇷
+Israel: 🇮🇱
+UAE: 🇦🇪
+United Arab Emirates: 🇦🇪
+Qatar: 🇶🇦
+Saudi Arabia: 🇸🇦
+India: 🇮🇳
+Bangladesh: 🇧🇩
+Sri Lanka: 🇱🇰
+Nepal: 🇳🇵
+Pakistan: 🇵🇰
+Singapore: 🇸🇬
+Malaysia: 🇲🇾
+Thailand: 🇹🇭
+Vietnam: 🇻🇳
+Indonesia: 🇮🇩
+Philippines: 🇵🇭
+China: 🇨🇳
+Hong Kong: 🇭🇰
+Taiwan: 🇹🇼
+South Korea: 🇰🇷
+Korea: 🇰🇷
+Japan: 🇯🇵
+Australia: 🇦🇺
+New Zealand: 🇳🇿
+South Africa: 🇿🇦
+Egypt: 🇪🇬
+Morocco: 🇲🇦
+Kenya: 🇰🇪
+Nigeria: 🇳🇬

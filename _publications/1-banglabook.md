@@ -6,7 +6,7 @@ excerpt:
 date: 2023-07-09
 venue: 'Findings of the Association for Computational Linguistics: ACL 2023'
 paperurl: 'https://arxiv.org/abs/2305.06595'
-pdfurl: 'https://arxiv.org/ftp/arxiv/papers/2305/2305.06595.pdf'
+pdfurl: 'https://arxiv.org/pdf/2305.06595'
 codedata: 'https://github.com/mohsinulkabir14/BanglaBook'
 doi: 'https://doi.org/10.18653/v1/2023.findings-acl.80'
 citation: 'M. Kabir, O. B. Mahfuz, S. R. Raiyan, H. Mahmud, and M. K. Hasan, “BanglaBook: A Large-scale Bangla Dataset for Sentiment Analysis from Book Reviews,” arXiv preprint arXiv:2305.06595, 2023.'
