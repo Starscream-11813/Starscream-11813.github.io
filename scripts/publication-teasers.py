@@ -40,7 +40,7 @@ def font(size, bold=False):
     raise RuntimeError('Install Segoe UI or DejaVu Sans before rendering teasers.')
 
 
-def render_panel(document, panel):
+def render_panel(document, panel, available_width=WIDTH - 2 * MARGIN):
     page = document[panel['page']]
     crop = pymupdf.Rect(panel['crop'])
     if crop.is_empty or not page.rect.contains(crop):
@@ -48,7 +48,7 @@ def render_panel(document, panel):
     fraction = panel.get('width', 1.0)
     if not 0 < fraction <= 1:
         raise ValueError('Panel width must be between 0 and 1.')
-    target_width = round((WIDTH - 2 * MARGIN) * fraction)
+    target_width = round(available_width * fraction)
     scale = target_width / crop.width
     pixels = page.get_pixmap(matrix=pymupdf.Matrix(scale, scale), clip=crop,
                              colorspace=pymupdf.csRGB, alpha=False)
@@ -61,35 +61,61 @@ def render_panel(document, panel):
 
 
 def compose(specification, source):
-    with pymupdf.open(source) as document:
-        panels = [(panel, render_panel(document, panel)) for panel in specification['panels']]
-    header_height = 174
-    footer_height = 100
+    # Existing stacked teasers remain unchanged; optional rows support columns.
+    rows = specification.get('rows') or [[panel] for panel in specification['panels']]
     gap = 48
-    label_heights = [96 if panel.get('note') else 62 for panel, _ in panels]
-    height = MARGIN + header_height + sum(
-        label + image.height for label, (_, image) in zip(label_heights, panels)
-    ) + gap * (len(panels) - 1) + footer_height
+    rendered_rows = []
+    with pymupdf.open(source) as document:
+        for row in rows:
+            available = WIDTH - 2 * MARGIN - gap * (len(row) - 1)
+            shares = [panel.get('share', 1) for panel in row]
+            if not row or available <= 0 or any(share <= 0 for share in shares):
+                raise ValueError('Rows need positive column shares and enough space.')
+            columns = []
+            x = MARGIN
+            for index, (panel, share) in enumerate(zip(row, shares)):
+                column_width = round(available * share / sum(shares))
+                if index == len(row) - 1:
+                    column_width = WIDTH - MARGIN - x
+                image = render_panel(document, panel, column_width)
+                label_height = 96 if panel.get('note') else 62
+                columns.append((panel, image, x, column_width, label_height))
+                x += column_width + gap
+            row_height = max(image.height + label for _, image, _, _, label in columns)
+            rendered_rows.append((columns, row_height))
+    show_header = specification.get('show_header', True)
+    header_height = 174 if show_header else 0
+    footer_height = 100
+    height = MARGIN + header_height + sum(row_height for _, row_height in rendered_rows)
+    height += gap * (len(rendered_rows) - 1) + footer_height
     canvas = Image.new('RGB', (WIDTH, height), 'white')
     draw = ImageDraw.Draw(canvas)
     title_font, subtitle_font = font(72, True), font(32)
     label_font, note_font, source_font = font(34, True), font(28), font(27)
-    draw.rounded_rectangle((MARGIN, MARGIN + 8, MARGIN + 8, MARGIN + 119), radius=4, fill=ACCENT)
-    draw.text((MARGIN + 32, MARGIN - 4), specification['title'], font=title_font, fill=INK)
-    draw.text((MARGIN + 34, MARGIN + 94), specification['subtitle'], font=subtitle_font, fill=MUTED)
+    if show_header:
+        draw.rounded_rectangle((MARGIN, MARGIN + 8, MARGIN + 8, MARGIN + 119), radius=4, fill=ACCENT)
+        draw.text((MARGIN + 32, MARGIN - 4), specification['title'], font=title_font, fill=INK)
+        draw.text((MARGIN + 34, MARGIN + 94), specification['subtitle'], font=subtitle_font, fill=MUTED)
     y = MARGIN + header_height
-    for index, ((panel, image), label_height) in enumerate(zip(panels, label_heights)):
+    for index, (columns, row_height) in enumerate(rendered_rows):
         if index:
             draw.line((MARGIN, y - 24, WIDTH - MARGIN, y - 24), fill=RULE, width=2)
-        draw.text((MARGIN, y), panel['label'], font=label_font, fill=INK)
-        figure = panel['figure']
-        figure_width = draw.textlength(figure, font=note_font)
-        draw.text((WIDTH - MARGIN - figure_width, y + 6), figure, font=note_font, fill=MUTED)
-        if panel.get('note'):
-            draw.text((MARGIN, y + 46), panel['note'], font=note_font, fill=MUTED)
-        y += label_height
-        canvas.paste(image, ((WIDTH - image.width) // 2, y))
-        y += image.height + gap
+        for panel, image, x, column_width, label_height in columns:
+            offset = (row_height - label_height - image.height) // 2 if panel.get('valign') == 'center' else 0
+            panel_y = y + offset
+            figure = panel['figure']
+            figure_width = draw.textlength(figure, font=note_font)
+            label_width = draw.textlength(panel['label'], font=label_font)
+            if label_width + figure_width + 24 > column_width:
+                raise ValueError(f"Panel heading overlaps its figure label: {panel['label']}")
+            if panel.get('note') and draw.textlength(panel['note'], font=note_font) > column_width:
+                raise ValueError(f"Panel note is too wide: {panel['note']}")
+            draw.text((x, panel_y), panel['label'], font=label_font, fill=INK)
+            draw.text((x + column_width - figure_width, panel_y + 6), figure, font=note_font, fill=MUTED)
+            if panel.get('note'):
+                draw.text((x, panel_y + 46), panel['note'], font=note_font, fill=MUTED)
+            canvas.paste(image, (x + (column_width - image.width) // 2, panel_y + label_height))
+        y += row_height + gap
     draw.text((MARGIN, height - 66), specification['source'], font=source_font, fill=MUTED)
     target = (ROOT / 'images' / specification['image']).resolve()
     if target.parent != (ROOT / 'images').resolve() or target.suffix != '.png':

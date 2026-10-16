@@ -23,6 +23,12 @@ scientific:
     - publication: /publications/5-physicseval
       name: PhysicsEval
 
+narrative:
+  title: Narrative generation and nonlinear storytelling
+  papers:
+    - publication: /publications/16-nonlinearstorytelling
+      name: Can LLMs Tell Stories Out of Order?
+
 political:
   title: Political behavior
   papers:

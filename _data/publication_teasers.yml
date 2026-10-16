@@ -4,8 +4,7 @@
 proclaim:
   pdf: https://arxiv.org/pdf/2603.28488v3
   image: proclaim_teaser.png
-  title: PROClaim
-  subtitle: Evidence-grounded multi-agent debate
+  show_header: false
   source: arXiv:2603.28488v3 · Figures 1, 3(a), and 5
   panels:
     - label: Courtroom verification
@@ -24,8 +23,7 @@ proclaim:
 marsgps:
   pdf: https://arxiv.org/pdf/2604.00890v1
   image: marsgps_teaser.png
-  title: MARS-GPS
-  subtitle: Multi-path geometric reasoning with code verification
+  show_header: false
   source: arXiv:2604.00890v1 · Figures 1, 2, and 3
   panels:
     - label: Geometry reasoning pipeline
@@ -43,3 +41,30 @@ marsgps:
       page: 7
       crop: [348, 532, 499, 655]
       width: 0.78
+
+nonlinear_storytelling:
+  pdf: https://arxiv.org/pdf/2610.21468v1
+  image: nonlinear_storytelling_teaser.png
+  show_header: false
+  source: arXiv:2610.21468v1 · Figures 1, 2, 3, and 5
+  rows:
+    - - label: Default, cued, and published
+        figure: Figure 1
+        page: 0
+        crop: [305, 191, 513, 352]
+        share: 0.56
+      - label: Readers versus judge
+        figure: Figure 5
+        note: Unadjusted rates; ties excluded
+        page: 7
+        crop: [71, 181, 287, 265.5]
+        share: 0.44
+        valign: center
+    - - label: The same events, two orders
+        figure: Figure 2
+        page: 1
+        crop: [70, 69, 525, 263]
+    - - label: Story graphs and withheld explanations
+        figure: Figure 3
+        page: 3
+        crop: [70, 78, 525, 166]

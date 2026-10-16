@@ -23,16 +23,13 @@ areas:
 
   - key: creativity
     label: Creativity
-    summary: I explore how language models generate narratives and sustain coherence across branching, nonlinear stories.
-    topics: []
+    summary: I study how language models tell stories out of chronological order, and how narrative structure and story graphs affect coherence and reading experience.
+    topics:
+      - narrative
     x: 75
     y: 9
     align: start
     hub: [404, 88]
-    work_in_progress:
-      title: Nonlinear storytelling with LLMs
-      description: An ongoing project exploring narrative structure and coherence beyond a single linear storyline.
-
   - key: social
     label: Social behavior
     summary: I examine how context, language, and alignment shape political behavior and moral decisions, with attention to bias and fairness.
