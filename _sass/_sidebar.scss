@@ -69,6 +69,35 @@
    Author profile and links
    ========================================================================== */
 
+// These two FA4 glyphs are the hollow map marker and four-column university.
+// Use a private family so pages loading FA4 after main.css cannot switch them
+// between FA4 and FA5. scripts/icon-fonts.py maintains the existing subset;
+// the fa-map-marker/fa-university classes in the include keep both glyphs in it.
+@font-face {
+  font-family: "Author Metadata Icons";
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url("../fonts/icons/fontawesome-4.7-icons.woff2") format("woff2");
+  unicode-range: U+F041, U+F19C;
+}
+
+.author__urls .author__meta-icon {
+  display: inline-block;
+  width: 1.28571429em;
+  font-family: "Author Metadata Icons";
+  font-style: normal;
+  font-variant: normal;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  &.fa-map-marker::before { content: "\f041"; }
+  &.fa-university::before { content: "\f19c"; }
+}
+
 .author__avatar {
   display: table-cell;
   vertical-align: top;
@@ -118,6 +147,8 @@
   }
 
   &:hover::before { animation: avatar-turn 6s linear infinite; }
+
+  picture { display: block; }
 
   img {
     display: block;

@@ -12,7 +12,7 @@ talks_ui: true
 
 {% endif %}
 {%- comment -%} The icon font of the original media tabs, used by the buttons and the viewer's tabs. {%- endcomment %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/font-awesome-4.7.0.min.css' | relative_url }}">
 <div class="talks">
   {%- assign talks_by_year = site.talks | reverse | group_by_exp: 'talk_item', "talk_item.date | date: '%Y'" -%}
   {%- for talks_year in talks_by_year %}

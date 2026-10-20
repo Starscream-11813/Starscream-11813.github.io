@@ -1,0 +1,44 @@
+{%- comment -%}
+  A compact term overview: the institution's logo, the kind of teaching, the
+  term, and its courses. Anecdotes and other details stay on the term's page.
+  Numbered classes are summarized by their count. The title's link covers the
+  card. Call with entry=<a _teaching document>; styles in _teaching.scss.
+{%- endcomment -%}
+{%- assign tch = include.entry -%}
+{%- assign tch_logo_stem = tch.teaser | split: '.' | first -%}
+{%- capture tch_logo_path %}/images/teaching/{{ tch_logo_stem }}.webp{% endcapture -%}
+{%- assign tch_logo_file = site.static_files | where: 'path', tch_logo_path | first -%}
+{%- assign tch_logo_size = site.data.teaching_logos[tch_logo_stem] -%}
+{%- assign tch_heads = tch.content | split: '<h1' -%}
+{%- assign tch_courses = '' | split: '' -%}
+{%- for tch_chunk in tch_heads offset: 1 -%}
+  {%- assign tch_heading = tch_chunk | split: '</h1>' | first | split: '>' | last | strip -%}
+  {%- assign tch_courses = tch_courses | push: tch_heading -%}
+{%- endfor -%}
+{%- assign tch_first = tch_courses | first | default: '' -%}
+<article class="tch-card">
+  {%- if tch.teaser %}
+  <div class="tch-logo" aria-hidden="true">
+    {%- if tch_logo_file %}
+    <img src="{{ tch_logo_path | relative_url }}" alt=""{% if tch_logo_size %} width="{{ tch_logo_size[0] }}" height="{{ tch_logo_size[1] }}"{% endif %} loading="lazy" decoding="async">
+    {%- else %}
+    <img src="{{ tch.teaser | prepend: '/images/' | relative_url }}" alt="" loading="lazy" decoding="async">
+    {%- endif %}
+  </div>
+  {%- endif %}
+  <div class="tch-card__body">
+    <p class="tch-eyebrow">{{ tch.type }}</p>
+    <h2 class="tch-title"><a href="{{ tch.url | relative_url }}">{{ tch.title }}</a></h2>
+    {%- if tch_first contains 'Class ' %}
+    <p class="tch-classes"><span class="tch-code">{{ tch_courses.size }} classes</span></p>
+    {%- elsif tch_courses.size > 0 %}
+    <ul class="tch-courses" aria-label="Courses">
+      {%- for tch_course in tch_courses %}
+      {%- assign tch_code = tch_course | split: ':' | first | strip -%}
+      {%- assign tch_name = tch_course | remove_first: tch_code | remove_first: ':' | strip %}
+      <li><span class="tch-code">{{ tch_code }}</span> <span class="tch-course-name">{{ tch_name }}</span></li>
+      {%- endfor %}
+    </ul>
+    {%- endif %}
+  </div>
+</article>

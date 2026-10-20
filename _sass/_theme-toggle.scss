@@ -253,9 +253,10 @@ html[data-theme="dark"] {
   }
 }
 
-// The circle in which the new theme spreads (see theme-toggle.js).
-::view-transition-old(root),
-::view-transition-new(root) {
+// The circle in which the new theme spreads (see theme-toggle.js). Only for a
+// theme switch: a change of page cross-fades instead (_page-transitions.scss).
+html.is-theme-switching::view-transition-old(root),
+html.is-theme-switching::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }

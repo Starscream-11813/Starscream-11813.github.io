@@ -30,6 +30,33 @@
 
     document.documentElement.setAttribute('data-theme', theme);
   }());
+
+  /* Arriving from another page of the site in a view transition (see
+     _page-transitions.scss), skip the theme's staged fade-in, so the page
+     cross-fades in one smooth step. A first visit still fades in. */
+  window.addEventListener('pagereveal', function(event) {
+    if (event.viewTransition) {
+      document.documentElement.classList.add('is-transition-arrival');
+    }
+  });
+</script>
+
+<!-- Chrome and Edge start loading a page of the site once its link is hovered
+     or about to be tapped, so the click opens it at once. Files, images, and
+     links that open elsewhere are left alone. -->
+<script type="speculationrules">
+{
+  "prerender": [{
+    "where": {
+      "and": [
+        { "href_matches": "/*" },
+        { "not": { "href_matches": ["/files/*", "/images/*", "/assets/*", "/*.pdf", "/*.xml", "/*.zip"] } },
+        { "not": { "selector_matches": "[target=_blank], [download], [rel~=nofollow]" } }
+      ]
+    },
+    "eagerness": "moderate"
+  }]
+}
 </script>
 
 <!-- For all browsers -->

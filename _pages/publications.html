@@ -9,7 +9,25 @@ publications_ui: true
 ---
 {% include publications/intro.html %}
 {%- comment -%} The icon font used by the buttons. The code and logo fonts and the BibTeX theme are in head.html. {%- endcomment %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/font-awesome-4.7.0.min.css' | relative_url }}">
+{%- comment -%}
+  Set aside for now: the theme filter, echoing the About page. Each verb shows
+  only the papers on that theme (themes: in _data/publication_extras.yml), and
+  "all" shows every paper. To bring it back, delete this line and the
+  endcomment after the <p class="pubs-filter"> below; publications.js and the
+  styles in _publications.scss are still in place.
+{%- assign pubs_counts = '' | split: '' -%}
+{%- assign pubs_theme_list = "reason,create,behave" | split: ',' -%}
+{%- for pubs_theme in pubs_theme_list -%}
+  {%- assign pubs_n = 0 -%}
+  {%- for p in site.publications -%}
+    {%- assign pubs_themes = site.data.publication_extras[p.url].themes -%}
+    {%- if pubs_themes contains pubs_theme -%}{%- assign pubs_n = pubs_n | plus: 1 -%}{%- endif -%}
+  {%- endfor -%}
+  {%- assign pubs_counts = pubs_counts | push: pubs_n -%}
+{%- endfor %}
+<p class="pubs-filter" data-pub-filter hidden>Show the papers on how LLMs <button type="button" class="pubs-filter__verb pubs-filter__verb--reason" data-pub-theme="reason" aria-pressed="false" aria-label="reason ({{ pubs_counts[0] }} papers)">reason<sup>{{ pubs_counts[0] }}</sup></button>, <button type="button" class="pubs-filter__verb pubs-filter__verb--create" data-pub-theme="create" aria-pressed="false" aria-label="create ({{ pubs_counts[1] }} papers)">create<sup>{{ pubs_counts[1] }}</sup></button>, or <button type="button" class="pubs-filter__verb pubs-filter__verb--behave" data-pub-theme="behave" aria-pressed="false" aria-label="behave ({{ pubs_counts[2] }} papers)">behave<sup>{{ pubs_counts[2] }}</sup></button>, or <button type="button" class="pubs-filter__all" data-pub-theme="" aria-pressed="true">all {{ site.publications.size }}</button>.</p>
+{%- endcomment %}
 <div class="pubs">
   {%- assign pubs_by_year = site.publications | reverse | group_by_exp: 'p', "p.date | date: '%Y'" -%}
   {%- for pubs_year in pubs_by_year %}
@@ -17,7 +35,7 @@ publications_ui: true
     <h2 class="pubs-year__title" id="{{ pubs_year.name | slugify }}">{{ pubs_year.name }}<span class="pubs-year__count">{{ pubs_year.size }} paper{% if pubs_year.size != 1 %}s{% endif %}</span></h2>
     {%- for p in pubs_year.items %}
       {%- include publications/meta.html pub=p %}
-    <article class="pub-card{% unless pub_thumb %} pub-card--text{% endunless %}" id="{{ pub_slug }}">
+    <article class="pub-card{% unless pub_thumb %} pub-card--text{% endunless %}" id="{{ pub_slug }}" data-themes="{{ pub_extra.themes | join: ' ' }}">
       {% include publications/thumb.html %}
       <div class="pub-card__body">
         {% include publications/eyebrow.html %}

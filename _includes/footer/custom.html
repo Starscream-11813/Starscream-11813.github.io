@@ -1,21 +1,49 @@
 <!-- start custom footer snippets -->
 <!-- <a href="/sitemap/">Sitemap</a> -->
 <style>
+    /* The butterfly's pulsing glow. Animating text-shadow repainted it every
+       frame (half a CPU core while the footer was on screen), so each end of
+       the pulse is drawn once, in its own layer behind the butterfly, and the
+       two cross-fade over the same 1 s, which the graphics card does alone. */
     .glow {
+      position: relative;
+      display: inline-block;
+      isolation: isolate;
+      line-height: 1;
       text-align: center;
+    }
+
+    .glow::before,
+    .glow::after {
+      content: attr(data-glyph);
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      will-change: opacity;
       animation: glow 1s ease-in-out infinite alternate;
     }
-    
-    @-webkit-keyframes glow {
-      from {
-        text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
-      }
-      
-      to {
-        text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
-      }
+
+    .glow::before {
+      text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #e60073, 0 0 40px #e60073, 0 0 50px #e60073, 0 0 60px #e60073, 0 0 70px #e60073;
+      animation-direction: alternate-reverse;
+    }
+
+    .glow::after {
+      text-shadow: 0 0 20px #fff, 0 0 30px #ff4da6, 0 0 40px #ff4da6, 0 0 50px #ff4da6, 0 0 60px #ff4da6, 0 0 70px #ff4da6, 0 0 80px #ff4da6;
+    }
+
+    @keyframes glow {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .glow::before,
+      .glow::after { animation: none; }
+      .glow::after { opacity: 0; }
     }
 </style>
 <img class="footer-signature" alt="Rifat Raiyan" style="float: right; display: block; margin-left: auto; margin-right: 0; margin-bottom: -20px; margin-top: -20px;" src="{{ '/images/Rifat_logo_glowwhite4.svg' | relative_url }}" width="163" height="142" loading="lazy" decoding="async">
-Do you believe in magic? <a href="https://www.webtoons.com/en/drama/the-sound-of-magic-annarasumanara/list?title_no=77"><b class="glow">🦋</b></a>
+Do you believe in magic? <a href="https://www.webtoons.com/en/drama/the-sound-of-magic-annarasumanara/list?title_no=77"><b class="glow" data-glyph="🦋">🦋</b></a>
 <!-- end custom footer snippets -->

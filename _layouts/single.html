@@ -14,7 +14,7 @@ layout: default
   {% endunless %}
 {% endif %}
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/font-awesome-4.7.0.min.css' | relative_url }}">
 <div id="main" role="main">
   {% include sidebar.html %}
   {% assign is_lit_post = false %}
@@ -40,7 +40,7 @@ layout: default
         {% endif %}
         
         {% if page.collection == 'teaching' %}
-          <p> {{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p class="tch-page-meta">{{ page.type }}, <i>{{ page.venue }}</i>, {{ page.date | default: "1900-01-01" | date: "%Y" }}</p>
         {% elsif page.collection == 'publications' and page.status == 'accepted' and page.venue %}
           <p>Accepted to <b><i>{{ page.venue }}</i></b>, {{ page.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif page.collection == 'publications' and page.type == 'preprints' %}
@@ -445,6 +445,8 @@ layout: default
       <section class="page__content" itemprop="text">
         {% if page.collection == 'publications' %}
           {% include format-author-daggers.html content=content %}
+        {% elsif page.collection == 'teaching' %}
+          {% include teaching/sections.html content=content %}
         {% else %}
           {{ content }}
         {% endif %}

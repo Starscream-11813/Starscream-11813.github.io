@@ -1,0 +1,50 @@
+/* A simple 404 page: the meme, its reflection, and one suggested destination. */
+.nf-error {
+  max-width: 35rem;
+  margin: 1.2rem 0 2.5rem;
+}
+
+.nf-figure {
+  display: block; // the theme otherwise makes figures flex rows
+  max-width: 31rem;
+  margin: 0 0 1.5rem;
+
+  picture { display: block; }
+
+  img {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    border: 1px solid var(--theme-border, #e6e2f1);
+    border-radius: 10px;
+  }
+
+  figcaption {
+    margin-top: 1rem;
+    color: var(--theme-muted, #6f6a7d);
+    font-size: 0.95em;
+    line-height: 1.65;
+    text-align: center;
+
+    strong {
+      display: block;
+      margin-bottom: 0.15em;
+      color: var(--theme-text-strong, #29263a);
+      font-size: 1.08em;
+    }
+
+    span { display: block; }
+  }
+}
+
+.nf-error .nf-suggestion {
+  max-width: 31rem;
+  margin: 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--theme-border, #e6e2f1);
+  color: var(--theme-muted, #6f6a7d);
+  font-size: 0.85em;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}

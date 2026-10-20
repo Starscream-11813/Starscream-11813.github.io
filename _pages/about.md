@@ -734,7 +734,7 @@ body {
         <summary>Intellectual influences</summary>
         <p>Some people in academia that I follow/look up to:</p>
         <p>
-        <a href="https://karpathy.ai/">Andrej Karpathy</a>, <a href="https://www.andrewng.org/">Andrew Ng</a>, <a href="https://www.maths.ox.ac.uk/people/andrew.wiles">Andrew Wiles</a>, <a href="https://autarkaw.com">Autar Kaw</a>, <a href="https://en.wikipedia.org/wiki/Bret_Weinstein">Bret Weinstein</a>, <a href="https://nlp.stanford.edu/~manning/">Christopher D. Manning</a>, <a href="https://www.cs.princeton.edu/~danqic/">Danqi Chen</a>, <a href="https://cs.harvard.edu/malan/">David J. Malan</a>, <a href="https://www-cs-faculty.stanford.edu/~knuth/">Donald E. Knuth</a>, <a href="http://erikdemaine.org/">Erik Demaine</a>, <a href="https://math.mit.edu/~gs/">Gilbert Strang</a>, <a href="https://www.3blue1brown.com/">Grant Sanderson</a>, <a href="http://www-formal.stanford.edu/jmc/index.html">John McCarthy</a>, <a href="https://jonathanhaidt.com/">Jonathan Haidt</a>, <a href="https://www.jordanbpeterson.com/">Jordan B Peterson</a>, <a href="https://web.eecs.umich.edu/~justincj/">Justin Johnson</a>, <a href="https://scholar.google.com/citations?user=WgyrxUAAAAAJ&hl=en">Károly Zsolnai-Fehér</a>, <a href="https://www.math.mcgill.ca/lnchen/">Linan Chen</a>, <a href="https://chomsky.info/">Noam Chomsky</a>, <a href="https://web.archive.org/web/20230808013415/https://rebeccashafee.com/index.html">Rebecca Shafee</a>, <a href="https://en.wikipedia.org/wiki/Roger_Penrose">Roger Penrose</a>, <a href="https://people.csail.mit.edu/devadas/">Srinivas Devadas</a>, <a href="https://www.math.ucla.edu/~tao/">Terence Tao</a>.
+        <a href="https://karpathy.ai/">Andrej Karpathy</a>, <a href="https://www.andrewng.org/">Andrew Ng</a>, <a href="https://www.maths.ox.ac.uk/people/andrew.wiles">Andrew Wiles</a>, <a href="https://autarkaw.com">Autar Kaw</a>, <a href="https://en.wikipedia.org/wiki/Bret_Weinstein">Bret Weinstein</a>, <a href="https://nlp.stanford.edu/~manning/">Christopher D. Manning</a>, <a href="https://www.cs.princeton.edu/~danqic/">Danqi Chen</a>, <a href="https://cs.harvard.edu/malan/">David J. Malan</a>, <a href="https://www-cs-faculty.stanford.edu/~knuth/">Donald E. Knuth</a>, <a href="http://erikdemaine.org/">Erik Demaine</a>, <a href="https://math.mit.edu/~gs/">Gilbert Strang</a>, <a href="https://www.3blue1brown.com/">Grant Sanderson</a>, <a href="http://www-formal.stanford.edu/jmc/index.html">John McCarthy</a>, <a href="https://jonathanhaidt.com/">Jonathan Haidt</a>, <a href="https://www.jordanbpeterson.com/">Jordan B Peterson</a>, <a href="https://web.archive.org/web/20260903035253/https://web.eecs.umich.edu/~justincj/">Justin Johnson</a>, <a href="https://scholar.google.com/citations?user=WgyrxUAAAAAJ&hl=en">Károly Zsolnai-Fehér</a>, <a href="https://www.math.mcgill.ca/lnchen/">Linan Chen</a>, <a href="https://chomsky.info/">Noam Chomsky</a>, <a href="https://web.archive.org/web/20230808013415/https://rebeccashafee.com/index.html">Rebecca Shafee</a>, <a href="https://en.wikipedia.org/wiki/Roger_Penrose">Roger Penrose</a>, <a href="https://people.csail.mit.edu/devadas/">Srinivas Devadas</a>, <a href="https://www.math.ucla.edu/~tao/">Terence Tao</a>.
         </p>
         </details>
 </div>
@@ -765,13 +765,13 @@ body {
         <b>20th October 2025:</b> Presented at an international conference for the first time in-person — <a href="https://iccv.thecvf.com/">ICCV 2025</a> at Honolulu, Hawaii, USA.
         <br>
         <br>
-        <b>24th August 2025:</b> Contributed to the writing of <a href="https://web.stanford.edu/~jurafsky/slp3/">Speech and Language Processing (3rd Edition)</a> by <a href="http://web.stanford.edu/people/jurafsky/">Dan Jurafsky</a> and <a href="http://www.cs.colorado.edu/~martin/">James H. Martin</a>. Thanks for the <a href="https://web.stanford.edu/~jurafsky/slp3/thanks.html#:~:text=Syed%20Hasany-,Syed%20Rifat%20Raiyan,-Taishi%20Nakashima">shoutout</a>!
+        <b>24th August 2025:</b> Contributed to the writing of <a href="https://web.stanford.edu/~jurafsky/slp3/">Speech and Language Processing (3rd Edition)</a> by <a href="http://web.stanford.edu/people/jurafsky/">Dan Jurafsky</a> and <a href="https://home.cs.colorado.edu/~martin/">James H. Martin</a>. Thanks for the <a href="https://web.stanford.edu/~jurafsky/slp3/thanks.html#:~:text=Syed%20Hasany-,Syed%20Rifat%20Raiyan,-Taishi%20Nakashima">shoutout</a>!
         <br>
         <br>
         <b>16th August 2025:</b> Worked as problem setter for the <a href="https://codeforces.com/gym/629683">IUT Intra University Programming Contest 2025</a>. Links: [<a href="https://github.com/ir-rafio/AHIUPC-2025-Problemset/blob/main/Statements.pdf">Problemset</a>], [<a href="https://github.com/ir-rafio/AHIUPC-2025-Problemset/blob/main/Editorial.md">Editorial</a>], [<a href="https://codeforces.com/gym/106045">Replay</a>]
         <br>
         <br>
-        <b>10th August 2025:</b> My CSE 6265 project's paper has been accepted for oral presentation at <a href="https://acpr2025.com/">ACPR 2025</a>. Alhamdulillah!
+        <b>10th August 2025:</b> My CSE 6265 project's paper has been accepted for oral presentation at <a href="https://web.archive.org/web/20250803175015/http://acpr2025.com/">ACPR 2025</a>. Alhamdulillah!
         <br>
         <br>
         <b>14th July 2025:</b> My CSE 4836 project's paper has been accepted for oral presentation at <a href="https://openreview.net/forum?id=AAGhroilqL">ICCV 2025 WCCA</a>. Alhamdulillah!
@@ -805,14 +805,24 @@ body {
     <script>
     (function () {
         /* The visitor map (and the jQuery it brings) loads once the page has,
-           so it no longer holds up the page; every visit still counts. */
+           so it no longer holds up the page; every visit still counts. A page
+           loaded ahead of time on hover (see head.html) waits until it is
+           actually opened, so hovering a link never counts as a visit. */
         var here = document.currentScript;
-        window.addEventListener('load', function () {
+        function addMap() {
             var map = document.createElement('script');
             map.id = 'mapmyvisitors';
             map.src = 'https://mapmyvisitors.com/map.js?cl=ffffff&w=500&t=tt&d=3_Etu5zBzTNNRms36AvbqzeDMy6qEla9H_jwbeV6mR8&co=71addc&cmo=deac7c&cmn=b4d27c';
             here.parentNode.insertBefore(map, here.nextSibling);
-        });
+        }
+        function afterLoad() {
+            if (document.readyState === 'complete') { addMap(); } else { window.addEventListener('load', addMap); }
+        }
+        if (document.prerendering) {
+            document.addEventListener('prerenderingchange', afterLoad, { once: true });
+        } else {
+            afterLoad();
+        }
     }());
     </script>
 </div>

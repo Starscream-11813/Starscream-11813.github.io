@@ -6,11 +6,15 @@ For every `teaser:` in _publications/, this writes a 560 px wide WebP to
 images/publications/; an animated GIF also gets a silent, looping MP4 (made
 with ffmpeg), with the WebP of its first frame as the poster. For every
 `teaser:` in _posts/ (the book covers), it writes a 320 px wide WebP to
-images/books/. Each thumbnail's size goes to _data/publication_thumbnails.yml
-or _data/book_covers.yml, so the page reserves the image's full height before
+images/books/, and the institution logos of _teaching/ (also `teaser:`) a
+240 px wide one to images/teaching/. Each thumbnail's size goes to
+_data/publication_thumbnails.yml, _data/book_covers.yml, or
+_data/teaching_logos.yml, so the page reserves the image's full height before
 it loads. The originals stay where they are; the Publications page still shows
-them full size on request. Run from the repository root after adding or
-changing a teaser or cover (needs Pillow, and ffmpeg for animated teasers):
+them full size on request. The profile picture gets a lossless WebP copy
+(identical pixels, smaller file). Run from the repository root after adding or
+changing a teaser, cover, or profile picture (needs Pillow, and ffmpeg for
+animated teasers):
 
     python scripts/thumbnails.py
 
@@ -30,6 +34,7 @@ ROOT = Path(__file__).resolve().parent.parent
 SETS = [
     ('_publications', 'images/publications', '_data/publication_thumbnails.yml', 560, 'teaser'),
     ('_posts', 'images/books', '_data/book_covers.yml', 320, 'cover'),
+    ('_teaching', 'images/teaching', '_data/teaching_logos.yml', 240, 'logo'),
 ]
 
 
@@ -90,9 +95,29 @@ def make(pages, output, sizes_file, width, noun):
     (ROOT / sizes_file).write_text('\n'.join(lines) + '\n', encoding='utf-8', newline='\n')
 
 
+def avatar():
+    """The profile picture (author.avatar in _config.yml) gets a lossless WebP
+    copy: the very same pixels in under half the bytes. Nothing is resized or
+    recompressed lossily, so it stays exactly as sharp."""
+    match = re.search(r'^\s+avatar\s*:\s*"([^"]+)"', (ROOT / '_config.yml').read_text(encoding='utf-8'), re.M)
+    if not match or '://' in match.group(1) or match.group(1).lower().endswith('.webp'):
+        return
+    source = ROOT / 'images' / match.group(1)
+    target = source.with_suffix('.webp')
+    if target.exists() and target.stat().st_mtime >= source.stat().st_mtime:
+        return
+    with Image.open(source) as image:
+        image = image.convert('RGBA')
+        if image.getchannel('A').getextrema() == (255, 255):
+            image = image.convert('RGB')
+        image.save(target, 'WEBP', lossless=True, quality=100, method=6)
+    print(f'  {source.name} -> {target.relative_to(ROOT).as_posix()} (lossless)')
+
+
 def main():
     for job in SETS:
         make(*job)
+    avatar()
 
 
 if __name__ == '__main__':

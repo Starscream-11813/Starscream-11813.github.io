@@ -1,7 +1,7 @@
 ---
 title: "Summer Semester 2023"
 collection: teaching
-type: "Undegraduate courses"
+type: "Undergraduate courses"
 permalink: /teaching/2023-summer-teaching-iut
 venue: "Islamic University of Technology, Department of CSE"
 date: 2024-01-15

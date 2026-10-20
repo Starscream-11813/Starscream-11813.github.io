@@ -44,10 +44,10 @@
   clear: both;
 }
 
-// The scene may extend upward on narrow screens; keep the profile controls
-// comfortably above it when their areas meet.
+// Keep the profile above the scene where their areas meet. The sidebar stays
+// sticky (positioned) as on every other page; making it relative here moved
+// it 36 px down on Publications and Lit Posts, by its sticky top offset.
 #main:has(.archive--sisyphus) .sidebar {
-  position: relative;
   z-index: 2;
 }
 

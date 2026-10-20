@@ -13,7 +13,7 @@
 {% endif %}
 
 {%- comment -%} Prism, for BibTeX entries, loads once per page from scripts.html. {%- endcomment %}
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="{{ '/assets/css/font-awesome-4.7.0.min.css' | relative_url }}">
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
     {% if include.type == "grid" and teaser %}

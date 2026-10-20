@@ -111,15 +111,45 @@
     var x = box.left + box.width / 2;
     var y = box.top + box.height / 2;
     var radius = Math.sqrt(Math.pow(Math.max(x, window.innerWidth - x), 2) + Math.pow(Math.max(y, window.innerHeight - y), 2));
+    var root = document.documentElement;
+    var done = function() {
+      root.classList.remove('is-theme-switching');
+    };
+
+    /* Marks this transition as a theme switch, not a page change, for the
+       styles in _theme-toggle.scss. */
+    root.classList.add('is-theme-switching');
     var transition = document.startViewTransition(change);
 
     transition.ready.then(function() {
-      document.documentElement.animate(
+      root.animate(
         { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
         { duration: 700, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' }
       );
     }).catch(function() {});
+    transition.finished.then(done, done);
   }
+
+  /* A page loaded ahead of time (on hover; see head.html) or kept for the Back
+     button may have been made before the theme last changed; it takes up the
+     current choice as it is shown. */
+  function syncWithStorage() {
+    var theme = storedTheme() || systemTheme();
+
+    if (theme !== document.documentElement.getAttribute('data-theme')) {
+      applyTheme(theme, false);
+    }
+  }
+
+  if (document.prerendering) {
+    document.addEventListener('prerenderingchange', syncWithStorage, { once: true });
+  }
+
+  window.addEventListener('pageshow', function(event) {
+    if (event.persisted) {
+      syncWithStorage();
+    }
+  });
 
   document.addEventListener('DOMContentLoaded', function() {
     var buttons = document.querySelectorAll('[data-theme-toggle]');

@@ -6,9 +6,9 @@ author_profile: true
 ---
 
 {% include base_path %}
-Forever thankful to Allah Subhanahu Wa Ta'ala for this meaningful profession.
-<br>
-{% for post in site.teaching reversed %}
-  {% include archive-single.html %}
-  <br>
-{% endfor %}
+<p class="tch-intro">Forever thankful to Allah Subhanahu Wa Ta'ala for this meaningful profession.</p>
+<div class="tch">
+  {%- for post in site.teaching reversed %}
+  {% include teaching/card.html entry=post %}
+  {%- endfor %}
+</div>

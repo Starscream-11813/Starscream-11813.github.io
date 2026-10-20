@@ -13,6 +13,154 @@
   a { white-space: nowrap; }
 }
 
+// The theme filter: a sentence like the About page's, whose verbs are buttons
+// in the same colors. Each waits with a dotted underline; the chosen one flows
+// and glows as on the About page, and the papers on other themes step aside.
+.pubs-filter {
+  margin: 0.15rem 0 1.5rem;
+  color: var(--theme-muted, #6f6a7d);
+  font-size: 0.92em;
+  line-height: 1.75;
+
+  &[hidden] { display: none; }
+
+  button {
+    padding: 0 0.12em 0 0.06em;
+    margin: 0 -0.12em 0 -0.06em;
+    border: 0;
+    border-radius: 3px;
+    background: none;
+    color: inherit;
+    font: inherit;
+    line-height: inherit;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  button:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
+  }
+
+  sup {
+    margin-left: 0.12em;
+    color: var(--theme-muted, #6f6a7d);
+    -webkit-text-fill-color: var(--theme-muted, #6f6a7d);
+    font-family: 'Product Sans', sans-serif;
+    font-size: 0.6em;
+    font-style: normal;
+    font-weight: 400;
+  }
+}
+
+.pubs-filter .pubs-filter__verb {
+  color: var(--verb-solid);
+  font-family: $palatinolinotype;
+  font-style: italic;
+  font-weight: 700;
+  text-decoration: underline dotted 1px;
+  text-decoration-color: var(--verb-line);
+  text-underline-offset: 0.24em;
+  transition: text-decoration-color 0.2s ease;
+
+  &:hover { text-decoration-style: solid; }
+
+  &[aria-pressed="true"] {
+    text-decoration-style: solid;
+    text-decoration-color: var(--verb-solid);
+  }
+
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    &[aria-pressed="true"] {
+      background-image: linear-gradient(100deg, var(--verb-flow));
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      filter: drop-shadow(0 0 0.2em var(--verb-glow));
+      animation: pubs-verb-flow 9s ease-in-out infinite alternate;
+    }
+  }
+
+  &--reason {
+    --verb-solid: #0b77ad;
+    --verb-line: rgba(11, 119, 173, 0.45);
+    --verb-flow: #0b77ad 0%, #1592cc 22%, #0a6f9f 45%, #2f7cc4 62%, #0b77ad 80%, #1592cc 100%;
+    --verb-glow: rgba(116, 210, 250, 0.45);
+  }
+
+  &--create {
+    --verb-solid: #a03dc3;
+    --verb-line: rgba(160, 61, 195, 0.45);
+    --verb-flow: #a03dc3 0%, #b84fd6 22%, #9536b8 45%, #ad46cf 62%, #a03dc3 80%, #b84fd6 100%;
+    --verb-glow: rgba(236, 141, 255, 0.42);
+  }
+
+  &--behave {
+    --verb-solid: #5445b5;
+    --verb-line: rgba(84, 69, 181, 0.45);
+    --verb-flow: #5445b5 0%, #6e65ce 22%, #4b3ca8 45%, #8180de 62%, #5445b5 80%, #6e65ce 100%;
+    --verb-glow: rgba(145, 148, 228, 0.45);
+  }
+}
+
+html[data-theme="dark"] {
+  .pubs-filter__verb--reason {
+    --verb-solid: #74d2fa;
+    --verb-line: rgba(116, 210, 250, 0.5);
+    --verb-flow: #74d2fa 0%, #62c8f6 22%, #8ad9fb 45%, #9a9ff0 62%, #74d2fa 80%, #62c8f6 100%;
+    --verb-glow: rgba(116, 210, 250, 0.4);
+  }
+
+  .pubs-filter__verb--create {
+    --verb-solid: #ec8dff;
+    --verb-line: rgba(236, 141, 255, 0.5);
+    --verb-flow: #ec8dff 0%, #e27bf8 22%, #f2a6ff 45%, #c9a3ff 62%, #ec8dff 80%, #e27bf8 100%;
+    --verb-glow: rgba(236, 141, 255, 0.38);
+  }
+
+  .pubs-filter__verb--behave {
+    --verb-solid: #a7a8f0;
+    --verb-line: rgba(167, 168, 240, 0.5);
+    --verb-flow: #a7a8f0 0%, #9194e4 22%, #b8b9f5 45%, #8180de 62%, #a7a8f0 80%, #9194e4 100%;
+    --verb-glow: rgba(167, 168, 240, 0.4);
+  }
+}
+
+// "all 16": underlined while a theme is chosen, plain once it is the view.
+.pubs-filter .pubs-filter__all {
+  font-style: italic;
+  text-decoration: underline dotted 1px;
+  text-underline-offset: 0.24em;
+
+  &:hover { text-decoration-style: solid; }
+
+  &[aria-pressed="true"] {
+    color: var(--theme-text, #45414f);
+    font-style: normal;
+    text-decoration: none;
+    cursor: default;
+  }
+}
+
+.pubs .pub-card[hidden],
+.pubs .pubs-year[hidden] { display: none; }
+
+// Cards slide into their new places while the others fade (theme filter).
+html.is-filtering::view-transition-group(*) {
+  animation-duration: 0.45s;
+  animation-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes pubs-verb-flow {
+  from { background-position: 0% 0; }
+  to { background-position: 100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pubs-filter .pubs-filter__verb[aria-pressed="true"] { animation: none; }
+}
+
 .google-wordmark span:nth-child(1),
 .google-wordmark span:nth-child(4) { color: #4285f4; }
 .google-wordmark span:nth-child(2),

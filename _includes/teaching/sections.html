@@ -1,0 +1,23 @@
+{%- comment -%}
+  A teaching page's content with each first-level heading ("Math 4641:
+  Numerical Methods", "Class 3: 8th August, 2021") and the text under it set as
+  a card: the code (before the colon) small above the course's name. The
+  heading keeps its id, so links to it still work. Call with content=<the
+  page's rendered content>; styles in _teaching.scss.
+{%- endcomment -%}
+{%- assign tch_parts = include.content | split: '<h1' -%}
+<div class="tch-page">
+  {{ tch_parts | first }}
+  {%- for tch_chunk in tch_parts offset: 1 %}
+  {%- assign tch_attrs = tch_chunk | split: '>' | first -%}
+  {%- assign tch_rest = tch_chunk | remove_first: tch_attrs | remove_first: '>' -%}
+  {%- assign tch_heading = tch_rest | split: '</h1>' | first | strip -%}
+  {%- assign tch_body = tch_rest | remove_first: tch_heading | remove_first: '</h1>' -%}
+  {%- assign tch_code = tch_heading | split: ':' | first | strip -%}
+  {%- assign tch_name = tch_heading | remove_first: tch_code | remove_first: ':' | strip %}
+  <section class="tch-course">
+    <h2 class="tch-course__title"{{ tch_attrs }}><span class="tch-code">{{ tch_code }}</span>{% if tch_name != '' %} <span class="tch-course__name">{{ tch_name }}</span>{% endif %}</h2>
+    {{ tch_body | replace: 'Course Materials and Resources:', '<span class="tch-field">Course Materials and Resources:</span>' | replace: 'Student Evaluation:', '<span class="tch-field">Student Evaluation:</span>' }}
+  </section>
+  {%- endfor %}
+</div>

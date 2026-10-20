@@ -4,6 +4,9 @@
 #   short:  the paper's short name, used for accessible labels
 #   venue:  a compact venue label, e.g. "IJCNLP-AACL 2026"
 #   kind:   the track, shown after the venue (Main, Findings, Workshop, ...)
+#   themes: what the paper studies about LLMs: reason, create, and/or behave
+#           (the filter above the Publications list; papers without one
+#           show only under "all").
 # A paper without an entry shows its full venue; preprints show "Preprint".
 
 /publications/1-banglabook:
@@ -15,6 +18,7 @@
   short: ParaMAWPS
   venue: ACL 2023
   kind: Student Research Workshop
+  themes: [reason]
 
 /publications/3-hasper:
   short: HaSPeR
@@ -29,43 +33,55 @@
   short: PhysicsEval
   venue: IJCNLP-AACL 2025
   kind: Findings
+  themes: [reason]
 
 /publications/6-frugalprompt:
   short: FrugalPrompt
   venue: EMNLP 2026
   kind: Workshop
+  themes: [reason]
 
 /publications/7-adab:
   short: ADAB
   venue: NeurIPS 2025
   kind: Workshop
+  themes: [create, behave]
 
 /publications/8-politicalalignment:
   short: Political Alignment in LLMs
+  themes: [behave]
 
 /publications/9-circuitlm:
   short: CircuitLM
   venue: IEEE ICLAD 2026
+  themes: [create]
 
 /publications/10-ivellm:
   short: Narrative over Numbers
+  themes: [behave, reason]
 
 /publications/11-llmideoplasticity:
   short: LLM-Ideoplasticity
   venue: IJCNLP-AACL 2026
   kind: Main
+  themes: [behave]
 
 /publications/12-sparsefeatureinterventions:
   short: Sparse-Feature Interventions
+  themes: [behave]
 
 /publications/13-ai4math:
   short: AI for Mathematical Reasoning
+  themes: [reason]
 
 /publications/14-proclaim:
   short: PROClaim
+  themes: [reason]
 
 /publications/15-marsgps:
   short: MARS-GPS
+  themes: [reason]
 
 /publications/16-nonlinearstorytelling:
   short: Stories Out of Order
+  themes: [create]

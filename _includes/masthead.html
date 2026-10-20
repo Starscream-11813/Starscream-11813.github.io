@@ -50,9 +50,11 @@
                 text-shadow: 3px 0 0 rgb(233,186,241), -3px 0 0 rgb(173,223,222);
               }
             }
+            /* .glow2 no longer runs its glow2 animation: the glitch text-shadow
+               on the span inside covers it, so it repainted the title every
+               frame without changing a pixel. */
             .glow2 {
               text-align: center;
-              animation: glow2 2s ease-in-out infinite alternate;
               /* background-image: -webkit-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
               background-image: -ms-webkit-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
               filter: brightness(120%);

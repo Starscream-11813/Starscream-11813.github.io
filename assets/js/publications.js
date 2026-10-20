@@ -122,8 +122,82 @@
     }
   }
 
+  // The theme filter above the list (themes: in _data/publication_extras.yml).
+  // A verb shows only the papers on that theme, and choosing it again, or
+  // "all", shows every paper; ?theme=reason links straight to one. Where the
+  // browser can, cards slide to their new places while the rest fade.
+  function initializeFilter() {
+    var filter = document.querySelector('[data-pub-filter]');
+    if (!filter) { return; }
+    var buttons = Array.prototype.slice.call(filter.querySelectorAll('[data-pub-theme]'));
+    var cards = Array.prototype.slice.call(document.querySelectorAll('.pubs .pub-card'));
+    var years = Array.prototype.slice.call(document.querySelectorAll('.pubs .pubs-year'));
+    var themes = buttons.map(function (button) { return button.getAttribute('data-pub-theme'); });
+
+    function apply(theme) {
+      var total = 0;
+      cards.forEach(function (card) {
+        var own = (card.getAttribute('data-themes') || '').split(' ');
+        card.hidden = Boolean(theme) && own.indexOf(theme) === -1;
+        if (!card.hidden) { total += 1; }
+      });
+      years.forEach(function (year) {
+        var shown = year.querySelectorAll('.pub-card:not([hidden])').length;
+        var count = year.querySelector('.pubs-year__count');
+        year.hidden = shown === 0;
+        if (count) { count.textContent = shown + ' paper' + (shown === 1 ? '' : 's'); }
+      });
+      buttons.forEach(function (button) {
+        button.setAttribute('aria-pressed', button.getAttribute('data-pub-theme') === theme ? 'true' : 'false');
+      });
+      return total;
+    }
+
+    function choose(theme) {
+      var total;
+      var run = function () { total = apply(theme); };
+      if (document.startViewTransition && !(reduceMotion && reduceMotion.matches)) {
+        var root = document.documentElement;
+        var moving = cards.concat(years.map(function (year) { return year.querySelector('.pubs-year__title'); }));
+        moving.forEach(function (element, index) { element.style.viewTransitionName = 'pub-filter-' + index; });
+        root.classList.add('is-filtering');
+        var transition = document.startViewTransition(run);
+        var done = function () {
+          moving.forEach(function (element) { element.style.viewTransitionName = ''; });
+          root.classList.remove('is-filtering');
+        };
+        transition.finished.then(done, done);
+        transition.updateCallbackDone.then(function () { announce(message(theme, total)); }, function () {});
+      } else {
+        run();
+        announce(message(theme, total));
+      }
+      var url = new URL(window.location.href);
+      if (theme) { url.searchParams.set('theme', theme); } else { url.searchParams.delete('theme'); }
+      window.history.replaceState(window.history.state, '', url);
+    }
+
+    function message(theme, total) {
+      var papers = total + ' paper' + (total === 1 ? '' : 's');
+      return theme ? 'Showing ' + papers + ' on how LLMs ' + theme + '.' : 'Showing all ' + papers + '.';
+    }
+
+    filter.addEventListener('click', function (event) {
+      var button = event.target.closest('[data-pub-theme]');
+      if (!button) { return; }
+      var theme = button.getAttribute('data-pub-theme');
+      if (theme && button.getAttribute('aria-pressed') === 'true') { theme = ''; }
+      choose(theme);
+    });
+
+    filter.hidden = false;
+    var asked = new URLSearchParams(window.location.search).get('theme');
+    if (asked && themes.indexOf(asked) !== -1) { apply(asked); }
+  }
+
   function initialize() {
     initializeVideos();
+    initializeFilter();
     // Copying needs this script, so the copy buttons appear only once it can.
     Array.prototype.forEach.call(document.querySelectorAll('[data-pub-copy]'), function (button) {
       button.hidden = false;

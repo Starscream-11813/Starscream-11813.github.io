@@ -1,0 +1,34 @@
+/* ==========================================================================
+   PAGE TRANSITIONS
+   Moving between pages of the site, the new page cross-fades in over the old
+   one (Chrome, Edge, and Safari 18.2+; elsewhere pages simply load). Arriving
+   this way, head.html marks the page .is-transition-arrival, which skips the
+   theme's staged fade-in of the masthead, content, and footer; a first visit
+   keeps it. Theme switches use their own transition (_theme-toggle.scss).
+   ========================================================================== */
+
+@view-transition {
+  navigation: auto;
+}
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation-duration: 0.3s;
+}
+
+html.is-transition-arrival {
+  .masthead,
+  .breadcrumbs,
+  #main,
+  .page__hero,
+  .page__hero--overlay,
+  .page__footer {
+    animation: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}

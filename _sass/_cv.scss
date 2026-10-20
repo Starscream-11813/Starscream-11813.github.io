@@ -1,0 +1,110 @@
+/* ==========================================================================
+   CV
+   The update date with how long ago it was, the download line, and the PDF in
+   a rounded frame. See _pages/cv.md.
+   ========================================================================== */
+
+.cv {
+  --cv-text: #45414f;
+  --cv-strong: #29263a;
+  --cv-muted: #706b7e;
+  --cv-border: #e6e1f0;
+  --cv-border-strong: #d3cce6;
+  --cv-surface: #fbfaff;
+  --cv-accent: #6962d2;
+  --cv-tint: rgba(105, 98, 210, 0.07);
+  --cv-shadow: 0 12px 30px rgba(44, 34, 75, 0.09);
+}
+
+html[data-theme="dark"] .cv {
+  --cv-text: #dedaee;
+  --cv-strong: #fff;
+  --cv-muted: #b9b4cf;
+  --cv-border: rgba(226, 222, 255, 0.14);
+  --cv-border-strong: rgba(226, 222, 255, 0.28);
+  --cv-surface: #24253a;
+  --cv-accent: #a7a8f0;
+  --cv-tint: rgba(167, 168, 240, 0.12);
+  --cv-shadow: 0 14px 34px rgba(8, 8, 20, 0.36);
+}
+
+.cv-card {
+  margin: 0.4rem 0 1.25rem;
+  padding: 1.05em 1.3em;
+  border: 1px solid var(--cv-border);
+  border-radius: 16px;
+  background: var(--cv-surface);
+  color: var(--cv-text);
+
+  p { margin: 0.5em 0 0; }
+
+  p:first-child { margin-top: 0; }
+}
+
+.cv-updated {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35em 0.8em;
+  color: var(--cv-strong);
+}
+
+// "3 years, 99 days ago": a quiet pill, its numbers in the serif.
+.cv-age {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  padding: 0.2em 0.8em;
+  border: 1px solid var(--cv-border-strong);
+  border-radius: 999px;
+  background: var(--cv-tint);
+  color: var(--cv-muted);
+  font-family: 'Product Sans', sans-serif;
+  font-size: 0.74em;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+
+  b {
+    color: var(--cv-accent);
+    font-family: $palatinolinotype;
+    font-size: 1.2em;
+    font-weight: 700;
+  }
+
+  i {
+    color: var(--cv-accent);
+    transition: transform 0.6s ease;
+  }
+
+  // The hourglass turns over.
+  &:hover i { transform: rotate(180deg); }
+}
+
+.cv-note {
+  color: var(--cv-muted);
+  font-size: 0.88em;
+
+  i {
+    margin-right: 0.3em;
+    color: var(--cv-accent);
+  }
+}
+
+.cv-frame {
+  overflow: hidden;
+  border: 1px solid var(--cv-border);
+  border-radius: 14px;
+  background: #525659;
+  box-shadow: var(--cv-shadow);
+
+  iframe {
+    display: block;
+    width: 100%;
+    height: min(85vh, 1100px);
+    border: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cv-age i { transition: none; }
+}

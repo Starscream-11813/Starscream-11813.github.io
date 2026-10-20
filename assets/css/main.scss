@@ -43,6 +43,9 @@
 @import "publications";
 @import "books";
 @import "talks";
+@import "not-found";
+@import "teaching";
+@import "cv";
 
 @import "vendor/font-awesome/fontawesome";
 @import "vendor/font-awesome/solid";
@@ -50,5 +53,7 @@
 @import "vendor/magnific-popup/magnific-popup";
 @import "dark-mode";
 @import "theme-toggle";
+@import "page-transitions";
 @import "responsive";
 @import "print";
+@import "icon-fonts"; // last: its Academicons rules keep their old place after everything else
