@@ -88,7 +88,10 @@ def main():
         screenshots.mkdir(parents=True, exist_ok=True)
     with sync_playwright() as p:
         browser = p.chromium.launch(channel=None if args.browser == 'chromium' else args.browser)
-        context = browser.new_context()
+        # With reduced motion the theme switches at once, instead of spreading
+        # from the toggle in a view transition that delays the change a frame
+        # and holds clicks while it plays; these checks are about layout.
+        context = browser.new_context(reduced_motion='reduce')
         page = context.new_page()
         failures = []
         checked = 0

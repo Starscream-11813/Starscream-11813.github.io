@@ -522,24 +522,11 @@ body {
            through the three in turn, swelling its glow as it passes. Light mode
            keeps the letters in deeper tones for contrast and lets the bright
            palette carry the glint and the glow. */
-        /* The site's Palatino webfont has only a regular face, so the verbs use
-           the installed Palatino Bold Italic (Windows, macOS, iOS) and fall back
-           to the browser's synthesized bold italic elsewhere. */
-        @font-face {
-            font-family: "Research Verb Palatino";
-            font-style: italic;
-            font-weight: 700;
-            src: local("Palatino Linotype Bold Italic"), local("PalatinoLinotype-BoldItalic"),
-                local("Palatino Bold Italic"), local("Palatino-BoldItalic"),
-                local("Book Antiqua Bold Italic"), local("BookAntiqua-BoldItalic"),
-                local("TeX Gyre Pagella Bold Italic"), local("TeXGyrePagella-BoldItalic"),
-                local("P052 Bold Italic"), local("P052-BoldItalic");
-        }
-
+        /* The site's Palatino has a true bold italic (see _sass/_fonts.scss). */
         .content .research-verb {
             --verb-delay: 0s;
             color: var(--verb-solid);
-            font-family: "Research Verb Palatino", Palatino, serif;
+            font-family: "Site Palatino", Palatino, serif;
             font-style: italic;
             font-weight: 700;
         }
@@ -691,8 +678,10 @@ body {
             var audio = box && box.querySelector('audio');
             var button = box && box.querySelector('.name-pronunciation__play');
             if (!audio || !button) { return; }
-            // Listen plays and pauses; the player keeps its time, timeline,
-            // volume, and menu (download and playback speed) beside it.
+            /* Listen plays and pauses; the player keeps its time, timeline,
+               volume, and menu (download and playback speed) beside it.
+               (Block comments only: the live site puts each page on one
+               line, where a line comment would swallow the rest.) */
             button.hidden = false;
             button.parentNode.classList.add('has-listen');
             button.addEventListener('click', function () {
@@ -708,7 +697,7 @@ body {
             }
             ['play', 'playing', 'pause', 'ended'].forEach(function (name) { audio.addEventListener(name, sync); });
             box.addEventListener('toggle', function () {
-                // Fetch the clip's length only once someone opens the panel.
+                /* Fetch the clip's length only once someone opens the panel. */
                 if (box.open && audio.readyState === 0 && audio.preload === 'none') {
                     audio.preload = 'metadata';
                     audio.load();
@@ -722,7 +711,7 @@ body {
         <p class="research-verbs">My research examines how large language models (LLMs) <span class="research-verb research-verb--reason"><span class="research-verb__glint">reason</span></span>, <span class="research-verb research-verb--create"><span class="research-verb__glint">create</span></span>, and <span class="research-verb research-verb--behave"><span class="research-verb__glint">behave</span></span> in social settings. Underlying this work is a broader aim: to bridge the gap between human and machine cognition by understanding the capabilities these systems acquire, the mechanisms that support them, and the limits of their resemblance to human thought.</p>
         <script>
         (function () {
-            // The verbs' glow animates only while their sentence is on screen.
+            /* The verbs' glow animates only while their sentence is on screen. */
             var sentence = document.querySelector('.research-verbs');
             if (!sentence || !('IntersectionObserver' in window)) { return; }
             new IntersectionObserver(function (entries) {
@@ -813,5 +802,17 @@ body {
 <br>
 <div class="visitor-map" style="float: right;">
     <!-- <script type='text/javascript' id='clustrmaps' src='//cdn.clustrmaps.com/map_v2.js?cl=ffffff&w=500&t=tt&d=w_TeJiwbvCfFyZ0dPOrLIdVwWFumXWn3fCcf3Egyhho&co=71addc&cmo=deac7c&cmn=b4d27c&ct=ffffff'></script> -->
-    <script type='text/javascript' id='mapmyvisitors' src='https://mapmyvisitors.com/map.js?cl=ffffff&w=500&t=tt&d=3_Etu5zBzTNNRms36AvbqzeDMy6qEla9H_jwbeV6mR8&co=71addc&cmo=deac7c&cmn=b4d27c'></script>
+    <script>
+    (function () {
+        /* The visitor map (and the jQuery it brings) loads once the page has,
+           so it no longer holds up the page; every visit still counts. */
+        var here = document.currentScript;
+        window.addEventListener('load', function () {
+            var map = document.createElement('script');
+            map.id = 'mapmyvisitors';
+            map.src = 'https://mapmyvisitors.com/map.js?cl=ffffff&w=500&t=tt&d=3_Etu5zBzTNNRms36AvbqzeDMy6qEla9H_jwbeV6mR8&co=71addc&cmo=deac7c&cmn=b4d27c';
+            here.parentNode.insertBefore(map, here.nextSibling);
+        });
+    }());
+    </script>
 </div>

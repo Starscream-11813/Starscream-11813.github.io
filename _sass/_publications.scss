@@ -2,39 +2,6 @@
    and glowing notes. Everything is scoped to .pubs (or prefixed pub-), so other
    pages that use the theme's archive styles are untouched. */
 
-// The site's Palatino webfont has only a regular face; bold text (and the Lit
-// posts quotes, in italic) use the installed Palatino faces where available and
-// are synthesized elsewhere.
-@font-face {
-  font-family: "Publication Palatino";
-  font-style: italic;
-  font-weight: 400;
-  src: local("Palatino Linotype Italic"), local("PalatinoLinotype-Italic"),
-    local("Palatino Italic"), local("Palatino-Italic"),
-    local("Book Antiqua Italic"), local("BookAntiqua-Italic"),
-    local("TeX Gyre Pagella Italic"), local("TeXGyrePagella-Italic");
-}
-
-@font-face {
-  font-family: "Publication Palatino";
-  font-style: normal;
-  font-weight: 700;
-  src: local("Palatino Linotype Bold"), local("PalatinoLinotype-Bold"),
-    local("Palatino Bold"), local("Palatino-Bold"),
-    local("Book Antiqua Bold"), local("BookAntiqua-Bold"),
-    local("TeX Gyre Pagella Bold"), local("TeXGyrePagella-Bold");
-}
-
-@font-face {
-  font-family: "Publication Palatino";
-  font-style: italic;
-  font-weight: 700;
-  src: local("Palatino Linotype Bold Italic"), local("PalatinoLinotype-BoldItalic"),
-    local("Palatino Bold Italic"), local("Palatino-BoldItalic"),
-    local("Book Antiqua Bold Italic"), local("BookAntiqua-BoldItalic"),
-    local("TeX Gyre Pagella Bold Italic"), local("TeXGyrePagella-BoldItalic");
-}
-
 // Beside the Sisyphus scene; if the first line must wrap, the link stays whole.
 .pubs-intro {
   margin: 0.55rem 0 0.4rem;
@@ -160,11 +127,11 @@ html[data-theme="dark"] .pubs {
 
 .pubs .pub-card--text .pub-card__body { margin-bottom: 0; }
 
-// Bold text uses the true Palatino Bold faces declared above.
+// Bold text uses the true Palatino Bold faces (see _fonts.scss).
 .pubs .pub-card b,
 .pubs .pub-card strong,
 .pubs .pub-title {
-  font-family: "Publication Palatino", Palatino, serif;
+  font-family: $palatinolinotype;
 }
 
 .pubs .pub-eyebrow {
@@ -581,7 +548,8 @@ html[data-theme="dark"] .pubs .button--doi { color: #1e1f31 !important; }
   &[hidden] { display: none; }
 }
 
-// The entry keeps the original solarized-light block in Courier Prime.
+// The entry keeps the original solarized-light block in Courier Prime (Solarized
+// Dark in dark mode; see below).
 .pubs .pub-cite__bibtex {
   margin: 0;
   padding: 0.7em 0.9em;
@@ -614,7 +582,41 @@ html[data-theme="dark"] .pubs .button--doi { color: #1e1f31 !important; }
 
 html[data-theme="dark"] .pubs {
   .pub-cite__panel { border-color: rgba(167, 168, 240, 0.32); }
-  .pub-cite__bibtex { border-color: rgba(253, 246, 227, 0.4); }
+
+  .pub-cite__bibtex {
+    border-color: #0b4150;
+    background: #002b36;
+  }
+}
+
+// In dark mode a BibTeX entry turns Solarized Dark: Prism's solarized-light
+// theme keeps its accent colors and trades its base tones for the dark ones
+// (background base03, text base0, comments base01, punctuation base1).
+html[data-theme="dark"] {
+  code[class*="language-"],
+  pre[class*="language-"] {
+    color: #839496;
+
+    ::selection,
+    &::selection { background: rgba(147, 161, 161, 0.3); }
+  }
+
+  :not(pre) > code[class*="language-"],
+  pre[class*="language-"] { background-color: #002b36; }
+
+  code[class*="language-"] {
+    .token.comment,
+    .token.prolog,
+    .token.doctype,
+    .token.cdata { color: #586e75; }
+
+    .token.punctuation { color: #93a1a1; }
+
+    .token.entity {
+      color: #839496;
+      background: #073642;
+    }
+  }
 }
 
 // --- Thumbnails -------------------------------------------------------------

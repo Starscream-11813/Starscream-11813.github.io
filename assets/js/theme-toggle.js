@@ -37,14 +37,28 @@
   }
 
   function updateButtons(theme) {
-    var label = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
+    var hint = theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode';
     var buttons = document.querySelectorAll('[data-theme-toggle]');
 
+    /* The button is named "Dark mode"; aria-pressed says whether it is on. */
     for (var i = 0; i < buttons.length; i += 1) {
-      buttons[i].setAttribute('aria-label', label);
-      buttons[i].setAttribute('title', label);
+      buttons[i].setAttribute('title', hint);
       buttons[i].setAttribute('aria-pressed', theme === 'dark' ? 'true' : 'false');
     }
+  }
+
+  function prefersReducedMotion() {
+    return window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  }
+
+  /* Plays the toggle's shooting star (see _theme-toggle.scss) once per switch. */
+  function markSwitching(button) {
+    button.classList.remove('is-switching');
+    void button.offsetWidth;
+    button.classList.add('is-switching');
+    window.setTimeout(function() {
+      button.classList.remove('is-switching');
+    }, 1400);
   }
 
   function syncSisyphusAnimations(theme) {
@@ -78,8 +92,33 @@
     }
   }
 
-  function toggleTheme() {
-    applyTheme(currentTheme() === 'dark' ? 'light' : 'dark', true);
+  /* The new theme spreads over the page in a circle from the toggle, where the
+     browser can animate a view transition and the reader allows motion. */
+  function toggleTheme(event) {
+    var button = event.currentTarget;
+    var next = currentTheme() === 'dark' ? 'light' : 'dark';
+    var change = function() {
+      applyTheme(next, true);
+      markSwitching(button);
+    };
+
+    if (!document.startViewTransition || prefersReducedMotion()) {
+      change();
+      return;
+    }
+
+    var box = button.getBoundingClientRect();
+    var x = box.left + box.width / 2;
+    var y = box.top + box.height / 2;
+    var radius = Math.sqrt(Math.pow(Math.max(x, window.innerWidth - x), 2) + Math.pow(Math.max(y, window.innerHeight - y), 2));
+    var transition = document.startViewTransition(change);
+
+    transition.ready.then(function() {
+      document.documentElement.animate(
+        { clipPath: ['circle(0px at ' + x + 'px ' + y + 'px)', 'circle(' + radius + 'px at ' + x + 'px ' + y + 'px)'] },
+        { duration: 700, easing: 'cubic-bezier(0.4, 0, 0.2, 1)', pseudoElement: '::view-transition-new(root)' }
+      );
+    }).catch(function() {});
   }
 
   document.addEventListener('DOMContentLoaded', function() {

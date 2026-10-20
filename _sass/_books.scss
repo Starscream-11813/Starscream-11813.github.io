@@ -237,7 +237,7 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
 .books .book-title {
   margin: 0;
   color: var(--book-strong);
-  font-family: "Publication Palatino", Palatino, serif;
+  font-family: $palatinolinotype;
   font-size: 1.1em;
   font-weight: 700;
   line-height: 1.3;
@@ -268,7 +268,7 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
 
   b {
     color: var(--book-text);
-    font-family: "Publication Palatino", Palatino, serif;
+    font-family: $palatinolinotype;
   }
 }
 
@@ -282,7 +282,7 @@ html[data-theme="dark"] .books .book-cover__image { filter: brightness(0.94); }
   margin: 0.7em 0 0;
   padding-left: 1.7em;
   color: var(--book-text);
-  font-family: "Publication Palatino", Palatino, serif;
+  font-family: $palatinolinotype;
   font-size: 0.86em;
   line-height: 1.6;
 

@@ -1,0 +1,107 @@
+/* ==========================================================================
+   FONTS
+   ========================================================================== */
+
+// The site's Palatino, in all four faces, so bold and italic text is never
+// smeared or slanted by the browser. Each face uses a Palatino the visitor
+// already has, all of them well hinted and kerned, with ligatures: Palatino
+// Linotype (Windows), Palatino (macOS, iOS), Book Antiqua (older Office), TeX
+// Gyre Pagella or URW P052 (Linux). Elsewhere (Android, most Linux) it loads
+// TeX Gyre Pagella (GUST Font License; assets/fonts/TeXGyrePagella-LICENSE.txt),
+// whose letters are as wide as Palatino's, so lines break in the same places.
+// Its Latin file is about 22 KB; the extended one (accented Latin, Greek,
+// symbols) loads only where such a character appears. Regenerate the files with
+// scripts/web-fonts.py.
+$pagella-latin: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+  U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+  U+2212, U+2215, U+FEFF, U+FFFD, U+FB00-FB04;
+$pagella-latin-ext: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7,
+  U+02DD-02FF, U+0300-0303, U+0305-0307, U+0309-0328, U+032A-036F, U+0370-03FF,
+  U+1E00-1EFF, U+20A0-20AB, U+20AD-20CF, U+2100-2121, U+2123-218F, U+2190,
+  U+2192, U+2194-21FF, U+2200-2211, U+2213-2214, U+2216-22FF;
+
+@mixin site-palatino($style, $weight, $file, $installed...) {
+  @each $suffix, $range in ("": $pagella-latin, "-ext": $pagella-latin-ext) {
+    @font-face {
+      font-family: "Site Palatino";
+      font-style: $style;
+      font-weight: $weight;
+      font-display: swap;
+      src: $installed, url("../fonts/#{$file}#{$suffix}.woff2") format("woff2");
+      unicode-range: $range;
+    }
+  }
+}
+
+@include site-palatino(normal, 400, "pagella-regular",
+  local("Palatino Linotype"), local("PalatinoLinotype-Roman"),
+  local("Palatino"), local("Book Antiqua"), local("BookAntiqua"),
+  local("TeX Gyre Pagella"), local("TeXGyrePagella-Regular"),
+  local("P052 Roman"), local("P052-Roman"));
+
+@include site-palatino(italic, 400, "pagella-italic",
+  local("Palatino Linotype Italic"), local("PalatinoLinotype-Italic"),
+  local("Palatino Italic"), local("Palatino-Italic"),
+  local("Book Antiqua Italic"), local("BookAntiqua-Italic"),
+  local("TeX Gyre Pagella Italic"), local("TeXGyrePagella-Italic"),
+  local("P052 Italic"), local("P052-Italic"));
+
+@include site-palatino(normal, 700, "pagella-bold",
+  local("Palatino Linotype Bold"), local("PalatinoLinotype-Bold"),
+  local("Palatino Bold"), local("Palatino-Bold"),
+  local("Book Antiqua Bold"), local("BookAntiqua-Bold"),
+  local("TeX Gyre Pagella Bold"), local("TeXGyrePagella-Bold"),
+  local("P052 Bold"), local("P052-Bold"));
+
+@include site-palatino(italic, 700, "pagella-bolditalic",
+  local("Palatino Linotype Bold Italic"), local("PalatinoLinotype-BoldItalic"),
+  local("Palatino Bold Italic"), local("Palatino-BoldItalic"),
+  local("Book Antiqua Bold Italic"), local("BookAntiqua-BoldItalic"),
+  local("TeX Gyre Pagella Bold Italic"), local("TeXGyrePagella-BoldItalic"),
+  local("P052 Bold Italic"), local("P052-BoldItalic"));
+
+// The site title's two faces, cut down to its characters (see
+// scripts/web-fonts.py) and preloaded in head.html. Libertinus has only its
+// regular face, as before, so the title keeps its synthesized semibold;
+// Kalpurush covers every weight with its one face.
+@font-face {
+  font-family: "Libertinus Serif Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Libertinus Serif Display"), url("../fonts/libertinus-serif-display-title.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Kalpurush";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("../fonts/kalpurush-name.woff2") format("woff2");
+}
+
+// Product Sans and CMU Serif (the BibTeX logo and LaTeX-style labels) come from
+// cdnfonts.com as before; declaring them here saves fetching its stylesheets,
+// which only point to these files.
+@font-face {
+  font-family: "Product Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: local("Product Sans"), url("https://fonts.cdnfonts.com/s/13998/ProductSans-Regular.woff") format("woff");
+}
+
+@each $style, $weight, $file in (normal 500 cmunrm, italic 500 cmunti, normal 700 cmunbx, italic 700 cmunbi) {
+  @font-face {
+    font-family: "CMU Serif";
+    font-style: $style;
+    font-weight: $weight;
+    font-display: swap;
+    src: local("CMU Serif"), url("https://fonts.cdnfonts.com/s/19926/#{$file}.woff") format("woff");
+  }
+}
+
+html {
+  font-kerning: normal;
+  font-variant-ligatures: common-ligatures;
+}

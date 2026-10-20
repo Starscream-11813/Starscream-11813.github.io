@@ -81,18 +81,69 @@
     width: auto;
     height: auto;
   }
+}
+
+// The profile picture as a portrait card: a 4:5 photo with rounded corners in
+// a ring of the masthead's pastels, a hairline of clear space between them,
+// and a soft lavender shadow. The ring turns slowly while hovered. Phones and
+// tablets get an 80 px card (_responsive.scss).
+@property --avatar-turn {
+  syntax: "<angle>";
+  inherits: false;
+  initial-value: 200deg;
+}
+
+.sidebar div.author__avatar {
+  --avatar-ring: 4px;
+  position: relative;
+  width: 175px;
+  max-width: 100%;
+  padding: 7px;
+  border-radius: 20px;
+  box-shadow: 0 12px 26px rgba(105, 98, 210, 0.2);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    padding: var(--avatar-ring);
+    border-radius: inherit;
+    background: conic-gradient(from var(--avatar-turn), #e9baf1, #c1ddf5, #addfde, #c9ebda, #e9baf1);
+    // Only the ring shows: the padding box minus the content box.
+    -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    -webkit-mask-composite: xor;
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  &:hover::before { animation: avatar-turn 6s linear infinite; }
 
   img {
-    max-width: 175px;
-    border-radius: 50%;
-
-    @include breakpoint($large) {
-      padding: 5px;
-      background-image: -webkit-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
-      background-image: -ms-linear-gradient( 180deg, rgb(233,186,241) 0%, rgb(193,221,245) 51%, rgb(173,223,222) 82%, rgb(201,235,218) 100%);
-      border: 1px solid $border-color;
-    }
+    display: block;
+    width: 100%;
+    max-width: none;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    padding: 0;
+    border: 0;
+    border-radius: 13px;
+    background: none;
+    object-fit: cover;
+    object-position: 50% 30%;
   }
+}
+
+html[data-theme="dark"] .sidebar div.author__avatar {
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.3), 0 0 22px rgba(159, 151, 255, 0.3);
+}
+
+@keyframes avatar-turn {
+  to { --avatar-turn: 560deg; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sidebar div.author__avatar:hover::before { animation: none; }
 }
 
 .author__content {

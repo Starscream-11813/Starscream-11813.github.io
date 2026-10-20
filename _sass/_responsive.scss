@@ -47,7 +47,6 @@
 
   /* One consistent header, with room for both menu and theme controls. */
   .masthead__inner-wrap { padding: 0.8rem clamp(1rem, 4vw, 2.5rem); }
-  .masthead__menu { padding-right: 3.25rem; }
   #site-nav { min-width: 0; min-height: 48px; }
   #site-nav .visible-links { display: block; padding-right: 3.25rem; }
   #site-nav .visible-links > li { display: block; padding: 0; }
@@ -58,7 +57,7 @@
     line-height: 1.15 !important;
     white-space: normal;
   }
-  #site-nav > button, .masthead .theme-toggle {
+  #site-nav > button {
     width: 44px;
     height: 44px;
     border: 1px solid var(--theme-border, rgba(105, 98, 210, 0.22));
@@ -66,7 +65,8 @@
     background: var(--theme-surface, #f7f6fd);
     color: var(--theme-accent, #6962d2);
   }
-  #site-nav > button { top: 2px; padding: 0 10px; }
+  /* Centered on the title's line, as the theme toggle beside it is. */
+  #site-nav > button { top: 50%; padding: 0 10px; transform: translateY(-50%); }
   #site-nav .navicon, #site-nav .navicon::before, #site-nav .navicon::after {
     width: 22px;
     height: 2px;
@@ -113,16 +113,18 @@
     gap: 0.35rem 1rem;
     align-items: center;
   }
-  .sidebar div.author__avatar { display: block; grid-row: 1 / 3; width: 80px; }
-  .sidebar .author__avatar img {
+  /* The portrait card from _sidebar.scss, 80 px wide. */
+  .sidebar div.author__avatar {
+    --avatar-ring: 3px;
     display: block;
+    grid-row: 1 / 3;
     width: 80px;
-    height: 80px;
-    padding: 3px;
-    object-fit: cover;
-    background: linear-gradient(135deg, #e9baf1, #c1ddf5, #c9ebda);
-    border: 0;
+    padding: 5px;
+    border-radius: 12px;
+    box-shadow: 0 6px 14px rgba(105, 98, 210, 0.18);
   }
+  .sidebar div.author__avatar img { border-radius: 7px; }
+  html[data-theme="dark"] .sidebar div.author__avatar { box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3), 0 0 14px rgba(159, 151, 255, 0.3); }
   .sidebar .author__content { display: block; width: auto; min-width: 0; padding: 0; }
   .sidebar .author__name { margin: 0 0 0.3rem; font-size: 1.1rem; line-height: 1.25; }
   .sidebar .author__bio { margin: 0; font-size: 0.875rem; }

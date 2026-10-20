@@ -1,0 +1,282 @@
+/* ==========================================================================
+   THEME TOGGLE
+   A pill of sky at the right of the masthead. In light mode the sun rests on
+   the left among the clouds; switching rolls it across to rest as the moon,
+   the clouds drift off, the stars come out one by one, and a shooting star
+   crosses (theme-toggle.js marks the switch with .is-switching). The page
+   itself changes in a circle spreading from the toggle (also theme-toggle.js).
+   ========================================================================== */
+
+.masthead__menu {
+  position: relative;
+  padding-right: 76px;
+}
+
+.theme-toggle {
+  --w: 60px;
+  --h: 32px;
+  --pad: 4px;
+  --knob: calc(var(--h) - 2 * var(--pad));
+  position: absolute;
+  top: 50%;
+  right: 0;
+  z-index: 12;
+  width: var(--w);
+  height: var(--h);
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  box-shadow: 0 6px 18px rgba(105, 98, 210, 0.22);
+  cursor: pointer;
+  transform: translateY(-50%);
+  transition: box-shadow 0.6s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
+
+  span,
+  i {
+    position: absolute;
+    display: block;
+  }
+
+  // At least 44 px tall to tap (it is already wider).
+  &::after {
+    content: "";
+    position: absolute;
+    inset: calc((var(--h) - 44px) / 2) 0;
+  }
+
+  &:focus { outline: none; }
+
+  &:focus-visible {
+    outline: 2px solid #8482e6;
+    outline-offset: 3px;
+  }
+}
+
+.theme-toggle__sky,
+.theme-toggle__track {
+  inset: 0;
+  overflow: hidden;
+  border-radius: inherit;
+}
+
+.theme-toggle__sky { background: linear-gradient(160deg, #86d4f8 0%, #a9c5f6 55%, #dcb6f2 100%); }
+
+.theme-toggle__night {
+  inset: 0;
+  opacity: 0;
+  background:
+    radial-gradient(circle at 80% 35%, rgba(167, 168, 240, 0.55), transparent 58%),
+    linear-gradient(160deg, #17163a 0%, #29236a 55%, #4a3ea8 100%);
+  transition: opacity 0.7s ease;
+}
+
+.theme-toggle__clouds {
+  inset: 0;
+  animation: theme-toggle-drift 7s ease-in-out infinite alternate;
+}
+
+.theme-toggle__cloud {
+  border-radius: 999px;
+  background: #fff;
+  transition: transform 0.7s cubic-bezier(0.5, 0, 0.2, 1), opacity 0.45s ease;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    background: inherit;
+  }
+
+  &:nth-child(1) {
+    top: calc(50% - 6px);
+    right: 9px;
+    width: 16px;
+    height: 6px;
+
+    &::before { left: 2px; bottom: 2px; width: 8px; height: 8px; }
+    &::after { left: 7px; bottom: 1px; width: 7px; height: 7px; }
+  }
+
+  &:nth-child(2) {
+    top: calc(50% + 4px);
+    right: 19px;
+    width: 11px;
+    height: 4px;
+    opacity: 0.8;
+
+    &::before { left: 2px; bottom: 1px; width: 5px; height: 5px; }
+    &::after { left: 5px; bottom: 1px; width: 4px; height: 4px; }
+  }
+}
+
+// Each star sets its place (--x, --y), size (--s), entrance delay (--d), and
+// twinkle offset (--t) inline.
+.theme-toggle__star {
+  top: var(--y);
+  left: var(--x);
+  width: var(--s);
+  height: var(--s);
+  opacity: 0;
+  transform: translateY(6px) scale(0.3);
+  transition: opacity 0.4s ease, transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #fff;
+    animation: theme-toggle-twinkle 2.8s ease-in-out var(--t) infinite;
+  }
+
+  &--spark::before { clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%); }
+  &--dot::before { border-radius: 50%; }
+}
+
+.theme-toggle__comet {
+  top: 6px;
+  left: 30px;
+  width: 16px;
+  height: 1.5px;
+  border-radius: 1px;
+  opacity: 0;
+  background: linear-gradient(90deg, #fff, rgba(255, 255, 255, 0));
+}
+
+.theme-toggle__orb {
+  --x: 0px;
+  --r: 0deg;
+  --k: 1;
+  top: var(--pad);
+  left: var(--pad);
+  width: var(--knob);
+  height: var(--knob);
+  transform: translateX(var(--x)) rotate(var(--r)) scale(var(--k));
+  transition: transform 0.7s cubic-bezier(0.45, 1.4, 0.5, 1);
+}
+
+.theme-toggle__glow {
+  inset: -7px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255, 205, 96, 0.62) 0 38%, rgba(255, 205, 96, 0) 70%);
+  animation: theme-toggle-breathe 3.4s ease-in-out infinite alternate;
+  transition: opacity 0.5s ease;
+
+  &--moon {
+    opacity: 0;
+    background: radial-gradient(circle, rgba(196, 190, 255, 0.6) 0 38%, rgba(196, 190, 255, 0) 70%);
+  }
+}
+
+.theme-toggle__sun,
+.theme-toggle__moon {
+  inset: 0;
+  border-radius: 50%;
+}
+
+.theme-toggle__sun {
+  background: radial-gradient(circle at 35% 30%, #fffbe8 0 16%, #ffe08c 46%, #ffb950 100%);
+  box-shadow: inset -2px -3px 5px rgba(215, 120, 35, 0.32), 0 1px 3px rgba(150, 80, 20, 0.25);
+}
+
+.theme-toggle__moon {
+  opacity: 0;
+  background: radial-gradient(circle at 35% 30%, #fff 0 18%, #efecff 50%, #cec7f2 100%);
+  box-shadow: inset -2px -3px 5px rgba(84, 69, 181, 0.35), 0 1px 3px rgba(10, 8, 40, 0.35);
+  transition: opacity 0.5s ease 0.12s;
+
+  i {
+    border-radius: 50%;
+    background: rgba(140, 130, 205, 0.42);
+    box-shadow: inset 1px 1px 1px rgba(80, 70, 160, 0.35);
+
+    &:nth-child(1) { top: 24%; left: 20%; width: 30%; height: 30%; }
+    &:nth-child(2) { top: 52%; left: 58%; width: 20%; height: 20%; }
+    &:nth-child(3) { top: 66%; left: 30%; width: 13%; height: 13%; }
+  }
+}
+
+.theme-toggle__rim {
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(105, 98, 210, 0.25), inset 0 2px 5px rgba(31, 26, 92, 0.2);
+  transition: box-shadow 0.6s ease;
+}
+
+.theme-toggle:hover .theme-toggle__orb { --k: 1.07; }
+.theme-toggle:active .theme-toggle__orb { --k: 0.94; }
+
+html[data-theme="dark"] {
+  .theme-toggle { box-shadow: 0 8px 22px rgba(0, 0, 0, 0.35), 0 0 16px rgba(168, 146, 255, 0.2); }
+  .theme-toggle__night { opacity: 1; }
+  .theme-toggle__cloud { transform: translate(12px, 12px); opacity: 0; }
+
+  .theme-toggle__star {
+    opacity: 1;
+    transform: none;
+    transition-delay: var(--d);
+  }
+
+  .theme-toggle__orb {
+    --x: calc(var(--w) - var(--knob) - 2 * var(--pad));
+    --r: 135deg;
+  }
+
+  .theme-toggle__glow { opacity: 0; }
+  .theme-toggle__glow--moon,
+  .theme-toggle__moon { opacity: 1; }
+  .theme-toggle__rim { box-shadow: inset 0 0 0 1px rgba(168, 146, 255, 0.4), inset 0 2px 5px rgba(0, 0, 0, 0.35); }
+  .theme-toggle.is-switching .theme-toggle__comet { animation: theme-toggle-comet 0.9s ease-out 0.35s both; }
+}
+
+// Beside the 44 px menu button on phones and tablets.
+@media screen and (max-width: 1199px) {
+  .masthead__menu { padding-right: 72px; }
+  .theme-toggle { --w: 64px; --h: 34px; }
+}
+
+@media (forced-colors: active) {
+  .theme-toggle { border: 1px solid ButtonText; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle,
+  .theme-toggle *,
+  .theme-toggle *::before,
+  .theme-toggle *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
+  }
+}
+
+// The circle in which the new theme spreads (see theme-toggle.js).
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+@keyframes theme-toggle-drift {
+  from { transform: translateX(-1.5px); }
+  to { transform: translateX(2px); }
+}
+
+@keyframes theme-toggle-twinkle {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(0.7); }
+}
+
+@keyframes theme-toggle-breathe {
+  from { transform: scale(0.9); }
+  to { transform: scale(1.12); }
+}
+
+@keyframes theme-toggle-comet {
+  0% { opacity: 0; transform: translate(10px, -5px) rotate(-25deg); }
+  25% { opacity: 1; }
+  100% { opacity: 0; transform: translate(-22px, 10px) rotate(-25deg); }
+}

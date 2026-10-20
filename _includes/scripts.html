@@ -7,9 +7,11 @@
 <script src="{{ '/assets/js/research-map.js' | relative_url }}"></script>
 <script src="{{ '/assets/js/research-brain.js' | relative_url }}"></script>
 {% endif %}
-{% if page.publications_ui %}
+{% if page.publications_ui or content contains 'language-bibtex' %}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.min.js"></script>
+{% endif %}
+{% if page.publications_ui %}
 <script src="{{ '/assets/js/publications.js' | relative_url }}"></script>
 {% endif %}
 {% if page.talks_ui %}

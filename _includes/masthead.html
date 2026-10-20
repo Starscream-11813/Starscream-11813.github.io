@@ -73,13 +73,6 @@
               }
             }
           </style>
-          <style>
-            @import url('https://fonts.cdnfonts.com/css/latin-modern-roman');
-            @import url('https://fonts.maateen.me/kalpurush/font.css');
-            @import url('https://fonts.cdnfonts.com/css/libertinus-serif');
-            @import url('https://fonts.cdnfonts.com/css/linux-libertine-o');
-            @import url('https://fonts.cdnfonts.com/css/product-sans');
-          </style>
           <li class="masthead__menu-item masthead__menu-item--lg"><a class="glow2" style="font-family: Libertinus Serif Display, serif; font-weight: 600; font-size: 25.008px; line-height:21px;" href="{{ base_path }}/"><span class="px-glitchtext px-glitchtext-anim">{{ site.title }}<br><b style="font-family: Kalpurush, serif; font-size: 16px;">সৈয়দ রিফাত রাইয়ান</b></span></a></li>
           {% for link in site.data.navigation.main %}
             {% if link.url contains 'http' %}
@@ -92,9 +85,25 @@
         </ul>
         <ul id="navigation-links" class="hidden-links hidden"></ul>
       </nav>
-      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Switch to dark mode" aria-pressed="false" title="Switch to dark mode">
-        <span class="theme-toggle__icon theme-toggle__icon--moon" aria-hidden="true"></span>
-        <span class="theme-toggle__icon theme-toggle__icon--sun" aria-hidden="true"></span>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-label="Dark mode" aria-pressed="false" title="Switch to dark mode">
+        <span class="theme-toggle__sky" aria-hidden="true">
+          <span class="theme-toggle__night"></span>
+          <span class="theme-toggle__clouds"><i class="theme-toggle__cloud"></i><i class="theme-toggle__cloud"></i></span>
+          <i class="theme-toggle__star theme-toggle__star--spark" style="--x: 8px; --y: 6px; --s: 7px; --d: 0.18s; --t: 0s"></i>
+          <i class="theme-toggle__star theme-toggle__star--spark" style="--x: 21px; --y: 15px; --s: 5px; --d: 0.26s; --t: 0.9s"></i>
+          <i class="theme-toggle__star theme-toggle__star--dot" style="--x: 14px; --y: 21px; --s: 2.5px; --d: 0.32s; --t: 1.6s"></i>
+          <i class="theme-toggle__star theme-toggle__star--dot" style="--x: 27px; --y: 7px; --s: 2px; --d: 0.38s; --t: 0.4s"></i>
+          <i class="theme-toggle__star theme-toggle__star--dot" style="--x: 6px; --y: 20px; --s: 1.5px; --d: 0.44s; --t: 2.1s"></i>
+          <span class="theme-toggle__comet"></span>
+        </span>
+        <span class="theme-toggle__track" aria-hidden="true">
+          <span class="theme-toggle__orb">
+            <span class="theme-toggle__glow"></span><span class="theme-toggle__glow theme-toggle__glow--moon"></span>
+            <span class="theme-toggle__sun"></span>
+            <span class="theme-toggle__moon"><i></i><i></i><i></i></span>
+          </span>
+        </span>
+        <span class="theme-toggle__rim" aria-hidden="true"></span>
       </button>
     </div>
   </div>

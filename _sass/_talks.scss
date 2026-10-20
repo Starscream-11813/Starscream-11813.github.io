@@ -344,7 +344,7 @@ html[data-theme="dark"] .talks {
 .talks .talk-badge p.talk-badge__name {
   margin: 0.75em 0.7em 0;
   color: #29263a;
-  font-family: "Publication Palatino", Palatino, serif;
+  font-family: $palatinolinotype;
   font-size: 1.02em;
   font-weight: 700;
   line-height: 1.2;
@@ -447,7 +447,7 @@ html[data-theme="dark"] .talks .talk-badge { filter: brightness(0.94); }
 .talks .talk-title {
   margin: 0;
   color: var(--talk-strong);
-  font-family: "Publication Palatino", Palatino, serif;
+  font-family: $palatinolinotype;
   font-size: 1.05em;
   font-weight: 700;
   line-height: 1.32;
@@ -485,7 +485,7 @@ html[data-theme="dark"] .talks .talk-badge { filter: brightness(0.94); }
   font-size: 0.8em;
   line-height: 1.5;
 
-  b { font-family: "Publication Palatino", Palatino, serif; }
+  b { font-family: $palatinolinotype; }
 }
 
 // The flag waves from its left edge. Its emoji is cut into sixteen strips (the

@@ -12,17 +12,7 @@
   {% assign title = post.title %}
 {% endif %}
 
-<script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.min.js">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.js"
-        integrity="sha256-A5GMUmGHpY8mVpfcaRLQFeHtmdjZLumKBOMpf81FXX0="
-        crossorigin="anonymous" referrerpolicy="no-referrer">
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-solarizedlight.min.css"/>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js">
-</script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs-bibtex@2.1.0/prism-bibtex.min.js">
-</script>
+{%- comment -%} Prism, for BibTeX entries, loads once per page from scripts.html. {%- endcomment %}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="{{ include.type | default: "list" }}__item">
   <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
@@ -340,10 +330,6 @@
           </script>
         {% endif %}
       <style>
-      @import url('https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-	    @import url('https://fonts.cdnfonts.com/css/cmu-serif');
-      @import url('https://fonts.cdnfonts.com/css/product-sans');
-      @import url('https://fonts.googleapis.com/css2?family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap');
         .button {
           width: 87px;
           border: none;
@@ -432,8 +418,6 @@
         }
       </style>
       <style>
-        @import url('https://fonts.cdnfonts.com/css/cmu-serif');
-        @import url('https://fonts.cdnfonts.com/css/product-sans');
         input[type='checkbox'] {
           display: none;
         }
