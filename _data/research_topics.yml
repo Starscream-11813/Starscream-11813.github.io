@@ -47,7 +47,7 @@ interpretability:
   title: Mechanistic interpretability and activation-space interventions
   papers:
     - publication: /publications/12-sparsefeatureinterventions
-      name: Sparse-Feature Interventions
+      name: SAE-StatSteer
     - publication: /publications/6-frugalprompt
       name: FrugalPrompt (Token Attribution)
 

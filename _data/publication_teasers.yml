@@ -68,3 +68,22 @@ nonlinear_storytelling:
         figure: Figure 3
         page: 3
         crop: [70, 78, 525, 166]
+
+sae_statsteer:
+  pdf: https://arxiv.org/pdf/2607.19364v2
+  image: sparse_feature_interventions_teaser.png
+  show_header: false
+  source: arXiv:2607.19364v2 · Figures 2, 3, and 4
+  panels:
+    - label: Statistical consensus steering pipeline
+      figure: Figure 2
+      page: 1
+      crop: [70.2, 70.2, 525, 407.5]
+    - label: Layer-strength steering landscape
+      figure: Figure 3
+      page: 3
+      crop: [70.2, 297, 525, 466.3]
+    - label: Raw versus quality-conditioned success
+      figure: Figure 4
+      page: 4
+      crop: [70.2, 70.2, 525, 256.7]

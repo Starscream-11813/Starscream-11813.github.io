@@ -11,7 +11,7 @@ BibTeX stays in the same three front-matter forms as the earlier entries.
 Full-size teaser PNGs live in `images/`, using the existing `_teaser` suffix.
 The new teasers combine original figures rendered directly from the papers;
 axes, values, labels, and legends are not recreated or modified.
-All three omit the redundant publication title/subtitle block while retaining
+These teasers omit the redundant publication title/subtitle block while retaining
 their figure-specific labels and qualification notes.
 
 - PROClaim: the courtroom overview (Figure 1), evidence-novelty plot
@@ -27,6 +27,11 @@ their figure-specific labels and qualification notes.
   redundant publication title/subtitle block is omitted. The result
   panel is labeled as unadjusted preference rates with ties excluded; it must
   not be described as length-adjusted or as percentages of all judgments.
+- SAE-StatSteer: the statistical consensus steering pipeline (Figure 2),
+  layer-strength steering landscape (Figure 3), and raw versus
+  quality-conditioned success (Figure 4), stacked in that order. All three
+  panels come from arXiv:2607.19364v2; the existing
+  `sparse_feature_interventions_teaser` asset name stays stable.
 
 `_data/publication_teasers.yml` records versioned PDF URLs, zero-based page
 indices, and crop rectangles in PDF points. To reproduce the PNGs, install
@@ -38,8 +43,9 @@ python scripts/thumbnails.py
 ```
 
 For existing downloads, pass `--source-dir` with a folder containing PDFs
-named `proclaim.pdf`, `marsgps.pdf`, or `nonlinear_storytelling.pdf`. Use
-`--paper proclaim`, `--paper marsgps`, or `--paper nonlinear_storytelling`
+named `proclaim.pdf`, `marsgps.pdf`, `nonlinear_storytelling.pdf`, or
+`sae_statsteer.pdf`. Use `--paper proclaim`, `--paper marsgps`,
+`--paper nonlinear_storytelling`, or `--paper sae_statsteer`
 to rebuild one image. Segoe UI is used for the small image
 headings on Windows, with DejaVu Sans as the portable fallback. The original
 paper figures retain their own fonts.
