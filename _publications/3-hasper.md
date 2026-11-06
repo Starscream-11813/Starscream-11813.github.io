@@ -8,10 +8,11 @@ pptmode: 'Oral Presentation'
 note: 'Outstanding Presentation'
 date: 2025-07-14
 venue: 'Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV) Workshops'
+cvf: 'https://openaccess.thecvf.com/content/ICCV2025W/WCCA/html/Raiyan_HaSPeR_An_Image_Repository_for_Hand_Shadow_Puppet_Recognition_ICCVW_2025_paper.html'
 paperurl: 'https://www.arxiv.org/abs/2408.10360'
 pdfurl: 'https://www.arxiv.org/pdf/2408.10360'
 codedata: 'https://github.com/Starscream-11813/HaSPeR'
-doi: 'https://doi.org/10.48550/arXiv.2408.10360'
+doi: 'https://doi.org/10.1109/ICCVW69036.2025.00467'
 citation: 'S. R. Raiyan, Z. Z. Amio, and S. Ahmed, “HaSPeR: An Image Repository for Hand Shadow Puppet Recognition,” arXiv preprint arXiv:2408.10360, 2024.'
 authors: '<b>Syed Rifat Raiyan</b>, Zibran Zarif Amio, Sabbir Ahmed.'
 bibtex: '@misc{raiyan2024hasper,<br>

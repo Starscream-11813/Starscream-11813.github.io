@@ -5,6 +5,7 @@ permalink: /publications/1-banglabook
 excerpt: 
 date: 2023-07-09
 venue: 'Findings of the Association for Computational Linguistics: ACL 2023'
+anthology: 'https://aclanthology.org/2023.findings-acl.80/'
 paperurl: 'https://arxiv.org/abs/2305.06595'
 pdfurl: 'https://arxiv.org/pdf/2305.06595'
 codedata: 'https://github.com/mohsinulkabir14/BanglaBook'

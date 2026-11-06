@@ -7,10 +7,11 @@ excerpt:
 pptmode: 'Oral Presentation'
 date: 2025-08-10
 venue: 'Proceedings of the 8th Asian Conference on Pattern Recognition (ACPR 2025)'
+springer: 'https://link.springer.com/chapter/10.1007/978-981-95-4395-3_16'
 paperurl: 'https://arxiv.org/abs/2503.12368'
 pdfurl: 'https://arxiv.org/pdf/2503.12368'
 codedata: 'https://github.com/Starscream-11813/SCReedSolo-Steganography'
-doi: 'https://doi.org/10.48550/arXiv.2503.12368'
+doi: 'https://doi.org/10.1007/978-981-95-4395-3_16'
 citation: 'S. R. Raiyan and M. H. Kabir, “SCReedSolo: A Secure and Robust LSB Image Steganography Framework with Randomized Symmetric Encryption and Reed-Solomon Coding,” arXiv preprint arXiv:2503.12368, 2025.'
 authors: '<b>Syed Rifat Raiyan</b>, Md. Hasanul Kabir.'
 bibtex: '@article{raiyan2025screedsolo,<br>

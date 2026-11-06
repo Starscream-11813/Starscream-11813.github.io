@@ -3,6 +3,15 @@
   sizes live in _sass/_publications.scss instead of inline styles.
 {%- endcomment -%}
 <div class="pub-buttons">
+  {%- if pub.anthology -%}
+  <a href="{{ pub.anthology }}" target="_blank" rel="noopener noreferrer" class="button button--anthology">{% include publications/acl-logo.html %} ACL Anthology</a>
+  {%- endif -%}
+  {%- if pub.cvf -%}
+  <a href="{{ pub.cvf }}" target="_blank" rel="noopener noreferrer" class="button button--cvf" title="CVF Open Access">{% include publications/cvf-logo.html %} <span class="visually-hidden">CVF </span>Open Access</a>
+  {%- endif -%}
+  {%- if pub.springer -%}
+  <a href="{{ pub.springer }}" target="_blank" rel="noopener noreferrer" class="button button--springer"><i class="ai ai-springer" aria-hidden="true"></i> Springer</a>
+  {%- endif -%}
   {%- if pub.paperurl -%}
     {%- if pub.paperurl contains 'openreview.net' -%}
   <a href="{{ pub.paperurl }}" target="_blank" rel="noopener noreferrer" class="button button--openreview"><img src="https://pbs.twimg.com/profile_images/1309249465056989189/Wwyw4IhM_400x400.jpg" alt="" aria-hidden="true" class="button__logo">OpenReview</a>

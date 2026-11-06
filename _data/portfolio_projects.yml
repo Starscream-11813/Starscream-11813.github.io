@@ -176,6 +176,9 @@
     - label: "Repository"
       url: "https://github.com/Starscream-11813/Frugal-ICL"
       kind: "github"
+    - label: "Website"
+      url: "https://frugalprompt.github.io/"
+      kind: "website"
 
 - title: "FairOpt"
   subtitle: "Cloud Computing"
@@ -250,6 +253,20 @@
       url: "https://github.com/Starscream-11813/SCReedSolo-Steganography"
       kind: "github"
 
+- title: "PhysicsEval"
+  subtitle: "areebuzair/PhysicsEval"
+  category: "Research"
+  description: "A benchmark of 19,609 physics problems with step-by-step solutions, plus code for evaluating LLM answers and improving them at inference time through self-refinement and single- or multi-agent review."
+  accent: "#1971c2"
+  tags:
+    - LLMs
+    - Reasoning
+    - Benchmark
+  links:
+    - label: "Repository"
+      url: "https://github.com/areebuzair/PhysicsEval"
+      kind: "github"
+
 - title: "IVE-LLM"
   subtitle: "Starscream-11813/IVE-LLM"
   category: "Research"
@@ -263,3 +280,51 @@
     - label: "Repository"
       url: "https://github.com/Starscream-11813/IVE-LLM"
       kind: "github"
+
+- title: "LLM-Ideoplasticity"
+  subtitle: "sakhadib/LLM-Ideoplasticity"
+  category: "Research"
+  description: "A measurement framework that projects LLM responses into a shared European political space and quantifies their sensitivity to prompt register, paraphrase, reasoning, language, conversational pressure, and argumentative role."
+  accent: "#0c8599"
+  tags:
+    - NLP
+    - Political Behavior
+    - Evaluation
+  links:
+    - label: "Repository"
+      url: "https://github.com/sakhadib/LLM-Ideoplasticity"
+      kind: "github"
+    - label: "Website"
+      url: "https://sakhadib.github.io/LLM-Ideoplasticity/"
+      kind: "website"
+
+- title: "Awesome AI4Math"
+  subtitle: "Starscream-11813/awesome-AI4Math"
+  category: "Research"
+  description: "A curated index accompanying a survey of AI for mathematical reasoning, covering math word problems, LLM reasoning, multimodal geometry, formal theorem proving, and verified discovery."
+  accent: "#4263eb"
+  tags:
+    - Survey
+    - Reasoning
+    - Theorem Proving
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/awesome-AI4Math"
+      kind: "github"
+
+- title: "LLM Nonlinear Storytelling"
+  subtitle: "Starscream-11813/LLM-nonlinear-storytelling"
+  category: "Research"
+  description: "A corpus of 83 published works annotated with story graphs and events in both chronological and telling order, plus benchmark code, outputs from 19 LLMs, and judgments from 71 readers."
+  accent: "#e8590c"
+  tags:
+    - Narrative
+    - Dataset
+    - Benchmark
+  links:
+    - label: "Repository"
+      url: "https://github.com/Starscream-11813/LLM-nonlinear-storytelling"
+      kind: "github"
+    - label: "Website"
+      url: "https://nonlinear-narrative.github.io/"
+      kind: "website"

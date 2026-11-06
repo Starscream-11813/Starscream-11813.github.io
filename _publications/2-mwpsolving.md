@@ -6,6 +6,7 @@ excerpt:
 pptmode: 'Poster Presentation'
 date: 2023-07-09
 venue: 'Proceedings of the 61st Annual Meeting of the Association for Computational Linguistics (Volume 4: Student Research Workshop)'
+anthology: 'https://aclanthology.org/2023.acl-srw.49/'
 paperurl: 'https://arxiv.org/abs/2306.13899'
 pdfurl: 'https://arxiv.org/pdf/2306.13899.pdf'
 codedata: 'https://github.com/Starscream-11813/Variational-Mathematical-Reasoning'

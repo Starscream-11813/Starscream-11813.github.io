@@ -482,6 +482,40 @@ html[data-theme="dark"] .pubs .ranknote { color: #a78bfa; }
 .pubs .button--poster { background-color: #5bc0de; }
 .pubs .button--video { background-color: #999; }
 
+// The ACL Anthology button: the ACL logo, in the button's text colour, on ACL red.
+.pubs .button--anthology {
+  gap: 4px;
+  padding: 0 7px;
+  background-color: #ed1c24;
+
+  .button__acl-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 17px;
+    height: 11.5px;
+  }
+}
+
+// The CVF Open Access button: the CVF monogram on the logo's periwinkle. The
+// monogram spells CVF, so the label only says "Open Access"; its V hangs below
+// the C and F, which sit on the text's baseline.
+.pubs .button--cvf {
+  gap: 4px;
+  padding: 0 7px;
+  background-color: #7394c7;
+
+  .button__cvf-logo {
+    display: block;
+    flex: 0 0 auto;
+    width: 19px;
+    height: 12.5px;
+    transform: translateY(1px);
+  }
+}
+
+// The Springer button: Academicons' Springer knight on Springer Nature blue.
+.pubs .button--springer { background-color: #025e8d; }
+
 .pubs .button--openreview {
   min-width: 86px;
   gap: 4px;

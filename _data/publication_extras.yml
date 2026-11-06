@@ -2,7 +2,7 @@
 # each paper's permalink. Everything else (title, authors, venue line, notes,
 # links, BibTeX) stays in _publications/.
 #   short:  the paper's short name, used for accessible labels
-#   venue:  a compact venue label, e.g. "IJCNLP-AACL 2026"
+#   venue:  a compact venue label, e.g. "AACL-IJCNLP 2026"
 #   kind:   the track, shown after the venue (Main, Findings, Workshop, ...)
 #   themes: what the paper studies about LLMs: reason, create, and/or behave
 #           (the filter above the Publications list; papers without one
@@ -62,7 +62,7 @@
 
 /publications/11-llmideoplasticity:
   short: LLM-Ideoplasticity
-  venue: IJCNLP-AACL 2026
+  venue: AACL-IJCNLP 2026
   kind: Main
   themes: [behave]
 
