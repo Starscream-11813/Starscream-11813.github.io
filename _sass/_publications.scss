@@ -350,6 +350,9 @@ html[data-theme="dark"] .pubs {
   margin: 0.3em 0 0;
   font-size: 0.72em;
   line-height: 1.6;
+  // Where the notes wrap (phones), keep an icon from ending up alone on the
+  // last line; a no-break space can't hold the inline-block icons.
+  text-wrap: pretty;
 }
 
 .pubs .pub-notes__sep {

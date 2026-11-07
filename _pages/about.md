@@ -265,6 +265,38 @@ body {
             padding-right: 10px;
         }
 
+        /* An award glows as on the Publications page, with its sparkling
+           trophy (the keyframes are in _sass/_publications.scss). */
+        .news .news-award {
+            color: magenta;
+            white-space: nowrap;
+            animation: pub-glownote 4s linear infinite alternate;
+        }
+
+        .news .trophy {
+            position: relative;
+            display: inline-block;
+        }
+
+        .news .trophy::before,
+        .news .trophy::after {
+            content: "\2728";
+            position: absolute;
+            color: gold;
+            font-size: 1em;
+            opacity: 0;
+            animation: pub-trophy-sparkle 1.5s infinite ease-in-out;
+        }
+
+        .news .trophy::before { top: -0.69em; left: 0.69em; }
+        .news .trophy::after { top: 0.56em; left: -0.21em; animation-delay: 0.8s; }
+
+        @media (prefers-reduced-motion: reduce) {
+            .news .news-award,
+            .news .trophy::before,
+            .news .trophy::after { animation: none; }
+        }
+
         .emoji {
             display: inline-block;
         }
@@ -741,10 +773,13 @@ body {
 <div class="news">
     <h2><img src="{{ '/images/quill-pen-cropped.svg' | relative_url }}" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>7th November 2026:</b> LLM-Ideoplasticity has received the <b class="news-award">Best Paper Award <span class="trophy" aria-hidden="true">🏆</span></b> at <a href="https://2026.aaclnet.org/" style="white-space: nowrap">AACL-IJCNLP 2026</a>. Alhamdulillah!
+        <br>
+        <br>
         <b>22nd September 2026:</b> Became a reviewer at <a href="https://dl.acm.org/journal/tist">ACM TIST</a> and <a href="https://www.tandfonline.com/journals/uaai20">Applied AI</a>.
         <br>
         <br>
-        <b>8th September 2026:</b> LLM-Ideoplasticity has been accepted at <a href="https://2026.aaclnet.org/">IJCNLP-AACL 2026</a> (Main Conference) with 99.6th percentile ratings (Top 62 out of 17,087 <a href="https://openreview.net/group?id=aclweb.org/ACL/ARR/2026/May">ARR May 2026</a> submissions). Alhamdulillah!
+        <b>8th September 2026:</b> LLM-Ideoplasticity has been accepted at <a href="https://2026.aaclnet.org/">AACL-IJCNLP 2026</a> (Main Conference) with 99.6th percentile ratings (Top 62 out of 17,087 <a href="https://openreview.net/group?id=aclweb.org/ACL/ARR/2026/May">ARR May 2026</a> submissions). Alhamdulillah!
         <br>
         <br>
         <b>31st August 2026:</b> FrugalPrompt has been accepted at the <a href="https://luhme.up.pt/">3rd LUHME Workshop at EMNLP 2026</a>. Alhamdulillah!
