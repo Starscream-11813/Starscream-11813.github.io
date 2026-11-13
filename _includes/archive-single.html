@@ -169,18 +169,19 @@
       <p>Excerpt:<br><em>"{{ post.excerpts }}"</em></p>
     {% endif %}
 
+        {% assign post_venue_year = post.date | default: "1900-01-01" | date: "%Y" %}{% if post.venueyear %}{% assign post_venue_year = post.venueyear %}{% endif %}
         {% if post.collection == 'teaching' %}
           <p> {{ post.type }}, <i>{{ post.venue }}</i>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
         {% elsif post.collection == 'publications' and post.status == 'accepted' and post.venue %}
-          <p>Accepted to <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>Accepted to <b><i>{{ post.venue }}</i></b>, {{ post_venue_year }} </p>
         {% elsif post.collection == 'publications' and post.type == 'preprints' %}
           {% if post.venue %}
-            <p>Under review at <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+            <p>Under review at <b><i>{{ post.venue }}</i></b>, {{ post_venue_year }} </p>
           {% else %}
             <p>Under review</p>
           {% endif %}
         {% elsif post.collection == 'publications' %}
-          <p>Published in <b><i>{{ post.venue }}</i></b>, {{ post.date | default: "1900-01-01" | date: "%Y" }} </p>
+          <p>Published in <b><i>{{ post.venue }}</i></b>, {{ post_venue_year }} </p>
         {% elsif post.date and post.collection == 'books' %}
          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> {{ site.data.ui-text[site.locale].date_label | default: "" }}</strong> <time datetime="{{ post.date | default: "1900-01-01" | date_to_xmlschema }}">{{ post.date | default: "1900-01-01" | date: "%B %d, %Y" }}</time></p>
         {% endif %}

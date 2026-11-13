@@ -773,6 +773,9 @@ body {
 <div class="news">
     <h2><img src="{{ '/images/quill-pen-cropped.svg' | relative_url }}" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
+        <b>13th November 2026:</b> SAE-StatSteer has been accepted for publication in the <a href="https://2027.eacl.org/">Findings of the ACL: EACL 2027</a>. Alhamdulillah!
+        <br>
+        <br>
         <b>7th November 2026:</b> LLM-Ideoplasticity has received the <b class="news-award">Best Paper Award <span class="trophy" aria-hidden="true">🏆</span></b> at <a href="https://2026.aaclnet.org/" style="white-space: nowrap">AACL-IJCNLP 2026</a>. Alhamdulillah!
         <br>
         <br>

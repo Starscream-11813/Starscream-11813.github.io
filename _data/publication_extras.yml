@@ -68,6 +68,8 @@
 
 /publications/12-sparsefeatureinterventions:
   short: SAE-StatSteer
+  venue: EACL 2027
+  kind: Findings
   themes: [behave]
 
 /publications/13-ai4math:

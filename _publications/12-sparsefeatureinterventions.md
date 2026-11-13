@@ -1,10 +1,13 @@
 ---
 title: "SAE-StatSteer: Statistical Consensus Feature Selection for Optimization-Free Activation Steering of Large Language Models"
 collection: publications
-type: preprints
+type: notpreprints
+status: accepted
 permalink: /publications/12-sparsefeatureinterventions
 excerpt:
 date: 2026-06-05
+venue: 'Findings of the Association for Computational Linguistics: EACL 2027'
+venueyear: 2027
 paperurl: 'https://arxiv.org/abs/2607.19364'
 pdfurl: 'https://arxiv.org/pdf/2607.19364'
 codedata: 'https://github.com/Oshayer-Siddique/SAE-STATSTEER'
