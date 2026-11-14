@@ -1,0 +1,65 @@
+/* ==========================================================================
+   GLASS
+   One glass material for the site, in two variants:
+   - a clear lens for small controls over imagery: the award bead
+     (_award-video.scss), the talk play button and the figure loupe (2), the
+     map's chip (1) and labels (6), the floating nav's puck (7);
+   - a frosted pane for floating panels and backdrops: the viewers' veil (3),
+     the menus (4), the floating nav (7).
+   Each use lives in its own numbered _glass-*.scss partial (1 the map's
+   chip, 2 lenses over images, 3 the viewers' veil, 4 frosted menus, 5 the
+   badge's sleeve, 6 the map's labels, 7 the floating nav, 8 the
+   masthead's puck, 9 the Chronicle). Their selectors start with html,
+   which lifts them just above the rules they refine (the page's own
+   styles included). These partials are plain CSS, with no Sass features.
+   ========================================================================== */
+
+:root {
+  /* The site's pastel light as it splits at a glass edge. */
+  --glass-iris: #74d2fa, #a7a8f0, #ec8dff, #ff9ad5, #74d2fa;
+  /* Frosted panes: brighter where the light falls, at the top. */
+  --frost-tint: rgba(255, 255, 255, 0.5);
+  --frost-tint-top: rgba(255, 255, 255, 0.7);
+  --frost-filter: blur(20px) saturate(1.8);
+  --frost-edge: rgba(255, 255, 255, 0.9);
+  --frost-line: rgba(84, 69, 181, 0.16);
+  --frost-shadow: 0 22px 44px -16px rgba(54, 40, 140, 0.32), 0 6px 14px -8px rgba(54, 40, 140, 0.2);
+  /* Clear lenses. */
+  --lens-gloss: rgba(255, 255, 255, 0.92);
+  --lens-shade: rgba(40, 30, 100, 0.22);
+}
+
+html[data-theme="dark"] {
+  --frost-tint: rgba(34, 35, 58, 0.46);
+  --frost-tint-top: rgba(52, 53, 84, 0.6);
+  --frost-edge: rgba(255, 255, 255, 0.2);
+  --frost-line: rgba(226, 222, 255, 0.14);
+  --frost-shadow: 0 22px 48px -14px rgba(0, 0, 0, 0.6), 0 6px 14px -8px rgba(0, 0, 0, 0.45);
+  --lens-gloss: rgba(255, 255, 255, 0.6);
+  --lens-shade: rgba(0, 0, 0, 0.35);
+}
+
+/* With reduced transparency, panes turn solid. */
+@media (prefers-reduced-transparency: reduce) {
+  :root {
+    --frost-tint: #fff;
+    --frost-tint-top: #fff;
+    --frost-filter: none;
+  }
+
+  html[data-theme="dark"] {
+    --frost-tint: #2a2c42;
+    --frost-tint-top: #2f3149;
+  }
+}
+
+@keyframes glass-turn {
+  to { transform: rotate(360deg); }
+}
+
+/* A band of light crossing a lens once: the background-position of a
+   single layer three times the lens's width. */
+@keyframes glass-sweep {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}

@@ -48,8 +48,31 @@
     <linearGradient id="{{ brain_id }}-core" x1="253" y1="149" x2="387" y2="195" gradientUnits="userSpaceOnUse"><stop class="research-brain__core-stop"/><stop offset="1" class="research-brain__core-stop research-brain__core-stop--end"/></linearGradient>
     <g id="{{ brain_id }}-folds-left">{% for fold in cortex.folds.left %}<path d="{{ fold }}"/>{% endfor %}</g>
     <g id="{{ brain_id }}-folds-right">{% for fold in cortex.folds.right %}<path d="{{ fold }}"/>{% endfor %}</g>
+    <!-- The chip's quartz glass (glass feature 1, _sass/_glass-chip.scss): a
+         magnified, saturated view of the board beneath, a frosted label area,
+         gloss, bevel, a rim of the site's pastel light, and a caustic and a
+         glint moved by assets/js/glass-chip.js. -->
+    <clipPath id="{{ brain_id }}-chip-clip"><rect x="253" y="149" width="134" height="46" rx="8"/></clipPath>
+    <filter id="{{ brain_id }}-lens" x="245" y="141" width="150" height="62" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+      <feColorMatrix type="saturate" values="1.9"/>
+    </filter>
+    <filter id="{{ brain_id }}-chip-shadow" x="236" y="140" width="168" height="80" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="3.4"/></filter>
+    <radialGradient id="{{ brain_id }}-chip-frost" cx="320" cy="172" r="76" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 172) scale(1 0.42) translate(-320 -172)">
+      <stop class="research-brain__frost-stop"/>
+      <stop offset="0.62" class="research-brain__frost-stop research-brain__frost-stop--mid"/>
+      <stop offset="1" class="research-brain__frost-stop research-brain__frost-stop--end"/>
+    </radialGradient>
+    <linearGradient id="{{ brain_id }}-chip-gloss" x1="0" y1="149" x2="0" y2="176" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity="0.8"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="{{ brain_id }}-chip-bevel" x1="0" y1="149" x2="0" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#fff" stop-opacity="0.95"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.1"/><stop offset="1" stop-color="#fff" stop-opacity="0.45"/></linearGradient>
+    <linearGradient id="{{ brain_id }}-chip-iris" x1="253" y1="149" x2="387" y2="195" gradientUnits="userSpaceOnUse"><stop stop-color="#74D2FA"/><stop offset="0.3" stop-color="#A7A8F0"/><stop offset="0.6" stop-color="#EC8DFF"/><stop offset="0.82" stop-color="#FF9AD5"/><stop offset="1" stop-color="#74D2FA"/></linearGradient>
+    <linearGradient id="{{ brain_id }}-chip-glint" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#fff" stop-opacity="0"/><stop offset="0.5" stop-color="#fff" stop-opacity="0.92"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></linearGradient>
+    <linearGradient id="{{ brain_id }}-chip-glint-iris" x1="0" y1="0" x2="1" y2="0"><stop stop-color="#74D2FA" stop-opacity="0"/><stop offset="0.32" stop-color="#74D2FA" stop-opacity="0.6"/><stop offset="0.5" stop-color="#A7A8F0" stop-opacity="0.65"/><stop offset="0.68" stop-color="#EC8DFF" stop-opacity="0.6"/><stop offset="1" stop-color="#EC8DFF" stop-opacity="0"/></linearGradient>
+    <radialGradient id="{{ brain_id }}-chip-prism-cyan"><stop stop-color="#74D2FA" stop-opacity="0.95"/><stop offset="1" stop-color="#74D2FA" stop-opacity="0"/></radialGradient>
+    <radialGradient id="{{ brain_id }}-chip-prism-pink"><stop stop-color="#EC8DFF" stop-opacity="0.95"/><stop offset="1" stop-color="#EC8DFF" stop-opacity="0"/></radialGradient>
   </defs>
 
+  <!-- The drawing itself, which the chip's glass also shows, magnified. -->
+  <g id="{{ brain_id }}-art">
   <g class="research-brain__silhouette">
     <use href="#{{ brain_id }}-left"/><use href="#{{ brain_id }}-right"/>
   </g>
@@ -85,6 +108,7 @@
   <g class="research-brain__sheen" fill="url(#{{ brain_id }}-sheen)"><use href="#{{ brain_id }}-left"/><use href="#{{ brain_id }}-right"/></g>
   <g class="research-brain__rim" stroke="url(#{{ brain_id }}-contour)"><use href="#{{ brain_id }}-left"/><use href="#{{ brain_id }}-right"/></g>
   {% include research-circuits.html %}
+  </g>
   <g class="research-map__connections">
     {% for edge in brain_map.relationships %}
       {% assign edge_from = brain_map.areas | where: 'key', edge.from | first %}
@@ -112,8 +136,24 @@
       <rect x="247.5" y="{{ pin_y }}" width="6" height="2.2" rx="1.1"/><rect x="386.5" y="{{ pin_y }}" width="6" height="2.2" rx="1.1"/>
       {%- endfor %}
     </g>
+    <rect class="research-brain__glass research-brain__chip-shadow" x="257" y="155" width="126" height="45" rx="9" fill="#2c2266" fill-opacity="0.2" filter="url(#{{ brain_id }}-chip-shadow)"/>
+    <g class="research-brain__glass research-brain__lens" clip-path="url(#{{ brain_id }}-chip-clip)">
+      <g filter="url(#{{ brain_id }}-lens)"><use href="#{{ brain_id }}-art" transform="matrix(1.18 0 0 1.18 -57.6 -30.96)"/></g>
+    </g>
     <rect class="research-brain__chip" x="253" y="149" width="134" height="46" rx="8" fill="url(#{{ brain_id }}-core)"/>
+    <rect class="research-brain__glass research-brain__chip-frost" x="254.5" y="150.5" width="131" height="43" rx="7" fill="url(#{{ brain_id }}-chip-frost)"/>
     <rect class="research-brain__chip-die" x="257.5" y="153.5" width="125" height="37" rx="5"/>
+    <g class="research-brain__glass" clip-path="url(#{{ brain_id }}-chip-clip)">
+      <g class="research-brain__chip-caustic">
+        <ellipse cx="305" cy="168" rx="30" ry="15" fill="url(#{{ brain_id }}-chip-prism-cyan)"/>
+        <ellipse cx="335" cy="174" rx="30" ry="15" fill="url(#{{ brain_id }}-chip-prism-pink)"/>
+      </g>
+      <rect class="research-brain__chip-gloss" x="253" y="149" width="134" height="27" fill="url(#{{ brain_id }}-chip-gloss)"/>
+      <rect class="research-brain__chip-glint" x="218" y="140" width="34" height="64" fill="url(#{{ brain_id }}-chip-glint)"/>
+      <rect class="research-brain__chip-glint research-brain__chip-glint--iris" x="214" y="140" width="38" height="64" fill="url(#{{ brain_id }}-chip-glint-iris)"/>
+    </g>
+    <rect class="research-brain__glass research-brain__chip-bevel" x="253.7" y="149.7" width="132.6" height="44.6" rx="7.4" fill="none" stroke="url(#{{ brain_id }}-chip-bevel)"/>
+    <rect class="research-brain__glass research-brain__chip-iris" x="253" y="149" width="134" height="46" rx="8" fill="none" stroke="url(#{{ brain_id }}-chip-iris)"/>
     <!-- The words keep their natural spacing; the line, the caption, and the
          hairlines beside it are centered on the midline. -->
     <g class="research-brain__chip-text">

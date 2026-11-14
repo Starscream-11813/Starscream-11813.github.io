@@ -1,0 +1,269 @@
+/* ==========================================================================
+   7. THE FLOATING GLASS NAV
+   On a long page, once the masthead has scrolled away, scrolling back up
+   brings down a frosted pill (_includes/glass-nav.html): a monogram bead for
+   home, the site's sections in the masthead's petite caps, and a bead back
+   to the top. A glass puck marks the current section and flows to whichever
+   one is pointed at, stretching across the gap like a drop
+   (assets/js/glass-nav.js). On phones the sections scroll sideways inside
+   the pill, fading at its edges.
+   ========================================================================== */
+
+.glass-nav {
+  --nav-ink: #6b6680;
+  --nav-ink-strong: #3d3670;
+  --nav-ink-current: #4b3fa8;
+  position: fixed;
+  top: 12px;
+  left: 50%;
+  z-index: 25;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  max-width: calc(100vw - 24px);
+  padding: 4px;
+  border: 1px solid var(--frost-edge);
+  border-radius: 999px;
+  background-color: transparent;
+  background-image:
+    linear-gradient(90deg, rgba(116, 210, 250, 0) 8%, rgba(116, 210, 250, 0.8) 26%, rgba(167, 168, 240, 0.85) 50%, rgba(236, 141, 255, 0.8) 74%, rgba(236, 141, 255, 0) 92%),
+    linear-gradient(180deg, var(--frost-tint-top), var(--frost-tint) 75%);
+  background-size: 100% 1px, 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-backdrop-filter: var(--frost-filter);
+  backdrop-filter: var(--frost-filter);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 0 0 0.5px var(--frost-line),
+    var(--frost-shadow);
+  font-family: inherit;
+  font-variant: petite-caps;
+  line-height: 1;
+  opacity: 0;
+  translate: -50% calc(-100% - 24px);
+  transition:
+    translate 0.6s cubic-bezier(0.2, 0.9, 0.25, 1.06),
+    opacity 0.32s ease;
+}
+
+.glass-nav[hidden] {
+  display: none;
+}
+
+.glass-nav.is-shown {
+  opacity: 1;
+  translate: -50% 0;
+}
+
+/* The two beads at the ends: home and back to the top. */
+.glass-nav__bead {
+  position: relative;
+  display: grid;
+  flex: 0 0 34px;
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  place-items: center;
+  border: 0;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.36);
+  background-image:
+    radial-gradient(62% 40% at 38% 20%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.2) 58%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(70% 50% at 50% 112%, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0) 70%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.95),
+    inset 0 -1px 2px rgba(84, 69, 181, 0.2),
+    0 0 0 0.5px rgba(84, 69, 181, 0.2),
+    0 3px 8px -4px rgba(54, 40, 140, 0.45);
+  color: var(--nav-ink-current);
+  text-decoration: none;
+  cursor: pointer;
+  transition: scale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Each bead's rim turns slowly, like the award bead's, while the pill shows. */
+.glass-nav__bead::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--glass-iris));
+  -webkit-mask: radial-gradient(closest-side, transparent 84%, #000 90%, #000 98%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 84%, #000 90%, #000 98%, transparent 100%);
+  opacity: 0.8;
+  pointer-events: none;
+  animation: glass-turn 12s linear infinite paused;
+}
+
+.glass-nav.is-shown .glass-nav__bead::before {
+  animation-play-state: running;
+}
+
+.glass-nav__bead:hover {
+  scale: 1.1;
+}
+
+.glass-nav__bead:focus-visible,
+.glass-nav__link:focus-visible {
+  outline: 2px solid var(--theme-accent, #6962d2);
+  outline-offset: 1px;
+}
+
+.glass-nav__home span {
+  position: relative;
+  font-family: 'Libertinus Serif Display', serif;
+  font-size: 11px;
+  font-variant: normal;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+}
+
+.glass-nav__top svg {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: translate 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.glass-nav__top:hover svg {
+  translate: 0 -2px;
+}
+
+/* The sections, which scroll sideways when they don't fit. */
+.glass-nav__links {
+  position: relative;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  min-width: 0;
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+}
+
+.glass-nav__links::-webkit-scrollbar {
+  display: none;
+}
+
+.glass-nav__links.is-scrollable {
+  -webkit-mask: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+  mask: linear-gradient(90deg, transparent, #000 14px, #000 calc(100% - 14px), transparent);
+}
+
+.glass-nav__link {
+  position: relative;
+  z-index: 1;
+  flex: none;
+  padding: 9px 13px 10px;
+  border-radius: 999px;
+  color: var(--nav-ink);
+  font-size: 15px;
+  white-space: nowrap;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.glass-nav__link:hover,
+.glass-nav__link:focus-visible {
+  color: var(--nav-ink-strong);
+  text-decoration: none;
+}
+
+.glass-nav__link[aria-current] {
+  color: var(--nav-ink-current);
+}
+
+/* The puck: a lens of brighter glass under one section, moved by
+   glass-nav.js (translate and width). */
+.glass-nav__puck {
+  position: absolute;
+  top: 2px;
+  bottom: 2px;
+  left: 0;
+  width: 0;
+  border-radius: 999px;
+  background-color: rgba(255, 255, 255, 0.5);
+  background-image:
+    radial-gradient(90% 80% at 35% 0%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0) 70%),
+    radial-gradient(80% 60% at 50% 115%, rgba(167, 168, 240, 0.35), rgba(167, 168, 240, 0) 70%);
+  box-shadow:
+    inset 0 1px 0 #fff,
+    inset 0 -1px 2px rgba(84, 69, 181, 0.16),
+    0 0 0 0.5px rgba(84, 69, 181, 0.22),
+    0 6px 14px -8px rgba(54, 40, 140, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+.glass-nav__puck.is-on {
+  opacity: 1;
+}
+
+html[data-theme="dark"] .glass-nav {
+  --nav-ink: #b9b4d4;
+  --nav-ink-strong: #fff;
+  --nav-ink-current: #fff;
+}
+
+html[data-theme="dark"] .glass-nav__bead {
+  background-color: rgba(255, 255, 255, 0.08);
+  background-image:
+    radial-gradient(62% 40% at 38% 20%, rgba(255, 255, 255, 0.34), rgba(255, 255, 255, 0.05) 58%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(70% 50% at 50% 112%, rgba(159, 151, 255, 0.3), rgba(159, 151, 255, 0) 70%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.22),
+    0 0 0 0.5px rgba(226, 222, 255, 0.16),
+    0 3px 8px -4px rgba(0, 0, 0, 0.6);
+  color: #e6e3fb;
+}
+
+html[data-theme="dark"] .glass-nav__puck {
+  background-color: rgba(255, 255, 255, 0.1);
+  background-image:
+    radial-gradient(90% 80% at 35% 0%, rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0) 70%),
+    radial-gradient(80% 60% at 50% 115%, rgba(159, 151, 255, 0.3), rgba(159, 151, 255, 0) 70%);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.28),
+    0 0 0 0.5px rgba(226, 222, 255, 0.2),
+    0 6px 14px -8px rgba(0, 0, 0, 0.7);
+}
+
+@media screen and (max-width: 600px) {
+  .glass-nav {
+    top: 8px;
+    gap: 2px;
+  }
+
+  .glass-nav__link {
+    padding: 9px 10px 10px;
+    font-size: 14px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .glass-nav {
+    translate: -50% 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .glass-nav__bead,
+  .glass-nav__top svg {
+    transition: none;
+  }
+
+  .glass-nav.is-shown .glass-nav__bead::before {
+    animation-play-state: paused;
+  }
+}
+
+@media print {
+  .glass-nav {
+    display: none !important;
+  }
+}

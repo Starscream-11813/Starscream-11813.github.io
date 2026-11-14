@@ -1,0 +1,220 @@
+/* ==========================================================================
+   2. LENSES OVER IMAGES
+   The play button on the talk covers and the zoom on the paper thumbnails
+   become the award bead's glass, where it shows best: over pictures.
+   ========================================================================== */
+
+/* --- The talks' play button -------------------------------------------------
+   A clear lens that brightens and saturates the photo behind it, with a gloss
+   on top and light gathering at its base. Its rim catches the site's pastel
+   light and turns slowly. On hover the glass fills with the video's green
+   like a liquid, its bright surface rising to the top, while a glint crosses
+   it. */
+html .talks .talk-cover__play {
+  overflow: hidden;
+  isolation: isolate;
+  background-color: rgba(255, 255, 255, 0.08);
+  background-image:
+    radial-gradient(64% 42% at 38% 20%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.14) 58%, rgba(255, 255, 255, 0) 72%),
+    linear-gradient(0deg, var(--talk-video) 0 48.6%, rgba(255, 255, 255, 0.8) 48.6% 50%, rgba(255, 255, 255, 0) 50%),
+    radial-gradient(70% 50% at 50% 112%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+  background-size: 100% 100%, 100% 200%, 100% 100%;
+  background-position: 0 0, 0 0, 0 0;
+  background-repeat: no-repeat;
+  box-shadow:
+    inset 0 1px 1.5px rgba(255, 255, 255, 0.92),
+    inset 0 -2px 5px rgba(20, 16, 40, 0.3),
+    0 0 0 0.5px rgba(255, 255, 255, 0.4),
+    0 10px 22px -8px rgba(10, 8, 30, 0.6);
+  -webkit-backdrop-filter: blur(3px) saturate(2) brightness(1.12);
+  backdrop-filter: blur(3px) saturate(2) brightness(1.12);
+  transition:
+    transform 0.55s cubic-bezier(0.34, 1.56, 0.64, 1),
+    background-position 0.7s cubic-bezier(0.3, 0.7, 0.2, 1);
+}
+
+html .talks .talk-cover__play i {
+  position: relative;
+  z-index: 2;
+  text-shadow: 0 1px 2px rgba(10, 8, 30, 0.45);
+}
+
+/* The rim: pastel light refracted at the lens's edge. */
+html .talks .talk-cover__play::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--glass-iris));
+  -webkit-mask: radial-gradient(closest-side, transparent 83%, #000 89%, #000 97%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 83%, #000 89%, #000 97%, transparent 100%);
+  opacity: 0.9;
+  pointer-events: none;
+  animation: glass-turn 14s linear infinite;
+}
+
+/* A glint, which crosses on hover. */
+html .talks .talk-cover__play::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: 50%;
+  background-image: linear-gradient(115deg, rgba(255, 255, 255, 0) 40%, rgba(255, 255, 255, 0.8) 50%, rgba(255, 255, 255, 0) 60%);
+  background-size: 300% 100%;
+  background-position: 150% 0;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+/* The page's own hover rule sets the background shorthand, so the glass's
+   layers are restated here, with the liquid's raised to the top. */
+html .talks .talk-cover:hover .talk-cover__play {
+  background-color: rgba(255, 255, 255, 0.08);
+  background-image:
+    radial-gradient(64% 42% at 38% 20%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.14) 58%, rgba(255, 255, 255, 0) 72%),
+    linear-gradient(0deg, var(--talk-video) 0 48.6%, rgba(255, 255, 255, 0.8) 48.6% 50%, rgba(255, 255, 255, 0) 50%),
+    radial-gradient(70% 50% at 50% 112%, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0) 70%);
+  background-size: 100% 100%, 100% 200%, 100% 100%;
+  background-position: 0 0, 0 100%, 0 0;
+  background-repeat: no-repeat;
+  transform: scale(1.1);
+}
+
+html .talks .talk-cover:hover .talk-cover__play::after {
+  animation: glass-sweep 0.85s ease-out 0.1s both;
+}
+
+/* --- The thumbnails' zoom ----------------------------------------------------
+   On a thumbnail, a mouse gets a loupe (assets/js/glass-loupe.js): a glass
+   magnifier that follows it and shows the figure at 2.2 times, with a small
+   badge that says a click opens it. Keyboard focus, touch, and the animated
+   teasers keep the small zoom chip, now in tinted glass. */
+html .pubs .pub-thumb__zoom {
+  width: 2.05em;
+  height: 2.05em;
+  background-color: rgba(84, 69, 181, 0.46);
+  background-image:
+    radial-gradient(64% 42% at 38% 20%, rgba(255, 255, 255, 0.75), rgba(255, 255, 255, 0.12) 58%, rgba(255, 255, 255, 0) 72%),
+    radial-gradient(70% 50% at 50% 112%, rgba(255, 255, 255, 0.4), rgba(255, 255, 255, 0) 70%);
+  text-shadow: 0 1px 2px rgba(10, 8, 30, 0.45);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    inset 0 -1.5px 3px rgba(20, 16, 40, 0.3),
+    0 0 0 0.5px rgba(255, 255, 255, 0.5),
+    0 6px 14px -6px rgba(20, 16, 40, 0.55);
+  -webkit-backdrop-filter: blur(3px) saturate(1.9) brightness(1.08);
+  backdrop-filter: blur(3px) saturate(1.9) brightness(1.08);
+}
+
+html .pubs a.pub-thumb.is-loupe {
+  cursor: none;
+}
+
+html .pubs a.pub-thumb.is-loupe .pub-thumb__zoom {
+  opacity: 0;
+}
+
+/* The loupe itself, placed by glass-loupe.js at the pointer (translate) over
+   a magnified copy of the figure (its background). */
+.glass-loupe {
+  --loupe: 118px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 40;
+  width: var(--loupe);
+  height: var(--loupe);
+  margin: calc(var(--loupe) / -2) 0 0 calc(var(--loupe) / -2);
+  border-radius: 50%;
+  background-color: #fff;
+  background-repeat: no-repeat;
+  box-shadow:
+    inset 0 0 0 1px rgba(255, 255, 255, 0.95),
+    inset 0 0 10px rgba(40, 30, 100, 0.16),
+    inset 0 -6px 12px rgba(40, 30, 100, 0.12),
+    inset 0 0 22px rgba(116, 210, 250, 0.14),
+    0 0 0 1px rgba(84, 69, 181, 0.26),
+    0 20px 36px -14px rgba(40, 30, 100, 0.55),
+    0 6px 12px -6px rgba(40, 30, 100, 0.35);
+  opacity: 0;
+  scale: 0.35;
+  pointer-events: none;
+  transition: opacity 0.22s ease, scale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.glass-loupe.is-on {
+  opacity: 1;
+  scale: 1;
+}
+
+/* The rim, turning like the award bead's. */
+.glass-loupe::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  border-radius: 50%;
+  background: conic-gradient(from 200deg, var(--glass-iris));
+  -webkit-mask: radial-gradient(closest-side, transparent 92%, #000 95%, #000 99%, transparent 100%);
+  mask: radial-gradient(closest-side, transparent 92%, #000 95%, #000 99%, transparent 100%);
+  animation: glass-turn 12s linear infinite;
+}
+
+/* The lens's highlight: a crescent of light along the inside of its rim, at
+   the top left, leaving the magnified figure clear; and a faint sheen. */
+.glass-loupe::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background:
+    conic-gradient(from 230deg, rgba(255, 255, 255, 0) 0deg, rgba(255, 255, 255, 0.85) 48deg, rgba(255, 255, 255, 0) 105deg, rgba(255, 255, 255, 0) 200deg, rgba(255, 255, 255, 0.35) 232deg, rgba(255, 255, 255, 0) 262deg);
+  -webkit-mask: radial-gradient(closest-side, transparent 78%, #000 84%, #000 90%, transparent 95%);
+  mask: radial-gradient(closest-side, transparent 78%, #000 84%, #000 90%, transparent 95%);
+}
+
+.glass-loupe__badge {
+  position: absolute;
+  right: 2%;
+  bottom: 2%;
+  z-index: 1;
+  display: grid;
+  width: 28px;
+  height: 28px;
+  place-items: center;
+  border-radius: 50%;
+  background-color: rgba(84, 69, 181, 0.62);
+  background-image: radial-gradient(64% 42% at 38% 20%, rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.1) 60%, rgba(255, 255, 255, 0) 72%);
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.85),
+    0 0 0 1.5px rgba(255, 255, 255, 0.9),
+    0 4px 10px -4px rgba(20, 16, 40, 0.6);
+  color: #fff;
+}
+
+.glass-loupe__badge svg {
+  width: 15px;
+  height: 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html .talks .talk-cover__play,
+  .glass-loupe {
+    transition: none;
+  }
+
+  html .talks .talk-cover__play::before,
+  html .talks .talk-cover:hover .talk-cover__play::after,
+  .glass-loupe::before {
+    animation: none;
+  }
+}
+
+@media print {
+  .glass-loupe { display: none; }
+}

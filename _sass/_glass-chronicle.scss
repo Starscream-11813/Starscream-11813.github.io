@@ -1,0 +1,227 @@
+/* ==========================================================================
+   9. THE CHRONICLE AS GLASS
+   The About page's Chronicle becomes a pane of frosted glass. Behind it lies
+   a soft field of the site's pastel light (cyan from the top left, pink from
+   the right, lavender from below), which the pane diffuses into a wash and
+   lets spill a little past its edges; its top edge catches a hairline of
+   light. Where the Chronicle scrolls, entries passing under its top and
+   bottom edges blur into the frost, as content does under glass: the top
+   edge only once it has been scrolled, the bottom one while more lies below.
+   ========================================================================== */
+
+html .news {
+  --chron-top: rgba(255, 255, 255, 0.76);
+  --chron-bottom: rgba(255, 255, 255, 0.58);
+  /* The scrolling edges' veil: light, so they read as a blur, not a band. */
+  --chron-edge: rgba(255, 255, 255, 0.38);
+  position: relative;
+  isolation: isolate;
+  border-left: 0;
+  border-radius: 18px;
+}
+
+html[data-theme="dark"] .news {
+  --chron-top: rgba(50, 51, 82, 0.66);
+  --chron-bottom: rgba(34, 35, 58, 0.52);
+  --chron-edge: rgba(44, 45, 72, 0.4);
+}
+
+/* On desktops the Chronicle was a column of fixed height with its heading's
+   usual top margin; as a pane, it wraps its content instead, so the
+   scrolling list ends inside the glass, and the heading sits at its top. */
+@media screen and (min-width: 1200px) {
+  /* (A grid item, it would otherwise stretch to the page's long column.) */
+  html .news {
+    align-self: start;
+    height: auto;
+    padding: 14px 12px 12px 18px;
+  }
+
+  html .news h2 {
+    margin-top: 0;
+    margin-bottom: 4px;
+  }
+}
+
+/* Phones and tablets showed it as a card: the glass replaces that card. */
+@media screen and (max-width: 1199px) {
+  html #main .news {
+    border: 0;
+    background: transparent;
+  }
+}
+
+/* The pane. */
+html .news::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background-image:
+    linear-gradient(90deg, rgba(116, 210, 250, 0) 8%, rgba(116, 210, 250, 0.85) 26%, rgba(167, 168, 240, 0.9) 50%, rgba(236, 141, 255, 0.85) 74%, rgba(236, 141, 255, 0) 92%),
+    linear-gradient(180deg, var(--chron-top), var(--chron-bottom));
+  background-size: 100% 1px, 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-backdrop-filter: blur(22px) saturate(1.6);
+  backdrop-filter: blur(22px) saturate(1.6);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+    0 0 0 0.5px rgba(84, 69, 181, 0.16),
+    0 26px 50px -28px rgba(54, 40, 140, 0.4);
+}
+
+html[data-theme="dark"] .news::before {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 0 0 0.5px rgba(226, 222, 255, 0.16),
+    0 26px 50px -24px rgba(0, 0, 0, 0.65);
+}
+
+/* The light behind it. */
+html .news::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  border-radius: inherit;
+  background:
+    radial-gradient(48% 30% at 16% 8%, rgba(116, 210, 250, 0.55), rgba(116, 210, 250, 0) 72%),
+    radial-gradient(44% 32% at 94% 46%, rgba(236, 141, 255, 0.46), rgba(236, 141, 255, 0) 72%),
+    radial-gradient(56% 30% at 24% 96%, rgba(167, 168, 240, 0.52), rgba(167, 168, 240, 0) 74%);
+  filter: blur(14px);
+  pointer-events: none;
+}
+
+html[data-theme="dark"] .news::after {
+  background:
+    radial-gradient(48% 30% at 16% 8%, rgba(77, 143, 216, 0.5), rgba(77, 143, 216, 0) 72%),
+    radial-gradient(44% 32% at 94% 46%, rgba(180, 90, 214, 0.42), rgba(180, 90, 214, 0) 72%),
+    radial-gradient(56% 30% at 24% 96%, rgba(91, 63, 209, 0.55), rgba(91, 63, 209, 0) 74%);
+}
+
+/* A hairline of light under the title. */
+html .news h2 {
+  padding-bottom: 0.45em;
+  background-image: linear-gradient(90deg, rgba(116, 210, 250, 0), rgba(116, 210, 250, 0.7) 18%, rgba(167, 168, 240, 0.75) 50%, rgba(236, 141, 255, 0.7) 82%, rgba(236, 141, 255, 0));
+  background-position: 0 100%;
+  background-size: 100% 1px;
+  background-repeat: no-repeat;
+}
+
+/* A slim lavender pill for a scrollbar, like a thread in the glass, without
+   the native arrows. Chromium and Safari draw it from ::-webkit-scrollbar,
+   which they only use while scrollbar-width and scrollbar-color are auto;
+   Firefox takes those two properties instead. */
+html #main .news-content {
+  scrollbar-width: auto;
+  scrollbar-color: auto;
+}
+
+html .news-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+html .news-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+html .news-content::-webkit-scrollbar-button {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+html .news-content::-webkit-scrollbar-thumb {
+  border-radius: 6px;
+  background: rgba(105, 98, 210, 0.32);
+}
+
+html .news-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(105, 98, 210, 0.52);
+}
+
+html[data-theme="dark"] .news-content::-webkit-scrollbar-thumb {
+  background: rgba(201, 194, 255, 0.3);
+}
+
+html[data-theme="dark"] .news-content::-webkit-scrollbar-thumb:hover {
+  background: rgba(201, 194, 255, 0.5);
+}
+
+@supports (-moz-appearance: none) {
+  html #main .news-content {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(105, 98, 210, 0.38) transparent;
+  }
+
+  html[data-theme="dark"] #main .news-content {
+    scrollbar-color: rgba(201, 194, 255, 0.36) transparent;
+  }
+}
+
+/* The scrolling edges: entries blur into the frost as they pass under the
+   pane's top and bottom (where scrolling can drive animations, and only
+   where the Chronicle scrolls on its own: from tablets up). */
+@supports (animation-timeline: scroll()) {
+  @media screen and (min-width: 900px) {
+    html .news-content::before,
+    html .news-content::after {
+      content: "";
+      position: sticky;
+      z-index: 2;
+      display: block;
+      pointer-events: none;
+      -webkit-backdrop-filter: blur(3px);
+      backdrop-filter: blur(3px);
+      opacity: 0;
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(nearest);
+    }
+
+    html .news-content::before {
+      top: 0;
+      height: 22px;
+      margin-bottom: -22px;
+      background: linear-gradient(180deg, var(--chron-edge), rgba(255, 255, 255, 0));
+      -webkit-mask: linear-gradient(180deg, #000 15%, transparent);
+      mask: linear-gradient(180deg, #000 15%, transparent);
+      animation-name: chronicle-edge-top;
+    }
+
+    html .news-content::after {
+      bottom: 0;
+      height: 30px;
+      margin-top: -30px;
+      background: linear-gradient(0deg, var(--chron-edge), rgba(255, 255, 255, 0));
+      -webkit-mask: linear-gradient(0deg, #000 15%, transparent);
+      mask: linear-gradient(0deg, #000 15%, transparent);
+      animation-name: chronicle-edge-bottom;
+    }
+  }
+}
+
+@keyframes chronicle-edge-top {
+  from { opacity: 0; }
+  5%, to { opacity: 1; }
+}
+
+@keyframes chronicle-edge-bottom {
+  from, 95% { opacity: 1; }
+  to { opacity: 0; }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html .news::before {
+    background-image: linear-gradient(var(--theme-surface, #faf9fd), var(--theme-surface, #faf9fd));
+    -webkit-backdrop-filter: none;
+    backdrop-filter: none;
+  }
+
+  html .news::after {
+    display: none;
+  }
+}

@@ -1,0 +1,26 @@
+{%- comment -%}
+  The floating glass nav (glass feature 7: _sass/_glass-nav.scss and
+  assets/js/glass-nav.js). On a long page, once the masthead has scrolled
+  away, scrolling back up brings down a frosted pill with the site's
+  sections and a way back to the top; scrolling on tucks it away. A glass
+  puck marks the current section and flows to whichever one is pointed at.
+  It repeats the masthead's menu, so while tucked away it is inert, and it
+  stays hidden without JavaScript.
+{%- endcomment -%}
+<nav class="glass-nav" aria-label="Quick navigation" data-glass-nav hidden>
+  <a class="glass-nav__bead glass-nav__home" href="{{ base_path }}/" aria-label="Home"><span aria-hidden="true">SRR</span></a>
+  <div class="glass-nav__links">
+    <span class="glass-nav__puck" aria-hidden="true"></span>
+    {%- for link in site.data.navigation.main %}
+      {%- if link.url contains 'http' -%}{%- assign glass_nav_domain = '' -%}{%- else -%}{%- assign glass_nav_domain = base_path -%}{%- endif -%}
+      {%- assign glass_nav_current = nil -%}
+      {%- if page.url == link.url -%}
+        {%- assign glass_nav_current = 'page' -%}
+      {%- elsif link.url != '/' and page.url contains link.url -%}
+        {%- assign glass_nav_current = 'true' -%}
+      {%- endif %}
+    <a class="glass-nav__link" href="{{ glass_nav_domain }}{{ link.url }}"{% if glass_nav_current %} aria-current="{{ glass_nav_current }}"{% endif %}>{{ link.title }}</a>
+    {%- endfor %}
+  </div>
+  <button class="glass-nav__bead glass-nav__top" type="button" aria-label="Back to top"><svg viewBox="0 0 16 16" aria-hidden="true" focusable="false"><path d="M8 12.6V3.9M4.3 7.5 8 3.8l3.7 3.7"/></svg></button>
+</nav>

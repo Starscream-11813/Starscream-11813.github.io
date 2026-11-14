@@ -1,0 +1,92 @@
+/* ==========================================================================
+   1. THE MAP'S QUARTZ CHIP
+   The chip at the heart of the research map becomes quartz glass, like the
+   window of an old EPROM: through it the board beneath shows magnified and
+   more vivid (impulses included), under a frosted label area that keeps the
+   lettering clear. A gloss and a bevel catch the light from above, the rim
+   splits it into the site's pastel colors, and the glass casts a soft shadow
+   on the board. A caustic inside drifts toward the pointer, and a glint
+   crosses whenever a signal leaves the chip (assets/js/glass-chip.js). The
+   drawing repaints whole, so nothing here animates on a loop.
+   ========================================================================== */
+
+html .research-brain__chip {
+  fill-opacity: 0.22;
+  stroke-opacity: 0;
+}
+
+html[data-theme="dark"] .research-brain__chip {
+  fill-opacity: 0.38;
+}
+
+/* The board shows through the window a little softened, so the lettering
+   stays the clearest thing on the chip. */
+.research-brain__lens { opacity: 0.72; }
+html[data-theme="dark"] .research-brain__lens { opacity: 0.82; }
+
+/* A frosted plate behind the lettering; the quartz clears toward the chip's
+   edges and corners, where the magnified board shows. */
+.research-brain__frost-stop {
+  stop-color: var(--map-core-start);
+  stop-opacity: 0.93;
+}
+
+.research-brain__frost-stop--mid { stop-opacity: 0.72; }
+.research-brain__frost-stop--end { stop-opacity: 0; }
+
+/* A halo in the glass's color around every letter, as on a map's labels,
+   and a slightly deeper ink, keep the lettering crisp over the board. */
+html .research-brain__chip-text {
+  fill: #3e3584;
+}
+
+html[data-theme="dark"] .research-brain__chip-text {
+  fill: #f3f1ff;
+}
+
+html .research-brain__chip-text text {
+  paint-order: stroke;
+  stroke: var(--map-core-start);
+  stroke-width: 2.2px;
+  stroke-opacity: 0.92;
+  stroke-linejoin: round;
+}
+
+.research-brain__chip-shadow { fill-opacity: 0.2; }
+.research-brain__chip-gloss { opacity: 0.85; }
+.research-brain__chip-bevel { stroke-width: 0.7; }
+.research-brain__chip-iris { stroke-width: 1.15; opacity: 0.95; }
+/* The prism light tints the glass it crosses. */
+.research-brain__chip-caustic {
+  opacity: 0.36;
+  mix-blend-mode: multiply;
+}
+
+.research-brain__chip-glint {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: skewX(-20deg);
+}
+
+/* On light glass the glint is a band of the site's pastel light (white would
+   vanish on the frost); on dark glass, a white sheen. */
+.research-brain__chip-glint:not(.research-brain__chip-glint--iris),
+html[data-theme="dark"] .research-brain__chip-glint--iris {
+  display: none;
+}
+
+html[data-theme="dark"] .research-brain__chip-glint:not(.research-brain__chip-glint--iris) {
+  display: inline;
+}
+
+html[data-theme="dark"] .research-brain__chip-shadow { fill: #000; fill-opacity: 0.5; }
+html[data-theme="dark"] .research-brain__chip-gloss { opacity: 0.3; }
+html[data-theme="dark"] .research-brain__chip-bevel { opacity: 0.45; }
+html[data-theme="dark"] .research-brain__chip-iris { opacity: 0.85; }
+html[data-theme="dark"] .research-brain__chip-caustic { opacity: 0.55; mix-blend-mode: screen; }
+
+@media (prefers-reduced-transparency: reduce) {
+  html .research-brain__chip { fill-opacity: 1; }
+  .research-brain__lens { display: none; }
+}

@@ -1,0 +1,92 @@
+/* ==========================================================================
+   5. THE BADGE'S CLEAR PLASTIC SLEEVE
+   On the Talks page, the miniature conference badge sits in a clear plastic
+   sleeve, as real ones do: a little larger than the card, with a punched
+   slot under the clip, a faint thin-film rainbow along its edge, and a soft
+   reflection in its corner. When the badge sways on hover, a band of light
+   crosses the plastic with the first swing and back with the return.
+   Measures are in the lanyard's ems (a fifth of the real badge).
+   ========================================================================== */
+
+html .talks .talk-sleeve {
+  position: relative;
+  display: block;
+  width: calc(100% + 1.5em);
+  margin: -0.55em -0.75em 0;
+  padding: 0.95em 0.75em 0.75em;
+  border-radius: 3.4px;
+  background-image:
+    radial-gradient(closest-side, rgba(20, 16, 40, 0.4) 78%, rgba(20, 16, 40, 0) 100%),
+    linear-gradient(158deg, rgba(255, 255, 255, 0.55), rgba(255, 255, 255, 0.12) 34%, rgba(255, 255, 255, 0.05) 60%, rgba(255, 255, 255, 0.3));
+  background-size: 2.5em 0.55em, 100% 100%;
+  background-position: 50% 0.3em, 0 0;
+  background-repeat: no-repeat;
+  -webkit-backdrop-filter: blur(0.5px) saturate(1.25) brightness(1.08);
+  backdrop-filter: blur(0.5px) saturate(1.25) brightness(1.08);
+  box-shadow:
+    inset 0 0 0 0.6px rgba(255, 255, 255, 0.8),
+    inset 0 1px 0 rgba(255, 255, 255, 0.95),
+    0 0 0 0.5px rgba(28, 20, 56, 0.24),
+    0 5px 9px -3px rgba(20, 16, 40, 0.5);
+}
+
+/* The thin-film edge, where the plastic splits the light. */
+html .talks .talk-sleeve::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 0.28em;
+  border-radius: inherit;
+  background: conic-gradient(from 210deg, var(--glass-iris));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* The corner's reflection, and the band of light that crosses on a sway. */
+html .talks .talk-sleeve::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+  background-image:
+    linear-gradient(115deg, rgba(255, 255, 255, 0) 36%, rgba(255, 255, 255, 0.6) 44%, rgba(255, 255, 255, 0.98) 49%, rgba(255, 255, 255, 0.4) 54%, rgba(255, 255, 255, 0) 62%),
+    linear-gradient(125deg, rgba(255, 255, 255, 0.5) 0 9%, rgba(255, 255, 255, 0) 24%);
+  background-size: 320% 100%, 100% 100%;
+  background-position: 150% 0, 0 0;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+html .talks .talk-card:hover .talk-sleeve::after {
+  animation: talk-sleeve-glint 2.4s ease-in-out both;
+}
+
+/* Timed to the badge's sway (talk-sway): across with the first swing, back
+   with the return. */
+@keyframes talk-sleeve-glint {
+  0% { background-position: 150% 0, 0 0; }
+  40% { background-position: -50% 0, 0 0; }
+  56% { background-position: -50% 0, 0 0; }
+  92% { background-position: 150% 0, 0 0; }
+  100% { background-position: 150% 0, 0 0; }
+}
+
+/* In its sleeve, the badge loses its own sheen and most of its shadow. */
+html .talks .talk-sleeve .talk-badge {
+  margin-top: 0;
+  box-shadow: 0 0 0 0.5px rgba(28, 20, 56, 0.18), 0 1px 2px rgba(20, 16, 40, 0.25);
+}
+
+html .talks .talk-sleeve .talk-badge::after {
+  display: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html .talks .talk-card:hover .talk-sleeve::after {
+    animation: none;
+  }
+}

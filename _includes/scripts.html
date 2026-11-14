@@ -20,6 +20,14 @@
 {% if content contains 'data-award-video' %}
 <script src="{{ '/assets/js/award-video.js' | relative_url }}"></script>
 {% endif %}
+{% if page.research_map %}
+<script src="{{ '/assets/js/glass-chip.js' | relative_url }}"></script>
+{% endif %}
+{% if page.publications_ui %}
+<script src="{{ '/assets/js/glass-loupe.js' | relative_url }}"></script>
+{% endif %}
+<script src="{{ '/assets/js/glass-nav.js' | relative_url }}"></script>
+<script src="{{ '/assets/js/glass-masthead.js' | relative_url }}"></script>
 
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}

@@ -34,6 +34,8 @@
     <div class="talk-lanyard" aria-hidden="true" style="{{ talk_badge }}">
       <span class="talk-lanyard__strap"></span>
       <span class="talk-lanyard__clip"></span>
+      {%- comment %} The badge's clear plastic sleeve (glass feature 5, _sass/_glass-sleeve.scss). {% endcomment %}
+      <div class="talk-sleeve">
       <div class="talk-badge">
         <span class="talk-badge__slot"></span>
         <div class="talk-badge__band">
@@ -44,6 +46,7 @@
         <p class="talk-badge__name">{{ site.author.name }}</p>
         <p class="talk-badge__org">{{ site.author.employer }}</p>
         <p class="talk-badge__role">Speaker</p>
+      </div>
       </div>
     </div>
   </div>

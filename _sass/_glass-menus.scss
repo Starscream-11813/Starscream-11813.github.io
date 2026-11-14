@@ -1,0 +1,140 @@
+/* ==========================================================================
+   4. FROSTED MENUS
+   The menus that float over the page (the About page's "Related papers"
+   popovers, and on phones and tablets the site menu and the Follow panel)
+   become frosted panes: the text behind turns into a soft wash of color
+   while their own stays crisp. Each is brighter at the top, where the light
+   falls, and its top edge catches a hairline of the site's pastel light. The
+   popovers and the menu condense into view and dissolve away.
+   ========================================================================== */
+
+html .research-topic-popover,
+html #site-nav .hidden-links {
+  border-color: var(--frost-edge);
+  background-color: transparent;
+  background-image:
+    linear-gradient(90deg, rgba(116, 210, 250, 0) 6%, rgba(116, 210, 250, 0.85) 24%, rgba(167, 168, 240, 0.9) 50%, rgba(236, 141, 255, 0.85) 76%, rgba(236, 141, 255, 0) 94%),
+    linear-gradient(180deg, var(--frost-tint-top), var(--frost-tint) 72%);
+  background-size: 100% 1px, 100% 100%;
+  background-repeat: no-repeat;
+  -webkit-backdrop-filter: var(--frost-filter);
+  backdrop-filter: var(--frost-filter);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.5),
+    0 0 0 0.5px var(--frost-line),
+    var(--frost-shadow);
+}
+
+/* The theme's fade-in (intro, fill-mode both) keeps an opacity animation on
+   the masthead and the page for good, and that confines a backdrop's blur
+   inside them: the phone menu and the Follow panel showed the page behind
+   them sharp. Letting the fade end (fill-mode backwards) looks the same and
+   lets the frost reach the page. The dark masthead's own blur, which never
+   had anything behind it, confined it too. */
+html .masthead,
+html #main {
+  animation-fill-mode: backwards;
+}
+
+html[data-theme="dark"] .masthead {
+  -webkit-backdrop-filter: none;
+  backdrop-filter: none;
+}
+
+/* The menu's little pointer arrows were drawn for an opaque card. */
+html .greedy-nav .hidden-links::before,
+html .greedy-nav .hidden-links::after {
+  display: none;
+}
+
+/* Rows light up as glass on hover; the current page sits on a small glass
+   puck in the phone menu. */
+html .research-topic-popover .research-topic-popover__paper:hover,
+html #site-nav .hidden-links a:hover,
+html #site-nav .hidden-links a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.62);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.95), 0 0 0 0.5px rgba(84, 69, 181, 0.16), 0 5px 12px -8px rgba(54, 40, 140, 0.45);
+}
+
+html[data-theme="dark"] .research-topic-popover .research-topic-popover__paper:hover,
+html[data-theme="dark"] #site-nav .hidden-links a:hover,
+html[data-theme="dark"] #site-nav .hidden-links a[aria-current="page"] {
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14), 0 0 0 0.5px rgba(226, 222, 255, 0.12), 0 5px 12px -8px rgba(0, 0, 0, 0.6);
+}
+
+/* Condense into view, dissolve away. */
+html .research-topic-popover {
+  transition:
+    opacity 0.2s ease,
+    translate 0.32s cubic-bezier(0.2, 0.9, 0.25, 1),
+    display 0.2s ease allow-discrete;
+}
+
+html .research-topic-popover[hidden] {
+  opacity: 0;
+  translate: 0 -4px;
+}
+
+@starting-style {
+  html .research-topic-popover:not([hidden]) {
+    opacity: 0;
+    translate: 0 -4px;
+  }
+}
+
+html #site-nav .hidden-links {
+  transition:
+    opacity 0.22s ease,
+    translate 0.34s cubic-bezier(0.2, 0.9, 0.25, 1),
+    display 0.22s ease allow-discrete,
+    visibility 0.22s ease allow-discrete;
+}
+
+html #site-nav .hidden-links.hidden {
+  opacity: 0;
+  translate: 0 -6px;
+}
+
+@starting-style {
+  html #site-nav .hidden-links:not(.hidden) {
+    opacity: 0;
+    translate: 0 -6px;
+  }
+}
+
+/* The Follow panel floats over the page only on phones and tablets; on
+   desktops it is the sidebar's list. */
+@media screen and (max-width: 1199px) {
+  html .sidebar .author__urls {
+    border-color: var(--frost-edge);
+    background-color: transparent;
+    background-image:
+      linear-gradient(90deg, rgba(116, 210, 250, 0) 6%, rgba(116, 210, 250, 0.85) 24%, rgba(167, 168, 240, 0.9) 50%, rgba(236, 141, 255, 0.85) 76%, rgba(236, 141, 255, 0) 94%),
+      linear-gradient(180deg, var(--frost-tint-top), var(--frost-tint) 72%);
+    background-size: 100% 1px, 100% 100%;
+    background-repeat: no-repeat;
+    -webkit-backdrop-filter: var(--frost-filter);
+    backdrop-filter: var(--frost-filter);
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.5),
+      0 0 0 0.5px var(--frost-line),
+      var(--frost-shadow);
+  }
+
+  html .sidebar .author__urls a:hover {
+    border-radius: 7px;
+    background: rgba(255, 255, 255, 0.62);
+  }
+
+  html[data-theme="dark"] .sidebar .author__urls a:hover {
+    background: rgba(255, 255, 255, 0.08);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html .research-topic-popover,
+  html #site-nav .hidden-links {
+    transition: none;
+  }
+}

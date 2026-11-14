@@ -56,5 +56,16 @@
 @import "theme-toggle";
 @import "page-transitions";
 @import "responsive";
+// The glass material and its nine uses (see _glass.scss).
+@import "glass";
+@import "glass-chip";
+@import "glass-lenses";
+@import "glass-veil";
+@import "glass-menus";
+@import "glass-sleeve";
+@import "glass-labels";
+@import "glass-nav";
+@import "glass-masthead";
+@import "glass-chronicle";
 @import "print";
 @import "icon-fonts"; // last: its Academicons rules keep their old place after everything else
