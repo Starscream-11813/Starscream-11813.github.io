@@ -70,9 +70,9 @@ a {
   color: $link-color;
 }
 
-/* Apply focus state */
+/* Apply focus state (for keyboard focus only; see %tab-focus) */
 
-a:focus {
+a:focus-visible {
   @extend %tab-focus;
 }
 

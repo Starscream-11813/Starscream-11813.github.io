@@ -2,12 +2,13 @@
    MIXINS
    ========================================================================== */
 
+/* The keyboard focus ring: the site's lavender, as on its other controls.
+   It is used with :focus-visible, so it shows for keyboard navigation and
+   not after a mouse click. (The theme's ring was outline: 5px auto, which
+   Windows draws in its own accent color, around every clicked link.) */
 %tab-focus {
-  /* Default*/
-  outline: thin dotted $warning-color;
-  /* Webkit*/
-  outline: 5px auto $warning-color;
-  outline-offset: -2px;
+  outline: 2px solid var(--theme-accent, #6962d2);
+  outline-offset: 2px;
 }
 
 /*

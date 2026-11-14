@@ -78,7 +78,7 @@
 }
 
 .talk-media__tab:hover,
-.talk-media__tab:focus {
+.talk-media__tab:focus-visible {
   border-color: var(--talk-tab-color);
   color: #fff;
   filter: saturate(0.92) brightness(0.98);

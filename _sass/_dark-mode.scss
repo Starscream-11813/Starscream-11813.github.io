@@ -462,7 +462,7 @@ html[data-theme="dark"] .talk-media__tab {
 }
 
 html[data-theme="dark"] .talk-media__tab:hover,
-html[data-theme="dark"] .talk-media__tab:focus {
+html[data-theme="dark"] .talk-media__tab:focus-visible {
   border-color: var(--talk-tab-color);
   color: #fff;
 }
