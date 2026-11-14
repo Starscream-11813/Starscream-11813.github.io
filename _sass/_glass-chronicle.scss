@@ -2,9 +2,11 @@
    9. THE CHRONICLE AS GLASS
    The About page's Chronicle becomes a pane of frosted glass. Behind it lies
    a soft field of the site's pastel light (cyan from the top left, pink from
-   the right, lavender from below), which the pane diffuses into a wash and
-   lets spill a little past its edges; its top edge catches a hairline of
-   light. Where the Chronicle scrolls, entries passing under its top and
+   the right, lavender from below), already diffused, which glows through the
+   pane as a wash and spills a little past its edges; its top edge catches a
+   hairline of light. (The pane needs no backdrop blur of its own: what lies
+   behind it is already soft, and a blur that size would be redone on every
+   frame of a scroll.) Where the Chronicle scrolls, entries passing under its top and
    bottom edges blur into the frost, as content does under glass: the top
    edge only once it has been scrolled, the bottom one while more lies below.
    ========================================================================== */
@@ -63,8 +65,6 @@ html .news::before {
     linear-gradient(180deg, var(--chron-top), var(--chron-bottom));
   background-size: 100% 1px, 100% 100%;
   background-repeat: no-repeat;
-  -webkit-backdrop-filter: blur(22px) saturate(1.6);
-  backdrop-filter: blur(22px) saturate(1.6);
   box-shadow:
     inset 0 1px 0 rgba(255, 255, 255, 0.85),
     inset 0 0 0 1px rgba(255, 255, 255, 0.45),
@@ -217,8 +217,6 @@ html[data-theme="dark"] .news-content::-webkit-scrollbar-thumb:hover {
 @media (prefers-reduced-transparency: reduce) {
   html .news::before {
     background-image: linear-gradient(var(--theme-surface, #faf9fd), var(--theme-surface, #faf9fd));
-    -webkit-backdrop-filter: none;
-    backdrop-filter: none;
   }
 
   html .news::after {
