@@ -299,7 +299,7 @@
         {% if post.collection == 'publications' and post.note %}
           <p>
             <b class="glownote" style="color: magenta;">
-              {{ post.note }} <span class="trophy">🏆</span>
+              {{ post.note }} <span class="trophy">🏆</span>{% include award-video.html pub=post %}
             </b>
           </p>
         {% endif %}

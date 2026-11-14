@@ -8,6 +8,12 @@ date: 2026-05-26
 venue: 'Proceedings of the 15th International Joint Conference on Natural Language Processing and the 5th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics (Volume 1: Long Papers)'
 pptmode: 'Oral Presentation'
 note: 'Best Paper Award'
+# The award's announcement: a small play button beside the note opens it in a
+# window, with the committee's reason (as worded on the award slide) below it.
+award:
+  video: '/files/LLM-Ideoplasticity_Best_Paper_Award.mp4'
+  poster: '/images/llm_ideoplasticity_best_paper_award.webp'
+  reason: 'The authors argue LLMs’ political behavior is best described as a conditional response surface rather than a fixed coordinate: it cannot be reduced to a single point and must be framed as a shape.'
 ranknote: '99.6th Percentile in ARR May 2026 (Top 62 / 17,087 submissions)'
 anthology: 'https://aclanthology.org/2026.aacl-long.145/'
 paperurl: 'https://arxiv.org/abs/2606.28335'

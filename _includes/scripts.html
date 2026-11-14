@@ -17,6 +17,9 @@
 {% if page.talks_ui %}
 <script src="{{ '/assets/js/talks.js' | relative_url }}"></script>
 {% endif %}
+{% if content contains 'data-award-video' %}
+<script src="{{ '/assets/js/award-video.js' | relative_url }}"></script>
+{% endif %}
 
 {% include analytics.html %}
 {% include /comments-providers/scripts.html %}

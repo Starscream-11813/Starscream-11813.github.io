@@ -372,7 +372,8 @@ html[data-theme="dark"] .pubs {
 }
 
 .pubs .glownote--presentation { color: #5bcefa; }
-.pubs .glownote--award { color: magenta; }
+// An award stays on one line with its trophy (and play button, if any).
+.pubs .glownote--award { color: magenta; white-space: nowrap; }
 
 @keyframes pub-glownote {
   from { text-shadow: 0 0 3px rgba(184, 134, 11, 0.4); }

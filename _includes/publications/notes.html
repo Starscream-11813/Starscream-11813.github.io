@@ -8,7 +8,7 @@
   {%- assign pub_note_items = pub_note_items | push: pub_note_item -%}
 {%- endif -%}
 {%- if pub.note -%}
-  {%- capture pub_note_item %}<b class="glownote glownote--award">{{ pub.note }} <span class="trophy" aria-hidden="true">🏆</span></b>{% endcapture -%}
+  {%- capture pub_note_item %}<b class="glownote glownote--award">{{ pub.note }} <span class="trophy" aria-hidden="true">🏆</span>{% include award-video.html pub=pub %}</b>{% endcapture -%}
   {%- assign pub_note_items = pub_note_items | push: pub_note_item -%}
 {%- endif -%}
 {%- if pub.ranknote -%}

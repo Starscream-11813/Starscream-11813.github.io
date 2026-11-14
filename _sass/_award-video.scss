@@ -1,0 +1,376 @@
+/* Award announcements: the small play button beside an award note
+   (_includes/award-video.html) and the window it opens
+   (assets/js/award-video.js). The glow and sparkle keyframes are in
+   _publications.scss. */
+
+// --- The play button: a bead of liquid glass --------------------------------
+
+// A clear glass bead with a gloss on top. Its rim catches the site's pastel
+// light (cyan, lavender, pink) and turns slowly, like the portrait's ring,
+// and turns with the scroll as well. Every seven seconds a glint crosses it
+// and a soft ripple spreads, a quiet nudge; on hover it swells like a drop.
+// Its colors are custom properties, so link colors (which differ by theme)
+// never reach it.
+.award-video__play {
+  --award-ink: #e000e0;
+  --glass-body: radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.92), rgba(238, 233, 255, 0.78) 74%);
+  --glass-edge: rgba(84, 69, 181, 0.24);
+  --glass-shadow: rgba(84, 69, 181, 0.32);
+  --glass-glint: rgba(255, 255, 255, 0.95);
+  position: relative;
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  margin-left: 0.3em;
+  vertical-align: -0.2em;
+  border-radius: 50%;
+  isolation: isolate;
+  background: var(--glass-body);
+  box-shadow: 0 0 0 0.5px var(--glass-edge), 0 1px 2px var(--glass-shadow);
+  line-height: 0;
+  text-decoration: none;
+  cursor: pointer;
+  transition: scale 0.45s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease;
+  animation: award-glass-ripple 7s ease-out infinite;
+
+  // The gloss: a highlight up top, light gathering at the bottom, a bright
+  // edge, and the glint that crosses every seven seconds.
+  &::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    border-radius: 50%;
+    background-image:
+      linear-gradient(115deg, rgba(255, 255, 255, 0) 42%, var(--glass-glint) 50%, rgba(255, 255, 255, 0) 58%),
+      radial-gradient(60% 40% at 40% 22%, rgba(255, 255, 255, 0.95), rgba(255, 255, 255, 0.25) 58%, rgba(255, 255, 255, 0) 74%),
+      radial-gradient(76% 50% at 50% 108%, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0) 70%);
+    background-position: 140% 0, 0 0, 0 0;
+    background-size: 320% 100%, 100% 100%, 100% 100%;
+    background-repeat: no-repeat;
+    box-shadow: inset 0 0.5px 0.5px rgba(255, 255, 255, 0.95), inset 0 -0.6px 1px rgba(84, 69, 181, 0.3);
+    pointer-events: none;
+    animation: award-glass-glint 7s ease-in-out infinite;
+  }
+
+  // A comfortable touch target around the small bead.
+  &::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 26px;
+    height: 26px;
+    transform: translate(-50%, -50%);
+  }
+
+  svg {
+    position: relative;
+    z-index: 2;
+    display: block;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    transition: translate 0.3s ease;
+  }
+
+  path {
+    fill: var(--award-ink);
+    stroke: var(--award-ink);
+    stroke-width: 1.3;
+    stroke-linejoin: round;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--theme-accent, #6962d2);
+    outline-offset: 2px;
+  }
+}
+
+// The rim: pastel light refracted at the glass's edge.
+.award-video__glass {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 50%;
+  background: conic-gradient(from 210deg, #74d2fa, #a7a8f0, #ec8dff, #ff9ad5, #74d2fa);
+  -webkit-mask: radial-gradient(closest-side, transparent 60%, #000 76%);
+  mask: radial-gradient(closest-side, transparent 60%, #000 76%);
+  animation: award-glass-turn 12s linear infinite;
+}
+
+// Where scrolling can drive animations, the rim also turns with the scroll,
+// as the light on glass shifts while it moves.
+@supports (animation-timeline: view()) {
+  .award-video__glass {
+    animation: award-glass-turn 12s linear infinite, award-glass-scroll linear both;
+    animation-timeline: auto, view();
+  }
+}
+
+// It swells like a drop on hover (only where there is hover, so a tapped
+// bead doesn't stay swollen) and on keyboard focus, and squishes when pressed.
+@media (hover: hover) {
+  .award-video__play:hover {
+    scale: 1.18;
+    filter: drop-shadow(0 0 3px rgba(236, 141, 255, 0.75));
+  }
+
+  .award-video__play:hover::before {
+    animation: award-glass-glint-now 0.7s ease-out both;
+  }
+
+  .award-video__play:hover svg {
+    translate: 0.05em 0;
+  }
+}
+
+.award-video__play:focus-visible {
+  scale: 1.18;
+  filter: drop-shadow(0 0 3px rgba(236, 141, 255, 0.75));
+}
+
+.award-video__play:active {
+  scale: 0.92;
+  transition-duration: 0.12s;
+}
+
+html[data-theme="dark"] .award-video__play {
+  --award-ink: #ff5cff;
+  --glass-body: radial-gradient(circle at 50% 36%, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.07) 74%);
+  --glass-edge: rgba(255, 255, 255, 0.3);
+  --glass-shadow: rgba(0, 0, 0, 0.5);
+  // A softer glint, which would otherwise flash against the dark page.
+  --glass-glint: rgba(255, 255, 255, 0.55);
+}
+
+@keyframes award-glass-turn {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes award-glass-scroll {
+  from { rotate: -150deg; }
+  to { rotate: 150deg; }
+}
+
+@keyframes award-glass-glint {
+  0%, 62% { background-position: 140% 0, 0 0, 0 0; }
+  80%, 100% { background-position: -40% 0, 0 0, 0 0; }
+}
+
+@keyframes award-glass-glint-now {
+  from { background-position: 140% 0, 0 0, 0 0; }
+  to { background-position: -40% 0, 0 0, 0 0; }
+}
+
+// The ripple follows the glint.
+@keyframes award-glass-ripple {
+  0%, 78% { box-shadow: 0 0 0 0.5px var(--glass-edge), 0 1px 2px var(--glass-shadow), 0 0 0 0 rgba(236, 141, 255, 0); }
+  80% { box-shadow: 0 0 0 0.5px var(--glass-edge), 0 1px 2px var(--glass-shadow), 0 0 0 0 rgba(236, 141, 255, 0.55); }
+  100% { box-shadow: 0 0 0 0.5px var(--glass-edge), 0 1px 2px var(--glass-shadow), 0 0 0 0.5em rgba(167, 168, 240, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .award-video__play,
+  .award-video__play::before,
+  .award-video__glass,
+  .award-video__play:hover::before { animation: none; }
+
+  .award-video__play,
+  .award-video__play svg { transition: none; }
+}
+
+// With reduced transparency, the glass turns solid.
+@media (prefers-reduced-transparency: reduce) {
+  .award-video__play { --glass-body: #fff; }
+  html[data-theme="dark"] .award-video__play { --glass-body: #34364f; }
+}
+
+// Windows high contrast: a plain ring and arrow in the system's link color.
+@media (forced-colors: active) {
+  .award-video__play { border: 1px solid LinkText; }
+
+  .award-video__play::before,
+  .award-video__glass { display: none; }
+
+  .award-video__play path { fill: LinkText; stroke: LinkText; }
+}
+
+// --- The window --------------------------------------------------------------
+
+// At most 520px wide, and narrower on short screens (a phone held sideways)
+// so the header, video, and reason all fit.
+.award-video {
+  --award-vh: 100vh;
+  --award-width: min(520px, calc(100vw - 32px), calc((var(--award-vh) - 230px) * 16 / 9));
+  width: var(--award-width);
+  min-width: min(280px, calc(100vw - 32px));
+  max-width: none;
+  max-height: calc(var(--award-vh) - 24px);
+  margin: auto;
+  padding: 0;
+  overflow: auto;
+  overscroll-behavior: contain;
+  border: 1px solid var(--theme-border, #e5e0f0);
+  border-radius: 14px;
+  background: var(--theme-surface-raised, #fff);
+  color: var(--theme-text, #494e52);
+  box-shadow: 0 24px 60px rgba(44, 34, 75, 0.3);
+  font-size: 0.9rem;
+  line-height: 1.45;
+  text-align: left;
+
+  &::backdrop {
+    background: rgba(32, 26, 58, 0.42);
+    -webkit-backdrop-filter: blur(2px);
+    backdrop-filter: blur(2px);
+  }
+}
+
+@supports (height: 100dvh) {
+  .award-video { --award-vh: 100dvh; }
+}
+
+.award-video__box {
+  padding: 0.55rem 0.6rem 0.75rem;
+}
+
+// The header echoes the About page's "Related papers" menus.
+.award-video__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0 0.15rem 0.5rem;
+}
+
+.award-video__context {
+  display: block;
+  margin-bottom: 0.1rem;
+  color: var(--theme-muted, #77717f);
+  font-size: 0.65rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.award-video__title {
+  display: block;
+  color: magenta;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.3;
+  animation: pub-glownote 4s linear infinite alternate;
+}
+
+.award-video__close {
+  flex: 0 0 30px;
+  width: 30px;
+  height: 30px;
+  margin: -0.15rem -0.15rem 0 0;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--theme-muted, #77717f);
+  font: inherit;
+  font-size: 1.35rem;
+  line-height: 1;
+  cursor: pointer;
+
+  &:hover {
+    background: var(--theme-accent-soft, #f4f1fb);
+    color: var(--theme-link-hover, #4f3a9a);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--theme-accent, #6962d2);
+    outline-offset: 1px;
+  }
+}
+
+.award-video__media {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border-radius: 9px;
+  background: #000;
+
+  video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background: #000;
+  }
+}
+
+// The committee's reason, labelled in gold as on the award slide.
+.award-video__reason {
+  margin: 0.7rem 0.2rem 0;
+
+  &[hidden] { display: none; }
+
+  p {
+    margin: 0.15rem 0 0;
+    font-size: 0.86rem;
+    font-style: italic;
+    line-height: 1.5;
+  }
+}
+
+.award-video__reason-label {
+  display: block;
+  color: #946a12;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+// The title's trophy sparkles as it does beside every award note.
+.award-video .trophy {
+  position: relative;
+  display: inline-block;
+
+  &::before,
+  &::after {
+    content: "\2728";
+    position: absolute;
+    color: gold;
+    font-size: 1em;
+    opacity: 0;
+    animation: pub-trophy-sparkle 1.5s infinite ease-in-out;
+  }
+
+  &::before { top: -0.69em; left: 0.69em; }
+  &::after { top: 0.56em; left: -0.21em; animation-delay: 0.8s; }
+}
+
+html[data-theme="dark"] .award-video {
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
+}
+
+html[data-theme="dark"] .award-video::backdrop {
+  background: rgba(8, 8, 20, 0.6);
+}
+
+html[data-theme="dark"] .award-video__reason-label {
+  color: #e3bd5c;
+}
+
+@media (pointer: coarse) {
+  .award-video__close {
+    flex-basis: 44px;
+    width: 44px;
+    height: 44px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .award-video__title,
+  .award-video .trophy::before,
+  .award-video .trophy::after { animation: none; }
+}
+
+@media print {
+  .award-video__play { display: none; }
+}

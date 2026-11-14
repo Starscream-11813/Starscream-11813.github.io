@@ -168,7 +168,7 @@ layout: default
         {% if page.collection == 'publications' and page.note %}
           <p>
             <b class="glownote" style="color: magenta;">
-              {{ page.note }} <span class="trophy">🏆</span>
+              {{ page.note }} <span class="trophy">🏆</span>{% include award-video.html pub=page %}
             </b>
           </p>
         {% endif %}
