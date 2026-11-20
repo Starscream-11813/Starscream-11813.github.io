@@ -103,18 +103,21 @@ def compose(specification, source):
         for panel, image, x, column_width, label_height in columns:
             offset = (row_height - label_height - image.height) // 2 if panel.get('valign') == 'center' else 0
             panel_y = y + offset
+            image_x = x + (column_width - image.width) // 2
+            # The heading spans the column, or with `labels: figure` a narrower figure's own width.
+            label_x, label_span = (image_x, image.width) if panel.get('labels') == 'figure' else (x, column_width)
             figure = panel['figure']
             figure_width = draw.textlength(figure, font=note_font)
             label_width = draw.textlength(panel['label'], font=label_font)
-            if label_width + figure_width + 24 > column_width:
+            if label_width + figure_width + 24 > label_span:
                 raise ValueError(f"Panel heading overlaps its figure label: {panel['label']}")
-            if panel.get('note') and draw.textlength(panel['note'], font=note_font) > column_width:
+            if panel.get('note') and draw.textlength(panel['note'], font=note_font) > label_span:
                 raise ValueError(f"Panel note is too wide: {panel['note']}")
-            draw.text((x, panel_y), panel['label'], font=label_font, fill=INK)
-            draw.text((x + column_width - figure_width, panel_y + 6), figure, font=note_font, fill=MUTED)
+            draw.text((label_x, panel_y), panel['label'], font=label_font, fill=INK)
+            draw.text((label_x + label_span - figure_width, panel_y + 6), figure, font=note_font, fill=MUTED)
             if panel.get('note'):
-                draw.text((x, panel_y + 46), panel['note'], font=note_font, fill=MUTED)
-            canvas.paste(image, (x + (column_width - image.width) // 2, panel_y + label_height))
+                draw.text((label_x, panel_y + 46), panel['note'], font=note_font, fill=MUTED)
+            canvas.paste(image, (image_x, panel_y + label_height))
         y += row_height + gap
     draw.text((MARGIN, height - 66), specification['source'], font=source_font, fill=MUTED)
     target = (ROOT / 'images' / specification['image']).resolve()

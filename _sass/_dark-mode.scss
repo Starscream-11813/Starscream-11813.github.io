@@ -75,6 +75,12 @@ html[data-theme="dark"] a.button[style*="#fcb520"]:hover {
   color: #1e1f31 !important;
 }
 
+/* The Hugging Face button keeps dark ink on its yellow, as the DOI badge does. */
+html[data-theme="dark"] a.button.button--huggingface,
+html[data-theme="dark"] a.button.button--huggingface:hover {
+  color: #1e1f31 !important;
+}
+
 html[data-theme="dark"] hr,
 html[data-theme="dark"] .page__content h2,
 html[data-theme="dark"] .archive__subtitle,

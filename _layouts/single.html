@@ -266,6 +266,26 @@ layout: default
             transform: translateY(1px);
           }
 
+          .button--huggingface,
+          .button--kaggle {
+            width: auto;
+            height: 25.64px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+            padding: 0 7px;
+            line-height: 1;
+            vertical-align: middle;
+          }
+
+          .button--huggingface .button__hf-logo {
+            width: 16px;
+            height: 16px;
+            display: block;
+            flex: 0 0 auto;
+          }
+
           .button--aipodcast {
             width: auto;
             min-width: 96px;
@@ -331,6 +351,12 @@ layout: default
           {% endif %}
           {% if page.codedata %}
           <a href="{{ page.codedata }}" style="background-color: #5cb85c; width:97px; text-decoration: none;" class="button"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
+          {% endif %}
+          {% if page.huggingface %}
+          <a href="{{ page.huggingface }}" style="background-color: #FFD21E; color: #1e1f31; text-decoration: none;" class="button button--huggingface">{% include publications/hf-logo.html %} Hugging Face</a>
+          {% endif %}
+          {% if page.kaggle %}
+          <a href="{{ page.kaggle }}" style="background-color: #20BEFF; color: #fff; text-decoration: none;" class="button button--kaggle"><i class="fab fa-kaggle" aria-hidden="true"></i> Kaggle</a>
           {% endif %}
           {% if page.projectpage %}
       <a href="{{ page.projectpage }}" style="background-color: #00a9b8; width:83px; text-decoration: none;" class="button"><i class="fa fa-globe" aria-hidden="true"></i> Website</a>

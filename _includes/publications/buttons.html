@@ -25,6 +25,12 @@
   {%- if pub.codedata -%}
   <a href="{{ pub.codedata }}" target="_blank" rel="noopener noreferrer" class="button button--code"><i class="fab fa-github" aria-hidden="true"></i> Code/Data</a>
   {%- endif -%}
+  {%- if pub.huggingface -%}
+  <a href="{{ pub.huggingface }}" target="_blank" rel="noopener noreferrer" class="button button--huggingface">{% include publications/hf-logo.html %} Hugging Face</a>
+  {%- endif -%}
+  {%- if pub.kaggle -%}
+  <a href="{{ pub.kaggle }}" target="_blank" rel="noopener noreferrer" class="button button--kaggle"><i class="fab fa-kaggle" aria-hidden="true"></i> Kaggle</a>
+  {%- endif -%}
   {%- if pub.projectpage -%}
   <a href="{{ pub.projectpage }}" target="_blank" rel="noopener noreferrer" class="button button--website"><i class="fa fa-globe" aria-hidden="true"></i> Website</a>
   {%- endif -%}

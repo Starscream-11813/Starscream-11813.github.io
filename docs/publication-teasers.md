@@ -8,6 +8,14 @@ later revision. All three are under-review preprints. Titles, author order,
 contribution markers, abstracts, code links, and citations come from the PDFs.
 BibTeX stays in the same three front-matter forms as the earlier entries.
 
+`_publications/17-alikbachan.md` follows the same convention. It was accepted
+to the Findings of EACL 2027, so it has the acceptance-stage fields
+(`type: notpreprints`, `status: accepted`, `venue`, and `venueyear: 2027`),
+while its citation, BibTeX, and PDF stay on arXiv until the Anthology publishes
+the volume. Its `huggingface` and `kaggle` fields add the Hugging Face (dataset)
+and Kaggle (competition) buttons after Code/Data on the Publications page, the
+paper's page, and archive listings.
+
 Full-size teaser PNGs live in `images/`, using the existing `_teaser` suffix.
 The new teasers combine original figures rendered directly from the papers;
 axes, values, labels, and legends are not recreated or modified.
@@ -32,6 +40,14 @@ their figure-specific labels and qualification notes.
   quality-conditioned success (Figure 4), stacked in that order. All three
   panels come from arXiv:2607.19364v2; the existing
   `sparse_feature_interventions_teaser` asset name stays stable.
+- Alikbachan: the paper's at-a-glance figure (Figure 1), the framework
+  (Figure 2), and the judges' macro-F1 by cultural band, hallucination family,
+  and task type (Figure 3), stacked in that order; all from arXiv:2611.26336v1.
+  Figures 1 and 3 are single-column figures, drawn at 60% width with
+  `labels: figure`, so the teaser stays tall enough for the card's narrow
+  thumbnail to show it whole. The heatmap panel is labeled as zero-shot
+  macro-F1 on Phase 2; it must not be described as the competition teams'
+  results.
 
 `_data/publication_teasers.yml` records versioned PDF URLs, zero-based page
 indices, and crop rectangles in PDF points. To reproduce the PNGs, install
@@ -43,16 +59,19 @@ python scripts/thumbnails.py
 ```
 
 For existing downloads, pass `--source-dir` with a folder containing PDFs
-named `proclaim.pdf`, `marsgps.pdf`, `nonlinear_storytelling.pdf`, or
-`sae_statsteer.pdf`. Use `--paper proclaim`, `--paper marsgps`,
-`--paper nonlinear_storytelling`, or `--paper sae_statsteer`
-to rebuild one image. Segoe UI is used for the small image
+named `proclaim.pdf`, `marsgps.pdf`, `nonlinear_storytelling.pdf`,
+`sae_statsteer.pdf`, or `alikbachan.pdf`. Use `--paper proclaim`,
+`--paper marsgps`, `--paper nonlinear_storytelling`, `--paper sae_statsteer`,
+or `--paper alikbachan` to rebuild one image. Segoe UI is used for the small image
 headings on Windows, with DejaVu Sans as the portable fallback. The original
 paper figures retain their own fonts.
 
 Stacked layouts use `panels`. For a compact arrangement, use `rows`, with each
 row containing a list of panels. `share` sets relative column widths, and
 `valign: center` vertically centers a shorter panel beside a taller one.
+`width` (between 0 and 1) draws a panel narrower than its column, centered;
+`labels: figure` then aligns its heading, figure number, and note with the
+figure instead of the column.
 `show_header: false` removes the publication title/subtitle block for that
 teaser only; entries without this option keep the default header and layout.
 
@@ -64,10 +83,14 @@ Home-page references stay modular: MARS-GPS is in the `mathematical` topic and
 PROClaim in `agentic` in `_data/research_topics.yml`. Stories Out of Order is
 in `narrative`, replacing the Creativity panel's in-progress placeholder with
 the paper's PDF. Those entries feed both
-the inline topic menus and the corresponding research-map panels. Compact
-publication labels remain in `_data/publication_extras.yml`.
+the inline topic menus and the corresponding research-map panels. Alikbachan
+and BanglaBook form the `bangla` topic, which the About text's closing
+paragraph links from "Bangla NLP"; it is a menu only, not a research-map area.
+Compact publication labels remain in `_data/publication_extras.yml`.
 
 The new paper uses an asterisk for equal contribution and a dagger for the
 corresponding author in its PDF. The website normalizes these to its existing
 legend: `†` for equal contribution (Raiyan and Tariquzzaman) and `‡` for the
 corresponding author (Ishmam). The author roles themselves are unchanged.
+Alikbachan's PDF uses the same markers: its seven equal-contribution authors
+get `†`, and Raiyan, who is also the corresponding author, gets `†‡`.

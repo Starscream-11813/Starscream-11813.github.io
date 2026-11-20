@@ -87,3 +87,9 @@
 /publications/16-nonlinearstorytelling:
   short: Stories Out of Order
   themes: [create]
+
+/publications/17-alikbachan:
+  short: Alikbachan
+  venue: EACL 2027
+  kind: Findings
+  themes: [behave]

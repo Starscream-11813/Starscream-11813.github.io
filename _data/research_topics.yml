@@ -60,3 +60,12 @@ agentic:
       name: CircuitLM
     - publication: /publications/5-physicseval
       name: PhysicsEval
+
+# Not a research-map area: the About text's closing paragraph links it.
+bangla:
+  title: Bangla NLP
+  papers:
+    - publication: /publications/17-alikbachan
+      name: Alikbachan (Hallucination Benchmark)
+    - publication: /publications/1-banglabook
+      name: BanglaBook (Sentiment Analysis)

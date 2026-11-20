@@ -87,3 +87,27 @@ sae_statsteer:
       figure: Figure 4
       page: 4
       crop: [70.2, 70.2, 525, 256.7]
+
+alikbachan:
+  pdf: https://arxiv.org/pdf/2611.26336v1
+  image: alikbachan_teaser.png
+  show_header: false
+  source: arXiv:2611.26336v1 · Figures 1, 2, and 3
+  panels:
+    - label: Alikbachan at a glance
+      figure: Figure 1
+      page: 0
+      crop: [306, 248.5, 524, 466]
+      width: 0.6
+      labels: figure
+    - label: Two phases, an open competition, and an audit
+      figure: Figure 2
+      page: 1
+      crop: [70.8, 70, 524.5, 183.4]
+    - label: Judges by band, family, and task
+      figure: Figure 3
+      note: Zero-shot macro-F1 on Phase 2
+      page: 6
+      crop: [69, 286.8, 289.7, 493.5]
+      width: 0.6
+      labels: figure

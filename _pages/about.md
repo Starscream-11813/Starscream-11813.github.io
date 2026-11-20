@@ -760,7 +760,7 @@ body {
 
         <p>To understand what drives such behavior, I also look inside the models, using {% include research-topic.html topic="interpretability" text="mechanistic interpretability and activation-space interventions" %} to explain and steer it. Beyond individual models, I explore {% include research-topic.html topic="agentic" text="multi-agent systems and agentic AI" %}, studying how coordinated reasoning, progressive retrieval, and structured debate support reliable problem-solving and claim verification.</p>
 
-        <p>Alongside these central directions, I pursue projects in Bangla NLP and computer vision, from language resources to visual understanding. My <a href="{{ '/publications/' | relative_url }}">publications</a> give a fuller account of these lines of inquiry.</p>
+        <p>Alongside these central directions, I pursue projects in {% include research-topic.html topic="bangla" text="Bangla NLP" %} and computer vision, from language resources to visual understanding. My <a href="{{ '/publications/' | relative_url }}">publications</a> give a fuller account of these lines of inquiry.</p>
 
         <details class="intellectual-influences">
         <summary>Intellectual influences</summary>
@@ -773,7 +773,7 @@ body {
 <div class="news">
     <h2><img src="{{ '/images/quill-pen-cropped.svg' | relative_url }}" style="width: 25px; vertical-align: bottom">Chronicle</h2>
     <div class="news-content">
-        <b>13th November 2026:</b> SAE-StatSteer has been accepted for publication in the <a href="https://2027.eacl.org/">Findings of the ACL: EACL 2027</a>. Alhamdulillah!
+        <b>13th November 2026:</b> SAE-StatSteer and Alikbachan have been accepted for publication in the <a href="https://2027.eacl.org/">Findings of the ACL: EACL 2027</a>. Alhamdulillah!
         <br>
         <br>
         <b>7th November 2026:</b> LLM-Ideoplasticity has received the <b class="news-award">Best Paper Award <span class="trophy" aria-hidden="true">🏆</span>{% include award-video.html publication="/publications/11-llmideoplasticity" %}</b> at <a href="https://2026.aaclnet.org/" style="white-space: nowrap">AACL-IJCNLP 2026</a>. Alhamdulillah!
