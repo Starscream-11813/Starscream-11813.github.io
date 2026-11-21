@@ -520,6 +520,9 @@ html[data-theme="dark"] .pubs .ranknote { color: #a78bfa; }
 // The Springer button: Academicons' Springer knight on Springer Nature blue.
 .pubs .button--springer { background-color: #025e8d; }
 
+// The IEEE Xplore button: Academicons' IEEE kite on IEEE blue.
+.pubs .button--ieee { background-color: #00629b; }
+
 // The Hugging Face button: the hugging face, in the button's ink, on Hugging
 // Face yellow. White can't be read on that yellow, so like the DOI badge it
 // keeps dark ink, also on hover (the dark theme's rule is in _dark-mode.scss).

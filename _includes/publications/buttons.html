@@ -12,6 +12,9 @@
   {%- if pub.springer -%}
   <a href="{{ pub.springer }}" target="_blank" rel="noopener noreferrer" class="button button--springer"><i class="ai ai-springer" aria-hidden="true"></i> Springer</a>
   {%- endif -%}
+  {%- if pub.ieee -%}
+  <a href="{{ pub.ieee }}" target="_blank" rel="noopener noreferrer" class="button button--ieee"><i class="ai ai-ieee" aria-hidden="true"></i> IEEE Xplore</a>
+  {%- endif -%}
   {%- if pub.paperurl -%}
     {%- if pub.paperurl contains 'openreview.net' -%}
   <a href="{{ pub.paperurl }}" target="_blank" rel="noopener noreferrer" class="button button--openreview"><img src="https://pbs.twimg.com/profile_images/1309249465056989189/Wwyw4IhM_400x400.jpg" alt="" aria-hidden="true" class="button__logo">OpenReview</a>

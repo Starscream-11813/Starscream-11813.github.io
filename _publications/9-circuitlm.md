@@ -7,31 +7,41 @@ excerpt:
 pptmode: 'Oral Presentation'
 date: 2026-03-17
 venue: '2026 IEEE International Conference on LLM-Aided Design (ICLAD)'
+ieee: 'https://ieeexplore.ieee.org/document/11768139'
 paperurl: 'https://arxiv.org/abs/2601.04505'
 pdfurl: 'https://arxiv.org/pdf/2601.04505'
 codedata: 'https://github.com/Khandakar227/CircuitLM'
-doi: 'https://doi.org/10.48550/arXiv.2601.04505'
-citation: 'K. S. A. Hasan, S. R. Raiyan, H. M. Alvee and W. Sadik, "CircuitLM: A Multi-Agent LLM-Aided Design Framework for Generating Circuit Schematics from Natural Language Prompts," 2026 IEEE International Conference on LLM-Aided Design (ICLAD), 2026.'
+doi: 'https://doi.org/10.1109/ICLAD71857.2026.00014'
+citation: 'K. S. Al Hasan, S. R. Raiyan, H. M. Alvee and W. Sadik, "CircuitLM: A Multi-Agent LLM-Aided Design Framework for Generating Circuit Schematics from Natural Language Prompts," 2026 IEEE International Conference on LLM-Aided Design (ICLAD), Stanford, CA, USA, 2026, pp. 50–56, doi: 10.1109/ICLAD71857.2026.00014.'
 authors: 'Khandakar Shakib Al Hasan, <b>Syed Rifat Raiyan</b>, Hasin Mahtab Alvee, Wahid Sadik.'
 bibtex: '@inproceedings{hasan2026circuitlm,<br>
       &emsp;&emsp;&emsp;&emsp;title={{CircuitLM}: A Multi-Agent {LLM}-Aided Design Framework for Generating Circuit Schematics from Natural Language Prompts},<br>
-      &emsp;&emsp;&emsp;&emsp;author={Hasan, Khandakar Shakib Al and Raiyan, Syed Rifat and Alvee, Hasin Mahtab and Sadik, Wahid},<br>
+      &emsp;&emsp;&emsp;&emsp;author={Al Hasan, Khandakar Shakib and Raiyan, Syed Rifat and Alvee, Hasin Mahtab and Sadik, Wahid},<br>
       &emsp;&emsp;&emsp;&emsp;booktitle={2026 IEEE International Conference on LLM-Aided Design (ICLAD)},<br>
       &emsp;&emsp;&emsp;&emsp;year={2026},<br>
-      &emsp;&emsp;&emsp;&emsp;url={https://arxiv.org/abs/2601.04505}<br>
+      &emsp;&emsp;&emsp;&emsp;address={Stanford, CA, USA},<br>
+      &emsp;&emsp;&emsp;&emsp;publisher={IEEE},<br>
+      &emsp;&emsp;&emsp;&emsp;pages={50--56},<br>
+      &emsp;&emsp;&emsp;&emsp;doi={10.1109/ICLAD71857.2026.00014}<br>
 }'
 bibtexraw: "@inproceedings{hasan2026circuitlm,\\n
                   title={{CircuitLM}: A Multi-Agent {LLM}-Aided Design Framework for Generating Circuit Schematics from Natural Language Prompts},\\n
-                  author={Hasan, Khandakar Shakib Al and Raiyan, Syed Rifat and Alvee, Hasin Mahtab and Sadik, Wahid},\\n
+                  author={Al Hasan, Khandakar Shakib and Raiyan, Syed Rifat and Alvee, Hasin Mahtab and Sadik, Wahid},\\n
                   booktitle={2026 IEEE International Conference on LLM-Aided Design (ICLAD)},\\n
                   year={2026},\\n
-                  url={https://arxiv.org/abs/2601.04505}\\n}"
+                  address={Stanford, CA, USA},\\n
+                  publisher={IEEE},\\n
+                  pages={50--56},\\n
+                  doi={10.1109/ICLAD71857.2026.00014}\\n}"
 bibtexprettify: "@inproceedings{hasan2026circuitlm,\n
       &emsp;&emsp;&emsp;&emsp;title={{CircuitLM}: A Multi-Agent {LLM}-Aided Design Framework for Generating Circuit Schematics from Natural Language Prompts},\n
-      &emsp;&emsp;&emsp;&emsp;author={Hasan, Khandakar Shakib Al and Raiyan, Syed Rifat and Alvee, Hasin Mahtab and Sadik, Wahid},\n
+      &emsp;&emsp;&emsp;&emsp;author={Al Hasan, Khandakar Shakib and Raiyan, Syed Rifat and Alvee, Hasin Mahtab and Sadik, Wahid},\n
       &emsp;&emsp;&emsp;&emsp;booktitle={2026 IEEE International Conference on LLM-Aided Design (ICLAD)},\n
       &emsp;&emsp;&emsp;&emsp;year={2026},\n
-      &emsp;&emsp;&emsp;&emsp;url={https://arxiv.org/abs/2601.04505}\n
+      &emsp;&emsp;&emsp;&emsp;address={Stanford, CA, USA},\n
+      &emsp;&emsp;&emsp;&emsp;publisher={IEEE},\n
+      &emsp;&emsp;&emsp;&emsp;pages={50--56},\n
+      &emsp;&emsp;&emsp;&emsp;doi={10.1109/ICLAD71857.2026.00014}\n
 }"
 
 poster:
